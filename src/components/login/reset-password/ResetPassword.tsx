@@ -125,10 +125,24 @@ const ResetPassword = () => {
     showPassword: false,
   })
 
+  const [confirmValues, setConfirmValues] = React.useState<State>({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  })
+
   const handleClickShowPassword = () => {
     setValues({
       ...values,
       showPassword: !values.showPassword,
+    })
+  }
+  const handleClickShowConfirmPassword = () => {
+    setConfirmValues({
+      ...confirmValues,
+      showPassword: !confirmValues.showPassword,
     })
   }
 
@@ -314,20 +328,40 @@ const ResetPassword = () => {
                     <LockOpenIcon id="unlock-icon" />
                   </InputLabel>
                   <TextField
-                    required
-                    id="password"
-                    label={t<string>('password')}
-                    variant="standard"
-                    sx={{ width: 1 }}
-                    // name="password"
-                    type="password"
-                    inputProps={{
-                      'data-testid': 'password-element',
-                      autoComplete: 'off',
+                  required
+                  id="password"
+                  label={t<string>('password')}
+                  variant="standard"
+                  sx={{ width: 1 }}
+                  // name="password"
+                  // type="password"
+                  type={values.showPassword ? 'text' : 'password'}
+                  inputProps={{
+                    'data-testid': 'password-element',
+                    autoComplete: 'off',
+                  }}
+                  value={password}
+                  onInput={handlePasswordChange}
+                  {...register('password')}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            className="password-toggle"
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {values.showPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
                     }}
-                    value={password}
-                    onInput={handlePasswordChange}
-                    {...register('password')}
                   />
 
                   {/* Tooltip start */}
@@ -414,7 +448,7 @@ const ResetPassword = () => {
                     label={t<string>('confirmPassword')}
                     variant="standard"
                     sx={{ width: 1 }}
-                    type={values.showPassword ? 'text' : 'password'}
+                    type={confirmValues.showPassword ? 'text' : 'password'}
                     autoComplete="false"
                     // name="password"
                     inputProps={{ 'data-testid': 'confirm-password-element' }}
@@ -427,11 +461,11 @@ const ResetPassword = () => {
                           <IconButton
                             className="password-toggle"
                             aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
+                            onClick={handleClickShowConfirmPassword}
                             onMouseDown={handleMouseDownPassword}
                             edge="end"
                           >
-                            {values.showPassword ? (
+                            {confirmValues.showPassword ? (
                               <VisibilityOff />
                             ) : (
                               <Visibility />

@@ -117,10 +117,25 @@ const SetPassword = () => {
     showPassword: false,
   })
 
+  const [confirmValues, setConfirmValues] = React.useState<State>({
+    amount: '',
+    password: '',
+    weight: '',
+    weightRange: '',
+    showPassword: false,
+  })
+
   const handleClickShowPassword = () => {
     setValues({
       ...values,
       showPassword: !values.showPassword,
+    })
+  }
+
+  const handleClickShowConfirmPassword = () => {
+    setConfirmValues({
+      ...confirmValues,
+      showPassword: !confirmValues.showPassword,
     })
   }
 
@@ -410,7 +425,7 @@ const SetPassword = () => {
                     label={t<string>('confirmPassword')}
                     variant="standard"
                     sx={{ width: 1 }}
-                    type={values.showPassword ? 'text' : 'password'}
+                    type={confirmValues.showPassword ? 'text' : 'password'}
                     autoComplete="false"
                     inputProps={{ 'data-testid': 'confirm-password-element' }}
                     value={confirmPassword}
@@ -422,11 +437,11 @@ const SetPassword = () => {
                           <IconButton
                             className="password-toggle"
                             aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
+                            onClick={handleClickShowConfirmPassword}
                             onMouseDown={handleMouseDownPassword}
                             edge="end"
                           >
-                            {values.showPassword ? (
+                            {confirmValues.showPassword ? (
                               <VisibilityOff />
                             ) : (
                               <Visibility />
