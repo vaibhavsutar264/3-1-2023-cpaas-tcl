@@ -1,12 +1,13 @@
 .dashboard__wrapper {
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   display: grid;
   grid-template-areas:
     'dashboardNavbar dashboardNavbar dashboardNavbar'
     'dashboardSidebar dashboardContent dashboardContent'
     'dashboardSidebar dashboardContent dashboardContent';
   background: #f7f8fa;
+  // overflow: hidden;
 }
 .language__selector {
   .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,
@@ -174,7 +175,7 @@
 }
 .dashboard__sidebar {
   width: 300px;
-  height: 100vh;
+  // height: 100vh;
   background: white;
   grid-area: dashboardSidebar;
   padding: 50px 30px;
@@ -192,6 +193,7 @@
     margin-top: -90px;
     padding: 0;
     border: 0;
+    cursor: pointer;
     opacity: 1;
   }
   .sidebar__list {
@@ -529,6 +531,106 @@
       svg {
         width: 20px;
       }
+    }
+  }
+}
+
+
+.dateRangePicker {
+  .daterangeInputwrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    background: #F1F4F9;
+    border: 1px solid #3448571A;
+    border-radius: 100px;
+    width: 220px;
+    height: 45px;
+    overflow: hidden;
+    position: relative;
+    opacity: 1;
+  }
+  input {
+    box-shadow: none !important;
+    outline: none !important;
+    border: 0px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #344857;
+    background: transparent !important;
+    opacity: 1;
+    &::placeholder {
+      text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #344857;
+    opacity: 1;
+    }
+    &:first-child {
+      width: 90px;
+      height: 45px;
+      padding-left: 15px;
+    }
+    &:nth-child(2) {
+      width: 130px;
+      height: 45px;
+      padding-left: 0px;
+    }
+  }
+  .rangeSeprator {
+    color: #344857;
+  }
+  .DateRangeIcon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #344857;
+  }
+}
+
+
+.tablePag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  ul{
+    li{
+      &:first-child,
+      &:last-child {
+        button {
+          background: #ffffff;
+          border: 0.5px solid #70707080;
+        }
+      }
+    }
+  }
+  button {
+    border: 0;
+    background: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: #787785;
+    opacity: 1;
+    &:hover,
+    &:focus,
+    &.Mui-selected {
+      background: #787785;
+      color: #ffffff;
+      border: 0.5px solid #70707080;
+      border-radius: 5px;
+      opacity: 1;
     }
   }
 }

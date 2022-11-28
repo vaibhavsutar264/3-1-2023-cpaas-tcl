@@ -16,7 +16,10 @@ import Pdf from '../icons/Pdf'
 import Ticket from '../icons/ticket'
 import Download from '../icons/download'
 import { Actions } from './Actions'
-
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
+import { useSearchParams } from 'react-router-dom'
+import { getPageParms, GetShowPages } from '../../../utils/helpers'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,6 +34,29 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 const DataTable = ({ TableData }: { TableData: any }) => {
   const { t } = useLocales();
   const { data, columns, tableName } = TableData;
+
+  const [pagination, setPagination] = useState(getPageParms(data.length))
+  const totalCount = Math.ceil(data.length / pagination.take)
+  const [TbData, SetTbData] = useState(data.slice((pagination.curr - 1) * pagination.take, pagination.curr * pagination.take));
+  console.log(pagination);
+
+  console.log((pagination.curr - 1) * pagination.take, pagination.curr * pagination.take);
+
+
+  console.log(TbData);
+
+  const slicePages = (pageNumber: any, take: any) => {
+    SetTbData(data.slice((pageNumber - 1) * take, pageNumber * take));
+  }
+
+  const changePage = (da: any, pageNumber: any) => {
+    SetTbData([])
+    setTimeout(() => {
+      setPagination((e) => ({ ...e, curr: pageNumber }))
+      slicePages(pageNumber, pagination.take)
+    }, 100);
+  }
+
 
   return (
     <>
@@ -59,7 +85,7 @@ const DataTable = ({ TableData }: { TableData: any }) => {
 
           {/* Table Body */}
           <TableBody className="TableBody">
-            {data.map((item: any, index: any) => (
+            {TbData.map((item: any, index: any) => (
               <TableRow key={item.id}>
                 <TableCell component="th" scope="row"> <a href="/"><Time /></a> </TableCell>
                 {columns.map((clm: any) => <TableCell key={clm} style={{ width: 160 }} align="right">{item[clm.eleName]} </TableCell>)}
@@ -75,6 +101,14 @@ const DataTable = ({ TableData }: { TableData: any }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Stack
+        spacing={3}
+        sx={{
+          marginTop: 3,
+        }}
+      >
+        <Pagination onChange={changePage} page={pagination.curr} className="tablePag" count={totalCount} variant="outlined" shape="rounded" />
+      </Stack>
     </>
   )
 }

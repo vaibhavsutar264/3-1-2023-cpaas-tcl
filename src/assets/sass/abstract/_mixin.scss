@@ -91,3 +91,46 @@ img {
   align-items: center;
   justify-content: $theme;
 }
+
+
+.iconCta {
+  text-align: left;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 0px;
+  color: #D63548;
+  text-transform: uppercase;
+  opacity: 1;
+  background: #F1F4F9;
+  border: 1px solid #D63548;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+  &:hover {
+    background: #D63548;
+    span {
+      color: white;
+      &.icon {
+        svg {
+          path {
+            fill: white !important;
+            stroke: white !important;
+          }
+        }
+      }
+    }
+  }
+  span {
+    display: inline-block;
+    &.icon {
+      margin-right: 10px;
+    }
+  }
+}
