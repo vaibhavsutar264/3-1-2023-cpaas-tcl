@@ -1,11 +1,16 @@
 export const apiRoutes = {
-  BASE_URL: 'http://localhost:4000',
+  BASE_URL: 'http://localhost:5000',
+
+  // User
   LOGIN: '/api/v1/login',
   MOCKLOGIN: '/auth/login',
   SET_PASSWORD: '/api/v1/password/update',
   FORGOT_PASSWORD: '/api/v1/password/forgot',
   RESET_PASSWORD: '/api/v1/password/reset',
   LOGOUT: '/api/v1/logout',
+
+  // Billing
+  GET_INVOICES: '/Invoices'
 }
 
 export const apiHelpers = {
@@ -36,6 +41,7 @@ export const thunkPaths = {
 
 export const slices = {
   AUTH_SLICE: 'auth',
+  BILLING_SLICE: 'billing'
 }
 
 export const typeVar = {
@@ -51,5 +57,34 @@ export const appRoutes = {
   FORGOT_PASSWORD: '/forgot-password',
   RESET_PASSWORD: '/password/reset/:token',
   NOT_FOUND: '*',
-  DASHBOARD: '/dashboard',
+  BILLING: '/invoices',
+}
+
+
+export const breadCrums = {
+  BILLING: {
+    path: [
+      { transName: "dashboard", type: "link", linkURL: appRoutes.BILLING },
+      { transName: "billingInvoiceshead", type: "text", linkURL: '' }
+    ],
+    PageName: "billingInvoiceshead"
+  }
+}
+
+
+export const dataTables = {
+  BILLING: (values: any) => ({
+    data: values,
+    columns: [
+      { eleName: "Invoice_no", headTrans: "id", sort: true, filter: false },
+      { eleName: "Customer_LE", headTrans: "customerLe", sort: true, filter: false },
+      { eleName: "Tata_Entity", headTrans: "entity", sort: true, filter: false },
+      { eleName: "PO_number", headTrans: "poNo", sort: true, filter: false },
+      { eleName: "Payment_Status", headTrans: "status", sort: true, filter: false },
+      { eleName: "Invoice_amt", headTrans: "invoiceAmount", sort: true, filter: false },
+      { eleName: "Invoice_date", headTrans: "invoiceIssuedDate", sort: true, filter: false },
+      { eleName: "Due_date", headTrans: "dueDate", sort: true, filter: false },
+    ],
+    tableName: "billing"
+  })
 }

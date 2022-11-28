@@ -9,9 +9,8 @@ httpInstance.interceptors.request.use(
   (config: any) => {
     config.headers[apiHelpers.HEADER_CONTENT_TYPE] =
       apiHelpers.CONTENT_TYPE_APP_JSON
-    config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${
-      apiHelpers.TOKEN_TYPE
-    } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
+    config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${apiHelpers.TOKEN_TYPE
+      } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
     return config
   },
   (error) => {
@@ -52,4 +51,9 @@ const user = {
     requests.put(`${routes.BASE_URL}${routes.RESET_PASSWORD}/${token}`, body),
 }
 
-export { user }
+const billing = {
+  loadInvoices: (data: any) =>
+    requests.get(`${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`),
+}
+
+export { user, billing }

@@ -2,7 +2,7 @@ import React from 'react'
 import useLocales from '../../../hooks/useLocales';
 
 
-export const Actionelement = () => {
+export const Actions = () => {
   const { t } = useLocales();
 
   return (

@@ -14,14 +14,20 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import Logo from '../../../assets/images/CPaaSLogo.png'
 import { Link } from 'react-router-dom'
 import Divider from '@mui/material/Divider'
-
+import { availableLanguages } from '../../../i18n'
+import '../../../i18n'
 import Avatar from '@mui/material/Avatar'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import useLocales from '../../../hooks/useLocales';
+import { setInLocalStorage } from '../../../hooks/useLocalStorage'
+import { useTranslation } from 'react-i18next'
+import { useDarkMode } from '../../../themes/useDarkMode'
 
-export const Header = () => {
+export const SideBar = () => {
+  const [theme, toggleTheme]: any = useDarkMode()
+  const { i18n } = useTranslation()
   const { t } = useLocales();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -74,10 +80,10 @@ export const Header = () => {
             </div>
             <div className="right__elementsItem theme__toggle">
               <div className="toggle__wrapper">
-                <button className="lightMode active">
+                <button className="lightMode active" onClick={toggleTheme} >
                   <LightModeIcon />
                 </button>
-                <button className="darkMode">
+                <button className="darkMode" onClick={toggleTheme}>
                   <DarkModeIcon />
                 </button>
               </div>
@@ -93,9 +99,10 @@ export const Header = () => {
                   <MenuItem value="">
                     <span>Language</span>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  {availableLanguages.map((lng, i) => <MenuItem onClick={() => {
+                    i18n.changeLanguage(lng)
+                    setInLocalStorage('lng', lng)
+                  }} key={i} value={10}>{lng}</MenuItem>)}
                 </Select>
               </FormControl>
             </div>

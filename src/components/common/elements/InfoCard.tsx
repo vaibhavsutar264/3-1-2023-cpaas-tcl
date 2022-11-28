@@ -2,7 +2,7 @@ import React from 'react'
 import useLocales from '../../../hooks/useLocales';
 
 
-export const Billingcards = () => {
+export const InfoCard = () => {
   const { t } = useLocales()
   return (
     <div className="card-wrapper-1">

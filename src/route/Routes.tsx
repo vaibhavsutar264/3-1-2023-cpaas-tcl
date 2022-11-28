@@ -32,7 +32,7 @@ function Routes() {
           element: <ResetPassword />,
         },
         { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
-        { path: appRoutes.DASHBOARD, element: <Dashboard /> },
+        { path: appRoutes.BILLING, element: <Billing /> },
         {
           path: appRoutes.SET_PASSWORD,
           element: <SetPassword />,
@@ -62,6 +62,6 @@ const ForgotPassword = Loadable(lazy(() => import('../components/login/forgot-pa
 const SetPassword = Loadable(lazy(() => import('../components/login/set-password/SetPassword')));
 const Notfound = Loadable(lazy(() => import('../components/notfound/Notfound')));
 const HomeScreen = Loadable(lazy(() => import('../components/home/HomeScreen')));
-const Dashboard = Loadable(lazy(() => import('../components/dashboard/Dashboard')));
+const Billing = Loadable(lazy(() => import('../components/billing/Billing')));
 
 export default Routes

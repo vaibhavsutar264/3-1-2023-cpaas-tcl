@@ -35,7 +35,7 @@
     "unpaidInvoices": "UNPAID INVOICES",
     "paidInvoices": "PAID INVOICES",
     "dashboard": "Dashboard",
-    "billingInvoices": "Billing Invoices",
+    "billingInvoiceshead": "Billing Invoices",
     "searchProductsOrdersAndClients": "Search Products, Orders and Clients",
     "language": "Language",
     "userManagement": "User Management",
@@ -50,17 +50,22 @@
     "datePicker": "Date picker",
     "exportToCsv": "EXPORT TO CSV",
     "invoiceNumber": "INVOICE NUMBER",
-    "customerLe": "CUSTOMER LE",
-    "entity": "ENTITY",
-    "poNo": "PO NO.",
-    "status": "STATUS",
-    "invoiceAmount": "INVOICE AMOUNT",
-    "invoiceIssuedDate": "INVOICE ISSUED DATE",
-    "dueDate": "DUE DATE",
+    "amount": "50,000.00",
     "tataEntity": "Tata-Einheit",
     "unpaid": "Unbezahlt",
     "02Sep2021": "02-Sep-2021",
     "currency": "INR",
-    "amount": "50,000.00"
+    "tables": {
+      "billing" : {
+        "id":"Invoice Id",
+        "customerLe":"CUSTOMER LE",
+        "entity":"ENTITY",
+        "poNo": "PO NO.",
+        "status": "STATUS",
+        "invoiceAmount": "INVOICE AMOUNT",
+        "invoiceIssuedDate": "INVOICE ISSUED DATE",
+        "dueDate": "DUE DATE"
+      }
+    }
   }
 }
