@@ -189,6 +189,12 @@ const SetPassword = () => {
     const passwordBoxElement = document.getElementById(
       'password-box'
     ) as HTMLButtonElement
+    const moderateStrengthElement = document.getElementById(
+      'moderate-strength-text'
+    ) as HTMLButtonElement
+    const highStrengthElement = document.getElementById(
+      'high-strength-text'
+    ) as HTMLButtonElement
     if ((e.target as HTMLInputElement).value.match(patternVariable)) {
       passwordBoxElement.className = 'input-wrapper success'
     } else {
@@ -221,9 +227,13 @@ const SetPassword = () => {
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
       linearProgressModerateElement.style.display = 'none'
       linearProgressSuccessElement.style.display = 'block'
+      moderateStrengthElement.style.display = 'none'
+      highStrengthElement.style.display = 'block'
     } else {
       linearProgressModerateElement.style.display = 'block'
       linearProgressSuccessElement.style.display = 'none'
+      moderateStrengthElement.style.display = 'block'
+      highStrengthElement.style.display = 'none'
     }
   }
 
@@ -232,7 +242,7 @@ const SetPassword = () => {
     setConfirmPassword((e.target as HTMLInputElement).value)
     const confirmPasswordpatternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
-      const atleastVariable = '.{3,}'
+    const atleastVariable = '.{3,}'
     const submitButtonElement = document.getElementById(
       'btn-enable-style'
     ) as HTMLButtonElement
@@ -253,7 +263,6 @@ const SetPassword = () => {
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
       matchBothPasswordElement.style.display = 'block'
       // matchBothPasswordElement.style.color = 'green'
-
     } else {
       matchBothPasswordElement.style.display = 'none'
     }
@@ -384,8 +393,19 @@ const SetPassword = () => {
                       </ul>
                       <Box sx={{ width: '100%', mr: 1 }}>
                         <p className="tooltipTitle StrengthTitle">
-                          Password Strength :{' '}
-                          <span style={{ color: '#ed6c02' }}></span>
+                          Password Strength:{' '}
+                          <span
+                            id="moderate-strength-text"
+                            style={{ color: '#ed6c02' }}
+                          >
+                            Moderate
+                          </span>
+                          <span
+                            id="high-strength-text"
+                            style={{ color: 'green' }}
+                          >
+                            High
+                          </span>
                         </p>
                         <LinearProgress
                           id="linear-progress-moderate"
@@ -404,7 +424,23 @@ const SetPassword = () => {
                   </div>
                   {/* Tooltip end */}
                 </FormControl>
-                <p className="text-error">{errors.password?.message}</p>
+                {errors.password && (
+                  <p>
+                    {errors.password.message == 'Password is required !!' ? (
+                      <p className="text-error">{t<string>('enterPassword')}</p>
+                    ) : (
+                      ''
+                    )}
+                    {errors.password.message ==
+                    'password must be at least 8 characters' ? (
+                      <p className="text-error">
+                        {t<string>('atleastEightCharPassword')}
+                      </p>
+                    ) : (
+                      ''
+                    )}
+                  </p>
+                )}
                 <FormControl
                   className="input-wrapper password-checkHide"
                   id="confirm-password-box"
@@ -452,9 +488,35 @@ const SetPassword = () => {
                     }}
                   />
                 </FormControl>
-                <p className="text-error">{errors.confirmPassword?.message}</p>
-                <p id="match-both-password-error" className={(password !== confirmPassword)?"text-error":"text-error-success"}>
-                  {password !== confirmPassword ? `${t<string>('bothPasswordMustMatch')}` : `${t<string>('paswordsMatched')}`}
+                {errors.confirmPassword && (
+                  <p>
+                    {errors.confirmPassword.message ==
+                    'Password is required !!' ? (
+                      <p className="text-error">{t<string>('enterPassword')}</p>
+                    ) : (
+                      ''
+                    )}
+                    {errors.confirmPassword.message ==
+                    'confirmPassword must be at least 8 characters' ? (
+                      <p className="text-error">
+                        {t<string>('atleastEightCharPassword')}
+                      </p>
+                    ) : (
+                      ''
+                    )}
+                  </p>
+                )}
+                <p
+                  id="match-both-password-error"
+                  className={
+                    password !== confirmPassword
+                      ? 'text-error'
+                      : 'text-error-success'
+                  }
+                >
+                  {password !== confirmPassword
+                    ? `${t<string>('bothPasswordMustMatch')}`
+                    : `${t<string>('paswordsMatched')}`}
                 </p>
                 <FormControl
                   className="input-wrapper submitBtn"
@@ -472,7 +534,20 @@ const SetPassword = () => {
                     data-testid="button-element"
                     type="submit"
                     name="submit"
-                    className={(password.length> 0 && confirmPassword.length>0)?((password !== confirmPassword)?"customBtn-01":"customBtn-01 btn-enable-style"):"customBtn-01"}
+                    disabled={
+                      password.length > 0 && confirmPassword.length > 0
+                        ? password !== confirmPassword
+                          ? true
+                          : false
+                        : true
+                    }
+                    className={
+                      password.length > 0 && confirmPassword.length > 0
+                        ? password !== confirmPassword
+                          ? 'customBtn-01'
+                          : 'customBtn-01 btn-enable-style'
+                        : 'customBtn-01'
+                    }
                   >
                     {t<string>('done')}
                   </ColorButton>

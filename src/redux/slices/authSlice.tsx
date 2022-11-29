@@ -18,6 +18,7 @@ const initialState: AuthState = {
   isSuccess: false,
   isAuthenticated: false,
   message: '',
+  emailSent: '',
 }
 
 export const userSlice = createSlice({
@@ -50,7 +51,7 @@ export const userSlice = createSlice({
     forgotPasswordSuccess: (state, action) => {
       state.isLoading = false
       state.isSuccess = true
-      state.message = action.payload.message as string
+      state.emailSent = action.payload.message as string
     },
     resetPasswordSuccess: (state, action) => {
       state.isLoading = false

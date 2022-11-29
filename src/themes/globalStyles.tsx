@@ -94,4 +94,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
     color: ${({ theme }) => theme.textForLogin};
     opacity: ${({ theme }) => theme.opacity};
   }
+  #forgot-password{
+    color: ${({ theme }) => theme.textForLogin};
+  }
 `

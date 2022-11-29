@@ -10,7 +10,7 @@ export const apiRoutes = {
   LOGOUT: '/api/v1/logout',
 
   // Billing
-  GET_INVOICES: '/Invoices'
+  GET_INVOICES: '/Invoices',
 }
 
 export const apiHelpers = {
@@ -41,7 +41,7 @@ export const thunkPaths = {
 
 export const slices = {
   AUTH_SLICE: 'auth',
-  BILLING_SLICE: 'billing'
+  BILLING_SLICE: 'billing',
 }
 
 export const typeVar = {
@@ -60,31 +60,54 @@ export const appRoutes = {
   BILLING: '/invoices',
 }
 
-
 export const breadCrums = {
   BILLING: {
     path: [
-      { transName: "dashboard", type: "link", linkURL: appRoutes.BILLING },
-      { transName: "billingInvoiceshead", type: "text", linkURL: '' }
+      { transName: 'dashboard', type: 'link', linkURL: appRoutes.BILLING },
+      { transName: 'billingInvoiceshead', type: 'text', linkURL: '' },
     ],
-    PageName: "billingInvoiceshead"
-  }
+    PageName: 'billingInvoiceshead',
+  },
 }
 
-
 export const dataTables = {
-  BILLING: (values: any) => ({
+  BILLING: (values: []) => ({
     data: values,
     columns: [
-      { eleName: "Invoice_no", headTrans: "id", sort: true, filter: false },
-      { eleName: "Customer_LE", headTrans: "customerLe", sort: true, filter: false },
-      { eleName: "Tata_Entity", headTrans: "entity", sort: true, filter: false },
-      { eleName: "PO_number", headTrans: "poNo", sort: true, filter: false },
-      { eleName: "Payment_Status", headTrans: "status", sort: true, filter: false },
-      { eleName: "Invoice_amt", headTrans: "invoiceAmount", sort: true, filter: false },
-      { eleName: "Invoice_date", headTrans: "invoiceIssuedDate", sort: true, filter: false },
-      { eleName: "Due_date", headTrans: "dueDate", sort: true, filter: false },
+      { eleName: 'Invoice_no', headTrans: 'id', sort: true, filter: false },
+      {
+        eleName: 'Customer_LE',
+        headTrans: 'customerLe',
+        sort: true,
+        filter: false,
+      },
+      {
+        eleName: 'Tata_Entity',
+        headTrans: 'entity',
+        sort: true,
+        filter: false,
+      },
+      { eleName: 'PO_number', headTrans: 'poNo', sort: true, filter: false },
+      {
+        eleName: 'Payment_Status',
+        headTrans: 'status',
+        sort: true,
+        filter: false,
+      },
+      {
+        eleName: 'Invoice_amt',
+        headTrans: 'invoiceAmount',
+        sort: true,
+        filter: false,
+      },
+      {
+        eleName: 'Invoice_date',
+        headTrans: 'invoiceIssuedDate',
+        sort: true,
+        filter: false,
+      },
+      { eleName: 'Due_date', headTrans: 'dueDate', sort: true, filter: false },
     ],
-    tableName: "billing"
-  })
+    tableName: 'billing',
+  }),
 }

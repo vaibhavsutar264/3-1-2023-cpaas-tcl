@@ -75,7 +75,8 @@ const Login = () => {
       console.log(message)
     }
     if (isAuthenticated) {
-      toast.success('Logged in successful')
+      // toast.success('Logged in successful')
+      console.log(message)
     }
   }, [isError, message, isAuthenticated])
 
@@ -214,7 +215,6 @@ const Login = () => {
                       label={t<string>('enterYourEmailID')}
                       variant="standard"
                       sx={{ width: 1 }}
-                      type="email"
                       inputProps={{
                         'data-testid': 'email-element',
                         autoComplete: 'off',
@@ -230,7 +230,14 @@ const Login = () => {
                       {errors.email == 'Enter your email' ? (
                         <p className="text-error">{t<string>('email')}</p>
                       ) : (
-                        <p className="text-error">{errors.email}</p>
+                        ''
+                      )}
+                      {errors.email == 'email must be a valid email' ? (
+                        <p className="text-error">
+                          {t<string>('mustBeValidEmail')}
+                        </p>
+                      ) : (
+                        ''
                       )}
                     </p>
                   )}
@@ -285,7 +292,23 @@ const Login = () => {
                     />
                   </FormControl>
                   {touched.password && errors.password && (
-                    <p>{errors.password}</p>
+                    <p>
+                      {errors.password == 'Enter your password' ? (
+                        <p className="text-error">
+                          {t<string>('enterPassword')}
+                        </p>
+                      ) : (
+                        ''
+                      )}
+                      {errors.password ==
+                      'password must be at least 5 characters' ? (
+                        <p className="text-error">
+                          {t<string>('atleastFiveCharPassword')}
+                        </p>
+                      ) : (
+                        ''
+                      )}
+                    </p>
                   )}
                   <FormControl
                     className="input-wrapper password-checkHide"

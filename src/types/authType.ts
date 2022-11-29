@@ -1,4 +1,3 @@
-
 export type AuthState = {
   user: null | AuthUser
   profile: Profile | undefined
@@ -7,6 +6,7 @@ export type AuthState = {
   isSuccess: boolean
   isAuthenticated: boolean
   message: string | undefined
+  emailSent: string | undefined
 }
 
 export type AuthUser = {

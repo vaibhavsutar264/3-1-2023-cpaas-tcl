@@ -49,7 +49,7 @@ const ForgotPassword = () => {
   const [open, setOpen] = useState(true)
   const dispatch = useAppDispatch()
   const { t } = useLocales()
-  const { isError, isSuccess, message } = useAppSelector(
+  const { isError, isSuccess, message, emailSent } = useAppSelector(
     (state: any) => state.auth
   )
   const [email, setEmail] = useState('')
@@ -68,9 +68,9 @@ const ForgotPassword = () => {
     }
 
     if (isSuccess) {
-      toast.success(message)
+      // toast.success(emailSent)
     }
-  }, [isError, isSuccess, message])
+  }, [isError, isSuccess, message, emailSent])
 
   const handleEmailChange = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -78,13 +78,15 @@ const ForgotPassword = () => {
       'btn-enable-style'
     ) as HTMLButtonElement
     setEmail((e.target as HTMLInputElement).value)
-    const emailVariable = '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'
+    const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
     const emailBoxElement = document.getElementById(
       'email-box'
     ) as HTMLInputElement
     if ((e.target as HTMLInputElement).value.match(emailVariable)) {
+      setOpen(false)
       submitButtonElement.className = 'customBtn-01 btn-enable-style'
     } else {
+      setOpen(true)
       submitButtonElement.className = 'customBtn-01'
     }
   }
@@ -129,7 +131,6 @@ const ForgotPassword = () => {
                     label={t<string>('email')}
                     variant="standard"
                     sx={{ width: 1 }}
-                    type="email"
                     name="email"
                     onInput={handleEmailChange}
                     value={email}

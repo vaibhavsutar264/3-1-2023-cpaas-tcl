@@ -1,9 +1,28 @@
 import React from 'react'
-import useLocales from '../../../hooks/useLocales';
+import useLocales from '../../../hooks/useLocales'
+import { CSVLink } from 'react-csv'
 
+export const Actions = ({ data }: { data: [] }) => {
+  const { t } = useLocales()
+  const headers = [
+    { label: 'Invoice No.', key: 'Invoice_no' },
+    { label: 'Customer LE', key: 'Customer_LE' },
+    { label: 'Tata Entity', key: 'Tata_Entity' },
+    { label: 'PO number', key: 'PO_number' },
+    { label: 'Payment Status', key: 'Payment_Status' },
+    { label: 'Invoice amt', key: 'Invoice_amt' },
+    { label: 'Currency', key: 'Currency' },
+    { label: 'Invoice date', key: 'Invoice_date' },
+    { label: 'Due date', key: 'Due_date' },
+    { label: 'Payment done date & time', key: 'Payment done date & time' },
+    { label: 'Time Zone', key: 'Time Zone' },
+  ]
 
-export const Actions = () => {
-  const { t } = useLocales();
+  const ExportToCsv = {
+    filename: 'InvoicesData.csv',
+    headers: headers,
+    data: data,
+  }
 
   return (
     <div className="action__elements">
@@ -17,7 +36,9 @@ export const Actions = () => {
             </select>
           </div>
           <div className="outOfRow">
-            <span>{t<string>('of')} 150 {t<string>('results')}</span>
+            <span>
+              {t<string>('of')} 150 {t<string>('results')}
+            </span>
           </div>
         </div>
       </div>
@@ -57,7 +78,9 @@ export const Actions = () => {
               </g>
             </svg>
           </span>
-          <span className="text">{t<string>('exportToCsv')}</span>
+          <CSVLink {...ExportToCsv} className="text">
+            {t<string>('exportToCsv')}
+          </CSVLink>
         </a>
       </div>
     </div>

@@ -6,16 +6,17 @@ import { InfoCard } from '../common/elements/InfoCard'
 import { Actions } from '../common/tables/Actions'
 import { PageSearch } from '../common/elements/PageSearch'
 import { breadCrums, dataTables } from '../../utils/constants'
-import {
-  useDispatch as useAppDispatch,
-  useSelector
-} from '../../redux/store'
+import { useDispatch as useAppDispatch, useSelector } from '../../redux/store'
 import { loadInvoices } from '../../redux/slices/billingSlice'
 
 export const Billing = () => {
-  const { isError, isLoading, isSuccess, invoiceData } = useSelector((state: any) => state.billing);
-  const dispatch = useAppDispatch();
-  useEffect(() => { dispatch(loadInvoices({ searchValue: "" })) }, [])
+  const { isError, isLoading, isSuccess, invoiceData } = useSelector(
+    (state: any) => state.billing
+  )
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(loadInvoices({ searchValue: '' }))
+  }, [dispatch])
 
   return (
     <div className="dashboard__wrapper">
@@ -33,6 +34,3 @@ export const Billing = () => {
 }
 
 export default Billing
-
-
-
