@@ -18,18 +18,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-<<<<<<< HEAD
     "jsx": "react-jsx",
     "types": ["reflect-metadata", "jest"],
     "typeRoots": ["./types", "./node_modules/@types"]
   },
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
   "include": ["./src/**/*.tsx", "./src/**/*.ts"]
-=======
-    "jsx": "react-jsx"
-  },
-  "include": [
-    "src"
-, "test"  ]
->>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
 }
