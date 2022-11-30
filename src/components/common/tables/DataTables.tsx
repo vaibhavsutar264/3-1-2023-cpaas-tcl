@@ -114,7 +114,7 @@ const DataTable = ({
           </TableHead>
           {/* Table Body */}
           <TableBody className="TableBody">
-            {data && data.map((item: any, index: any) => (
+            {Object.keys(data) && Object.keys(data).map((item: any, index: any) => (
               <TableRow key={item.id}>
                 <TableCell component="th" scope="row">
                   {' '}
