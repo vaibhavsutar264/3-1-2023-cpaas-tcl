@@ -1,23 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useLocales from '../../../hooks/useLocales';
 
 
-export const Actions = () => {
+export const Actions = ({ pagination, changeTake }: { pagination: any, changeTake: any }) => {
   const { t } = useLocales();
+
+  const modifyTake = (e: any) => {
+    changeTake(+e.target.value)
+  }
+
+  useEffect(() => {
+    const l: any = document.getElementById('PageNumberInput');
+    l.value = pagination.take;
+  })
 
   return (
     <div className="action__elements">
       <div className="action__elementItem">
         <div className="tableRow__show">
           <div className="selectRow">
-            <select name="" id="">
-              <option value="">{t<string>('showing')} 07</option>
-              <option value="">{t<string>('showing')} 15</option>
-              <option value="">{t<string>('showing')} 25</option>
+            <select name="" id="PageNumberInput" onChange={modifyTake}>
+              <option value="10">{t<string>('showing')} 10</option>
+              <option value="15">{t<string>('showing')} 15</option>
+              <option value="25">{t<string>('showing')} 25</option>
             </select>
           </div>
           <div className="outOfRow">
-            <span>{t<string>('of')} 150 {t<string>('results')}</span>
+            <span>{t<string>('of')} {pagination.total} {t<string>('results')}</span>
           </div>
         </div>
       </div>

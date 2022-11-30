@@ -1,32 +1,25 @@
-import React, { useState } from 'react'
-import Breadcrumbs from '@mui/material/Breadcrumbs'
-import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
-import Stack from '@mui/material/Stack'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { useState } from 'react'
 import Paper from '@mui/material/Paper'
 import InputBase from '@mui/material/InputBase'
 import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import useLocales from '../../../hooks/useLocales';
-import axios from "axios"
+import { useDispatch as useAppDispatch } from '../../../redux/store'
 
 export const PageSearch = ({ searchFn }: { searchFn: any }) => {
+    const dispatch = useAppDispatch();
     const { t } = useLocales();
     const [searchValue, setSearchValue] = useState("");
-    // const [data, setData] = useState<any[]>([]);
-    const handleSearch = async () => {
-        // searchFn()
+    const handleSearch = async (e: any) => {
+        dispatch(searchFn(searchValue));
+    };
+    const chnageEvent = async (e: any) => {
+        setSearchValue(e)
+        if (e == "" || e == null || e == undefined) {
+            dispatch(searchFn(""));
+        }
     };
 
-    const breadcrumbs = [
-        <Link underline="hover" key="1" color="inherit" href="/">
-            {t<string>('dashboard')}
-        </Link>,
-        <Typography key="3" color="text.primary">
-            {t<string>('billingInvoices')}
-        </Typography>,
-    ]
     return (
         <div className="">
             <div className="right__elementsItem search__group">
@@ -47,7 +40,7 @@ export const PageSearch = ({ searchFn }: { searchFn: any }) => {
                         }}
                         type="search"
                         value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={(e) => chnageEvent(e.target.value)}
                     />
                     <IconButton onClick={handleSearch} type="button" sx={{ p: '10px' }} aria-label="search">
                         <SearchIcon />

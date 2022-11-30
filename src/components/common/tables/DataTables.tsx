@@ -9,6 +9,8 @@ import { styled } from '@mui/material/styles'
 import TableHead from '@mui/material/TableHead'
 import { tableCellClasses } from '@mui/material/TableCell'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import useLocales from '../../../hooks/useLocales'
 import Time from '../icons/Time'
@@ -18,8 +20,9 @@ import Download from '../icons/download'
 import { Actions } from './Actions'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
-import { useSearchParams } from 'react-router-dom'
-import { getPageParms, GetShowPages } from '../../../utils/helpers'
+import { getPageParms, setUlrParms } from '../../../utils/helpers'
+import { useDispatch as useAppDispatch } from '../../../redux/store'
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,49 +34,54 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }))
 
-const DataTable = ({ TableData }: { TableData: any }) => {
+const DataTable = ({
+  TableData,
+  Total,
+  pageAction,
+  take,
+  page
+}: { take: any, page: any, TableData: any, Total: any, pageAction: any }) => {
   const { t } = useLocales();
-  const { data, columns, tableName } = TableData;
+  const { data, columns, tableName } = TableData
+  const dispatch = useAppDispatch();
+  const totalCount = Math.ceil(Total / take)
 
-  const [pagination, setPagination] = useState(getPageParms(data.length))
-  const totalCount = Math.ceil(data.length / pagination.take)
-  const [TbData, SetTbData] = useState(data.slice((pagination.curr - 1) * pagination.take, pagination.curr * pagination.take));
-  console.log(pagination);
-
-  console.log((pagination.curr - 1) * pagination.take, pagination.curr * pagination.take);
-
-
-  console.log(TbData);
-
-  const slicePages = (pageNumber: any, take: any) => {
-    SetTbData(data.slice((pageNumber - 1) * take, pageNumber * take));
+  const changeTake = (take: any) => {
+    updateData(page, take)
   }
 
   const changePage = (da: any, pageNumber: any) => {
-    SetTbData([])
-    setTimeout(() => {
-      setPagination((e) => ({ ...e, curr: pageNumber }))
-      slicePages(pageNumber, pagination.take)
-    }, 100);
+    updateData(pageNumber, take)
   }
 
+  const updateData = (page: any, take: any) => {
+    dispatch(pageAction(page, take))
+    setUlrParms(page, take)
+  }
+  const sort = (head: any) => {
+    console.log(head);
+  }
 
   return (
     <>
-      <Actions />
+      <Actions pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
       <TableContainer component={Paper} className="table__Container">
         <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
           <TableHead className="TableHead">
-            <TableRow>
-              <StyledTableCell><a href="/"><MoreVertIcon /></a> </StyledTableCell>
+            <TableRow  >
+              <StyledTableCell><MoreVertIcon /> </StyledTableCell>
 
               {/* Table Heads */}
-              {columns.map((head: any) => <StyledTableCell key={head.headTrans} align="right">
-                <div className="th_wrapper">
-                  <span>{t<string>(`tables.${tableName}.${head.headTrans}`)}</span>
-                  <span> <UnfoldMoreIcon /> </span>
-                </div>
-              </StyledTableCell>)}
+              {columns.map((head: any) => {
+                return <StyledTableCell key={head.headTrans} align="right">
+                  <div id={head.headTrans}  className="th_wrapper">
+                    <span>{t<string>(`tables.${tableName}.${head.headTrans}`)}</span>
+                    <span> <UnfoldMoreIcon /> </span>
+                    <span><KeyboardArrowDownIcon /></span>
+                    <span><KeyboardArrowUpIcon /></span>
+                  </div>
+                </StyledTableCell>
+              })}
 
               <StyledTableCell align="right">
                 <div className="th_wrapper">
@@ -85,10 +93,10 @@ const DataTable = ({ TableData }: { TableData: any }) => {
 
           {/* Table Body */}
           <TableBody className="TableBody">
-            {TbData.map((item: any, index: any) => (
-              <TableRow key={item.id}>
+            {data.map((item: any, index: any) => (
+              <TableRow key={`${item.id}${index}`}>
                 <TableCell component="th" scope="row"> <a href="/"><Time /></a> </TableCell>
-                {columns.map((clm: any) => <TableCell key={clm} style={{ width: 160 }} align="right">{item[clm.eleName]} </TableCell>)}
+                {columns.map((clm: any, ind: any) => <TableCell key={`ZXC${ind}`} style={{ width: 160 }} align="right">{item[clm.eleName]} </TableCell>)}
                 <TableCell style={{ width: 160 }} align="right">
                   <ul className="actionButtons">
                     <li className="actionButton__item"><a href="/"><Pdf /></a></li>
@@ -107,7 +115,7 @@ const DataTable = ({ TableData }: { TableData: any }) => {
           marginTop: 3,
         }}
       >
-        <Pagination onChange={changePage} page={pagination.curr} className="tablePag" count={totalCount} variant="outlined" shape="rounded" />
+        <Pagination onChange={changePage} page={page} className="tablePag" count={totalCount} variant="outlined" shape="rounded" />
       </Stack>
     </>
   )

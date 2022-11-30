@@ -17,11 +17,19 @@ export const GetShowPages = (curr: any, take: any, total: any) => {
 
 export const getPageParms = (count: any) => {
     const params = new URLSearchParams(window.location.search)
-    try {
+    if (params.get('take') && params.get('page')) {
         const take = (params.get('take')) || 0
         const page = (params.get('page')) || 0
         return { curr: +page, take: +take, total: count }
-    } catch (e) {
-        return { curr: 0, take: 0, total: count }
+    } else {
+        setUlrParms(1, 10)
+        return { curr: 1, take: 10, total: count }
+    }
+}
+
+export const setUlrParms = (page: any, take: any) => {
+    if ((<any>window).history.pushState) {
+        const newurl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?take=${take}&page=${page}`;
+        window.history.pushState({ path: newurl }, '', newurl);
     }
 }

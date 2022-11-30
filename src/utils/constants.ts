@@ -50,6 +50,7 @@ export const typeVar = {
 }
 
 export const appRoutes = {
+  DEFAULT_PARMS: '?page=1&take=10',
   ROOT: '/',
   LOGIN: '/login',
   CHECK_PROTECTED: '/checkprotected',

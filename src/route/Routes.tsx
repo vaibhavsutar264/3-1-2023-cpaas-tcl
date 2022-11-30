@@ -19,24 +19,12 @@ function Routes() {
     {
       path: '',
       children: [
-        {
-          path: appRoutes.LOGIN,
-          element: <Login />,
-        },
-        {
-          path: appRoutes.ROOT,
-          element: <HomeScreen />,
-        },
-        {
-          path: appRoutes.RESET_PASSWORD,
-          element: <ResetPassword />,
-        },
+        { path: appRoutes.LOGIN, element: <Login /> },
+        { path: appRoutes.ROOT, element: <HomeScreen /> },
+        { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
         { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
         { path: appRoutes.BILLING, element: <Billing /> },
-        {
-          path: appRoutes.SET_PASSWORD,
-          element: <SetPassword />,
-        },
+        { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
       ],
     },
     {
