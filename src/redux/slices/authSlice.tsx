@@ -33,7 +33,7 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isError = true
       state.isAuthenticated = false
-      state.message = action.payload.data?.message as string
+      state.message = action.payload 
     },
     loginSuccess: (state, action) => {
       state.isLoading = false

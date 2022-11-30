@@ -97,9 +97,6 @@ describe('App', () => {
     const NavigateToSetpasswordScreen = screen.getByRole('button', {
       name: /Done/i,
     })
-    const errorafterwrongcredentials =
-      'Passwords must match'
-    userEvent.click(NavigateToSetpasswordScreen)
-    expect(errorafterwrongcredentials).toBeTruthy()
+    expect(NavigateToSetpasswordScreen).toBeDisabled()
   })
 })
