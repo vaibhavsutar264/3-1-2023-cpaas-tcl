@@ -26,15 +26,18 @@ test('Then it shuold show the user text on input box', () => {
   userEvent.type(confirmPasswordElement, 'Vaibhav@1234')
 
   expect(passwordElement).toHaveAttribute('value', expectTextPassword)
-  expect(confirmPasswordElement).toHaveAttribute('value', expectTextConfirmPassword)
+  expect(confirmPasswordElement).toHaveAttribute(
+    'value',
+    expectTextConfirmPassword
+  )
 })
 
 const typeIntoForm = ({
-    password,
-    confirmPassword,
+  password,
+  confirmPassword,
 }: {
-    password: string
-    confirmPassword: string
+  password: string
+  confirmPassword: string
 }) => {
   const passwordElement = screen.getByTestId('password-element')
   const confirmPasswordElement = screen.getByTestId('confirm-password-element')
@@ -54,7 +57,7 @@ const typeIntoForm = ({
 describe('App', () => {
   beforeEach(() => {
     render(
-        <BrowserRouter>
+      <BrowserRouter>
         <Provider store={store}>
           <SetPassword />
         </Provider>
@@ -63,7 +66,9 @@ describe('App', () => {
   })
 
   test('inputs should exist', () => {
-    const passwordElement = screen.getByTestId('password-element') as HTMLInputElement
+    const passwordElement = screen.getByTestId(
+      'password-element'
+    ) as HTMLInputElement
     const confirmPasswordElement = screen.getByTestId(
       'confirm-password-element'
     ) as HTMLInputElement
@@ -72,7 +77,9 @@ describe('App', () => {
   })
 
   test('inputs should be initially empty', () => {
-    const passwordElement = screen.getByTestId('password-element') as HTMLInputElement
+    const passwordElement = screen.getByTestId(
+      'password-element'
+    ) as HTMLInputElement
     const confirmPasswordElement = screen.getByTestId(
       'confirm-password-element'
     ) as HTMLInputElement
@@ -81,7 +88,9 @@ describe('App', () => {
   })
 
   test('should be able to type an email', () => {
-    const passwordElement = screen.getByTestId('password-element') as HTMLInputElement
+    const passwordElement = screen.getByTestId(
+      'password-element'
+    ) as HTMLInputElement
     typeIntoForm({ password: 'Vaibhav@1234', confirmPassword: '123' })
     expect(passwordElement.value).toBe('Vaibhav@1234')
   })
@@ -90,7 +99,9 @@ describe('App', () => {
     const confirmPasswordElement = screen.getByTestId(
       'confirm-password-element'
     ) as HTMLInputElement
-    const passwordElement = screen.getByTestId('password-element') as HTMLInputElement
+    const passwordElement = screen.getByTestId(
+      'password-element'
+    ) as HTMLInputElement
     typeIntoForm({ password: 'Vaibhav@123', confirmPassword: 'Vaibhav@1234' })
     expect(passwordElement.value).toBe('Vaibhav@123')
     expect(confirmPasswordElement.value).toBe('Vaibhav@1234')

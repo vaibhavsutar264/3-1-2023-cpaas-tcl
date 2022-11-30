@@ -42,11 +42,11 @@ describe('Given a Login Page', () => {
       const NavigateToSetpasswordScreen = screen.getByTestId(
         'button-element'
       ) as HTMLButtonElement
-      const setpasswordscreen ='jjk'
+      const setpasswordscreen = 'jjk'
       userEvent.click(NavigateToSetpasswordScreen)
       // await waitFor(screen.getByText('Set Password'))
       // expect(waitFor(screen.getByRole('button', { name: /Done/i }))).toBeDisabled()
-      // await act(() => promise) 
+      // await act(() => promise)
     })
   })
 })
