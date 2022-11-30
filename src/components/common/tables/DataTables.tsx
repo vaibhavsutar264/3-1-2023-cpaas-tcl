@@ -9,6 +9,10 @@ import { styled } from '@mui/material/styles'
 import TableHead from '@mui/material/TableHead'
 
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
+import { tableCellClasses } from '@mui/material/TableCell'
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import useLocales from '../../../hooks/useLocales'
 import Time from '../icons/Time'
@@ -17,6 +21,10 @@ import Ticket from '../icons/ticket'
 import Download from '../icons/download'
 import { Actions } from './Actions'
 import jsPDF from 'jspdf'
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
+import { getPageParms, setUlrParms } from '../../../utils/helpers'
+import { useDispatch as useAppDispatch } from '../../../redux/store'
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -122,6 +130,14 @@ const DataTable = ({ TableData }: { TableData: any }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Stack
+        spacing={3}
+        sx={{
+          marginTop: 3,
+        }}
+      >
+        <Pagination onChange={changePage} page={page} className="tablePag" count={totalCount} variant="outlined" shape="rounded" />
+      </Stack>
     </>
   )
 }

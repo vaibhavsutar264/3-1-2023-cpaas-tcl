@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
 export type AuthState = {
   user: null | AuthUser
   profile: Profile | undefined
@@ -6,7 +10,10 @@ export type AuthState = {
   isSuccess: boolean
   isAuthenticated: boolean
   message: string | undefined
+<<<<<<< HEAD
   emailSent: string | undefined
+=======
+>>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
 }
 
 export type AuthUser = {

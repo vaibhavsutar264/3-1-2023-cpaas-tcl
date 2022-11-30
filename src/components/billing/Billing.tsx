@@ -1,22 +1,27 @@
+<<<<<<< HEAD
 import { useEffect } from 'react'
+=======
+import { useEffect, useState } from 'react'
+>>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
 import { SideBar } from '../common/elements/SideBar'
 import DataTable from '../common/tables/DataTables'
 import { BreadCrums } from '../common/elements/BreadCrum'
 import { InfoCard } from '../common/elements/InfoCard'
-import { Actions } from '../common/tables/Actions'
 import { PageSearch } from '../common/elements/PageSearch'
 import { breadCrums, dataTables } from '../../utils/constants'
-import { useDispatch as useAppDispatch, useSelector } from '../../redux/store'
-import { loadInvoices } from '../../redux/slices/billingSlice'
+import {
+  useDispatch as useAppDispatch,
+  useSelector
+} from '../../redux/store'
+import { ChangePageBilling, loadInvoices, searchData } from '../../redux/slices/billingSlice'
 
 export const Billing = () => {
-  const { isError, isLoading, isSuccess, invoiceData } = useSelector(
-    (state: any) => state.billing
-  )
-  const dispatch = useAppDispatch()
+  const { isError, isLoading, isSuccess, PageData = [], invoiceData = [], total, page, take } = useSelector((state: any) => state.billing);
+
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(loadInvoices({ searchValue: '' }))
-  }, [dispatch])
+    dispatch(loadInvoices({ searchValue: "" }))
+  }, [])
 
   return (
     <div className="dashboard__wrapper">
@@ -24,13 +29,16 @@ export const Billing = () => {
       <div className="dashboard__content">
         <div className="content__header">
           <BreadCrums data={breadCrums.BILLING} />
-          <PageSearch searchFn={null} />
+          <PageSearch searchFn={searchData} />
         </div>
         <InfoCard />
-        <DataTable TableData={dataTables.BILLING(invoiceData)} />
+        <DataTable pageAction={ChangePageBilling} Total={total} page={page} take={take} TableData={dataTables.BILLING(PageData)} />
       </div>
     </div>
   )
 }
 
 export default Billing
+
+
+

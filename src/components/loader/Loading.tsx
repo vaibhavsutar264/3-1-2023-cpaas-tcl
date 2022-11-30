@@ -1,5 +1,6 @@
 import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
+import React from 'react'
 import useLocales from '../../hooks/useLocales'
 
 const Loading = () => {
@@ -8,6 +9,8 @@ const Loading = () => {
   return (
     <div className="preloader">
       <CircularProgress disableShrink />
+    <div>
+      <h1>{t<string>('loading')}</h1>
     </div>
   )
 }

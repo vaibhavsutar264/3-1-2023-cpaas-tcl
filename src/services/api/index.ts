@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { getFromLocalStorage } from '../../hooks/useLocalStorage'
+<<<<<<< HEAD
 import { Password } from '../../types/authType'
+=======
+>>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
 import { apiHelpers, appRoutes, localStorageVar } from '../../utils/constants'
 import routes from './routes'
 const httpInstance = axios.create({ baseURL: routes.BASE_URL })
@@ -10,9 +13,14 @@ httpInstance.interceptors.request.use(
   (config: any) => {
     config.headers[apiHelpers.HEADER_CONTENT_TYPE] =
       apiHelpers.CONTENT_TYPE_APP_JSON
+<<<<<<< HEAD
     config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${
       apiHelpers.TOKEN_TYPE
     } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
+=======
+    config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${apiHelpers.TOKEN_TYPE
+      } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
+>>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
     return config
   },
   (error) => {
@@ -55,9 +63,7 @@ const userLoginData = {
 
 const billing = {
   loadInvoices: (data: any) =>
-    requests.get(
-      `${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`
-    ),
+    requests.get(`${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`),
 }
 
-export { userLoginData, billing }
+export { user, billing }
