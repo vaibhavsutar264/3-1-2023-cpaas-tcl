@@ -6,7 +6,7 @@ import {
   setInLocalStorage,
   getFromLocalStorage,
 } from '../../hooks/useLocalStorage'
-import { user } from '../../services/api/index'
+import { userLoginData } from '../../services/api/index'
 import { localStorageVar } from '../../utils/constants'
 import axios from 'axios'
 
@@ -78,7 +78,7 @@ export const login = (userData: UserLogin) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response = await user.login(userData)
+      const response = await userLoginData.login(userData)
       if (response) {
         setInLocalStorage(
           localStorageVar.USER_VAR,
@@ -104,7 +104,7 @@ export const logout = () => {
     try {
       removeFromLocalStorage(localStorageVar.TOKEN_VAR)
       removeFromLocalStorage(localStorageVar.USER_VAR)
-      await user.logout()
+      await userLoginData.logout()
       dispatch(userSlice.actions.logOutSuccess())
     } catch (error) {
       console.log(error)
@@ -116,7 +116,7 @@ export const updatePassword = (passwordData: Password) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response = await user.updatePassword(passwordData)
+      const response = await userLoginData.updatePassword(passwordData)
       dispatch(userSlice.actions.setPasswordSuccess(response.data))
       return response.data
     } catch (error) {
@@ -129,7 +129,7 @@ export const forgotPassword = (userEmail: Email) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response = await user.forgotPassword(userEmail)
+      const response = await userLoginData.forgotPassword(userEmail)
       dispatch(userSlice.actions.forgotPasswordSuccess(response.data))
       return response.data
     } catch (error) {
@@ -142,7 +142,7 @@ export const resetPassword = (token: any, passwordData: Password) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const { data } = await user.resetPassword(token, passwordData)
+      const { data } = await userLoginData.resetPassword(token, passwordData)
       dispatch(userSlice.actions.resetPasswordSuccess(data))
     } catch (error) {
       dispatch(userSlice.actions.hasError(error))

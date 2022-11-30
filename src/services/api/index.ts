@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getFromLocalStorage } from '../../hooks/useLocalStorage'
+import { Password } from '../../types/authType'
 import { apiHelpers, appRoutes, localStorageVar } from '../../utils/constants'
 import routes from './routes'
 const httpInstance = axios.create({ baseURL: routes.BASE_URL })
@@ -9,8 +10,9 @@ httpInstance.interceptors.request.use(
   (config: any) => {
     config.headers[apiHelpers.HEADER_CONTENT_TYPE] =
       apiHelpers.CONTENT_TYPE_APP_JSON
-    config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${apiHelpers.TOKEN_TYPE
-      } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
+    config.headers[apiHelpers.HEADER_AUTHORIZATION] = `${
+      apiHelpers.TOKEN_TYPE
+    } ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null}`
     return config
   },
   (error) => {
@@ -35,16 +37,16 @@ httpInstance.interceptors.response.use(
 const requests = {
   get: (url: string) => httpInstance.get(url),
   post: (url: string, body: any) => httpInstance.post(url, body),
-  patch: (url: string, body: any) => httpInstance.patch(url, body),
+  patch: (url: string, body: Password) => httpInstance.patch(url, body),
   put: (url: string, body: any) => httpInstance.put(url, body),
 }
 
-const user = {
+const userLoginData = {
   login: (body: any) =>
     requests.post(`${routes.BASE_URL}${routes.LOGIN}`, body),
   logout: () => requests.get(`${routes.BASE_URL}${routes.LOGOUT}`),
-  updatePassword: (body: any) =>
-    requests.put(`${routes.BASE_URL}${routes.SET_PASSWORD}`, body),
+  updatePassword: (body: Password) =>
+    requests.patch(`${routes.BASE_URL}${routes.SET_PASSWORD}`, body),
   forgotPassword: (body: any) =>
     requests.post(`${routes.BASE_URL}${routes.FORGOT_PASSWORD}`, body),
   resetPassword: (token: any, body: any) =>
@@ -53,7 +55,9 @@ const user = {
 
 const billing = {
   loadInvoices: (data: any) =>
-    requests.get(`${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`),
+    requests.get(
+      `${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`
+    ),
 }
 
-export { user, billing }
+export { userLoginData, billing }

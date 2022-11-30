@@ -42,8 +42,7 @@ export type Profile = {
 }
 
 export type Password = {
-  password?: string
-  confirmPassword?: string
+  password: string
 }
 
 export type Email = {

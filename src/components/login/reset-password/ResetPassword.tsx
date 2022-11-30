@@ -109,7 +109,7 @@ const ResetPassword = () => {
     try {
       const userPassword: Password = {
         password: password,
-        confirmPassword: confirmPassword,
+        // confirmPassword: confirmPassword,
       }
       await dispatch(resetPassword(token, data))
     } catch (error) {
@@ -547,9 +547,11 @@ const ResetPassword = () => {
                       : 'text-error-success'
                   }
                 >
-                  {password !== confirmPassword
-                    ? `${t<string>('bothPasswordMustMatch')}`
-                    : `${t<string>('paswordsMatched')}`}
+                  {password.length > 0 && confirmPassword.length > 0
+                    ? password !== confirmPassword
+                      ? `${t<string>('bothPasswordMustMatch')}`
+                      : `${t<string>('paswordsMatched')}`
+                    : `${t<string>('bothPasswordMustMatch')}`}
                 </p>
                 <FormControl
                   className="input-wrapper submitBtn"

@@ -4,7 +4,7 @@ export const apiRoutes = {
   // User
   LOGIN: '/api/v1/login',
   MOCKLOGIN: '/auth/login',
-  SET_PASSWORD: '/api/v1/password/update',
+  SET_PASSWORD: '/api/v1/auth/password',
   FORGOT_PASSWORD: '/api/v1/password/forgot',
   RESET_PASSWORD: '/api/v1/password/reset',
   LOGOUT: '/api/v1/logout',

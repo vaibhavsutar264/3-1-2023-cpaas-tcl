@@ -102,9 +102,8 @@ const SetPassword = () => {
     try {
       const userPassword: Password = {
         password: password,
-        confirmPassword: confirmPassword,
       }
-      await dispatch(updatePassword(data))
+      await dispatch(updatePassword(userPassword))
     } catch (error) {
       console.error(error)
     }
@@ -514,9 +513,11 @@ const SetPassword = () => {
                       : 'text-error-success'
                   }
                 >
-                  {password !== confirmPassword
-                    ? `${t<string>('bothPasswordMustMatch')}`
-                    : `${t<string>('paswordsMatched')}`}
+                  {password.length > 0 && confirmPassword.length > 0
+                    ? password !== confirmPassword
+                      ? `${t<string>('bothPasswordMustMatch')}`
+                      : `${t<string>('paswordsMatched')}`
+                    : `${t<string>('bothPasswordMustMatch')}`}
                 </p>
                 <FormControl
                   className="input-wrapper submitBtn"
