@@ -9,8 +9,6 @@ import { styled } from '@mui/material/styles'
 import TableHead from '@mui/material/TableHead'
 
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
-import { tableCellClasses } from '@mui/material/TableCell'
-import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreVertIcon from '@mui/icons-material/MoreVert'
@@ -37,9 +35,33 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }))
 
-const DataTable = ({ TableData }: { TableData: any }) => {
+const DataTable = ({
+  TableData,
+  Total,
+  pageAction,
+  take,
+  page
+}: { take: any, page: any, TableData: any, Total: any, pageAction: any }) => {
   const { t } = useLocales()
   const { data, columns, tableName } = TableData
+  const dispatch = useAppDispatch();
+  const totalCount = Math.ceil(Total / take)
+
+  const changeTake = (take: any) => {
+    updateData(page, take)
+  }
+
+  const changePage = (da: any, pageNumber: any) => {
+    updateData(pageNumber, take)
+  }
+
+  const updateData = (page: any, take: any) => {
+    dispatch(pageAction(page, take))
+    setUlrParms(page, take)
+  }
+  const sort = (head: any) => {
+    console.log(head);
+  }
   const generatePdf = () => {
     const doc = new jsPDF('p', 'pt', 'a1')
     const tableElement = document.getElementById(
@@ -53,7 +75,7 @@ const DataTable = ({ TableData }: { TableData: any }) => {
   }
   return (
     <>
-      <Actions data={data} />
+      <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
       <TableContainer
         id="table-data"
         component={Paper}
@@ -92,7 +114,7 @@ const DataTable = ({ TableData }: { TableData: any }) => {
           </TableHead>
           {/* Table Body */}
           <TableBody className="TableBody">
-            {data.map((item: any, index: any) => (
+            {data && data.map((item: any, index: any) => (
               <TableRow key={item.id}>
                 <TableCell component="th" scope="row">
                   {' '}

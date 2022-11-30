@@ -5,11 +5,11 @@ import { useDarkMode } from './themes/useDarkMode'
 import { GlobalStyles, lightTheme, darkTheme } from './themes/globalStyles'
 import { ThemeProvider } from 'styled-components'
 import useAuth from './hooks/useAuth'
-import Routes from './route/Routes'
 import './assets/sass/global/global.scss'
 import { appThemes } from './utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
+import Routes from './route/Routes'
 
 const App = () => {
   useAuth()

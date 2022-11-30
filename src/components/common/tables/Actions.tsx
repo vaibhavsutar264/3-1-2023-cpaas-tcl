@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useLocales from '../../../hooks/useLocales'
 import { CSVLink } from 'react-csv'
 
-export const Actions = ({ data }: { data: [] }) => {
+export const Actions = ({ data, pagination, changeTake }: { data: [], pagination: any, changeTake: any }) => {
   const { t } = useLocales()
+  const modifyTake = (e: any) => {
+    changeTake(+e.target.value)
+  }
+
+  useEffect(() => {
+    const l: any = document.getElementById('PageNumberInput');
+    l.value = pagination.take;
+  })
   const headers = [
     { label: 'Invoice No.', key: 'Invoice_no' },
     { label: 'Customer LE', key: 'Customer_LE' },

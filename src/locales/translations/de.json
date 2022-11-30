@@ -5,14 +5,9 @@
     "loginHeading": "Anmeldung",
     "enterEmailAndPassword": "Geben Sie die E-Mail-ID und das Passwort ein",
     "email": "Email eingeben",
-<<<<<<< HEAD
     "mustBeValidEmail": "E-Mail muss eine gültige E-Mail sein",
     "password": "Passwort eingeben",
     "forgotPassword": "Passwort vergessen?",
-=======
-    "password": "Passwort eingeben",
-    "forgotPassword": "Passwort vergessen ?",
->>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
     "loginBtn": "Anmeldung",
     "logoutBtn": "Ausloggen",
     "yourEmailIdPasswordNotMatch": "Eingegebene Anmeldedaten sind nicht korrekt",

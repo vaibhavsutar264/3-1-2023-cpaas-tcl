@@ -3,8 +3,6 @@
   "Invoices": [
     {
       "id": 1,
-<<<<<<< HEAD
-=======
       "Invoice_no": null,
       "Customer_LE": "a",
       "Tata_Entity": "Dummy a Tata Entity",
@@ -1433,7 +1431,6 @@
     },
     {
       "id": 1,
->>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
       "Invoice_no": 135,
       "Customer_LE": "a",
       "Tata_Entity": "Dummy a Tata Entity",

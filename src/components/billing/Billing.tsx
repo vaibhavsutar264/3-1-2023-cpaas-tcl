@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { useEffect } from 'react'
-=======
 import { useEffect, useState } from 'react'
->>>>>>> 0eddcf581e4fbecfb12b1c293db8fb859a84ab49
 import { SideBar } from '../common/elements/SideBar'
 import DataTable from '../common/tables/DataTables'
 import { BreadCrums } from '../common/elements/BreadCrum'
