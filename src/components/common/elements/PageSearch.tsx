@@ -37,12 +37,13 @@ export const PageSearch = ({ searchFn }: { searchFn: any }) => {
                         placeholder={t<string>('searchProductsOrdersAndClients')}
                         inputProps={{
                             'aria-label': 'Search Products, Orders and Clients',
+                            'data-testid': 'search-element'
                         }}
                         type="search"
                         value={searchValue}
                         onChange={(e) => chnageEvent(e.target.value)}
                     />
-                    <IconButton onClick={handleSearch} type="button" sx={{ p: '10px' }} aria-label="search">
+                    <IconButton data-testid="search-button-element" onClick={handleSearch} type="button" sx={{ p: '10px' }} aria-label="search">
                         <SearchIcon />
                     </IconButton>
                 </Paper>

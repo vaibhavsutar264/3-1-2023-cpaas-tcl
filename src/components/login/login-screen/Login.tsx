@@ -105,7 +105,7 @@ const Login = () => {
   const handleEmailChange = (e: SyntheticEvent) => {
     e.preventDefault()
     setEmail((e.target as HTMLInputElement).value)
-    const emailVariable = '.{5,}'
+    const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
     const emailBoxElement = document.getElementById(
       'email-box'
     ) as HTMLInputElement

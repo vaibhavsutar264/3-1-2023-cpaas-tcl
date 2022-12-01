@@ -76,6 +76,7 @@ const DataTable = ({
   return (
     <>
       <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
+      <p data-testid = "para-element">abc</p>
       <TableContainer
         id="table-data"
         component={Paper}
@@ -113,8 +114,8 @@ const DataTable = ({
             </TableRow>
           </TableHead>
           {/* Table Body */}
-          <TableBody className="TableBody">
-            {Object.keys(data) && Object.keys(data).map((item: any, index: any) => (
+          <TableBody data-testid="table-body-element" className="TableBody" data->
+            {data && data.map((item: any, index: any) => (
               <TableRow key={item.id}>
                 <TableCell component="th" scope="row">
                   {' '}

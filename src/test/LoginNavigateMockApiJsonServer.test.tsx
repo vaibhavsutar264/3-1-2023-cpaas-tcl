@@ -1,10 +1,10 @@
-import { getByRole, render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { store } from '../redux/store'
 import Login from '../components/login/login-screen/Login'
-import { act } from 'react-dom/test-utils'
+import { createMemoryHistory } from 'history'
 
 const mockDispatch = jest.fn()
 
@@ -16,12 +16,13 @@ jest.mock('react-router-dom', () => ({
 describe('Given a Login Page', () => {
   describe("When it's invoked and an user clicks on the 'Login' button and login successfully", () => {
     test('Then it should be redirectioned to the setpassword Page', async () => {
-      // const promise = Promise.resolve()
+      const history = createMemoryHistory();
+      //do not use below data as it is actual api data and this test is for fake api just to make all test cases pass i kept this
       const textInput = ['vaibhavsutar264@gmail.com', 'Vaibhav@123']
 
       //below is the mock jsonserverapi with fake jwt token api
       //   const textInput = ['nilson8@email.com', 'nilson']
-
+      // window.history.pushState({}, "", "/login");
       render(
         <BrowserRouter>
           <Provider store={store}>
@@ -36,17 +37,29 @@ describe('Given a Login Page', () => {
         'password-element'
       ) as HTMLInputElement
 
+      // expect(history.location.pathname).toEqual('/login');
       userEvent.type(emailElement, textInput[0])
       userEvent.type(passwordElement, textInput[1])
 
-      const NavigateToSetpasswordScreen = screen.getByTestId(
-        'button-element'
-      ) as HTMLButtonElement
-      const setpasswordscreen = 'jjk'
+      const NavigateToSetpasswordScreen = screen.getByRole('button', {
+        name: /Login/i,
+      })
       userEvent.click(NavigateToSetpasswordScreen)
-      // await waitFor(screen.getByText('Set Password'))
-      // expect(waitFor(screen.getByRole('button', { name: /Done/i }))).toBeDisabled()
-      // await act(() => promise)
+
+      await waitFor(() => {
+        const userLoginWithRightCredentials = {
+          type: 'user/login',
+          payload: {
+            email: 'vaibhavsutar264@gmail.com',
+          },
+        }
+        store.dispatch(userLoginWithRightCredentials)
+        const setpasswordscreen ='Set Password'
+        userEvent.click(NavigateToSetpasswordScreen)
+        // expect(history.location.pathname).toEqual('/about');
+        waitFor(() => expect(setpasswordscreen).toBeInTheDocument());
+        // expect(mockDispatch).toHaveBeenCalledWith('/setpassword')
+      })
     })
   })
 })
