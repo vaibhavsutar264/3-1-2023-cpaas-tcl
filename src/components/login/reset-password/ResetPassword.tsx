@@ -42,6 +42,7 @@ import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useParams } from 'react-router-dom'
+import { typeVar } from '../../../utils/constants'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -217,32 +218,40 @@ const ResetPassword = () => {
     const tooltipUnfullfilledRightClickGray = 'tooltipList-item'
     if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
       tooltipUppercaseElement.className = tooltipFullfilledRightClickGreen
-      tooltipUppercaseTick.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>';
+      tooltipUppercaseTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
     } else {
       tooltipUppercaseElement.className = tooltipUnfullfilledRightClickGray
-      tooltipUppercaseTick.innerHTML = '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+      tooltipUppercaseTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
     }
     if ((e.target as HTMLInputElement).value.match(lowercaseVariable)) {
       tooltipLowercaseElement.className = tooltipFullfilledRightClickGreen
-      tooltipLowercaseTick.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>';
+      tooltipLowercaseTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
     } else {
       tooltipLowercaseElement.className = tooltipUnfullfilledRightClickGray
-      tooltipLowercaseTick.innerHTML = '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+      tooltipLowercaseTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
     }
     if ((e.target as HTMLInputElement).value.match(symbolVariable)) {
       tooltipSymbolElement.className = tooltipFullfilledRightClickGreen
-      tooltipSymbolTick.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>';
+      tooltipSymbolTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
     } else {
       tooltipSymbolElement.className = tooltipUnfullfilledRightClickGray
-      tooltipSymbolTick.innerHTML = '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+      tooltipSymbolTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
     }
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
       tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
-      tooltipAtleastTick.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>';
+      tooltipAtleastTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
       linearProgressModerateElement.style.display = 'block'
     } else {
       tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
-      tooltipAtleastTick.innerHTML = '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+      tooltipAtleastTick.innerHTML =
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
       linearProgressModerateElement.style.display = 'none'
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
@@ -259,7 +268,7 @@ const ResetPassword = () => {
     setConfirmPassword((e.target as HTMLInputElement).value)
     const confirmPasswordpatternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
-      const atleastVariable = '.{3,}'
+    const atleastVariable = '.{3,}'
     const submitButtonElement = document.getElementById(
       'btn-enable-style'
     ) as HTMLButtonElement
@@ -328,21 +337,21 @@ const ResetPassword = () => {
                     <LockOpenIcon id="unlock-icon" />
                   </InputLabel>
                   <TextField
-                  required
-                  id="password"
-                  label={t<string>('password')}
-                  variant="standard"
-                  sx={{ width: 1 }}
-                  // name="password"
-                  // type="password"
-                  type={values.showPassword ? 'text' : 'password'}
-                  inputProps={{
-                    'data-testid': 'password-element',
-                    autoComplete: 'off',
-                  }}
-                  value={password}
-                  onInput={handlePasswordChange}
-                  {...register('password')}
+                    required
+                    id="password"
+                    label={t<string>('password')}
+                    variant="standard"
+                    sx={{ width: 1 }}
+                    // name="password"
+                    // type="password"
+                    type={values.showPassword ? 'text' : 'password'}
+                    inputProps={{
+                      'data-testid': 'password-element',
+                      autoComplete: 'off',
+                    }}
+                    value={password}
+                    onInput={handlePasswordChange}
+                    {...register('password')}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -477,8 +486,17 @@ const ResetPassword = () => {
                   />
                 </FormControl>
                 <p className="text-error">{errors.confirmPassword?.message}</p>
-                <p id="match-both-password-error" className={(password !== confirmPassword)?"text-error":"text-error-success"}>
-                {password !== confirmPassword ? `${t<string>('bothPasswordMustMatch')}` : `${t<string>('paswordsMatched')}`}
+                <p
+                  id="match-both-password-error"
+                  className={
+                    password !== confirmPassword
+                      ? 'text-error'
+                      : 'text-error-success'
+                  }
+                >
+                  {password !== confirmPassword
+                    ? `${t<string>('bothPasswordMustMatch')}`
+                    : `${t<string>('paswordsMatched')}`}
                 </p>
                 <FormControl
                   className="input-wrapper submitBtn"
@@ -496,7 +514,19 @@ const ResetPassword = () => {
                     data-testid="button-element"
                     type="submit"
                     name="submit"
-                    className={(password.length> 0 && confirmPassword.length>0)?((password !== confirmPassword)?"customBtn-01":"customBtn-01 btn-enable-style"):"customBtn-01"}
+                    sx={{
+                      fontSize: '18px',
+                      lineHeight: '21px',
+                      fontFamily: 'ubuntu',
+                      letterSpacing: '-0.72px',
+                    }}
+                    className={
+                      password.length > 0 && confirmPassword.length > 0
+                        ? password !== confirmPassword
+                          ? 'customBtn-01'
+                          : 'customBtn-01 btn-enable-style'
+                        : 'customBtn-01'
+                    }
                   >
                     {t<string>('done')}
                   </ColorButton>

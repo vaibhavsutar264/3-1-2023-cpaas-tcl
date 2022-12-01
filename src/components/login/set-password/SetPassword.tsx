@@ -19,7 +19,7 @@ import {
   ButtonProps,
   FormGroup,
   FormControl,
-} from '@mui/material'
+ Typography } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
 import CheckIcon from '@mui/icons-material/Check'
 import CloseIcon from '@mui/icons-material/Close'
@@ -29,10 +29,13 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 // Importing Images
 import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
+
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -232,7 +235,7 @@ const SetPassword = () => {
     setConfirmPassword((e.target as HTMLInputElement).value)
     const confirmPasswordpatternVariable =
       "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
-      const atleastVariable = '.{3,}'
+    const atleastVariable = '.{3,}'
     const submitButtonElement = document.getElementById(
       'btn-enable-style'
     ) as HTMLButtonElement
@@ -253,7 +256,6 @@ const SetPassword = () => {
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
       matchBothPasswordElement.style.display = 'block'
       // matchBothPasswordElement.style.color = 'green'
-
     } else {
       matchBothPasswordElement.style.display = 'none'
     }
@@ -283,7 +285,18 @@ const SetPassword = () => {
         <div className="form__inner">
           <Box sx={{ width: 1 }} className="account__form__header">
             <h3 className="title">{t<string>('setPassword')}</h3>
-            <p className="sub__title">{t<string>('generatePassword')}</p>
+            {/* <p className="sub__title">{t<string>('generatePassword')}</p> */}
+            <Typography
+              variant="body1"
+              sx={{
+                textAlign: 'center',
+                fontFamily: 'ubuntu',
+                letterSpacing: 0,
+                opacity: 0.6,
+              }}
+            >
+              {t<string>('generatePassword')}
+            </Typography>
           </Box>
           <Box sx={{ width: 1 }} className="account__form__error">
             <p className="error__msg">{message && message}</p>
@@ -331,10 +344,10 @@ const SetPassword = () => {
                             onMouseDown={handleMouseDownPassword}
                             edge="end"
                           >
-                            {values.showPassword ? (
-                              <VisibilityOff />
+                            {!values.showPassword ? (
+                              <VisibilityOffOutlinedIcon />
                             ) : (
-                              <Visibility />
+                              <VisibilityOutlinedIcon />
                             )}
                           </IconButton>
                         </InputAdornment>
@@ -441,10 +454,10 @@ const SetPassword = () => {
                             onMouseDown={handleMouseDownPassword}
                             edge="end"
                           >
-                            {confirmValues.showPassword ? (
-                              <VisibilityOff />
+                            {!confirmValues.showPassword ? (
+                              <VisibilityOffOutlinedIcon />
                             ) : (
-                              <Visibility />
+                              <VisibilityOutlinedIcon />
                             )}
                           </IconButton>
                         </InputAdornment>
@@ -453,8 +466,17 @@ const SetPassword = () => {
                   />
                 </FormControl>
                 <p className="text-error">{errors.confirmPassword?.message}</p>
-                <p id="match-both-password-error" className={(password !== confirmPassword)?"text-error":"text-error-success"}>
-                  {password !== confirmPassword ? `${t<string>('bothPasswordMustMatch')}` : `${t<string>('paswordsMatched')}`}
+                <p
+                  id="match-both-password-error"
+                  className={
+                    password !== confirmPassword
+                      ? 'text-error'
+                      : 'text-error-success'
+                  }
+                >
+                  {password !== confirmPassword
+                    ? `${t<string>('bothPasswordMustMatch')}`
+                    : `${t<string>('paswordsMatched')}`}
                 </p>
                 <FormControl
                   className="input-wrapper submitBtn"
@@ -472,7 +494,19 @@ const SetPassword = () => {
                     data-testid="button-element"
                     type="submit"
                     name="submit"
-                    className={(password.length> 0 && confirmPassword.length>0)?((password !== confirmPassword)?"customBtn-01":"customBtn-01 btn-enable-style"):"customBtn-01"}
+                    sx={{
+                      fontSize: '18px',
+                      lineHeight: '21px',
+                      fontFamily: 'ubuntu',
+                      letterSpacing: '-0.72px',
+                    }}
+                    className={
+                      password.length > 0 && confirmPassword.length > 0
+                        ? password !== confirmPassword
+                          ? 'customBtn-01'
+                          : 'customBtn-01 btn-enable-style'
+                        : 'customBtn-01'
+                    }
                   >
                     {t<string>('done')}
                   </ColorButton>

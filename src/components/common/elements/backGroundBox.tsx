@@ -9,6 +9,14 @@ import Box from '@mui/material/Box'
 import { useDarkMode } from '../../../themes/useDarkMode'
 import { darkTheme, lightTheme } from '../../../themes/globalStyles'
 import useLocales from '../../../hooks/useLocales'
+import { typeVar } from '../../../utils/constants'
+import Chart from '../icons/Chart'
+import Video from '../icons/Video'
+import PieChart from '../icons/PieChart'
+import Voice from '../icons/Voice'
+import Sales from '../icons/Sales'
+import Chat from '../icons/Chat'
+// import Whatsapp from '../icons/Whatsapp'
 
 const BackgroundBox = () => {
   const { t } = useLocales()
@@ -20,25 +28,32 @@ const BackgroundBox = () => {
       <div className="floating-wrapper">
         <div className="floating-wrapper-inner">
           <div className="floating-item floating-item-1">
-            <img src={ChartImg} alt={t<string>('chart')} />
+            {/* <img src={ChartImg} alt={t<string>('chart')} /> */}
+            <Chart />
           </div>
           <div className="floating-item floating-item-2">
-            <img src={PieChartImg} alt={t<string>('pieChart')} />
+            {/* <img src={PieChartImg} alt={t<string>('pieChart')} /> */}
+            <PieChart />
           </div>
           <div className="floating-item floating-item-3">
-            <img src={SalesImg} alt={t<string>('sales')} />
+            {/* <img src={SalesImg} alt={t<string>('sales')} /> */}
+            <Sales />
           </div>
           <div className="floating-item floating-item-4">
-            <img src={VoiceImg} alt={t<string>('voice')} />
+            {/* <img src={VoiceImg} alt={t<string>('voice')} /> */}
+            <Voice />
           </div>
           <div className="floating-item floating-item-5">
-            <img src={ChatImg} alt={t<string>('chat')} />
+            {/* <img src={ChatImg} alt={t<string>('chat')} /> */}
+            <Chat />
           </div>
           <div className="floating-item floating-item-6">
-            <img src={VideoImg} alt={t<string>('video')} />
+            {/* <img src={VideoImg} alt={t<string>('video')} /> */}
+            <Video />
           </div>
           <div className="floating-item floating-item-7">
             <img src={WhatsappImg} alt={t<string>('whatsapp')} />
+            {/* <Whatsapp /> */}
           </div>
         </div>
       </div>

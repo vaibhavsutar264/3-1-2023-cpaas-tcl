@@ -1,9 +1,9 @@
 import React from 'react'
-import useLocales from '../../../hooks/useLocales';
-
+import useLocales from '../../../hooks/useLocales'
+import { typeVar } from '../../../utils/constants'
 
 export const Actions = () => {
-  const { t } = useLocales();
+  const { t } = useLocales()
 
   return (
     <div className="action__elements">
@@ -17,7 +17,9 @@ export const Actions = () => {
             </select>
           </div>
           <div className="outOfRow">
-            <span>{t<string>('of')} 150 {t<string>('results')}</span>
+            <span>
+              {t<string>('of')} 150 {t<string>('results')}
+            </span>
           </div>
         </div>
       </div>
@@ -27,6 +29,7 @@ export const Actions = () => {
           <span className="icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              type={typeVar.IMAGE_SVG}
               width="15.556"
               height="15.5"
               viewBox="0 0 15.556 15.5"
