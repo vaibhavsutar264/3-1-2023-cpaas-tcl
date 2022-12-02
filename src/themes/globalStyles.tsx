@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const lightTheme = {
   body: '#fff !important',
   text: '#121212 !important',
-  textForLogin: '#858585 !important',
+  textForLogin: '#11153b !important',
   primary: 'lightGreen !important',
   background: 'white !important',
   font: 'sans-serif !important',
