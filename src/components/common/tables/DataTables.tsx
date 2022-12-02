@@ -37,15 +37,18 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const DataTable = ({
   TableData,
+  sortAction,
   Total,
   pageAction,
   take,
   page
-}: { take: any, page: any, TableData: any, Total: any, pageAction: any }) => {
+}: { take: any, sortAction: any, page: any, TableData: any, Total: any, pageAction: any }) => {
   const { t } = useLocales()
   const { data, columns, tableName } = TableData
   const dispatch = useAppDispatch();
   const totalCount = Math.ceil(Total / take)
+  console.log(data);
+  const [sortdir, setSortdir]: any = useState(null)
 
   const changeTake = (take: any) => {
     updateData(page, take)
@@ -60,7 +63,8 @@ const DataTable = ({
     setUlrParms(page, take)
   }
   const sort = (head: any) => {
-    console.log(head);
+    dispatch(sortAction(head, sortdir === -1 ? 1 : -1));
+    setSortdir(sortdir === -1 ? 1 : -1)
   }
   const generatePdf = () => {
     const doc = new jsPDF('p', 'pt', 'a1')
@@ -91,12 +95,12 @@ const DataTable = ({
               </StyledTableCell>
 
               {/* Table Heads */}
-              {columns.map((head: any) => (
-                <StyledTableCell key={head.headTrans} align="right">
+              {columns.map((head: any, index: any) => (
+                <StyledTableCell key={`${head.headTrans}${index}`} align="right">
                   <div className="th_wrapper">
-                    <span>
+                    <button className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
                       {t<string>(`tables.${tableName}.${head.headTrans}`)}
-                    </span>
+                    </button>
                     <span>
                       {' '}
                       <UnfoldMoreIcon />{' '}
@@ -115,15 +119,15 @@ const DataTable = ({
           {/* Table Body */}
           <TableBody className="TableBody">
             {data && data.map((item: any, index: any) => (
-              <TableRow key={item.id}>
+              <TableRow key={`td-cell${index}`}>
                 <TableCell component="th" scope="row">
                   {' '}
                   <a href="/">
                     <Time />
                   </a>{' '}
                 </TableCell>
-                {columns.map((clm: any) => (
-                  <TableCell key={clm} style={{ width: 160 }} align="right">
+                {columns.map((clm: any, index: any) => (
+                  <TableCell key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
                     {item[clm.eleName]}{' '}
                   </TableCell>
                 ))}

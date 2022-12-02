@@ -17,7 +17,7 @@ const App = () => {
   const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
   return (
     <ThemeProvider theme={themeMode}>
-      <Header toggleTheme={toggleTheme} />
+      {/* <Header toggleTheme={toggleTheme} /> */}
       <GlobalStyles />
       <Routes />
       <Toggle theme={theme} toggleTheme={toggleTheme} />

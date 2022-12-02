@@ -1,5 +1,5 @@
 export const apiRoutes = {
-  BASE_URL: 'http://localhost:4000',
+  BASE_URL: 'http://localhost:5000',
 
   // User
   LOGIN: '/api/v1/login',

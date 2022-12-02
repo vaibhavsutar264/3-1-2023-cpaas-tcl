@@ -33,3 +33,18 @@ export const setUlrParms = (page: any, take: any) => {
         window.history.pushState({ path: newurl }, '', newurl);
     }
 }
+
+
+export const sortArray = (array: any, element: any, dir: any) => {
+    return array.sort((a: any, b: any) => {
+        if (dir === -1) {
+            return (a[element] > b[element]) ? -1 : ((b[element] < a[element]) ? 1 : 0)
+        } else {
+            return (a[element] < b[element]) ? -1 : ((b[element] > a[element]) ? 1 : 0)
+        }
+    })
+}
+
+export const searchArray = (array: any, value: any) => {
+    return array.filter((d: any) => `${Object.values(d).join(",")}`.includes(value))
+}

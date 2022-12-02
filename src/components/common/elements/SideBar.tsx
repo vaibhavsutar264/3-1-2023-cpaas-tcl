@@ -102,7 +102,7 @@ export const SideBar = () => {
                   {availableLanguages.map((lng, i) => <MenuItem onClick={() => {
                     i18n.changeLanguage(lng)
                     setInLocalStorage('lng', lng)
-                  }} key={i} value={10}>{lng}</MenuItem>)}
+                  }} key={`brdcmr${i}`} value={10}>{lng}</MenuItem>)}
                 </Select>
               </FormControl>
             </div>

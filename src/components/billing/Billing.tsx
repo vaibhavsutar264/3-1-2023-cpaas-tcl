@@ -9,7 +9,7 @@ import {
   useDispatch as useAppDispatch,
   useSelector
 } from '../../redux/store'
-import { ChangePageBilling, loadInvoices, searchData } from '../../redux/slices/billingSlice'
+import { ChangePageBilling, loadInvoices, searchData, sortData } from '../../redux/slices/billingSlice'
 
 export const Billing = () => {
   const { isError, isLoading, isSuccess, PageData = [], invoiceData = [], total, page, take } = useSelector((state: any) => state.billing);
@@ -28,7 +28,13 @@ export const Billing = () => {
           <PageSearch searchFn={searchData} />
         </div>
         <InfoCard />
-        <DataTable pageAction={ChangePageBilling} Total={total} page={page} take={take} TableData={dataTables.BILLING(PageData)} />
+        <DataTable
+          pageAction={ChangePageBilling}
+          sortAction={sortData}
+          Total={total}
+          page={page}
+          take={take}
+          TableData={dataTables.BILLING(PageData)} />
       </div>
     </div>
   )

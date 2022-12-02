@@ -19,3 +19,17 @@
 @import '../../../components/login/scss/account';
 @import '../../../components/billing/scss/dashboard';
 @import '../../../components/Notfound/notfound';
+
+
+.voidBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: right;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 21px;
+    letter-spacing: 0px;
+    color: #7b7b7b !important;
+    text-transform: uppercase;
+  }

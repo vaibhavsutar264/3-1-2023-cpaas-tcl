@@ -44,7 +44,7 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
             </select>
           </div>
           <div className="outOfRow">
-            <span>{t<string>('of')} {pagination.total} {t<string>('results')}</span>
+            <span>{t<string>('of')} {pagination.Total} {t<string>('results')}</span>
           </div>
         </div>
       </div>
@@ -84,10 +84,10 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
               </g>
             </svg>
           </span>
-          <CSVLink {...ExportToCsv} className="text">
-            {t<string>('exportToCsv')}
-          </CSVLink>
         </a>
+        <CSVLink {...ExportToCsv} className="text">
+          {t<string>('exportToCsv')}
+        </CSVLink>
       </div>
     </div>
   )

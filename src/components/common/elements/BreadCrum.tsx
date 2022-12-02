@@ -19,8 +19,8 @@ export const BreadCrums = ({ data }: { data: any }) => {
             <Stack spacing={2} className="breadcrum-stack">
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" >
                     {[
-                        data.path.map((ele: any) =>
-                            ele.type == 'link' ? <Link underline="hover" key="1" color="inherit" href={ele.linkURL}>
+                        data.path.map((ele: any, index: any) =>
+                            ele.type == 'link' ? <Link underline="hover" key={`brdcrm${index}`} color="inherit" href={ele.linkURL}>
                                 {t<string>(ele.transName)} </Link> :
                                 <Typography key="3" color="text.primary">{t<string>(ele.transName)}  </Typography>
                         )
