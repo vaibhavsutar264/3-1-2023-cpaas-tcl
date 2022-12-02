@@ -29,6 +29,8 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 // Importing Images
 import Background from '../../../assets/images/login-bg.jpg'
 import ChartImg from '../../../assets/images/svg/Chart.svg'
@@ -373,9 +375,9 @@ const ResetPassword = () => {
                             edge="end"
                           >
                             {values.showPassword ? (
-                              <Visibility />
+                              <VisibilityOutlinedIcon />
                               ) : (
-                                <VisibilityOff />
+                                <VisibilityOffOutlinedIcon />
                                 )}
                           </IconButton>
                         </InputAdornment>
@@ -512,9 +514,9 @@ const ResetPassword = () => {
                             edge="end"
                           >
                             {confirmValues.showPassword ? (
-                              <Visibility />
+                              <VisibilityOutlinedIcon />
                               ) : (
-                                <VisibilityOff />
+                                <VisibilityOffOutlinedIcon />
                             )}
                           </IconButton>
                         </InputAdornment>

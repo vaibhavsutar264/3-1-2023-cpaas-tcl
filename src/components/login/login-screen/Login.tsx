@@ -194,7 +194,8 @@ const Login = () => {
                 {isError && message == 'Invalid email and password' ? (
                   <p>{t<string>('yourEmailIdPasswordNotMatch')}</p>
                 ) : (
-                  JSON.stringify(message)
+                /* JSON.stringify(message) */
+                  null
                 )}
               </p>
             </Box>

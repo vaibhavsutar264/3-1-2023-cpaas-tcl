@@ -25,9 +25,14 @@ import { setInLocalStorage } from '../../../hooks/useLocalStorage'
 import { useTranslation } from 'react-i18next'
 import { useDarkMode } from '../../../themes/useDarkMode'
 import { typeVar } from '../../../utils/constants'
+// import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
+// import { appThemes } from '../../../utils/constants'
+
+
 
 export const SideBar = () => {
   const [theme, toggleTheme]: any = useDarkMode()
+  // const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
   const { i18n } = useTranslation()
   const { t } = useLocales()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -64,6 +69,7 @@ export const SideBar = () => {
                 }}
               >
                 <InputBase
+                id="more-new"
                   sx={{ ml: 1, flex: 1 }}
                   placeholder={t<string>('searchProductsOrdersAndClients')}
                   inputProps={{

@@ -22,7 +22,7 @@ export const Billing = () => {
   return (
     <div className="dashboard__wrapper">
       <SideBar />
-      <div className="dashboard__content">
+      <div className="dashboard__content" id="something-new">
         <div className="content__header">
           <BreadCrums data={breadCrums.BILLING} />
           <PageSearch searchFn={searchData} />
