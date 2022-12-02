@@ -13,7 +13,7 @@ const Loadable = (Component: any) => (props: any) => {
   )
 }
 
-function Routes() {
+function Routes({ toggleTheme }: { toggleTheme: any }) {
   return useRoutes([
     // { path: appRoutes.ROOT, element: { <HomeScreen /> } },
     {
@@ -23,7 +23,7 @@ function Routes() {
         { path: appRoutes.ROOT, element: <HomeScreen /> },
         { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
         { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
-        { path: appRoutes.BILLING, element: <Billing /> },
+        { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
         { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
       ],
     },

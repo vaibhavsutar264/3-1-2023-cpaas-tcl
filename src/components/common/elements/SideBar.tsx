@@ -23,16 +23,18 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import useLocales from '../../../hooks/useLocales'
 import { setInLocalStorage } from '../../../hooks/useLocalStorage'
 import { useTranslation } from 'react-i18next'
-import { useDarkMode } from '../../../themes/useDarkMode'
+// import { useDarkMode } from '../../../themes/useDarkMode'
 import { typeVar } from '../../../utils/constants'
 // import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
 // import { appThemes } from '../../../utils/constants'
 
 
+type SidebarProps = {
+  toggleTheme: any
+}
 
-export const SideBar = () => {
-  const [theme, toggleTheme]: any = useDarkMode()
-  // const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
+export const SideBar = ({ toggleTheme }:SidebarProps) => {
+  // const [theme, toggleTheme]: any = useDarkMode()
   const { i18n } = useTranslation()
   const { t } = useLocales()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -52,7 +54,7 @@ export const SideBar = () => {
 
   return (
     <>
-      <div className="dashboard__navbar">
+      <div className="dashboard__navbar" id="sidebar-top">
         <div className="dashboard__container">
           <Link className="logo" to="/">
             <img src={Logo} alt="CPAAS TCL" />
@@ -69,7 +71,6 @@ export const SideBar = () => {
                 }}
               >
                 <InputBase
-                id="more-new"
                   sx={{ ml: 1, flex: 1 }}
                   placeholder={t<string>('searchProductsOrdersAndClients')}
                   inputProps={{
@@ -78,7 +79,7 @@ export const SideBar = () => {
                 />
                 <IconButton
                   type="button"
-                  sx={{ p: '10px' }}
+                  sx={{ p: '10px', color: 'red' }}
                   aria-label="search"
                 >
                   <SearchIcon />
@@ -254,7 +255,7 @@ export const SideBar = () => {
           </div>
         </div>
       </div>
-      <div className="dashboard__sidebar">
+      <div className="dashboard__sidebar" id="sidebar-left">
         <div className="sidebar__inner">
           <ul className="sidebar__list">
             <li className="list__item">

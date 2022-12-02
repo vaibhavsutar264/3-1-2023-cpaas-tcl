@@ -181,13 +181,6 @@ const Login = () => {
           <div className="form__inner">
             <Box sx={{ width: 1 }} className="account__form__header">
               <h3 className="title">{t<string>('login')}</h3>
-              {/* <p>Enter your email ID & password</p> */}
-              {/* <Typography variant='body1' sx={{
-                textAlign: 'center',
-                fontFamily: 'ubuntu',
-                letterSpacing: 0,
-                opacity: 0.6,
-              }}>Enter your email ID & password</Typography> */}
             </Box>
             <Box sx={{ width: 1 }} className="account__form__error">
               <p className="error__msg">

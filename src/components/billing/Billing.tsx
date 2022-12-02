@@ -11,7 +11,7 @@ import {
 } from '../../redux/store'
 import { ChangePageBilling, loadInvoices, searchData } from '../../redux/slices/billingSlice'
 
-export const Billing = () => {
+export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
   const { isError, isLoading, isSuccess, PageData = [], invoiceData = [], total, page, take } = useSelector((state: any) => state.billing);
 
   const dispatch = useAppDispatch();
@@ -21,8 +21,8 @@ export const Billing = () => {
 
   return (
     <div className="dashboard__wrapper">
-      <SideBar />
-      <div className="dashboard__content" id="something-new">
+      <SideBar toggleTheme={toggleTheme} />
+      <div className="dashboard__content">
         <div className="content__header">
           <BreadCrums data={breadCrums.BILLING} />
           <PageSearch searchFn={searchData} />
