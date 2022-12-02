@@ -23,7 +23,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { getPageParms, setUlrParms } from '../../../utils/helpers'
 import { useDispatch as useAppDispatch } from '../../../redux/store'
-
+import { Link } from 'react-router-dom'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -80,14 +80,14 @@ const DataTable = ({
   return (
     <>
       <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
+      <p data-testid = "para-element"></p>
       <TableContainer
-        id="table-data"
         component={Paper}
         className="table__Container"
       >
         <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
           <TableHead className="TableHead">
-            <TableRow>
+            <TableRow id="table-head">
               <StyledTableCell>
                 <a href="/">
                   <MoreVertIcon />
@@ -117,9 +117,9 @@ const DataTable = ({
             </TableRow>
           </TableHead>
           {/* Table Body */}
-          <TableBody className="TableBody">
+          <TableBody data-testid="table-body-element" className="TableBody" data->
             {data && data.map((item: any, index: any) => (
-              <TableRow key={`td-cell${index}`}>
+              <TableRow id="table-data" key={item.id}>
                 <TableCell component="th" scope="row">
                   {' '}
                   <a href="/">
@@ -147,7 +147,9 @@ const DataTable = ({
                       className="actionButton__item"
                       onClick={generatePdf}
                     >
+                    <Link className="invoiceCard" to={`/invoices/${item.id}`} >
                       <Download />
+                      </Link>
                     </button>
                   </ul>
                 </TableCell>

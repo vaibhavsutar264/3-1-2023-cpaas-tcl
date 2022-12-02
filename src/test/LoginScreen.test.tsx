@@ -6,6 +6,8 @@ import { store, persistor } from '../redux/store'
 import userEvent from '@testing-library/user-event'
 import { BrowserRouter } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
+import { createMemoryHistory } from 'history'
+
 
 test('Then it shuold show the user text on input box', () => {
   const expectTextUser = 'vaibhav'
@@ -52,6 +54,7 @@ const typeIntoForm = ({
 }
 
 describe('App', () => {
+  window.history.pushState({},"","/login")
   beforeEach(() => {
     render(
       <BrowserRouter>
@@ -69,6 +72,7 @@ describe('App', () => {
     ) as HTMLInputElement
     expect(emailElement).toBeInTheDocument()
     expect(passwordElement).toBeInTheDocument()
+    screen.debug()
   })
 
   test('inputs should be initially empty', () => {
@@ -124,6 +128,7 @@ describe('App', () => {
   })
 
   test('Then it should be redirectioned to the setpassword Page', async () => {
+    // const history = createMemoryHistory();
     const textInput = ['vaibhavsutar264@gmail.com', 'Vaibhav@1234']
 
     //below is the mock jsonserverapi with fake jwt token api
@@ -146,6 +151,7 @@ describe('App', () => {
     ) as HTMLButtonElement
     const setpasswordscreen ='Set Password'
     userEvent.click(NavigateToSetpasswordScreen)
+    // expect(history.location.pathname).toEqual('/about');
     waitFor(() => expect(setpasswordscreen).toBeInTheDocument());
     // expect(setpasswordscreen).toBeVisible()
   })

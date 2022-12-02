@@ -15,20 +15,28 @@ import Logo from '../../../assets/images/CPaaSLogo.png'
 import { Link } from 'react-router-dom'
 import Divider from '@mui/material/Divider'
 import { availableLanguages } from '../../../i18n'
-import '../../../i18n'
+
 import Avatar from '@mui/material/Avatar'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import useLocales from '../../../hooks/useLocales';
+import useLocales from '../../../hooks/useLocales'
 import { setInLocalStorage } from '../../../hooks/useLocalStorage'
 import { useTranslation } from 'react-i18next'
-import { useDarkMode } from '../../../themes/useDarkMode'
+// import { useDarkMode } from '../../../themes/useDarkMode'
+import { typeVar } from '../../../utils/constants'
+// import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
+// import { appThemes } from '../../../utils/constants'
 
-export const SideBar = () => {
-  const [theme, toggleTheme]: any = useDarkMode()
+
+type SidebarProps = {
+  toggleTheme: any
+}
+
+export const SideBar = ({ toggleTheme }:SidebarProps) => {
+  // const [theme, toggleTheme]: any = useDarkMode()
   const { i18n } = useTranslation()
-  const { t } = useLocales();
+  const { t } = useLocales()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,7 +54,7 @@ export const SideBar = () => {
 
   return (
     <>
-      <div className="dashboard__navbar">
+      <div className="dashboard__navbar" id="sidebar-top">
         <div className="dashboard__container">
           <Link className="logo" to="/">
             <img src={Logo} alt="CPAAS TCL" />
@@ -71,7 +79,7 @@ export const SideBar = () => {
                 />
                 <IconButton
                   type="button"
-                  sx={{ p: '10px' }}
+                  sx={{ p: '10px', color: 'red' }}
                   aria-label="search"
                 >
                   <SearchIcon />
@@ -80,7 +88,7 @@ export const SideBar = () => {
             </div>
             <div className="right__elementsItem theme__toggle">
               <div className="toggle__wrapper">
-                <button className="lightMode active" onClick={toggleTheme} >
+                <button className="lightMode active" onClick={toggleTheme}>
                   <LightModeIcon />
                 </button>
                 <button className="darkMode" onClick={toggleTheme}>
@@ -99,10 +107,18 @@ export const SideBar = () => {
                   <MenuItem value="">
                     <span>Language</span>
                   </MenuItem>
-                  {availableLanguages.map((lng, i) => <MenuItem onClick={() => {
-                    i18n.changeLanguage(lng)
-                    setInLocalStorage('lng', lng)
-                  }} key={`brdcmr${i}`} value={10}>{lng}</MenuItem>)}
+                  {availableLanguages.map((lng, i) => (
+                    <MenuItem
+                      onClick={() => {
+                        i18n.changeLanguage(lng)
+                        setInLocalStorage('lng', lng)
+                      }}
+                      key={i}
+                      value={10}
+                    >
+                      {lng}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </div>
@@ -163,6 +179,7 @@ export const SideBar = () => {
                     <span className="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        type={typeVar.IMAGE_SVG}
                         width="20.594"
                         height="20.6"
                         viewBox="0 0 20.594 20.6"
@@ -187,6 +204,7 @@ export const SideBar = () => {
                     <span className="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        type={typeVar.IMAGE_SVG}
                         width="20.594"
                         height="20.6"
                         viewBox="0 0 20.594 20.6"
@@ -212,6 +230,7 @@ export const SideBar = () => {
                     <span className="icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        type={typeVar.IMAGE_SVG}
                         width="20.594"
                         height="20.6"
                         viewBox="0 0 20.594 20.6"
@@ -236,7 +255,7 @@ export const SideBar = () => {
           </div>
         </div>
       </div>
-      <div className="dashboard__sidebar">
+      <div className="dashboard__sidebar" id="sidebar-left">
         <div className="sidebar__inner">
           <ul className="sidebar__list">
             <li className="list__item">
@@ -244,6 +263,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="20.139"
                     height="18.503"
                     viewBox="0 0 20.139 18.503"
@@ -281,6 +301,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="16.218"
                     height="18.5"
                     viewBox="0 0 16.218 18.5"
@@ -320,7 +341,9 @@ export const SideBar = () => {
                     </g>
                   </svg>
                 </span>
-                <span className="link__text">{t<string>('userManagement')}</span>
+                <span className="link__text">
+                  {t<string>('userManagement')}
+                </span>
               </Link>
             </li>
             <li className="list__item">
@@ -328,6 +351,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="20.8"
                     height="18.21"
                     viewBox="0 0 20.8 18.21"
@@ -365,6 +389,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="20.8"
                     height="18.21"
                     viewBox="0 0 20.8 18.21"
@@ -402,6 +427,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="15"
                     height="20"
                     viewBox="0 0 15 20"
@@ -456,7 +482,9 @@ export const SideBar = () => {
                     </g>
                   </svg>
                 </span>
-                <span className="link__text">{t<string>('billingInvoice')}</span>
+                <span className="link__text">
+                  {t<string>('billingInvoice')}
+                </span>
               </Link>
             </li>
             <li className="list__item">
@@ -464,6 +492,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="20.2"
                     height="22.167"
                     viewBox="0 0 20.2 22.167"
@@ -492,6 +521,7 @@ export const SideBar = () => {
                 <span className="link__icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
+                    type={typeVar.IMAGE_SVG}
                     width="20.594"
                     height="20.6"
                     viewBox="0 0 20.594 20.6"

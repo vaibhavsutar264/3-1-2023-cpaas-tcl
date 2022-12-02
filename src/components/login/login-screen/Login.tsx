@@ -11,6 +11,7 @@ import { useFormik } from 'formik'
 import schema from './Yup'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { Typography } from '@mui/material'
 
 // Importing Material UI
 import {
@@ -30,6 +31,8 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 // Importing Images
 import useLocales from '../../../hooks/useLocales'
 import { getFromLocalStorage } from '../../../hooks/useLocalStorage'
@@ -105,7 +108,7 @@ const Login = () => {
   const handleEmailChange = (e: SyntheticEvent) => {
     e.preventDefault()
     setEmail((e.target as HTMLInputElement).value)
-    const emailVariable = '.{5,}'
+    const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
     const emailBoxElement = document.getElementById(
       'email-box'
     ) as HTMLInputElement
@@ -184,7 +187,8 @@ const Login = () => {
                 {isError && message == 'Invalid email and password' ? (
                   <p>{t<string>('yourEmailIdPasswordNotMatch')}</p>
                 ) : (
-                  message
+                /* JSON.stringify(message) */
+                  null
                 )}
               </p>
             </Box>
@@ -214,7 +218,8 @@ const Login = () => {
                       id="username"
                       label={t<string>('enterYourEmailID')}
                       variant="standard"
-                      sx={{ width: 1 }}
+                      sx={{ width: 1, borderRadius: '10px !important' }}
+                      type="email"
                       inputProps={{
                         'data-testid': 'email-element',
                         autoComplete: 'off',
@@ -280,10 +285,10 @@ const Login = () => {
                               onMouseDown={handleMouseDownPassword}
                               edge="end"
                             >
-                              {values.showPassword ? (
-                                <VisibilityOff />
+                              {!values.showPassword ? (
+                                <VisibilityOffOutlinedIcon />
                               ) : (
-                                <Visibility />
+                                <VisibilityOutlinedIcon />
                               )}
                             </IconButton>
                           </InputAdornment>
@@ -324,6 +329,7 @@ const Login = () => {
                       href="/forgot-password"
                       id="forgot-password"
                       className="forgot-password"
+                      style={{ width: 'max-content', fontFamily: 'ubuntu' }}
                     >
                       {t<string>('forgotPassword')}
                     </a>
@@ -345,6 +351,12 @@ const Login = () => {
                       disabled={open}
                       variant="contained"
                       className="customBtn-01"
+                      sx={{
+                        fontSize: '18px',
+                        lineHeight: '21px',
+                        fontFamily: 'ubuntu',
+                        letterSpacing: '-0.72px',
+                      }}
                     >
                       {t<string>('loginBtn')}
                     </ColorButton>

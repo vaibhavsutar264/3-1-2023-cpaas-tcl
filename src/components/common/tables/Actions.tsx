@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import useLocales from '../../../hooks/useLocales'
 import { CSVLink } from 'react-csv'
+import { typeVar } from '../../../utils/constants'
 
 export const Actions = ({ data, pagination, changeTake }: { data: [], pagination: any, changeTake: any }) => {
   const { t } = useLocales()
@@ -54,6 +55,7 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
           <span className="icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              type={typeVar.IMAGE_SVG}
               width="15.556"
               height="15.5"
               viewBox="0 0 15.556 15.5"

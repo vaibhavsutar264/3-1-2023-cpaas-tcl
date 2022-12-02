@@ -1,6 +1,6 @@
 import React from 'react'
-import useLocales from '../../../hooks/useLocales';
-
+import useLocales from '../../../hooks/useLocales'
+import { typeVar } from '../../../utils/constants'
 
 export const InfoCard = () => {
   const { t } = useLocales()
@@ -17,6 +17,7 @@ export const InfoCard = () => {
           <div className="cardType__icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              type={typeVar.IMAGE_SVG}
               width="34.379"
               height="41"
               viewBox="0 0 34.379 41"
@@ -70,7 +71,7 @@ export const InfoCard = () => {
           </div>
           <div className="cardType__text">
             <p className="cardType__name" style={{ color: '#1A73E8' }}>
-            {t<string>('allInvoice')}
+              {t<string>('allInvoice')}
             </p>
             <h3 className="cardType__Number" style={{ color: 'black' }}>
               30
@@ -89,6 +90,7 @@ export const InfoCard = () => {
           <div className="cardType__icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              type={typeVar.IMAGE_SVG}
               width="43"
               height="43"
               viewBox="0 0 43 43"
@@ -167,7 +169,7 @@ export const InfoCard = () => {
           </div>
           <div className="cardType__text">
             <p className="cardType__name" style={{ color: 'white' }}>
-            {t<string>('overdue')}
+              {t<string>('overdue')}
             </p>
             <h3 className="cardType__Number" style={{ color: 'white' }}>
               30
@@ -186,6 +188,7 @@ export const InfoCard = () => {
           <div className="cardType__icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              type={typeVar.IMAGE_SVG}
               width="34.379"
               height="41"
               viewBox="0 0 34.379 41"
@@ -226,7 +229,7 @@ export const InfoCard = () => {
           </div>
           <div className="cardType__text">
             <p className="cardType__name" style={{ color: 'white' }}>
-            {t<string>('unpaidInvoices')}
+              {t<string>('unpaidInvoices')}
             </p>
             <h3 className="cardType__Number" style={{ color: 'white' }}>
               30
@@ -245,6 +248,7 @@ export const InfoCard = () => {
           <div className="cardType__icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              type={typeVar.IMAGE_SVG}
               width="34.379"
               height="41"
               viewBox="0 0 34.379 41"
@@ -284,7 +288,7 @@ export const InfoCard = () => {
           </div>
           <div className="cardType__text">
             <p className="cardType__name" style={{ color: 'white' }}>
-            {t<string>('paidInvoices')}
+              {t<string>('paidInvoices')}
             </p>
             <h3 className="cardType__Number" style={{ color: 'white' }}>
               105

@@ -33,7 +33,7 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isError = true
       state.isAuthenticated = false
-      state.message = action.payload
+      state.message = action.payload.data?.message
     },
     loginSuccess: (state, action) => {
       state.isLoading = false
@@ -85,6 +85,7 @@ export const login = (userData: UserLogin) => {
           JSON.stringify(response.data)
         )
         const token: any = response.data.token
+        // const token: any = response.data.data.token
         if (token) {
           setInLocalStorage(localStorageVar.TOKEN_VAR, token)
         }

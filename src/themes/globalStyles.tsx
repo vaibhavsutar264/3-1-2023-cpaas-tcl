@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const lightTheme = {
   body: '#fff !important',
   text: '#121212 !important',
-  textForLogin: '#858585 !important',
+  textForLogin: '#11153b !important',
   primary: 'lightGreen !important',
   background: 'white !important',
   font: 'sans-serif !important',
@@ -11,6 +11,15 @@ export const lightTheme = {
   label: '#abaec5',
   successBorder: '#75818a',
   opacity: '1',
+  sidebarBg: '#fff',
+  sidebarTopBg: '#fff',
+  sidebarLeftBg: '#fff',
+  inputBg: '#F7F8FA',
+  inputHeaderBorder: '1px solid #efefef',
+  dashboardContentBg: '#F7F8FA',
+  tableHeaderBg: '#F7F8FA',
+  dashboardTitle: '#344857',
+  inputHeaderPlaceholderColor: '#344857',
 }
 
 export const darkTheme = {
@@ -25,6 +34,15 @@ export const darkTheme = {
   label: '#ffffff',
   successBorder: '#195583',
   opacity: '0.5',
+  sidebarBg: '#1E2023',
+  sidebarTopBg: '#1E2023',
+  sidebarLeftBg: '#1E2023',
+  inputBg: '#25292E',
+  inputHeaderBorder: 'none',
+  dashboardContentBg: '#111315',
+  tableHeaderBg: '#111315',
+  dashboardTitle: '#fff',
+  inputHeaderPlaceholderColor: '#787785',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -96,5 +114,35 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   #forgot-password{
     color: ${({ theme }) => theme.textForLogin};
+  }
+  #sidebar-top{
+    background-color: ${({ theme }) => theme.sidebarTopBg};
+  }
+  #sidebar-left{
+    background-color: ${({ theme }) => theme.sidebarLeftBg};
+  }
+  #basic-button{
+    background-color: ${({ theme }) => theme.sidebarBg};
+  }
+  .dashboard__navbar .dashboard__container .right__elements .search__group .search__form{
+    background-color: ${({ theme }) => theme.inputBg};
+  }
+  .dashboard__navbar .dashboard__container .right__elements .search__group .search__form{
+    background-color: ${({ theme }) => theme.inputBg};
+  }
+  #sidebar-top > div > div > div.right__elementsItem.search__group > form > div > input::placeholder{
+    color: ${({ theme }) => theme.inputHeaderPlaceholderColor};
+  }
+  .dashboard__navbar .dashboard__container .right__elements .search__group .search__form{
+    border: ${({ theme }) => theme.inputHeaderBorder};
+  }
+  .dashboard__wrapper .dashboard__content{
+    background-color: ${({ theme }) => theme.dashboardContentBg};
+  }
+  .TableHead{
+    background-color: ${({ theme }) => theme.tableHeaderBg};
+  }
+  div.dashboard__wrapper > div.dashboard__content > div.content__header > div.content__breadcrum > h3{
+    color: ${({ theme }) => theme.dashboardTitle};
   }
 `

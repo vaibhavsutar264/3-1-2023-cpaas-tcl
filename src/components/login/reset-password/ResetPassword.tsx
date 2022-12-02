@@ -29,6 +29,8 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 // Importing Images
 import Background from '../../../assets/images/login-bg.jpg'
 import ChartImg from '../../../assets/images/svg/Chart.svg'
@@ -42,6 +44,7 @@ import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useParams } from 'react-router-dom'
+import { typeVar } from '../../../utils/constants'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -103,13 +106,11 @@ const ResetPassword = () => {
   const onSubmit = async (data: any) => {
     if (password !== confirmPassword) {
       console.log('password and confirm password not same')
-      // toast.error('password and confirm password not same')
       return
     }
     try {
       const userPassword: Password = {
         password: password,
-        // confirmPassword: confirmPassword,
       }
       await dispatch(resetPassword(token, data))
     } catch (error) {
@@ -224,39 +225,39 @@ const ResetPassword = () => {
     if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
       tooltipUppercaseElement.className = tooltipFullfilledRightClickGreen
       tooltipUppercaseTick.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
     } else {
       tooltipUppercaseElement.className = tooltipUnfullfilledRightClickGray
       tooltipUppercaseTick.innerHTML =
-        '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
     }
     if ((e.target as HTMLInputElement).value.match(lowercaseVariable)) {
       tooltipLowercaseElement.className = tooltipFullfilledRightClickGreen
       tooltipLowercaseTick.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
     } else {
       tooltipLowercaseElement.className = tooltipUnfullfilledRightClickGray
       tooltipLowercaseTick.innerHTML =
-        '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
     }
     if ((e.target as HTMLInputElement).value.match(symbolVariable)) {
       tooltipSymbolElement.className = tooltipFullfilledRightClickGreen
       tooltipSymbolTick.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
     } else {
       tooltipSymbolElement.className = tooltipUnfullfilledRightClickGray
       tooltipSymbolTick.innerHTML =
-        '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
     }
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
       tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
       tooltipAtleastTick.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
       linearProgressModerateElement.style.display = 'block'
     } else {
       tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
       tooltipAtleastTick.innerHTML =
-        '<svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
       linearProgressModerateElement.style.display = 'none'
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
@@ -351,8 +352,6 @@ const ResetPassword = () => {
                     label={t<string>('password')}
                     variant="standard"
                     sx={{ width: 1 }}
-                    // name="password"
-                    // type="password"
                     type={values.showPassword ? 'text' : 'password'}
                     inputProps={{
                       'data-testid': 'password-element',
@@ -372,10 +371,10 @@ const ResetPassword = () => {
                             edge="end"
                           >
                             {values.showPassword ? (
-                              <VisibilityOff />
-                            ) : (
-                              <Visibility />
-                            )}
+                              <VisibilityOutlinedIcon />
+                              ) : (
+                                <VisibilityOffOutlinedIcon />
+                                )}
                           </IconButton>
                         </InputAdornment>
                       ),
@@ -495,7 +494,6 @@ const ResetPassword = () => {
                     sx={{ width: 1 }}
                     type={confirmValues.showPassword ? 'text' : 'password'}
                     autoComplete="false"
-                    // name="password"
                     inputProps={{ 'data-testid': 'confirm-password-element' }}
                     value={confirmPassword}
                     onInput={handleConfirmPasswordChange}
@@ -511,9 +509,9 @@ const ResetPassword = () => {
                             edge="end"
                           >
                             {confirmValues.showPassword ? (
-                              <VisibilityOff />
-                            ) : (
-                              <Visibility />
+                              <VisibilityOutlinedIcon />
+                              ) : (
+                                <VisibilityOffOutlinedIcon />
                             )}
                           </IconButton>
                         </InputAdornment>
@@ -576,6 +574,12 @@ const ResetPassword = () => {
                           : false
                         : true
                     }
+                    sx={{
+                      fontSize: '18px',
+                      lineHeight: '21px',
+                      fontFamily: 'ubuntu',
+                      letterSpacing: '-0.72px',
+                    }}
                     className={
                       password.length > 0 && confirmPassword.length > 0
                         ? password !== confirmPassword

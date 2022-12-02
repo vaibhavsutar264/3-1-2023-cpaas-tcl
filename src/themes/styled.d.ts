@@ -12,5 +12,14 @@ declare module 'styled-components' {
     label: string
     successBorder: string
     opacity: string
+    sidebarBg: string
+    sidebarTopBg: string
+    sidebarLeftBg: string
+    inputBg: string
+    inputHeaderBorder: string
+    dashboardContentBg: string
+    tableHeaderBg: string
+    dashboardTitle: string
+    inputHeaderPlaceholderColor: string
   }
 }
