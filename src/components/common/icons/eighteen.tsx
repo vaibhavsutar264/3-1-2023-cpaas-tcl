@@ -3,8 +3,8 @@ import { typeVar } from '../../../utils/constants'
 const Download = () => {
   return (
     <svg
-      id="Group_168119"
-      data-name="Group 168119"
+      id="eighteen"
+      data-name="eighteen"
       xmlns="http://www.w3.org/2000/svg"
       type={typeVar.IMAGE_SVG}
       width="17.378"

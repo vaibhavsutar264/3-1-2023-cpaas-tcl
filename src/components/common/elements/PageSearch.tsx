@@ -5,6 +5,8 @@ import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import useLocales from '../../../hooks/useLocales';
 import { useDispatch as useAppDispatch } from '../../../redux/store'
+import { typeVar } from '../../../utils/constants'
+import { Link, Typography } from '@mui/material'
 
 export const PageSearch = ({ searchFn }: { searchFn: any }) => {
     const dispatch = useAppDispatch();
@@ -19,6 +21,15 @@ export const PageSearch = ({ searchFn }: { searchFn: any }) => {
             dispatch(searchFn(""));
         }
     };
+
+    const breadcrumbs = [
+      <Link underline="hover" key="1" color="inherit" href="/">
+        {t<string>('dashboard')}
+      </Link>,
+      <Typography key="3" color="text.primary">
+        {t<string>('billingInvoices')}
+      </Typography>,
+    ]
 
     return (
         <div className="">

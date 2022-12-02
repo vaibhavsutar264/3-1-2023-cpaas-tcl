@@ -11,6 +11,7 @@ import { useFormik } from 'formik'
 import schema from './Yup'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { Typography } from '@mui/material'
 
 // Importing Material UI
 import {
@@ -30,6 +31,8 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 // Importing Images
 import useLocales from '../../../hooks/useLocales'
 import { getFromLocalStorage } from '../../../hooks/useLocalStorage'
@@ -178,6 +181,13 @@ const Login = () => {
           <div className="form__inner">
             <Box sx={{ width: 1 }} className="account__form__header">
               <h3 className="title">{t<string>('login')}</h3>
+              {/* <p>Enter your email ID & password</p> */}
+              {/* <Typography variant='body1' sx={{
+                textAlign: 'center',
+                fontFamily: 'ubuntu',
+                letterSpacing: 0,
+                opacity: 0.6,
+              }}>Enter your email ID & password</Typography> */}
             </Box>
             <Box sx={{ width: 1 }} className="account__form__error">
               <p className="error__msg">
@@ -214,7 +224,8 @@ const Login = () => {
                       id="username"
                       label={t<string>('enterYourEmailID')}
                       variant="standard"
-                      sx={{ width: 1 }}
+                      sx={{ width: 1, borderRadius: '10px !important' }}
+                      type="email"
                       inputProps={{
                         'data-testid': 'email-element',
                         autoComplete: 'off',
@@ -280,10 +291,10 @@ const Login = () => {
                               onMouseDown={handleMouseDownPassword}
                               edge="end"
                             >
-                              {values.showPassword ? (
-                                <VisibilityOff />
+                              {!values.showPassword ? (
+                                <VisibilityOffOutlinedIcon />
                               ) : (
-                                <Visibility />
+                                <VisibilityOutlinedIcon />
                               )}
                             </IconButton>
                           </InputAdornment>
@@ -324,6 +335,7 @@ const Login = () => {
                       href="/forgot-password"
                       id="forgot-password"
                       className="forgot-password"
+                      style={{ width: 'max-content', fontFamily: 'ubuntu' }}
                     >
                       {t<string>('forgotPassword')}
                     </a>
@@ -345,6 +357,12 @@ const Login = () => {
                       disabled={open}
                       variant="contained"
                       className="customBtn-01"
+                      sx={{
+                        fontSize: '18px',
+                        lineHeight: '21px',
+                        fontFamily: 'ubuntu',
+                        letterSpacing: '-0.72px',
+                      }}
                     >
                       {t<string>('loginBtn')}
                     </ColorButton>

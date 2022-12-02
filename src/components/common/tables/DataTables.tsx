@@ -24,7 +24,6 @@ import Stack from '@mui/material/Stack'
 import { getPageParms, setUlrParms } from '../../../utils/helpers'
 import { useDispatch as useAppDispatch } from '../../../redux/store'
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,

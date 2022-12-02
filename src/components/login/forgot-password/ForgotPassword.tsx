@@ -69,7 +69,7 @@ const ForgotPassword = () => {
     }
 
     if (isSuccess) {
-      // toast.success(emailSent)
+      toast.success("Email sent")
       console.log(message)
     }
   }, [isError, isSuccess, message, emailSent])
@@ -156,6 +156,12 @@ const ForgotPassword = () => {
                     disabled={open}
                     variant="contained"
                     className="customBtn-01"
+                    sx={{
+                      fontSize: '18px',
+                      lineHeight: '21px',
+                      fontFamily: 'ubuntu',
+                      letterSpacing: '-0.72px',
+                    }}
                   >
                     {t<string>('getLink')}
                   </ColorButton>

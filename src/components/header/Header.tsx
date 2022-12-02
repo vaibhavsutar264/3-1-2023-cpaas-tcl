@@ -4,11 +4,12 @@ import { useDispatch as useAppDispatch } from '../../redux/store'
 import { logout } from '../../redux/slices/authSlice'
 import { useNavigate, Link } from 'react-router-dom'
 import Logo from '../../assets/images/CPaaSLogo.png'
-import '../../i18n'
+import { availableLanguages } from '../../i18n'
 import useLocales from '../../hooks/useLocales'
 import { useTranslation } from 'react-i18next'
-import { availableLanguages } from '../../i18n'
+
 import MenuItem from '@mui/material/MenuItem'
+import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
@@ -17,8 +18,12 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import { toast } from 'react-toastify'
-import { getFromLocalStorage, setInLocalStorage } from '../../hooks/useLocalStorage'
-import { localStorageVar } from '../../utils/constants'
+import {
+  getFromLocalStorage,
+  setInLocalStorage,
+} from '../../hooks/useLocalStorage'
+import { localStorageVar , typeVar } from '../../utils/constants'
+
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -89,7 +94,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
           </Link>
           <ul className="navbar-items">
             <li className="item">
-              { (getFromLocalStorage(localStorageVar.TOKEN_VAR)!== null) ? (
+              {getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null ? (
                 <Link to="" onClick={logoutHandler}>
                   {t<string>('logoutBtn')}
                 </Link>
@@ -116,14 +121,19 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                     i18n.changeLanguage(e.target.value)
                     setInLocalStorage('lng', e.target.value)
                   }}
+                  sx={
+                    {
+                      // bgcolor: "white !important",
+                    }
+                  }
                 >
                   {availableLanguages.map((language) => (
                     <MenuItem key={language} value={language}>
-                      <img
+                      {/* <img
                         className="countryFlag"
                         src= { language == "German" ? "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/255px-Flag_of_Germany.svg.png" : "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/125px-Flag_of_India.svg.png" }
                         alt=""
-                      />
+                      /> */}
                       {language}
                     </MenuItem>
                   ))}

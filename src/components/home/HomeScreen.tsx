@@ -1,6 +1,7 @@
 import useLocales from '../../hooks/useLocales'
 import { useDarkMode } from '../../themes/useDarkMode'
 import Header from '../header/Header'
+import CustomizedDialogs from '../common/elements/DialogBox'
 
 const HomeScreen = () => {
   const { t } = useLocales()
@@ -15,6 +16,7 @@ const HomeScreen = () => {
           <h1 className="h1-padding">TCL-CPAAS {t<string>('home')}</h1>
         </div>
       </div>
+      {/* <CustomizedDialogs /> */}
     </>
   )
 }
