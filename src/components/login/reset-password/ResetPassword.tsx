@@ -104,13 +104,11 @@ const ResetPassword = () => {
   const onSubmit = async (data: any) => {
     if (password !== confirmPassword) {
       console.log('password and confirm password not same')
-      // toast.error('password and confirm password not same')
       return
     }
     try {
       const userPassword: Password = {
         password: password,
-        // confirmPassword: confirmPassword,
       }
       await dispatch(resetPassword(token, data))
     } catch (error) {
@@ -352,8 +350,6 @@ const ResetPassword = () => {
                     label={t<string>('password')}
                     variant="standard"
                     sx={{ width: 1 }}
-                    // name="password"
-                    // type="password"
                     type={values.showPassword ? 'text' : 'password'}
                     inputProps={{
                       'data-testid': 'password-element',
@@ -496,7 +492,6 @@ const ResetPassword = () => {
                     sx={{ width: 1 }}
                     type={confirmValues.showPassword ? 'text' : 'password'}
                     autoComplete="false"
-                    // name="password"
                     inputProps={{ 'data-testid': 'confirm-password-element' }}
                     value={confirmPassword}
                     onInput={handleConfirmPasswordChange}

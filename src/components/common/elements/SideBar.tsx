@@ -23,11 +23,11 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import useLocales from '../../../hooks/useLocales'
 import { setInLocalStorage } from '../../../hooks/useLocalStorage'
 import { useTranslation } from 'react-i18next'
-import { useDarkMode } from '../../../themes/useDarkMode'
+// import { useDarkMode } from '../../../themes/useDarkMode'
 import { typeVar } from '../../../utils/constants'
 
-export const SideBar = () => {
-  const [theme, toggleTheme]: any = useDarkMode()
+export const SideBar = ({ toggleTheme }: { toggleTheme: any }) => {
+  // const [theme, toggleTheme]: any = useDarkMode()
   const { i18n } = useTranslation()
   const { t } = useLocales()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -84,7 +84,7 @@ export const SideBar = () => {
                 <button className="lightMode active" onClick={toggleTheme}>
                   <LightModeIcon />
                 </button>
-                <button className="darkMode" onClick={toggleTheme}>
+                <button className="darkMode">
                   <DarkModeIcon />
                 </button>
               </div>

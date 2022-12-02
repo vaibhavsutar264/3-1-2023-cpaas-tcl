@@ -22,7 +22,7 @@ const App = () => {
       ) : null}
       {/* <Header toggleTheme={toggleTheme} /> */}
       <GlobalStyles />
-      <Routes />
+      <Routes toggleTheme={toggleTheme}/>
       <Toggle theme={theme} toggleTheme={toggleTheme} />
       <ToastContainer />
     </ThemeProvider>

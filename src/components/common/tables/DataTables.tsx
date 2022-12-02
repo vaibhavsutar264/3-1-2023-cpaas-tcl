@@ -23,6 +23,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { getPageParms, setUlrParms } from '../../../utils/helpers'
 import { useDispatch as useAppDispatch } from '../../../redux/store'
+import { Link } from 'react-router-dom'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -77,7 +78,6 @@ const DataTable = ({
       <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
       <p data-testid = "para-element">abc</p>
       <TableContainer
-        id="table-data"
         component={Paper}
         className="table__Container"
       >
@@ -115,7 +115,7 @@ const DataTable = ({
           {/* Table Body */}
           <TableBody data-testid="table-body-element" className="TableBody" data->
             {data && data.map((item: any, index: any) => (
-              <TableRow key={item.id}>
+              <TableRow id="table-data" key={item.id}>
                 <TableCell component="th" scope="row">
                   {' '}
                   <a href="/">
@@ -143,6 +143,7 @@ const DataTable = ({
                       className="actionButton__item"
                       onClick={generatePdf}
                     >
+                    <Link className="productCard" to={`/Invoices/${item.id}`} />
                       <Download />
                     </button>
                   </ul>
