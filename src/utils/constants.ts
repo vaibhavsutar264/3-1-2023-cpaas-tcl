@@ -69,6 +69,7 @@ export const appRoutes = {
   RESET_PASSWORD: '/password/reset/:token',
   NOT_FOUND: '*',
   BILLING: '/invoices',
+  INVOICE: '/invoices/:id'
 }
 
 export const breadCrums = {
