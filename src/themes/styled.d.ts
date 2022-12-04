@@ -1,25 +1,59 @@
 import 'styled-components'
 
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    body: string
-    text: string
-    textForLogin: string
-    primary: string
-    background: string
-    font: string
-    border: string
-    label: string
-    successBorder: string
-    opacity: string
-    sidebarBg: string
-    sidebarTopBg: string
-    sidebarLeftBg: string
-    inputBg: string
-    inputHeaderBorder: string
-    dashboardContentBg: string
-    tableHeaderBg: string
-    dashboardTitle: string
-    inputHeaderPlaceholderColor: string
-  }
+    export interface DefaultTheme {
+        body: string
+        text: string
+        textForLogin: string
+        primary: string
+        background: string
+        font: string
+        border: string
+        label: string
+        successBorder: string
+        opacity: string
+        sidebarBg: string
+        sidebarTopBg: string
+        sidebarLeftBg: string
+        inputBg: string
+        inputHeaderBorder: string
+        dashboardContentBg: string
+        tableHeaderBg: string
+        dashboardTitle: string
+        inputHeaderInputColor: string
+        inputHeaderPlaceholderColor: string
+        searchiconSidebar: string
+        notificationColor: string
+        notificationBadgeBgColor: string
+        breadcrumbColor: string
+        breadcrumbSeparatorColor: string
+        searchProductsInputBg: string
+        searchProductsInputColor: string
+        searchProductsPlaceholderColor: string
+        searchProductsIconColor: string
+        sidebarActiveLinkBg: string
+        sidebarLinkColor: string
+        sidebarSvgPathColor: string
+        languageColor: string
+        languageSvgColor: string
+        usernameColor: string
+        usernameSvgColor: string
+        sidebarToggleBg: string
+        sidebarToggleSvgPathColor: string
+        prevNextBg: string
+        prevNextSvgPathColor: string
+        resultsColor: string
+        pageNumberInputColor: string
+        pageNumberInputBg: string
+        iconCtaColor: string
+        iconCtaBg: string
+        iconCtaBorder: string
+        verticalTableOptionsBg: string
+        verticalTableOptionsSvgPath: string
+        basicButonExpandedBg: string
+        pagniationSelectedBg: string
+        tableDataRowBg: string
+        tableDataRowBrBtmColor: string
+        tableBodyTdColor: string
+    }
 }

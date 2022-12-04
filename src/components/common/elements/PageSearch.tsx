@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import Paper from '@mui/material/Paper'
-import InputBase from '@mui/material/InputBase'
-import IconButton from '@mui/material/IconButton'
-import SearchIcon from '@mui/icons-material/Search'
-import useLocales from '../../../hooks/useLocales';
-import { useDispatch as useAppDispatch } from '../../../redux/store'
-import { typeVar } from '../../../utils/constants'
 import { Link, Typography } from '@mui/material'
+
+import IconButton from '@mui/material/IconButton'
+import InputBase from '@mui/material/InputBase'
+import Paper from '@mui/material/Paper'
+import SearchIcon from '@mui/icons-material/Search'
+import { typeVar } from '../../../utils/constants'
+import { useDispatch as useAppDispatch } from '../../../redux/store'
+import useLocales from '../../../hooks/useLocales';
+import { useState } from 'react'
 
 export const PageSearch = ({ searchFn }: { searchFn: any }) => {
     const dispatch = useAppDispatch();
@@ -23,18 +24,19 @@ export const PageSearch = ({ searchFn }: { searchFn: any }) => {
     };
 
     const breadcrumbs = [
-      <Link underline="hover" key="1" color="inherit" href="/">
-        {t<string>('dashboard')}
-      </Link>,
-      <Typography key="3" color="text.primary">
-        {t<string>('billingInvoices')}
-      </Typography>,
+        <Link underline="hover" key="1" color="inherit" href="/">
+            {t<string>('dashboard')}
+        </Link>,
+        <Typography key="3" color="text.primary">
+            {t<string>('billingInvoices')}
+        </Typography>,
     ]
 
     return (
         <div className="">
             <div className="right__elementsItem search__group">
                 <Paper
+                    id="searchproducts-input"
                     component="form"
                     className="search__form"
                     sx={{
