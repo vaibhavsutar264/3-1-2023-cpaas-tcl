@@ -1,5 +1,5 @@
 export const apiRoutes = {
-  BASE_URL: 'http://localhost:5000',
+  BASE_URL: 'http://localhost:4000',
 
   // User
   LOGIN: '/api/v1/login',
@@ -83,7 +83,7 @@ export const breadCrums = {
 }
 
 export const dataTables = {
-  BILLING: (values: []) => ({
+  BILLING: (values: [], masterData = []) => ({
     data: values,
     columns: [
       { eleName: 'Invoice_no', headTrans: 'id', sort: true, filter: false },
@@ -91,7 +91,11 @@ export const dataTables = {
         eleName: 'Customer_LE',
         headTrans: 'customerLe',
         sort: true,
-        filter: false,
+        filter: true,
+        filterData: {
+          element: "Customer_LE",
+          values: masterData.map((e: any) => e.Customer_LE).filter((it, i, ar) => ar.indexOf(it) === i)
+        }
       },
       {
         eleName: 'Tata_Entity',
@@ -99,18 +103,31 @@ export const dataTables = {
         sort: true,
         filter: false,
       },
-      { eleName: 'PO_number', headTrans: 'poNo', sort: true, filter: false },
+      {
+        eleName: 'PO_number',
+        headTrans: 'poNo',
+        sort: true,
+        filter: true,
+        filterData: {
+          element: "PO_number",
+          values: masterData.map((e: any) => e.PO_number).filter((it, i, ar) => ar.indexOf(it) === i)
+        }
+      },
       {
         eleName: 'Payment_Status',
         headTrans: 'status',
         sort: true,
-        filter: false,
+        filter: false
       },
       {
         eleName: 'Invoice_amt',
         headTrans: 'invoiceAmount',
         sort: true,
-        filter: false,
+        filter: true,
+        filterData: {
+          element: "Currency",
+          values: masterData.map((e: any) => e.Currency).filter((it, i, ar) => ar.indexOf(it) === i)
+        }
       },
       {
         eleName: 'Invoice_date',

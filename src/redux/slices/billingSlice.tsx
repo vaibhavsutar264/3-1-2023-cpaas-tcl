@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { dispatch, store } from '../store'
 import { billing } from '../../services/api/index'
 import { slices } from '../../utils/constants'
-import { getPageParms, searchArray, setUlrParms, sortArray } from '../../utils/helpers'
+import { getFilterConditons, getPageParms, searchArray, setUlrParms, sortArray } from '../../utils/helpers'
 
 const initialState: any = {
     MasterData: [],
@@ -16,6 +16,7 @@ const initialState: any = {
     total: 0,
     searchValue: "",
     sortElement: null,
+    filterValue: []
 }
 
 export const billingSlice = createSlice({
@@ -36,6 +37,7 @@ export const billingSlice = createSlice({
             state.MasterData = action.payload.data
             state.total = action.payload.data.length
             state.searchValue = ""
+            state.filterValue = []
         },
         setpageData: (state, action) => {
             state.PageData = action.payload.data
@@ -50,11 +52,19 @@ export const billingSlice = createSlice({
             state.searchValue = action.payload.searchValue
         },
         setSortData: (state, action) => {
-            state.PageData = action.payload.data
-            state.page = action.payload.page
             state.sortElement = action.payload.sortElement
             state.invoiceData = action.payload.invocieData
-        }
+        },
+        setFilterParms: (state, action) => {
+            state.filterValue = action.payload.filterValue
+        },
+        setFilterData: (state, action) => {
+            state.PageData = action.payload.data
+            state.page = action.payload.page
+            state.take = action.payload.take
+            state.total = action.payload.total
+            state.searchValue = action.payload.searchValue
+        },
     },
 })
 
@@ -65,7 +75,35 @@ export default billingSlice.reducer
 export const { startLoading, hasError } = billingSlice.actions
 
 // -----------------------------------------------------------------
+export const runFilters = ({ page, take, sort }: any) => {
+    return async () => {
+        const { invoiceData, searchValue, filterValue = [] } = store.getState().billing;
+        let filteredData: any = []
+        if (sort) {
+            const dm = JSON.parse(JSON.stringify(invoiceData))
+            filteredData = sortArray(dm, sort.eleName, sort.dr)
+            dispatch(billingSlice.actions.setSortData({ invocieData: filteredData, sortElement: sort.eleName }))
+        }
+        const con = getFilterConditons(filterValue);
+        console.log(con);
+        if (con == "" || con == null) {
+            filteredData = searchArray(invoiceData, searchValue)
+        } else {
+            filteredData = searchArray(invoiceData, searchValue).filter((f: any) => {
+                return eval(con)
+            })
+        }
 
+        const d = {
+            data: filteredData.slice((page - 1) * take, (page * take)),
+            page: page,
+            take: take,
+            total: filteredData.length,
+            searchValue: searchValue
+        }
+        dispatch(billingSlice.actions.setFilterData(d))
+    }
+}
 export const loadInvoices = (parms: any) => {
     return async () => {
         try {
@@ -76,50 +114,62 @@ export const loadInvoices = (parms: any) => {
                 dispatch(ChangePageBilling(pg.curr, pg.take))
             } else {
                 dispatch(billingSlice.actions.hasError())
+                dispatch(billingSlice.actions.loadInvoices({ data: [] }))
+                dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
             }
             return response.data
         } catch (error) {
             dispatch(billingSlice.actions.hasError())
+            dispatch(billingSlice.actions.loadInvoices({ data: [] }))
+            dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
         }
     }
 }
 
 export const ChangePageBilling = (page: any, take: any) => {
-    const { invoiceData, searchValue } = store.getState().billing;
-    console.log(searchValue);
     return async () => {
-        if (searchValue == "" || searchValue == null || searchValue == undefined) {
-            const data = invoiceData.slice((page - 1) * take, page * take);
-            dispatch(billingSlice.actions.setpageData({ data, page, take }))
-        } else {
-            const data = searchArray(invoiceData, searchValue)
-            dispatch(billingSlice.actions.setSearchData({ searchValue, data: data.slice((page - 1) * take, page * take), page, take, total: data.length }))
-        }
+        dispatch(runFilters({ page, take, sort: false }))
     }
 }
 
 export const searchData = (searchValue: any) => {
-    const { invoiceData = [] } = store.getState().billing;
-    const pg = getPageParms(invoiceData.length)
-    setUlrParms(1, pg.take)
+    const { take } = store.getState().billing;
     return async () => {
-        const data = searchArray(invoiceData, searchValue)
-        dispatch(billingSlice.actions.setSearchData({ searchValue, data: data.slice(1, 1 * pg.take), page: 1, take: pg.take, total: data.length }))
+        dispatch(billingSlice.actions.setSearchData({ searchValue }))
+        dispatch(runFilters({ page: 1, take, sort: false }))
+    }
+}
+export const sortData = (Field: any, dr: any) => {
+    const { eleName } = Field;
+    const { take } = store.getState().billing;
+    setUlrParms(1, take)
+    return async () => {
+        dispatch(runFilters({ page: 1, take, sort: { eleName, dr } }))
     }
 }
 
-export const sortData = (Field: any, dr: any) => {
-    const { eleName } = Field;
-    const { invoiceData, take, searchValue } = store.getState().billing;
-    const dm = JSON.parse(JSON.stringify(invoiceData))
-    setUlrParms(1, take)
+export const filterData = (element: any, value: any, checked: any) => {
+    const { filterValue = [], take } = store.getState().billing;
+    let fild = JSON.parse(JSON.stringify(filterValue.filter((e: any) => e.element == element)));
     return async () => {
-        if (searchValue == "" || searchValue == null || searchValue == undefined) {
-            const data = sortArray(dm, eleName, dr)
-            dispatch(billingSlice.actions.setSortData({ invocieData: data, sortElement: eleName, data: data.slice(0, 1 * take), page: 1 }))
+        let eleFound = false;
+        if (fild.length > 0) {
+            eleFound = true;
+            if (checked == true) {
+                fild[0].values.push(value)
+            } else {
+                fild[0].values.splice(fild[0].values.indexOf(value), 1)
+            }
         } else {
-            const data = sortArray(searchArray(dm, searchValue), eleName, dr)
-            dispatch(billingSlice.actions.setSortData({ invocieData: data, sortElement: eleName, data: data.slice(0, 1 * take), page: 1 }))
+            fild = [{ element: element, values: [value] }]
         }
+        if (eleFound) {
+            const finalObj = JSON.parse(JSON.stringify(filterValue));
+            finalObj.filter((e: any) => e.element == element)[0].values = fild[0].values
+            dispatch(billingSlice.actions.setFilterParms({ filterValue: finalObj }))
+        } else {
+            dispatch(billingSlice.actions.setFilterParms({ filterValue: [...filterValue, fild[0]] }))
+        }
+        dispatch(runFilters({ page: 1, take, sort: false }))
     }
 }

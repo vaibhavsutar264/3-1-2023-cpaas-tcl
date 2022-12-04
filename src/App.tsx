@@ -10,8 +10,29 @@ import { appThemes } from './utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 import Routes from './route/Routes'
+import { useEffect } from 'react'
 
 const App = () => {
+  const clickEventHandler = (e: any) => {
+    try {
+      const trEle = e.target.classList.contains("clkIgnr");
+
+      if (trEle === false) {
+        console.log("close Popup");
+        const d: any = document;
+        const w: any = window;
+        d.getElementById(w.Oid).style.display = "none";
+        w.Oid = null
+      }
+    } catch {
+
+    }
+
+  }
+  useEffect(() => {
+    document.addEventListener('click', clickEventHandler, true);
+  }, [])
+
   useAuth()
   const [theme, toggleTheme] = useDarkMode()
   const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
@@ -22,7 +43,7 @@ const App = () => {
       ) : null}
       {/* <Header toggleTheme={toggleTheme} /> */}
       <GlobalStyles />
-      <Routes toggleTheme={toggleTheme}/>
+      <Routes toggleTheme={toggleTheme} />
       <Toggle theme={theme} toggleTheme={toggleTheme} />
       <ToastContainer />
     </ThemeProvider>

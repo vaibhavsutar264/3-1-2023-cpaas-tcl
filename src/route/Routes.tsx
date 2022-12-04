@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react'
 import Loading from '../components/loader/Loading'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import { useRoutes } from 'react-router-dom'
-import Invoice from '../components/common/elements/Invoice'
+import Invoice from '../components/common/elements/invoice'
 
 // eslint-disable-next-line react/display-name
 const Loadable = (Component: any) => (props: any) => {

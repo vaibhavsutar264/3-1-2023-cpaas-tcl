@@ -24,6 +24,7 @@ import Stack from '@mui/material/Stack'
 import { getPageParms, setUlrParms } from '../../../utils/helpers'
 import { useDispatch as useAppDispatch } from '../../../redux/store'
 import { Link } from 'react-router-dom'
+import MultiSelect from '../elements/multiSelect'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,13 +42,13 @@ const DataTable = ({
   Total,
   pageAction,
   take,
+  filterAction,
   page
-}: { take: any, sortAction: any, page: any, TableData: any, Total: any, pageAction: any }) => {
+}: any) => {
   const { t } = useLocales()
   const { data, columns, tableName } = TableData
   const dispatch = useAppDispatch();
   const totalCount = Math.ceil(Total / take)
-  console.log(data);
   const [sortdir, setSortdir]: any = useState(null)
 
   const changeTake = (take: any) => {
@@ -63,8 +64,11 @@ const DataTable = ({
     setUlrParms(page, take)
   }
   const sort = (head: any) => {
-    dispatch(sortAction(head, sortdir === -1 ? 1 : -1));
-    setSortdir(sortdir === -1 ? 1 : -1)
+    if (head.sort) {
+      dispatch(sortAction(head, sortdir === -1 ? 1 : -1));
+      setSortdir(sortdir === -1 ? 1 : -1)
+    }
+
   }
   const generatePdf = () => {
     const doc = new jsPDF('p', 'pt', 'a1')
@@ -80,7 +84,7 @@ const DataTable = ({
   return (
     <>
       <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
-      <p data-testid = "para-element"></p>
+      <p data-testid="para-element"></p>
       <TableContainer
         component={Paper}
         className="table__Container"
@@ -103,7 +107,8 @@ const DataTable = ({
                     </button>
                     <span>
                       {' '}
-                      <UnfoldMoreIcon />{' '}
+                      {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
+                      {' '}
                     </span>
                   </div>
                 </StyledTableCell>
@@ -147,8 +152,8 @@ const DataTable = ({
                       className="actionButton__item"
                       onClick={generatePdf}
                     >
-                    <Link className="invoiceCard" to={`/invoices/${item.id}`} >
-                      <Download />
+                      <Link className="invoiceCard" to={`/invoices/${item.id}`} >
+                        <Download />
                       </Link>
                     </button>
                   </ul>

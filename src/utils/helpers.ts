@@ -46,5 +46,28 @@ export const sortArray = (array: any, element: any, dir: any) => {
 }
 
 export const searchArray = (array: any, value: any) => {
-    return array.filter((d: any) => `${Object.values(d).join(",")}`.includes(value))
+    if (value == "") {
+        return array
+    } else {
+        return array.filter((d: any) => `${Object.values(d).join(",")}`.includes(value))
+
+    }
+}
+
+export const getFilterConditons = (filters: any) => {
+    return filters.map((d: any) => {
+        if (d.values.length != 0) {
+            return `(${d.values.map((g: any) => `(f.${d.element} == "${g}")`).join(" || ")})`
+        } else {
+            return null;
+        }
+    }).filter((v: any) => v != null).join(" && ")
+}
+
+export const getCardCount = (array: any, element: any, value: any) => {
+    if (value === "") {
+        return array.length
+    } else {
+        return array.filter((s: any) => s[element] == value).length;
+    }
 }
