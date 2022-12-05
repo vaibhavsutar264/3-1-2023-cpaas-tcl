@@ -28,6 +28,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
                 { path: appRoutes.INVOICE, element: <Invoice /> },
                 { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
+                { path: appRoutes.INVOICE_BILL, element: <InvoiceBill /> },
             ],
         },
         {
@@ -54,5 +55,6 @@ const SetPassword = Loadable(lazy(() => import('../components/login/set-password
 const Notfound = Loadable(lazy(() => import('../components/notfound/Notfound')));
 const HomeScreen = Loadable(lazy(() => import('../components/home/HomeScreen')));
 const Billing = Loadable(lazy(() => import('../components/billing/Billing')));
+const InvoiceBill = Loadable(lazy(() => import('../components/billing/InvoiceBill')));
 
 export default Routes
