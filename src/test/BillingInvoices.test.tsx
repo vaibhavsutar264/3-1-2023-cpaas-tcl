@@ -81,9 +81,6 @@ describe('App', () => {
       // const searchButtonElement = screen.getByRole('button', {
       //   name: /pagingsearch/i,
       // }) as HTMLButtonElement
-      const paraElement = screen.getByText(
-        'abc'
-      ) as HTMLInputElement
     //   const entityElement = waitFor(screen.getByTestId(
     //     'entity-element'
     //   )) as HTMLParagraphElement
@@ -95,7 +92,6 @@ describe('App', () => {
         expect(screen.getAllByText(/vaibhav/i)).toBeTruthy()
       })
 
-    expect(paraElement).toBeInTheDocument()
     // expect(entityElement).toBeInTheDocument()
     // expect(searchElement.value).toBe('completed')
     // const data = screen.getByText('Pending')
