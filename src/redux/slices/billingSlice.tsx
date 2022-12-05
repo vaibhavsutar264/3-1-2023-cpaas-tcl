@@ -102,6 +102,8 @@ export const runFilters = ({ page, take, sort }: any) => {
             searchValue: searchValue
         }
         dispatch(billingSlice.actions.setFilterData(d))
+        setUlrParms(page, take)
+
     }
 }
 export const loadInvoices = (parms: any) => {
@@ -123,6 +125,15 @@ export const loadInvoices = (parms: any) => {
             dispatch(billingSlice.actions.loadInvoices({ data: [] }))
             dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
         }
+    }
+}
+
+export const cardFilter = (element: any, value: any) => {
+    const { take } = store.getState().billing;
+    return async () => {
+        const f = [{ element: element, values: [value] }]
+        dispatch(billingSlice.actions.setFilterParms({ filterValue: f }));
+        dispatch(runFilters({ page: 1, take, sort: false }))
     }
 }
 

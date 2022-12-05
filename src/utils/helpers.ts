@@ -56,6 +56,8 @@ export const searchArray = (array: any, value: any) => {
 
 export const getFilterConditons = (filters: any) => {
     return filters.map((d: any) => {
+        const m = JSON.parse(JSON.stringify(d.values.filter((l: any) => (l != ""))))
+        if (m.length == 0) { return null }
         if (d.values.length != 0) {
             return `(${d.values.map((g: any) => `(f.${d.element} == "${g}")`).join(" || ")})`
         } else {

@@ -3,7 +3,7 @@ import { getFromLocalStorage } from '../hooks/useLocalStorage'
 import { appRoutes, localStorageVar } from './constants'
 
 const PrivateRoutes = () => {
-  const auth = getFromLocalStorage(localStorageVar.TOKEN_VAR)
+  const auth = getFromLocalStorage(localStorageVar.USER_VAR)
   return auth && auth !== null ? <Outlet /> : <Navigate to={appRoutes.LOGIN} />
 }
 

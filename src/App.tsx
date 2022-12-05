@@ -38,9 +38,9 @@ const App = () => {
   const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
   return (
     <ThemeProvider theme={themeMode}>
-      {window.location.pathname != '/invoices' ? (
+      {/* {window.location.pathname != '/invoices' ? (
         <Header toggleTheme={toggleTheme} />
-      ) : null}
+      ) : null} */}
       {/* <Header toggleTheme={toggleTheme} /> */}
       <GlobalStyles />
       <Routes toggleTheme={toggleTheme} />

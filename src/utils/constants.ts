@@ -2,7 +2,7 @@ export const apiRoutes = {
   BASE_URL: 'http://localhost:4000',
 
   // User
-  LOGIN: '/api/v1/login',
+  LOGIN: '/cpaas/token',
   MOCKLOGIN: '/auth/login',
   SET_PASSWORD: '/api/v1/auth/password',
   FORGOT_PASSWORD: '/api/v1/password/forgot',
@@ -139,4 +139,17 @@ export const dataTables = {
     ],
     tableName: 'billing',
   }),
+}
+
+export const apiDefaultrespons = {
+  LOGIN_ERRRO: {
+    "meta_data": {
+      "api_name": "token"
+    },
+    "data": {
+      "data": null,
+      "message": "Internal Error",
+      "status": 404
+    }
+  }
 }

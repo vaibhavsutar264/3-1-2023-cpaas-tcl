@@ -210,6 +210,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   .dashboard__wrapper .dashboard__content{
     background-color: ${({ theme }) => theme.dashboardContentBg};
   }
+  .dashboard__wrapper {
+    background-color: ${({ theme }) => theme.dashboardContentBg};
+  }
   .TableHead{
     background-color: ${({ theme }) => theme.tableHeaderBg};
   }

@@ -39,6 +39,7 @@ import { getFromLocalStorage } from '../../../hooks/useLocalStorage'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useSelector } from 'react-redux'
+import { localStorageVar } from '../../../utils/constants'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -84,8 +85,13 @@ const Login = () => {
   }, [isError, message, isAuthenticated])
 
   useEffect(() => {
-    if (getFromLocalStorage('token') && getFromLocalStorage('token') !== null) {
-      navigate('/setpassword')
+    const isLoginFirstTime = true;
+    if (getFromLocalStorage(localStorageVar.USER_VAR) && getFromLocalStorage(localStorageVar.USER_VAR) !== null) {
+      if (isLoginFirstTime) {
+        navigate('/invoices')
+      } else {
+        navigate('/setpassword')
+      }
     }
   }, [user, navigate])
 
