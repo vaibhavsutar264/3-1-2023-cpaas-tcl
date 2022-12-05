@@ -73,3 +73,48 @@ export const getCardCount = (array: any, element: any, value: any) => {
         return array.filter((s: any) => s[element] == value).length;
     }
 }
+
+// const data = {
+//     "meta_data": {
+//         "api_name": "invoice_list"
+//     },
+//     "result_data": {
+//         "invoices": [{
+//             id: 123,
+//             text: "value"
+//         }]
+//     }
+// }
+// const schema = {
+//     "meta_data": {
+//         "type": "Object",
+//         "required": true,
+//         "properties": {
+//             "api_name": {
+//                 "type": "string",
+//                 "required": true
+//             }
+//         }
+//     },
+//     "result_data": {
+//         "type": "Object",
+//         "required": true,
+//         "properties": {
+//             "invoices": {
+//                 "type": "array",
+//                 "required": true,
+//                 "properties": {
+//                     "id": {
+//                         "type": "string",
+//                         "required": true
+//                     },
+//                     "text": {
+//                         "type": "string",
+//                         "required": true
+//                     },
+
+//                 }
+//             }
+//         }
+//     },
+// }
