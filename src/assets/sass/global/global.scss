@@ -104,6 +104,19 @@
   background: #555;
 }
 
+
+.actionButtons .actionButton__item .csbt {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  background: #f7f8fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
 // .cardType__1:hover {
 //   background-color: white !important;
 // }
@@ -119,4 +132,3 @@
 // .cardType__1:hover .cardType__icon {
 //   color: #344857 !important;
 // }
-

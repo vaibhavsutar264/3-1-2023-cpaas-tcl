@@ -152,9 +152,9 @@ const DataTable = ({
                       className="actionButton__item"
                       onClick={generatePdf}
                     >
-                      <Link className="invoiceCard" to={`/invoices/${item.id}`} >
+                      <span className="csbt" >
                         <Download />
-                      </Link>
+                      </span>
                     </button>
                   </ul>
                 </TableCell>
