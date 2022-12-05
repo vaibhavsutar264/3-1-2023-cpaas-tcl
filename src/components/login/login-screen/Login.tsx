@@ -123,13 +123,17 @@ const Login = () => {
     e.preventDefault()
     setPassword((e.target as HTMLInputElement).value)
     const patternVariable = '.{5,}'
+    const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
     const submitButtonElement = document.getElementById(
       'btn-enable-style'
     ) as HTMLButtonElement
     const passwordBoxElement = document.getElementById(
       'password-box'
     ) as HTMLButtonElement
-    if ((e.target as HTMLInputElement).value.match(patternVariable)) {
+    const emailInputElement = document.getElementById(
+      'username'
+    ) as HTMLInputElement
+    if ((e.target as HTMLInputElement).value.match(patternVariable) && (emailInputElement).value.match(emailVariable)) {
       submitButtonElement.className = 'customBtn-01 btn-enable-style'
       passwordBoxElement.className = 'input-wrapper password-checkHide success'
       setOpen(false)
@@ -219,7 +223,6 @@ const Login = () => {
                       label={t<string>('enterYourEmailID')}
                       variant="standard"
                       sx={{ width: 1, borderRadius: '10px !important' }}
-                      type="email"
                       inputProps={{
                         'data-testid': 'email-element',
                         autoComplete: 'off',

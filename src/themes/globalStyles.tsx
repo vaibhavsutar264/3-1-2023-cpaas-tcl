@@ -116,7 +116,6 @@ export const darkTheme = {
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   body {
     background: ${({ theme }) => theme.body};
-    font-family: ${({ theme }) => theme.font};
     color: ${({ theme }) => theme.textForLogin};
   }
 
