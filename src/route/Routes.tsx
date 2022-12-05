@@ -1,10 +1,11 @@
 import { Suspense, lazy } from 'react'
 
-import Invoice from '../components/common/elements/invoice'
+import Invoice from '../components/common/elements/Invoice'
 import Loading from '../components/loader/Loading'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import { appRoutes } from '../utils/constants'
 import { useRoutes } from 'react-router-dom'
+import InvoiceBill from '../components/billing/InvoiceBill'
 
 // eslint-disable-next-line react/display-name
 const Loadable = (Component: any) => (props: any) => {
@@ -26,7 +27,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
                 { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
                 { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
-                { path: appRoutes.INVOICE, element: <Invoice /> },
+                { path: appRoutes.INVOICE, element: <InvoiceBill /> },
                 { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
             ],
         },

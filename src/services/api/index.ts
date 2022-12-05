@@ -58,4 +58,4 @@ const billing = {
     requests.get(`${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`),
 }
 
-export { userLoginData, billing }
+export { userLoginData, billing, requests }

@@ -69,7 +69,7 @@ const ForgotPassword = () => {
     }
 
     if (isSuccess) {
-      toast.success("Email sent")
+      // toast.success("Email sent")
       console.log(message)
     }
   }, [isError, isSuccess, message, emailSent])

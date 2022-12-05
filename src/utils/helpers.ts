@@ -68,6 +68,6 @@ export const getCardCount = (array: any, element: any, value: any) => {
     if (value === "") {
         return array.length
     } else {
-        return array.filter((s: any) => s[element] == value).length;
+        return Object.keys(array) && Object.keys(array).filter((s: any) => s[element] == value).length ;
     }
 }
