@@ -133,7 +133,7 @@ const DataTable = ({
                       </a>
                     </li>
                     <li className="actionButton__item">
-                      <a href="/">
+                      <a href="/invoices/raiseticket">
                         <Ticket />
                       </a>
                     </li>
@@ -141,7 +141,9 @@ const DataTable = ({
                       className="actionButton__item"
                     >
                       <span className="csbt" >
+                      <Link className="invoiceCard" to={`/invoices/${item.id}`} >
                         <Download />
+                      </Link>
                       </span>
                     </button>
                   </ul>
