@@ -46,7 +46,7 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
                         </select>
                     </div>
                     <div className="outOfRow">
-                        <span id="results">{t<string>('of')} {pagination.total} {t<string>('results')}</span>
+                        <span id="results">{t<string>('of')} {pagination.Total} {t<string>('results')}</span>
                     </div>
                 </div>
             </div>

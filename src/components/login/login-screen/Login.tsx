@@ -123,17 +123,13 @@ const Login = () => {
     e.preventDefault()
     setPassword((e.target as HTMLInputElement).value)
     const patternVariable = '.{5,}'
-    const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
     const submitButtonElement = document.getElementById(
       'btn-enable-style'
     ) as HTMLButtonElement
     const passwordBoxElement = document.getElementById(
       'password-box'
     ) as HTMLButtonElement
-    const emailInputElement = document.getElementById(
-      'username'
-    ) as HTMLInputElement
-    if ((e.target as HTMLInputElement).value.match(patternVariable) && (emailInputElement).value.match(emailVariable)) {
+    if ((e.target as HTMLInputElement).value.match(patternVariable)) {
       submitButtonElement.className = 'customBtn-01 btn-enable-style'
       passwordBoxElement.className = 'input-wrapper password-checkHide success'
       setOpen(false)
@@ -218,11 +214,13 @@ const Login = () => {
                       <MailOutlineIcon id="mail-icon" />
                     </InputLabel>
                     <TextField
+                    className="input-field"
                       required
                       id="username"
                       label={t<string>('enterYourEmailID')}
                       variant="standard"
-                      sx={{ width: 1, borderRadius: '10px !important' }}
+                      sx={{ width: 1, borderRadius: '10px !important', border: 'none !important' }}
+                      type="email"
                       inputProps={{
                         'data-testid': 'email-element',
                         autoComplete: 'off',
@@ -269,12 +267,12 @@ const Login = () => {
                       id="password"
                       label={t<string>('password')}
                       variant="standard"
-                      sx={{ width: 1 }}
+                      sx={{ width: 1, borderRadius: '10px !important' }}
                       type={values.showPassword ? 'text' : 'password'}
                       autoComplete="false"
                       name="password"
                       inputProps={{ 'data-testid': 'password-element' }}
-                      className="form-control input-custom"
+                      className="form-control input-custom input-field"
                       value={password}
                       onInput={handlePasswordChange}
                       onChange={handleChange}

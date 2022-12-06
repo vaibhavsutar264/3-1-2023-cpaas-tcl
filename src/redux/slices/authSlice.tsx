@@ -7,7 +7,7 @@ import {
   getFromLocalStorage,
 } from '../../hooks/useLocalStorage'
 import { userLoginData } from '../../services/api/index'
-import { localStorageVar } from '../../utils/constants'
+import { apiDefaultrespons, localStorageVar } from '../../utils/constants'
 import axios from 'axios'
 
 const initialState: AuthState = {
@@ -78,23 +78,17 @@ export const login = (userData: UserLogin) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response = await userLoginData.login(userData)
+      const response: any = await userLoginData.login(userData)
+      const { data } = response
       if (response) {
-        setInLocalStorage(
-          localStorageVar.USER_VAR,
-          JSON.stringify(response.data)
-        )
-        const token: any = response.data.token
-        // const token: any = response.data.data.token
-        if (token) {
-          setInLocalStorage(localStorageVar.TOKEN_VAR, token)
-        }
+        setInLocalStorage(localStorageVar.USER_VAR, JSON.stringify(data.data.data))
+        const token: any = data.data.access_token
+        if (token) { setInLocalStorage(localStorageVar.TOKEN_VAR, token) }
+        const resp = { message: data.data.message, token }
+        dispatch(userSlice.actions.loginSuccess(resp))
       }
-      dispatch(userSlice.actions.loginSuccess(response.data))
-      return response.data
-    } catch (error) {
-      console.log(error)
-      dispatch(userSlice.actions.hasError(error))
+    } catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
+      dispatch(userSlice.actions.hasError(data))
     }
   }
 }
@@ -105,7 +99,7 @@ export const logout = () => {
     try {
       removeFromLocalStorage(localStorageVar.TOKEN_VAR)
       removeFromLocalStorage(localStorageVar.USER_VAR)
-      await userLoginData.logout()
+      // await userLoginData.logout()
       dispatch(userSlice.actions.logOutSuccess())
     } catch (error) {
       console.log(error)

@@ -1,11 +1,10 @@
 import { Suspense, lazy } from 'react'
 
-import Invoice from '../components/common/elements/Invoice'
+import Invoice from '../components/common/elements/invoice'
 import Loading from '../components/loader/Loading'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import { appRoutes } from '../utils/constants'
 import { useRoutes } from 'react-router-dom'
-import InvoiceBill from '../components/billing/InvoiceBill'
 
 // eslint-disable-next-line react/display-name
 const Loadable = (Component: any) => (props: any) => {
@@ -29,12 +28,14 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
                 { path: appRoutes.INVOICE, element: <InvoiceBill /> },
                 { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
+                { path: appRoutes.RAISE_TICKET, element: <RaiseTicket /> },
             ],
         },
         {
             path: '',
             element: <PrivateRoutes />,
             children: [
+                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
                 // {
                 //   path: appRoutes.SET_PASSWORD,
                 //   element: <SetPassword />,
@@ -55,5 +56,7 @@ const SetPassword = Loadable(lazy(() => import('../components/login/set-password
 const Notfound = Loadable(lazy(() => import('../components/notfound/Notfound')));
 const HomeScreen = Loadable(lazy(() => import('../components/home/HomeScreen')));
 const Billing = Loadable(lazy(() => import('../components/billing/Billing')));
+const InvoiceBill = Loadable(lazy(() => import('../components/billing/InvoiceBill')));
+const RaiseTicket = Loadable(lazy(() => import('../components/billing/RaiseTicket')));
 
 export default Routes

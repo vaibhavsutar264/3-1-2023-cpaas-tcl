@@ -102,27 +102,39 @@ export const runFilters = ({ page, take, sort }: any) => {
             searchValue: searchValue
         }
         dispatch(billingSlice.actions.setFilterData(d))
+        setUlrParms(page, take)
+
     }
 }
 export const loadInvoices = (parms: any) => {
     return async () => {
         try {
             const response = await billing.loadInvoices(parms)
+            const d = response.data.result_data.Invoices
             if (response) {
-                dispatch(billingSlice.actions.loadInvoices({ data: response.data }))
-                const pg = getPageParms(response.data.length)
+                dispatch(billingSlice.actions.loadInvoices({ data: d }))
+                const pg = getPageParms(d.length)
                 dispatch(ChangePageBilling(pg.curr, pg.take))
             } else {
                 dispatch(billingSlice.actions.hasError())
                 dispatch(billingSlice.actions.loadInvoices({ data: [] }))
                 dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
             }
-            return response.data
+            return d
         } catch (error) {
             dispatch(billingSlice.actions.hasError())
             dispatch(billingSlice.actions.loadInvoices({ data: [] }))
             dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
         }
+    }
+}
+
+export const cardFilter = (element: any, value: any) => {
+    const { take } = store.getState().billing;
+    return async () => {
+        const f = [{ element: element, values: [value] }]
+        dispatch(billingSlice.actions.setFilterParms({ filterValue: f }));
+        dispatch(runFilters({ page: 1, take, sort: false }))
     }
 }
 

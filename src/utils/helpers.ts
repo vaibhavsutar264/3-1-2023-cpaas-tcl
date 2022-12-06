@@ -56,6 +56,8 @@ export const searchArray = (array: any, value: any) => {
 
 export const getFilterConditons = (filters: any) => {
     return filters.map((d: any) => {
+        const m = JSON.parse(JSON.stringify(d.values.filter((l: any) => (l != ""))))
+        if (m.length == 0) { return null }
         if (d.values.length != 0) {
             return `(${d.values.map((g: any) => `(f.${d.element} == "${g}")`).join(" || ")})`
         } else {
@@ -71,3 +73,48 @@ export const getCardCount = (array: any, element: any, value: any) => {
         return array.filter((s: any) => s[element] == value).length;
     }
 }
+
+// const data = {
+//     "meta_data": {
+//         "api_name": "invoice_list"
+//     },
+//     "result_data": {
+//         "invoices": [{
+//             id: 123,
+//             text: "value"
+//         }]
+//     }
+// }
+// const schema = {
+//     "meta_data": {
+//         "type": "Object",
+//         "required": true,
+//         "properties": {
+//             "api_name": {
+//                 "type": "string",
+//                 "required": true
+//             }
+//         }
+//     },
+//     "result_data": {
+//         "type": "Object",
+//         "required": true,
+//         "properties": {
+//             "invoices": {
+//                 "type": "array",
+//                 "required": true,
+//                 "properties": {
+//                     "id": {
+//                         "type": "string",
+//                         "required": true
+//                     },
+//                     "text": {
+//                         "type": "string",
+//                         "required": true
+//                     },
+
+//                 }
+//             }
+//         }
+//     },
+// }

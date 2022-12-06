@@ -55,5 +55,12 @@ declare module 'styled-components' {
         tableDataRowBg: string
         tableDataRowBrBtmColor: string
         tableBodyTdColor: string
+        formTitleColor: string
+        forgotPasswordColor: string
+        inputBorderColor: string
+        inputFieldBg: string
+        inputLabelColor: string
+        mailIconColor: string
+        inputColor: string
     }
 }

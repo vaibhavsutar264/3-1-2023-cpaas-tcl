@@ -140,9 +140,9 @@ const DataTable = ({
                     <button
                       className="actionButton__item"
                     >
-                      <Link className="invoiceCard" to={`/invoices/${item.id}`} >
+                      <span className="csbt" >
                         <Download />
-                      </Link>
+                      </span>
                     </button>
                   </ul>
                 </TableCell>
