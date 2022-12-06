@@ -1,9 +1,4 @@
 import { Suspense, lazy } from 'react'
-<<<<<<< HEAD
-
-import Invoice from '../components/common/elements/invoice'
-=======
->>>>>>> b262b7fa165836ab66eddc39a0196cef9ccdffce
 import Loading from '../components/loader/Loading'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import { appRoutes } from '../utils/constants'
@@ -28,7 +23,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.ROOT, element: <HomeScreen /> },
                 { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
                 { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
-                { path: appRoutes.INVOICE, element: <Invoice /> },
+                { path: appRoutes.INVOICE, element: <InvoiceBill /> },
                 { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
                 { path: appRoutes.RAISE_TICKET, element: <RaiseTicket /> },
             ],
@@ -37,7 +32,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
             path: '',
             element: <PrivateRoutes />,
             children: [
-                // { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
+                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
                 // {
                 //   path: appRoutes.SET_PASSWORD,
                 //   element: <SetPassword />,
