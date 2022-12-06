@@ -70,7 +70,7 @@ export const appRoutes = {
   NOT_FOUND: '*',
   BILLING: '/invoices',
   INVOICE: '/invoices/:id',
-  INVOICE_BILL: '/invoicebill'
+  RAISE_TICKET: '/invoices/raiseticket'
 }
 
 export const breadCrums = {

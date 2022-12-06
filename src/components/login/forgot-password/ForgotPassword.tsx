@@ -128,11 +128,12 @@ const ForgotPassword = () => {
                     <MailOutlineIcon id="mail-icon" />
                   </InputLabel>
                   <TextField
+                    className="input-field"
                     required
                     id="username"
                     label={t<string>('email')}
                     variant="standard"
-                    sx={{ width: 1 }}
+                    sx={{ width: 1, borderRadius: '10px !important' }}
                     name="email"
                     onInput={handleEmailChange}
                     value={email}

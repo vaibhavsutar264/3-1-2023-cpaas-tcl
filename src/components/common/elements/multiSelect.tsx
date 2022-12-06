@@ -33,7 +33,6 @@ export default function MultiSelect({ id, filterData, filterAction }: any) {
                 w.Oid = null
             }
         })
-
     }
 
     return (

@@ -357,11 +357,12 @@ const SetPassword = () => {
                     <LockOpenIcon id="unlock-icon" />
                   </InputLabel>
                   <TextField
+                    className="input-field"
                     required
                     id="password"
                     label={t<string>('password')}
                     variant="standard"
-                    sx={{ width: 1 }}
+                    sx={{ width: 1, borderRadius: '10px !important' }}
                     // name="password"
                     // type="password"
                     type={values.showPassword ? 'text' : 'password'}
@@ -498,11 +499,12 @@ const SetPassword = () => {
                     <LockOpenIcon id="unlock-icon" />
                   </InputLabel>
                   <TextField
+                    className="input-field"
                     required
                     id="confirmPassword"
                     label={t<string>('confirmPassword')}
                     variant="standard"
-                    sx={{ width: 1 }}
+                    sx={{ width: 1, borderRadius: '10px !important' }}
                     type={confirmValues.showPassword ? 'text' : 'password'}
                     autoComplete="false"
                     inputProps={{ 'data-testid': 'confirm-password-element' }}
