@@ -3,7 +3,7 @@ import { useDispatch } from '../../../redux/store'
 const Card = ({ data }: any) => {
     const dispatch = useDispatch();
     return <div
-        onClick={() => { dispatch(data.action) }}
+        // onClick={() => { dispatch(data.action) }}
         className="cardType__1"
         style={{
             background: data.bgcolor,

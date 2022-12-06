@@ -54,6 +54,13 @@ export const lightTheme = {
     tableDataRowBg: '#fff',
     tableDataRowBrBtmColor: '#fff',
     tableBodyTdColor: '#344857',
+    formTitleColor: '#344857 !important',
+    forgotPasswordColor: '#092133',
+    inputBorderColor: '#00000080 !important',
+    inputFieldBg: '#fff !important',
+    inputLabelColor: '#ABAEC5',
+    mailIconColor: '#ABAEC5',
+    inputColor: '#11153b',
 }
 
 export const darkTheme = {
@@ -62,7 +69,7 @@ export const darkTheme = {
     textForLogin: 'white !important',
     primary:
         'linear-gradient(297deg, #F57C52 0%, #D63548 100%) 0% 0% no-repeat padding-box !important',
-    background: '#092133 !important',
+    background: '#3A4548 !important',
     font: '"Ubuntu", sans-serif !important',
     border: '#04131E',
     label: '#ffffff',
@@ -111,11 +118,19 @@ export const darkTheme = {
     tableDataRowBg: '#1E2023',
     tableDataRowBrBtmColor: '#1E2023',
     tableBodyTdColor: '#fff',
+    formTitleColor: '#fff !important',
+    forgotPasswordColor: '#9D9FA1',
+    inputBorderColor: '#fff !important',
+    inputFieldBg: '#fff !important',
+    inputLabelColor: '#787785',
+    mailIconColor: '#787785',
+    inputColor: '#363636 !important'
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   body {
     background: ${({ theme }) => theme.body};
+    font-family: ${({ theme }) => theme.font};
     color: ${({ theme }) => theme.textForLogin};
   }
 
@@ -163,13 +178,13 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
     color: ${({ theme }) => theme.textForLogin};
   }
   #username{
-    color: ${({ theme }) => theme.textForLogin};
+    color: ${({ theme }) => theme.inputColor};
   }
   #password{
-    color: ${({ theme }) => theme.textForLogin};
+    color: ${({ theme }) => theme.inputColor};
   }
   #confirmPassword{
-    color: ${({ theme }) => theme.textForLogin};
+    color: ${({ theme }) => theme.inputColor};
   }
   #mail-icon{
     color: ${({ theme }) => theme.textForLogin};
@@ -180,7 +195,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
     opacity: ${({ theme }) => theme.opacity};
   }
   #forgot-password{
-    color: ${({ theme }) => theme.textForLogin};
+    color: ${({ theme }) => theme.forgotPasswordColor};
   }
   #sidebar-top{
     background-color: ${({ theme }) => theme.sidebarTopBg};
@@ -207,9 +222,6 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
     border: ${({ theme }) => theme.inputHeaderBorder};
   }
   .dashboard__wrapper .dashboard__content{
-    background-color: ${({ theme }) => theme.dashboardContentBg};
-  }
-  .dashboard__wrapper {
     background-color: ${({ theme }) => theme.dashboardContentBg};
   }
   .TableHead{
@@ -314,5 +326,22 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   .TableBody tr td {
     color: ${({ theme }) => theme.tableBodyTdColor};
+  }
+  .account__screen .account__form .form__inner .account__form__header .title {
+    color: ${({ theme }) => theme.formTitleColor};
+  }
+  // Input border color change on light dark mode
+  .account__screen .account__form .form__inner .MuiInputBase-root::before {
+    border-color: ${({ theme }) => theme.inputBorderColor};
+  }
+  .input-field {
+    background-color: ${({ theme }) => theme.inputFieldBg};
+  }
+  // Input label color
+  .account__screen .account__form .form__inner .account__form__body .input-wrapper .MuiFormControl-root label {
+    color: ${({ theme }) => theme.inputLabelColor};
+  }
+  #email-box svg path, #password-box svg path, #confirm-password-box svg path {
+    fill: ${({ theme }) => theme.mailIconColor};
   }
 `
