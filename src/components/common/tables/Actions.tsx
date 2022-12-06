@@ -87,7 +87,7 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
                             </g>
                         </svg>
                     </span>
-                    <CSVLink {...ExportToCsv} className="text">
+                    <CSVLink {...ExportToCsv} className="text" data-testid='csv-link'>
                         {t<string>('exportToCsv')}
                     </CSVLink>
                 </a>

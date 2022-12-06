@@ -18,7 +18,6 @@ import Pdf from '../icons/Pdf'
 import Ticket from '../icons/ticket'
 import Download from '../icons/download'
 import { Actions } from './Actions'
-import jsPDF from 'jspdf'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { getPageParms, setUlrParms } from '../../../utils/helpers'
@@ -70,17 +69,7 @@ const DataTable = ({
     }
 
   }
-  const generatePdf = () => {
-    const doc = new jsPDF('p', 'pt', 'a1')
-    const tableElement = document.getElementById(
-      'table-data'
-    ) as HTMLButtonElement
-    doc.html(tableElement, {
-      callback: function (pdf) {
-        pdf.save('invoices.pdf')
-      },
-    })
-  }
+
   return (
     <>
       <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
@@ -150,7 +139,6 @@ const DataTable = ({
                     </li>
                     <button
                       className="actionButton__item"
-                      onClick={generatePdf}
                     >
                       <Link className="invoiceCard" to={`/invoices/${item.id}`} >
                         <Download />

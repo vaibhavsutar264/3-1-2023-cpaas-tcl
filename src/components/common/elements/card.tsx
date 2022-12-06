@@ -14,7 +14,7 @@ const Card = ({ data }: any) => {
                 <p className="cardType__name" style={{ color: data.textColor }}>
                     {data.titel}
                 </p>
-                <h3 className="cardType__Number" style={{ color: data.cntColor }}>
+                <h3 className="cardType__Number" data-testid = 'total-data-card' style={{ color: data.cntColor }}>
                     {data.value}
                 </h3>
             </div>
