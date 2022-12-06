@@ -18,6 +18,7 @@ const App = () => {
       const trEle = e.target.classList.contains("clkIgnr");
 
       if (trEle === false) {
+        console.log("close Popup");
         const d: any = document;
         const w: any = window;
         d.getElementById(w.Oid).style.display = "none";

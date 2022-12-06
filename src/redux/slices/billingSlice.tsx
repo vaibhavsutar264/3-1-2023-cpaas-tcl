@@ -93,7 +93,6 @@ export const runFilters = ({ page, take, sort }: any) => {
                 return eval(con)
             })
         }
-
         const d = {
             data: filteredData.slice((page - 1) * take, (page * take)),
             page: page,

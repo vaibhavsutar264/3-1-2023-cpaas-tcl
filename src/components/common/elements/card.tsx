@@ -2,7 +2,7 @@ import { useDispatch } from '../../../redux/store'
 
 const Card = ({ data }: any) => {
     const dispatch = useDispatch();
-    return <div
+    return <button
         onClick={() => { dispatch(data.action) }}
         className="cardType__1"
         style={{
@@ -23,7 +23,7 @@ const Card = ({ data }: any) => {
                 </h3>
             </div>
         </div>
-    </div>
+    </button>
 }
 
 export default Card

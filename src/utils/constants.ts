@@ -118,7 +118,11 @@ export const dataTables = {
         eleName: 'Payment_Status',
         headTrans: 'status',
         sort: true,
-        filter: false
+        filter: true,
+        filterData: {
+          element: "Payment_Status",
+          values: masterData.map((e: any) => e.Payment_Status).filter((it, i, ar) => ar.indexOf(it) === i)
+        }
       },
       {
         eleName: 'Invoice_amt',
