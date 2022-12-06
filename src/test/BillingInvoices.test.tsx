@@ -89,7 +89,7 @@ test('billing page makes a api call with proper params', async  () => {
         )
         userEvent.type(searchElement, textInput[0])
         userEvent.click(ButtonElement)
-        expect(screen.queryByText(/INVOICE ID/i)).toBeTruthy()
+        expect(screen.queryByText(/pending/i)).toBeTruthy()
         expect(screen.queryByText(/completed/i)).toBeFalsy()
   })
 

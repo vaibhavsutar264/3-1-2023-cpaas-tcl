@@ -1,6 +1,4 @@
 import { Suspense, lazy } from 'react'
-
-import Invoice from '../components/common/elements/invoice'
 import Loading from '../components/loader/Loading'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import { appRoutes } from '../utils/constants'
@@ -35,7 +33,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
             path: '',
             element: <PrivateRoutes />,
             children: [
-                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
+                // { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
                 // {
                 //   path: appRoutes.SET_PASSWORD,
                 //   element: <SetPassword />,

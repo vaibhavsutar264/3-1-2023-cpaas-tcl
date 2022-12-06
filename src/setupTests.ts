@@ -7,7 +7,7 @@ import { server } from './mocks/server'
 
 
 beforeAll(()=> server.listen({
-    onUnhandledRequest: 'error'
+    onUnhandledRequest: 'msw error'
 }))
 
 afterEach(()=> server.resetHandlers())
