@@ -14,7 +14,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import useLocales from '../../../hooks/useLocales'
 import Time from '../icons/Time'
-import Pdf from '../icons/Pdf'
+import Pdf from '../icons/pdf'
 import Ticket from '../icons/ticket'
 import Download from '../icons/download'
 import { Actions } from './Actions'

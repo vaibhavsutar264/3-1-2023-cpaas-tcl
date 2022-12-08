@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from '../../../redux/store';
 import { dataTables } from '../../../utils/constants';
 import Download from '../icons/download';
-import Pdf from '../icons/Pdf';
+import Pdf from '../icons/pdf';
 import Ticket from '../icons/ticket';
 import Time from '../icons/Time';
 const Invoice = (TableData: any) => {
