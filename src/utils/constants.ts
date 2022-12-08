@@ -10,7 +10,7 @@ export const apiRoutes = {
   LOGOUT: '/api/v1/logout',
 
   // Billing
-  GET_INVOICES: '/orchestration/billing/invoices/getInvoices',
+  GET_INVOICES: '/result_data',
 }
 
 export const apiHelpers = {
@@ -71,7 +71,8 @@ export const appRoutes = {
   BILLING: '/invoices',
   INVOICE: '/invoices/:id',
   INVOICE_BILL: '/invoicebill',
-  RAISE_TICKET: '/raiseticket'
+  RAISE_TICKET: '/raiseticket',
+  BILLING_DETAILS: '/billingdetails'
 }
 
 export const breadCrums = {

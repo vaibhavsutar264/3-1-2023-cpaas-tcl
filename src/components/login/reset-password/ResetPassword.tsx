@@ -45,6 +45,8 @@ import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useParams } from 'react-router-dom'
 import { typeVar } from '../../../utils/constants'
+import BigCheck from '../../common/icons/bigCheck'
+import ModerateCheck from '../../common/icons/moderateCheck'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -68,6 +70,10 @@ interface State {
 }
 
 const ResetPassword = () => {
+  const [uFulfilled, setUFulfilled] = useState(false);
+  const [lFulfilled, setLFulfilled] = useState(false);
+  const [sFulfilled, setSFulfilled] = useState(false);
+  const [charsFulfilled, setCharsFulfilled] = useState(false);
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [open, setOpen] = useState(true)
@@ -224,40 +230,32 @@ const ResetPassword = () => {
     const tooltipUnfullfilledRightClickGray = 'tooltipList-item'
     if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
       tooltipUppercaseElement.className = tooltipFullfilledRightClickGreen
-      tooltipUppercaseTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+      setUFulfilled(true)
     } else {
       tooltipUppercaseElement.className = tooltipUnfullfilledRightClickGray
-      tooltipUppercaseTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+      setUFulfilled(false)
     }
     if ((e.target as HTMLInputElement).value.match(lowercaseVariable)) {
       tooltipLowercaseElement.className = tooltipFullfilledRightClickGreen
-      tooltipLowercaseTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+      setLFulfilled(true)
     } else {
       tooltipLowercaseElement.className = tooltipUnfullfilledRightClickGray
-      tooltipLowercaseTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+      setLFulfilled(false)
     }
     if ((e.target as HTMLInputElement).value.match(symbolVariable)) {
       tooltipSymbolElement.className = tooltipFullfilledRightClickGreen
-      tooltipSymbolTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+      setSFulfilled(true)
     } else {
       tooltipSymbolElement.className = tooltipUnfullfilledRightClickGray
-      tooltipSymbolTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+      setSFulfilled(false)
     }
     if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
       tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
-      tooltipAtleastTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px"><path fill="#43A047" d="M40.6 12.1L17 35.7 7.4 26.1 4.6 29 17 41.3 43.4 14.9z"/></svg>'
+      setCharsFulfilled(true)
       linearProgressModerateElement.style.display = 'block'
     } else {
       tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
-      tooltipAtleastTick.innerHTML =
-        '<svg type={typeVar.IMAGE_SVG} class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckIcon"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>'
+      setCharsFulfilled(false)
       linearProgressModerateElement.style.display = 'none'
     }
     if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
@@ -397,25 +395,25 @@ const ResetPassword = () => {
                       <ul className="tooltioList">
                         <li id="uppercase" className="tooltipList-item">
                           <span className="tooltip-icon" id="uppercaseTick">
-                            <CheckIcon />
+                          { uFulfilled? <BigCheck />: <CheckIcon /> }
                           </span>
                           <span className="tooltip-text">Upper</span>
                         </li>
                         <li id="lowercase" className="tooltipList-item">
                           <span className="tooltip-icon" id="lowercaseTick">
-                            <CheckIcon />
+                          { lFulfilled? <BigCheck />: <CheckIcon /> }
                           </span>
                           <span className="tooltip-text">Lower Case</span>
                         </li>
                         <li id="symbol" className="tooltipList-item">
                           <span className="tooltip-icon" id="symbolTick">
-                            <CheckIcon />
+                          { sFulfilled? <BigCheck />: <CheckIcon /> }
                           </span>
                           <span className="tooltip-text">A Symbol (@#&)</span>
                         </li>
                         <li id="atleast" className="tooltipList-item">
                           <span className="tooltip-icon" id="atleastTick">
-                            <CheckIcon />
+                          { charsFulfilled? <BigCheck />: <CheckIcon /> }
                           </span>
                           <span className="tooltip-text">
                             At least 8 characters

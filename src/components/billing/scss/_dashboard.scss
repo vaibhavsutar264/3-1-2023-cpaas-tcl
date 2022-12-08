@@ -768,3 +768,25 @@ form.raise-ticket-input .css-j0v3ur-MuiFormControl-root-MuiTextField-root {
 form.raise-ticket-input .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
     border: 1px solid #eee;
 }
+
+// Billing details page styles
+
+.billing-details-input {
+
+    & .css-1ptx2yq-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 0;
+    }
+
+    & .css-1w4w5el-MuiFormControl-root-MuiTextField-root {
+        border: 0;
+    }
+}
+
+// Input styles inside
+.billing-details-input .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+    color: #344857;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'ubuntu';
+    line-height: 18px;
+}
