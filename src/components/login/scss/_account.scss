@@ -250,7 +250,10 @@
   }
   .account__form {
     position: absolute;
-    top: 50%;
+    top: 190px;
+    @media only screen and (max-width: 768px){
+      top: 340px;
+    }
     right: 7%;
     z-index: 1;
     background: white;
@@ -258,7 +261,7 @@
     height: auto;
     padding: 78px 49px;
     border-radius: 39px;
-    transform: translateY(-50%);
+    // transform: translateY(-50%);
     box-shadow: 0px 30px 60px #00000033;
     animation: animform 500ms linear forwards;
     animation-delay: 0.5s;
@@ -513,7 +516,7 @@
   .account__screen {
     .account__form {
       width: 500px;
-      padding: 50px 35px;
+      padding: 80px 35px;
       .account__form__header {
         .title {
           font-size: 30px !important;
@@ -569,7 +572,7 @@
   .account__screen .account__form {
     right: auto;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
   }
 }
 
@@ -585,7 +588,7 @@
   .account__screen .account__form {
     right: 7%;
     left: auto;
-    transform: translate(0%, -50%);
+    transform: translateX(0%);
   }
 }
 
@@ -695,7 +698,7 @@
       width: 500px !important;
       right: auto;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
     }
   }
 }
@@ -930,5 +933,5 @@ MuiPaper-root
 
 .MuiInputLabel-shrink {
   color: rgba(0, 0, 0, 0.6) !important;
-  background-color: #fff !important;
+  // background-color: #fff !important;
 }

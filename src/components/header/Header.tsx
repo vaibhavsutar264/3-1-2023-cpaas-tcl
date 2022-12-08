@@ -129,11 +129,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                 >
                   {availableLanguages.map((language) => (
                     <MenuItem key={language} value={language}>
-                      {/* <img
-                        className="countryFlag"
-                        src= { language == "German" ? "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/255px-Flag_of_Germany.svg.png" : "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/125px-Flag_of_India.svg.png" }
-                        alt=""
-                      /> */}
+                      
                       {language}
                     </MenuItem>
                   ))}
