@@ -26,10 +26,10 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
   }, [])
   const { t } = useLocales()
   const cards = [
-    { titel: t('allInvoice'), value: getCardCount(MasterData, 'Payment_Status', ''), icon: <Invoice />, bgcolor: "white", textColor: "#1A73E8", cntColor: '#344857', action: cardFilter("Payment_Status", "") },
-    { titel: t('overdue'), value: getCardCount(MasterData, 'Payment_Status', 'overdue'), icon: <Overdue />, bgcolor: "#363f5e", textColor: "white", cntColor: 'white', action: cardFilter("Payment_Status", "overdue") },
-    { titel: t('unpaidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'pending'), icon: <UnpaidInvoice />, bgcolor: "#e54457", textColor: "white", cntColor: 'white', action: cardFilter("Payment_Status", "pending") },
-    { titel: t('paidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'completed'), icon: <PaidInvoice />, bgcolor: "#3DB887", textColor: "white", cntColor: 'white', action: cardFilter("Payment_Status", "completed") },
+    { titel: t('allInvoice'), value: getCardCount(MasterData, 'paymentStatus', ''), icon: <Invoice />, bgcolor: "white", textColor: "#1A73E8", cntColor: '#344857', action: cardFilter("paymentStatus", "") },
+    { titel: t('overdue'), value: getCardCount(MasterData, 'paymentStatus', 'overdue'), icon: <Overdue />, bgcolor: "#363f5e", textColor: "white", cntColor: 'white', action: cardFilter("paymentStatus", "overdue") },
+    { titel: t('unpaidInvoices'), value: getCardCount(MasterData, 'paymentStatus', 'pending'), icon: <UnpaidInvoice />, bgcolor: "#e54457", textColor: "white", cntColor: 'white', action: cardFilter("paymentStatus", "pending") },
+    { titel: t('paidInvoices'), value: getCardCount(MasterData, 'paymentStatus', 'completed'), icon: <PaidInvoice />, bgcolor: "#3DB887", textColor: "white", cntColor: 'white', action: cardFilter("paymentStatus", "completed") },
   ]
 
   return (

@@ -39,7 +39,7 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isSuccess = true
       state.isError = false
-      state.user = action.payload.token
+      state.user = action.payload.user
       state.isAuthenticated = true
       state.message = action.payload.message
     },
@@ -84,10 +84,13 @@ export const login = (userData: UserLogin) => {
         setInLocalStorage(localStorageVar.USER_VAR, JSON.stringify(data.data.data))
         const token: any = data.data.access_token
         if (token) { setInLocalStorage(localStorageVar.TOKEN_VAR, token) }
-        const resp = { message: data.data.message, token }
+
+        const user = { token : token, email : userData.username }
+
+        const resp = { message: data.data.message, user }
         dispatch(userSlice.actions.loginSuccess(resp))
       }
-    } catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
+    }  catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
       dispatch(userSlice.actions.hasError(data))
     }
   }
@@ -99,6 +102,11 @@ export const logout = () => {
     try {
       removeFromLocalStorage(localStorageVar.TOKEN_VAR)
       removeFromLocalStorage(localStorageVar.USER_VAR)
+      //Logout API will take below input, refreshToken received during login + user email Id
+      /*{
+        "refreshToken": "string",
+        "username": "string"
+      }*/
       // await userLoginData.logout()
       dispatch(userSlice.actions.logOutSuccess())
     } catch (error) {

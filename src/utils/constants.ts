@@ -87,60 +87,60 @@ export const dataTables = {
   BILLING: (values: [], masterData = []) => ({
     data: values,
     columns: [
-      { eleName: 'Invoice_no', headTrans: 'id', sort: true, filter: false },
+      { eleName: 'invoiceNumber', headTrans: 'id', sort: true, filter: false },
       {
-        eleName: 'Customer_LE',
+        eleName: 'customerLe',
         headTrans: 'customerLe',
         sort: true,
         filter: true,
         filterData: {
-          element: "Customer_LE",
-          values: masterData.map((e: any) => e.Customer_LE).filter((it, i, ar) => ar.indexOf(it) === i)
+          element: "customerLe",
+          values: masterData.map((e: any) => e.customerLe).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
-        eleName: 'Tata_Entity',
+        eleName: 'tataEntity',
         headTrans: 'entity',
         sort: true,
         filter: false,
       },
       {
-        eleName: 'PO_number',
+        eleName: 'poNumber',
         headTrans: 'poNo',
         sort: true,
         filter: true,
         filterData: {
-          element: "PO_number",
-          values: masterData.map((e: any) => e.PO_number).filter((it, i, ar) => ar.indexOf(it) === i)
+          element: "poNumber",
+          values: masterData.map((e: any) => e.poNumber).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
-        eleName: 'Payment_Status',
+        eleName: 'paymentStatus',
         headTrans: 'status',
         sort: true,
         filter: true,
         filterData: {
-          element: "Payment_Status",
-          values: masterData.map((e: any) => e.Payment_Status).filter((it, i, ar) => ar.indexOf(it) === i)
+          element: "paymentStatus",
+          values: masterData.map((e: any) => e.paymentStatus).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
-        eleName: 'Invoice_amt',
+        eleName: 'invoiceAmount',
         headTrans: 'invoiceAmount',
         sort: true,
         filter: true,
         filterData: {
-          element: "Currency",
-          values: masterData.map((e: any) => e.Currency).filter((it, i, ar) => ar.indexOf(it) === i)
+          element: "currency",
+          values: masterData.map((e: any) => e.currency).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
-        eleName: 'Invoice_date',
+        eleName: 'invoiceDate',
         headTrans: 'invoiceIssuedDate',
         sort: true,
         filter: false,
       },
-      { eleName: 'Due_date', headTrans: 'dueDate', sort: true, filter: false },
+      { eleName: 'dueDate', headTrans: 'dueDate', sort: true, filter: false },
     ],
     tableName: 'billing',
   }),

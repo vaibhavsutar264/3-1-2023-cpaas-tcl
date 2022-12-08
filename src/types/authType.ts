@@ -28,7 +28,7 @@ export type UserData = {
 }
 
 export type UserLogin = {
-  email?: string
+  username?: string
   password?: string
   confirmPassword?: string
 }
@@ -42,7 +42,8 @@ export type Profile = {
 }
 
 export type Password = {
-  password: string
+  newPassword: string,
+  username: string
 }
 
 export type Email = {

@@ -109,9 +109,6 @@ const ResetPassword = () => {
       return
     }
     try {
-      const userPassword: Password = {
-        password: password,
-      }
       await dispatch(resetPassword(token, data))
     } catch (error) {
       console.error(error)

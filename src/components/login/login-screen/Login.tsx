@@ -39,6 +39,7 @@ import { getFromLocalStorage } from '../../../hooks/useLocalStorage'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useSelector } from 'react-redux'
+import { base64Encode } from '../../../utils/Base64EncodeDecode'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -97,8 +98,8 @@ const Login = () => {
     validationSchema: schema,
     onSubmit: () => {
       const userDetails: UserLogin = {
-        email: email,
-        password: password,
+        username: email,
+        password: base64Encode(password),
       }
       dispatch(login(userDetails))
     },

@@ -36,6 +36,7 @@ import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { typeVar } from '../../../utils/constants'
+import { base64Encode } from '../../../utils/Base64EncodeDecode'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -63,7 +64,7 @@ const SetPassword = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [open, setOpen] = useState(false)
-  const { isError, isSuccess, message } = useAppSelector(
+  const { isError, isSuccess, message, user } = useAppSelector(
     (state: any) => state.auth || {}
   )
   const dispatch = useAppDispatch()
@@ -105,7 +106,8 @@ const SetPassword = () => {
     }
     try {
       const userPassword: Password = {
-        password: password,
+        newPassword: base64Encode(password),
+        username: user.email
       }
       await dispatch(updatePassword(userPassword))
     } catch (error) {

@@ -46,11 +46,11 @@ const userLoginData = {
     requests.post(`${routes.BASE_URL}${routes.LOGIN}`, body),
   logout: () => requests.get(`${routes.BASE_URL}${routes.LOGOUT}`),
   updatePassword: (body: Password) =>
-    requests.patch(`${routes.BASE_URL}${routes.SET_PASSWORD}`, body),
+    requests.post(`${routes.BASE_URL}${routes.SET_PASSWORD}`, body),
   forgotPassword: (body: any) =>
     requests.post(`${routes.BASE_URL}${routes.FORGOT_PASSWORD}`, body),
   resetPassword: (token: any, body: any) =>
-    requests.put(`${routes.BASE_URL}${routes.RESET_PASSWORD}/${token}`, body),
+    requests.post(`${routes.BASE_URL}${routes.RESET_PASSWORD}/${token}`, body),
 }
 
 const billing = {

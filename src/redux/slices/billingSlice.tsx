@@ -109,7 +109,7 @@ export const loadInvoices = (parms: any) => {
     return async () => {
         try {
             const response = await billing.loadInvoices(parms)
-            const d = response.data.result_data.Invoices
+            const d = response.data.data.invoice
             if (response) {
                 dispatch(billingSlice.actions.loadInvoices({ data: d }))
                 const pg = getPageParms(d.length)

@@ -23,28 +23,28 @@ const Invoice = (TableData: any) => {
                   </a>{' '}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Invoice_no}
+                {item.invoiceNumber}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Customer_LE}
+                {item.customerLe}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Tata_Entity}
+                {item.tataEntity}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.PO_number}
+                {item.poNumber}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Payment_Status}
+                {item.paymentStatus}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Invoice_amt}
+                {item.invoiceAmount}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Invoice_date}
+                {item.invoiceDate}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.Due_date}
+                {item.dueDate}
                 </TableCell>
               </TableRow>
               ))}

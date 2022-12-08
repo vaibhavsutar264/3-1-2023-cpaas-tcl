@@ -15,17 +15,17 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
         l.value = pagination.take;
     })
     const headers = [
-        { label: 'Invoice No.', key: 'Invoice_no' },
-        { label: 'Customer LE', key: 'Customer_LE' },
-        { label: 'Tata Entity', key: 'Tata_Entity' },
-        { label: 'PO number', key: 'PO_number' },
-        { label: 'Payment Status', key: 'Payment_Status' },
-        { label: 'Invoice amt', key: 'Invoice_amt' },
-        { label: 'Currency', key: 'Currency' },
-        { label: 'Invoice date', key: 'Invoice_date' },
-        { label: 'Due date', key: 'Due_date' },
-        { label: 'Payment done date & time', key: 'Payment done date & time' },
-        { label: 'Time Zone', key: 'Time Zone' },
+        { label: 'Invoice No.', key: 'invoiceNumber' },
+        { label: 'Customer LE', key: 'customerLe' },
+        { label: 'Tata Entity', key: 'tataEntity' },
+        { label: 'PO number', key: 'poNumber' },
+        { label: 'Payment Status', key: 'paymentStatus' },
+        { label: 'Invoice amt', key: 'invoiceAmount' },
+        { label: 'Currency', key: 'currency' },
+        { label: 'Invoice date', key: 'invoiceDate' },
+        { label: 'Due date', key: 'dueDate' },
+        { label: 'Payment done date & time', key: 'paymentDateTime' },
+        { label: 'Time Zone', key: 'timeZone' },
     ]
 
     const ExportToCsv = {

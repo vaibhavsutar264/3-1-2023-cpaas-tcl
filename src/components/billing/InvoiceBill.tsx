@@ -234,19 +234,19 @@ const InvoiceBill = () => {
 
     {data.map((item: any, index: any) => (
         <TableRow
-        key={item.id}
+        key={item.invoiceNumber}
         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
       >
         <TableCell component="th" scope="row">
-          {item.Invoice_no}
+          {item.invoiceNumber}
         </TableCell>
-        <TableCell align="right">{item.Customer_LE}</TableCell>
-        <TableCell align="right">{item.Tata_Entity}</TableCell>
-        <TableCell align="right">{item.PO_number}</TableCell>
-        <TableCell align="right">{item.Payment_Status}</TableCell>
-        <TableCell align="right">{item.Invoice_amt}</TableCell>
-        <TableCell align="right">{item.Invoice_date}</TableCell>
-        <TableCell align="right">{item.Due_date}</TableCell>
+        <TableCell align="right">{item.customerLe}</TableCell>
+        <TableCell align="right">{item.tataEntity}</TableCell>
+        <TableCell align="right">{item.poNumber}</TableCell>
+        <TableCell align="right">{item.paymentStatus}</TableCell>
+        <TableCell align="right">{item.invoiceAmount}</TableCell>
+        <TableCell align="right">{item.invoiceDate}</TableCell>
+        <TableCell align="right">{item.dueDate}</TableCell>
       </TableRow>
         ))}
         </TableBody>
