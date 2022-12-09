@@ -175,18 +175,18 @@ export const downloadBillingInvoice = (title: any) => {
             alert(err)
             console.log(err)
         })
-        try {
-            const response = await billing.downloadInvoice()
-            const d = response.data.Download_Billing_Invoice.Billing_invoice_download_link
-            if (response) {
-                dispatch(billingSlice.actions.downloadInvoiceData({ data: d }))
-            } else {
-                dispatch(billingSlice.actions.hasError())
-            }
-            return d
-        } catch (error) {
-            dispatch(billingSlice.actions.hasError())
-        }
+        // try {
+        //     const response = await billing.downloadInvoice()
+        //     const d = response.data.Download_Billing_Invoice.Billing_invoice_download_link
+        //     if (response) {
+        //         dispatch(billingSlice.actions.downloadInvoiceData({ data: d }))
+        //     } else {
+        //         dispatch(billingSlice.actions.hasError())
+        //     }
+        //     return d
+        // } catch (error) {
+        //     dispatch(billingSlice.actions.hasError())
+        // }
     }
 }
 export const downloadBillingInvoiceCDR = (parms: any) => {

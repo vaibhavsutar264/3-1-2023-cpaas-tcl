@@ -67,12 +67,6 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
                         {t<string>('exportToCsv')}
                     </CSVLink>
                 </a>
-                <button 
-                      className="actionButton__item"
-                      onClick={(e)=> handleDownload('image.png')}
-                    >
-                        Download
-                      </button>
             </div>
         </div>
     )

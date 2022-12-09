@@ -145,7 +145,7 @@ const DataTable = ({
                     </ul>
                     <button 
                       className="actionButton__item"
-                      // onClick={(e)=> handleDownload('image.png')}
+                      onClick={(e)=> handleDownload('image.png')}
                     >
                         <Download />
                       </button>
