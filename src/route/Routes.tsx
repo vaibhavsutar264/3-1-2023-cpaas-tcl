@@ -27,13 +27,14 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
                 { path: appRoutes.RAISE_TICKET, element: <RaiseTicket /> },
                 { path: appRoutes.BILLING_DETAILS, element: <BillingDetails /> },
+                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
             ],
         },
         {
             path: '',
             element: <PrivateRoutes />,
             children: [
-                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
+                // { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
                 // {
                 //   path: appRoutes.SET_PASSWORD,
                 //   element: <SetPassword />,

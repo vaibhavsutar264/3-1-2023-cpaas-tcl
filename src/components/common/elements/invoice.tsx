@@ -14,7 +14,8 @@ const Invoice = (TableData: any) => {
   return (
     <div>
     {data && data.filter((item : any)=> item.id == id ).map((item: any, index: any) => (
-    
+    <>
+      <div>{item.invoiceNumber}</div>
     <TableRow key={item.id}>
                 <TableCell component="th" scope="row">
                   {' '}
@@ -23,7 +24,6 @@ const Invoice = (TableData: any) => {
                   </a>{' '}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                {item.invoiceNumber}
                 </TableCell>
                 <TableCell component="th" scope="row">
                 {item.customerLe}
@@ -47,6 +47,7 @@ const Invoice = (TableData: any) => {
                 {item.dueDate}
                 </TableCell>
               </TableRow>
+              </>
               ))}
     </div>
   )

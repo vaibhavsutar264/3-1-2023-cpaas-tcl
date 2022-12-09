@@ -4,6 +4,8 @@ import { CSVLink } from 'react-csv'
 import { typeVar } from '../../../utils/constants'
 import useLocales from '../../../hooks/useLocales'
 import Export from '../icons/export'
+import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
+import { dispatch } from '../../../redux/store'
 
 export const Actions = ({ data, pagination, changeTake }: { data: [], pagination: any, changeTake: any }) => {
     const { t } = useLocales()
@@ -35,6 +37,10 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
         data: data,
     }
 
+    const handleDownload = (title: any) =>{
+        dispatch(downloadBillingInvoice(title))
+      }
+
     return (
         <div className="action__elements">
             <div className="action__elementItem">
@@ -61,6 +67,12 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
                         {t<string>('exportToCsv')}
                     </CSVLink>
                 </a>
+                <button 
+                      className="actionButton__item"
+                      onClick={(e)=> handleDownload('image.png')}
+                    >
+                        Download
+                      </button>
             </div>
         </div>
     )

@@ -56,6 +56,12 @@ const userLoginData = {
 const billing = {
   loadInvoices: (data: any) =>
     requests.get(`${routes.BASE_URL}${routes.GET_INVOICES}?q=${data.searchValue}`),
+  viewInvoice: (data: any) =>
+    requests.get(`${routes.BASE_URL}${routes.VIEW_INVOICES}`),
+  downloadInvoice: () =>
+    axios.post(`${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`),
+  downloadInvoiceCdr: (data: any) =>
+    requests.get(`${routes.BASE_URL}${routes.DOWNLOAD_INVOICES_CDR}`),
 }
 
 export { userLoginData, billing }

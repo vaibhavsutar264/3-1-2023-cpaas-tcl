@@ -24,6 +24,7 @@ import { getPageParms, setUlrParms } from '../../../utils/helpers'
 import { useDispatch as useAppDispatch } from '../../../redux/store'
 import { Link } from 'react-router-dom'
 import MultiSelect from '../elements/multiSelect'
+import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -68,6 +69,10 @@ const DataTable = ({
       setSortdir(sortdir === -1 ? 1 : -1)
     }
 
+  }
+
+  const handleDownload = (title: any) =>{
+    dispatch(downloadBillingInvoice(title))
   }
 
   return (
@@ -137,16 +142,13 @@ const DataTable = ({
                         <Ticket />
                       </a>
                     </li>
-                    <button
+                    </ul>
+                    <button 
                       className="actionButton__item"
+                      // onClick={(e)=> handleDownload('image.png')}
                     >
-                      <span className="csbt" >
-                      <Link className="invoiceCard" to={`/invoices/${item.id}`} >
                         <Download />
-                      </Link>
-                      </span>
-                    </button>
-                  </ul>
+                      </button>
                 </TableCell>
               </TableRow>
             ))}

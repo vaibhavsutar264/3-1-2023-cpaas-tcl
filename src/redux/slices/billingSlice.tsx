@@ -3,6 +3,7 @@ import { dispatch, store } from '../store'
 import { billing } from '../../services/api/index'
 import { slices } from '../../utils/constants'
 import { getFilterConditons, getPageParms, searchArray, setUlrParms, sortArray } from '../../utils/helpers'
+import axios from 'axios'
 
 const initialState: any = {
     MasterData: [],
@@ -16,7 +17,8 @@ const initialState: any = {
     total: 0,
     searchValue: "",
     sortElement: null,
-    filterValue: []
+    filterValue: [],
+    download: ""
 }
 
 export const billingSlice = createSlice({
@@ -43,6 +45,10 @@ export const billingSlice = createSlice({
             state.PageData = action.payload.data
             state.page = action.payload.page
             state.take = action.payload.take
+        },
+        downloadInvoiceData: (state, action) => {
+            state.download = action.payload.data
+            state.isLoading = false
         },
         setSearchData: (state, action) => {
             state.PageData = action.payload.data
@@ -106,6 +112,84 @@ export const runFilters = ({ page, take, sort }: any) => {
     }
 }
 export const loadInvoices = (parms: any) => {
+    return async () => {
+        try {
+            const response = await billing.loadInvoices(parms)
+            const d = response.data.Invoices
+            if (response) {
+                dispatch(billingSlice.actions.loadInvoices({ data: d }))
+                const pg = getPageParms(d.length)
+                dispatch(ChangePageBilling(pg.curr, pg.take))
+            } else {
+                dispatch(billingSlice.actions.hasError())
+                dispatch(billingSlice.actions.loadInvoices({ data: [] }))
+                dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
+            }
+            return d
+        } catch (error) {
+            dispatch(billingSlice.actions.hasError())
+            dispatch(billingSlice.actions.loadInvoices({ data: [] }))
+            dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
+        }
+    }
+}
+export const viewInvoice = (id: any) => {
+    return async () => {
+        try {
+            const response = await billing.viewInvoice(id)
+            const d = response.data.Invoices
+            if (response) {
+                dispatch(billingSlice.actions.loadInvoices({ data: d }))
+                const pg = getPageParms(d.length)
+                dispatch(ChangePageBilling(pg.curr, pg.take))
+            } else {
+                dispatch(billingSlice.actions.hasError())
+                dispatch(billingSlice.actions.loadInvoices({ data: [] }))
+                dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
+            }
+            return d
+        } catch (error) {
+            dispatch(billingSlice.actions.hasError())
+            dispatch(billingSlice.actions.loadInvoices({ data: [] }))
+            dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
+        }
+    }
+}
+export const downloadBillingInvoice = (title: any) => {
+    return async () => {
+
+        await axios({ url:'https://imageio.forbes.com/specials-images/imageserve/5ef3f7eec4f2390006f0c356/GUI--Graphical-User-Interface--concept-/960x0.jpg?format=jpg&width=960',
+        method:'GET',
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+          },
+        responseType:'blob'}).then((res)=>{
+            const url = window.URL.createObjectURL(new Blob([res.data]))
+            const link = document.createElement('a')
+            link.href = url
+            link.setAttribute('download', title)
+            document.body.appendChild(link)
+            link.click() 
+        }).catch(err => {
+            alert(err)
+            console.log(err)
+        })
+        try {
+            const response = await billing.downloadInvoice()
+            const d = response.data.Download_Billing_Invoice.Billing_invoice_download_link
+            if (response) {
+                dispatch(billingSlice.actions.downloadInvoiceData({ data: d }))
+            } else {
+                dispatch(billingSlice.actions.hasError())
+            }
+            return d
+        } catch (error) {
+            dispatch(billingSlice.actions.hasError())
+        }
+    }
+}
+export const downloadBillingInvoiceCDR = (parms: any) => {
     return async () => {
         try {
             const response = await billing.loadInvoices(parms)
