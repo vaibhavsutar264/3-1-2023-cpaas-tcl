@@ -13,8 +13,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import useLocales from '../../../hooks/useLocales'
-import Time from '../icons/time'
-import Pdf from '../icons/pdf'
+import Time from '../icons/Time'
+import Pdf from '../icons/Pdf'
 import Ticket from '../icons/ticket'
 import Download from '../icons/download'
 import { Actions } from './Actions'
@@ -27,144 +27,149 @@ import MultiSelect from '../elements/multiSelect'
 import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
 }))
 
 const DataTable = ({
-  TableData,
-  sortAction,
-  Total,
-  pageAction,
-  take,
-  filterAction,
-  page
+    TableData,
+    sortAction,
+    Total,
+    pageAction,
+    take,
+    filterAction,
+    page,
+    handleShow
 }: any) => {
-  const { t } = useLocales()
-  const { data, columns, tableName } = TableData
-  const dispatch = useAppDispatch();
-  const totalCount = Math.ceil(Total / take)
-  const [sortdir, setSortdir]: any = useState(null)
+    const { t } = useLocales()
+    const { data, columns, tableName } = TableData
+    const dispatch = useAppDispatch();
+    const totalCount = Math.ceil(Total / take)
+    const [sortdir, setSortdir]: any = useState(null)
 
-  const changeTake = (take: any) => {
-    updateData(page, take)
-  }
-
-  const changePage = (da: any, pageNumber: any) => {
-    updateData(pageNumber, take)
-  }
-
-  const updateData = (page: any, take: any) => {
-    dispatch(pageAction(page, take))
-    setUlrParms(page, take)
-  }
-  const sort = (head: any) => {
-    if (head.sort) {
-      dispatch(sortAction(head, sortdir === -1 ? 1 : -1));
-      setSortdir(sortdir === -1 ? 1 : -1)
+    const changeTake = (take: any) => {
+        updateData(page, take)
     }
 
-  }
+    const changePage = (da: any, pageNumber: any) => {
+        updateData(pageNumber, take)
+    }
 
-  const handleDownload = (title: any) =>{
-    dispatch(downloadBillingInvoice(title))
-  }
+    const updateData = (page: any, take: any) => {
+        dispatch(pageAction(page, take))
+        setUlrParms(page, take)
+    }
+    const sort = (head: any) => {
+        if (head.sort) {
+            dispatch(sortAction(head, sortdir === -1 ? 1 : -1));
+            setSortdir(sortdir === -1 ? 1 : -1)
+        }
 
-  return (
-    <>
-      <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
-      <p data-testid="para-element"></p>
-      <TableContainer
-        component={Paper}
-        className="table__Container"
-      >
-        <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-          <TableHead className="TableHead">
-            <TableRow id="table-head">
-              <StyledTableCell>
-                <a href="/">
-                  <MoreVertIcon />
-                </a>{' '}
-              </StyledTableCell>
+    }
 
-              {/* Table Heads */}
-              {columns.map((head: any, index: any) => (
-                <StyledTableCell key={`${head.headTrans}${index}`} align="right">
-                  <div className="th_wrapper">
-                    <button className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
-                      {t<string>(`tables.${tableName}.${head.headTrans}`)}
-                    </button>
-                    <span>
-                      {' '}
-                      {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
-                      {' '}
-                    </span>
-                  </div>
-                </StyledTableCell>
-              ))}
+    const handleDownload = (title: any) => {
+        dispatch(downloadBillingInvoice(title))
+    }
 
-              <StyledTableCell align="right">
-                <div className="th_wrapper">
-                  <span>&nbsp;</span>
-                </div>
-              </StyledTableCell>
-            </TableRow>
-          </TableHead>
-          {/* Table Body */}
-          <TableBody data-testid="table-body-element" className="TableBody" data->
-            {data && data.map((item: any, index: any) => (
-              <TableRow id="table-data" key={item.id}>
-                <TableCell component="th" scope="row">
-                  {' '}
-                  <a href="/">
-                    <Time />
-                  </a>{' '}
-                </TableCell>
-                {columns.map((clm: any, index: any) => (
-                  <TableCell key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
-                    {item[clm.eleName]}{' '}
-                  </TableCell>
-                ))}
-                <TableCell style={{ width: 160 }} align="right">
-                  <ul className="actionButtons">
-                    <li className="actionButton__item">
-                      <a href="/">
-                        <Pdf />
-                      </a>
-                    </li>
-                    <li className="actionButton__item">
-                      <a href="/invoices/raiseticket">
-                        <Ticket />
-                      </a>
-                    </li>
-                    </ul>
-                    <button 
-                      className="actionButton__item"
-                      onClick={(e)=> handleDownload('image.png')}
-                    >
-                        <Download />
-                      </button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Stack
-        spacing={3}
-        sx={{
-          marginTop: 3,
-        }}
-      >
-        <Pagination onChange={changePage} page={page} className="tablePag" count={totalCount} variant="outlined" shape="rounded" />
-      </Stack>
-    </>
-  )
+    return (
+        <>
+            <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
+            <p data-testid="para-element"></p>
+            <TableContainer
+                component={Paper}
+                className="table__Container"
+            >
+                <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+                    <TableHead className="TableHead">
+                        <TableRow id="table-head">
+                            <StyledTableCell>
+                                <a href="/">
+                                    <MoreVertIcon />
+                                </a>{' '}
+                            </StyledTableCell>
+
+                            {/* Table Heads */}
+                            {columns.map((head: any, index: any) => (
+                                <StyledTableCell key={`${head.headTrans}${index}`} align="right">
+                                    <div className="th_wrapper">
+                                        <button className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
+                                            {t<string>(`tables.${tableName}.${head.headTrans}`)}
+                                        </button>
+                                        <span>
+                                            {' '}
+                                            {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
+                                            {' '}
+                                        </span>
+                                    </div>
+                                </StyledTableCell>
+                            ))}
+
+                            <StyledTableCell align="right">
+                                <div className="th_wrapper">
+                                    <span>&nbsp;</span>
+                                </div>
+                            </StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    {/* Table Body */}
+                    <TableBody data-testid="table-body-element" className="TableBody" data->
+                        {data && data.map((item: any, index: any) => (
+                            <TableRow id="table-data" key={item.id}>
+                                <TableCell component="th" scope="row">
+                                    {' '}
+                                    <a href="/">
+                                        <Time />
+                                    </a>{' '}
+                                </TableCell>
+                                {columns.map((clm: any, index: any) => (
+                                    <TableCell key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
+                                        {item[clm.eleName]}{' '}
+                                    </TableCell>
+                                ))}
+                                <TableCell style={{ width: 160 }} align="right">
+                                    <ul className="actionButtons">
+                                        <li className="actionButton__item">
+                                            <a href="/">
+                                                <Pdf />
+                                            </a>
+                                        </li>
+                                        <li className="actionButton__item">
+                                            <a href="/invoices/raiseticket" onClick={(e) => {
+                                                e.preventDefault();
+                                                console.log('have started working out');
+                                                handleShow();
+                                            }}>
+                                                <Ticket />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <button
+                                        className="actionButton__item"
+                                        onClick={(e) => handleDownload('image.png')}
+                                    >
+                                        <Download />
+                                    </button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <Stack
+                spacing={3}
+                sx={{
+                    marginTop: 3,
+                }}
+            >
+                <Pagination onChange={changePage} page={page} className="tablePag" count={totalCount} variant="outlined" shape="rounded" />
+            </Stack>
+        </>
+    )
 }
 
 export default DataTable

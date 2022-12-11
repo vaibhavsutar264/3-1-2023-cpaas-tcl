@@ -359,6 +359,7 @@
         border-radius: 16px;
         padding: 50px 40px;
 
+
         .cardType__inner {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -382,12 +383,137 @@
                     font-size: 40px;
                     line-height: 46px;
                     letter-spacing: -1.6px;
-                    color: black;
+                    color: rgb(26, 115, 232);
                     margin: 0;
                     opacity: 1;
                 }
             }
         }
+
+        &:nth-child(1) {
+
+            & .cardType__inner {
+
+                & .cardType__text {
+
+                    & h3 {
+                        color: rgb(26, 115, 232) !important;
+                    }
+                }
+            }
+        }
+
+
+        // Card no. 1 hover and active state
+        &:nth-child(1):hover,
+        &:nth-child(1).active {
+            background-color: #fff !important;
+
+            & .cardType__inner {
+
+                & .cardType__icon {
+
+                    & svg path {
+                        fill: rgb(26, 115, 232);
+                    }
+                }
+
+                & .cardType__text {
+
+                    & p {
+                        color: rgb(26, 115, 232) !important;
+                    }
+
+                    & h3 {
+                        color: rgb(26, 115, 232) !important;
+                    }
+                }
+            }
+        }
+
+
+        // Card no. 2 hover and active state
+        &:nth-child(2):hover,
+        &:nth-child(2).active {
+            background-color: #fff !important;
+
+            & .cardType__inner {
+
+                & .cardType__icon {
+
+                    & svg path {
+                        fill: rgb(54, 63, 94);
+                    }
+                }
+
+                & .cardType__text {
+
+                    & p {
+                        color: rgb(54, 63, 94) !important;
+                    }
+
+                    & h3 {
+                        color: rgb(54, 63, 94) !important;
+                    }
+                }
+            }
+        }
+
+        // Card no. 3 hover and active state
+        &:nth-child(3):hover,
+        &:nth-child(3).active {
+            background-color: #fff !important;
+
+            & .cardType__inner {
+
+                & .cardType__icon {
+
+                    & svg path {
+                        fill: rgb(229, 68, 87);
+                    }
+                }
+
+                & .cardType__text {
+
+                    & p {
+                        color: rgb(229, 68, 87) !important;
+                    }
+
+                    & h3 {
+                        color: rgb(229, 68, 87) !important;
+                    }
+                }
+            }
+        }
+
+        // Card no. 4 hover state
+        &:nth-child(4):hover,
+        &:nth-child(4).active {
+            background-color: #fff !important;
+
+            & .cardType__inner {
+
+                & .cardType__icon {
+
+                    & svg path {
+                        fill: rgb(61, 184, 135);
+                    }
+                }
+
+                & .cardType__text {
+
+                    & p {
+                        color: rgb(61, 184, 135) !important;
+                    }
+
+                    & h3 {
+                        color: rgb(61, 184, 135) !important;
+                    }
+                }
+            }
+        }
+
+
     }
 }
 
@@ -721,12 +847,12 @@
 
 
 // Styles for raise ticket input fields
-.raise-ticket-input > div {
+.raise-ticket-input>div {
     margin-left: 0 !important;
     margin-bottom: 32px !important;
 }
 
-.raise-ticket-input > div:last-child {
+.raise-ticket-input>div:last-child {
     margin-bottom: 50px !important;
 }
 
@@ -774,7 +900,7 @@ form.raise-ticket-input .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
 .billing-details-input {
 
     & .css-1ptx2yq-MuiInputBase-root-MuiInput-root:before {
-    border-bottom: 0;
+        border-bottom: 0;
     }
 
     & .css-1w4w5el-MuiFormControl-root-MuiTextField-root {

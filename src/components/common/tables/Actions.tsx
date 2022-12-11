@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import DateRange from './DateRange'
 
 import { CSVLink } from 'react-csv'
 import { typeVar } from '../../../utils/constants'
@@ -37,9 +38,9 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
         data: data,
     }
 
-    const handleDownload = (title: any) =>{
+    const handleDownload = (title: any) => {
         dispatch(downloadBillingInvoice(title))
-      }
+    }
 
     return (
         <div className="action__elements">
@@ -57,7 +58,10 @@ export const Actions = ({ data, pagination, changeTake }: { data: [], pagination
                     </div>
                 </div>
             </div>
-            <div className="action__elementItem">{t<string>('datePicker')}</div>
+            {/* <div className="action__elementItem">{t<string>('datePicker')}</div> */}
+            <div className="action__elementItem" id='date-picker'>
+                <DateRange />
+            </div>
             <div className="action__elementItem">
                 <a href="/" className="iconCta">
                     <span className="icon">

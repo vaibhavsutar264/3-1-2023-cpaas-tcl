@@ -1,4 +1,10 @@
 import * as React from 'react'
+import { useEffect, useState } from 'react'
+import { Toggle } from '../../../themes/Toggle'
+import { useDarkMode } from '../../../themes/useDarkMode'
+import { appThemes } from '../../../utils/constants'
+import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
+
 
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 
@@ -15,6 +21,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../../assets/images/CPaaSLogo.png'
+import DarkLogo from '../../../assets/images/CPaaSLogo-dark.png'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
@@ -64,12 +71,19 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
         setLanguage(event.target.value)
     }
 
+    const [theme, toggleTheme2] = useDarkMode()
+    const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
+    console.log(themeMode.body);
+
+
+
+
     return (
         <>
             <div className="dashboard__navbar" id="sidebar-top">
                 <div className="dashboard__container">
                     <Link className="logo" to="/">
-                        <img src={Logo} alt="CPAAS TCL" />
+                        <img id='tata-logo-invoice' src={themeMode.body == '#fff !important' ? DarkLogo : Logo} alt="CPAAS TCL" />
                     </Link>
                     <div className="right__elements">
                         <div className="right__elementsItem search__group">
@@ -83,6 +97,12 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                 }}
                             >
                                 <InputBase
+                                    onFocus={(e) => {
+                                        e.target.placeholder = '';
+                                    }}
+                                    onBlur={(e) => {
+                                        e.target.placeholder = `${t<string>('searchProductsOrdersAndClients')}`
+                                    }}
                                     sx={{ ml: 1, flex: 1 }}
                                     placeholder={t<string>('searchProductsOrdersAndClients')}
                                     inputProps={{
@@ -181,9 +201,9 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                         </div>
                                         <div className="profile__content">
                                             <p className="name">Tushar Bodke</p>
-                                            <p className="deg">Admin</p>
+                                            <p className="deg">{t<string>('admin')}</p>
                                             <p className="status">
-                                                Last Activity: 2 Aug, 2022 at 5:30pm
+                                                {t<string>('lastActivity')}: 2 Aug, 2022 {t<string>('at')} 5:30{t<string>('amPm')}
                                             </p>
                                         </div>
                                     </div>
@@ -194,7 +214,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                         <span className="icon">
                                             <Setting />
                                         </span>
-                                        <span className="text">Setting</span>
+                                        <span className="text">{t<string>('setting')}</span>
                                     </a>
                                 </MenuItem>
                                 <MenuItem onClick={handleClose}>
@@ -202,7 +222,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                         <span className="icon">
                                             <Setting />
                                         </span>
-                                        <span className="text">Change Password</span>
+                                        <span className="text">{t<string>('changePassword')}</span>
                                     </a>
                                 </MenuItem>
                                 <Divider />
@@ -211,7 +231,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                     <span className="icon">
                                         <Setting />
                                     </span>
-                                    <span className="text">Logout</span>
+                                    <span className="text">{t<string>('logout')}</span>
                                     {/* </a> */}
                                 </MenuItem>
                             </Menu>
