@@ -88,7 +88,7 @@ export const login = (userData: UserLogin) => {
 
         const user = { token : token, email : userData.username }
 
-        const resp = { message: data.data.message, user }
+        const resp = { user }
         dispatch(userSlice.actions.loginSuccess(resp))
       }
     }  catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
