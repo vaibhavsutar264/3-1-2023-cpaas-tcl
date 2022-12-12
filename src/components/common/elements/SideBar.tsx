@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { Toggle } from '../../../themes/Toggle'
 import { useDarkMode } from '../../../themes/useDarkMode'
-import { appThemes } from '../../../utils/constants'
+import { appThemes, localStorageVar, typeVar } from '../../../utils/constants'
 import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
 
 
@@ -28,12 +28,11 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import Paper from '@mui/material/Paper'
 import SearchIcon from '@mui/icons-material/Search'
 import { availableLanguages } from '../../../i18n'
-import { setInLocalStorage } from '../../../hooks/useLocalStorage'
-import { typeVar } from '../../../utils/constants'
+import { getFromLocalStorage, setInLocalStorage } from '../../../hooks/useLocalStorage'
 import useLocales from '../../../hooks/useLocales'
 import { useTranslation } from 'react-i18next'
-import { logout } from '../../../redux/slices/authSlice'
-import { useDispatch } from '../../../redux/store'
+import { logout, userInfo } from '../../../redux/slices/authSlice'
+import { useDispatch, useSelector } from '../../../redux/store'
 import Setting from '../icons/setting'
 import Dashboard from '../icons/dashboard'
 import UserManagement from '../icons/userManagement'
@@ -49,6 +48,8 @@ type SidebarProps = {
 
 export const SideBar = ({ toggleTheme }: SidebarProps) => {
     const dispatch = useDispatch()
+    const {firstName, lastName, emailId} = useSelector((state: any) => state.auth.userInfo || []);
+    const {email} = useSelector((state: any) => state.auth.user || []);
     const { i18n } = useTranslation()
     const { t } = useLocales()
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -75,9 +76,11 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
     console.log(themeMode.body);
 
+    useEffect(() => {
+        dispatch(userInfo())
+    }, [])
 
-
-
+    
     return (
         <>
             <div className="dashboard__navbar" id="sidebar-top">
@@ -181,7 +184,11 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                     src=""
                                     sx={{ width: 25, height: 25 }}
                                 />
-                                <span className="userName">Tushar Bodke</span>
+                                {getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null ? (
+                                    (email === emailId)?(<span className="userName">{firstName}</span>) : <span className="userName">User</span>
+                                    ) : (
+                                        <span className="userName">Tushar Bodke</span>
+                                  )}
                                 <ArrowDropDownIcon className="dropArrow" />
                             </Button>
                             <Menu
@@ -200,7 +207,11 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                             <Avatar alt="Remy Sharp" src="" />
                                         </div>
                                         <div className="profile__content">
-                                            <p className="name">Tushar Bodke</p>
+                                        {getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null ? (
+                                            <p className="name">{firstName}</p>
+                                            ) : (
+                                              <p className="name">User</p>
+                                          )}
                                             <p className="deg">{t<string>('admin')}</p>
                                             <p className="status">
                                                 {t<string>('lastActivity')}: 2 Aug, 2022 {t<string>('at')} 5:30{t<string>('amPm')}

@@ -19,6 +19,7 @@ const initialState: AuthState = {
   isAuthenticated: false,
   message: '',
   emailSent: '',
+  userInfo:''
 }
 
 export const userSlice = createSlice({
@@ -40,6 +41,14 @@ export const userSlice = createSlice({
       state.isSuccess = true
       state.isError = false
       state.user = action.payload.user
+      state.isAuthenticated = true
+      state.message = action.payload.message
+    },
+    getUserInfoSuccess: (state, action) => {
+      state.isLoading = false
+      state.isSuccess = true
+      state.isError = false
+      state.userInfo = action.payload
       state.isAuthenticated = true
       state.message = action.payload.message
     },
@@ -86,10 +95,34 @@ export const login = (userData: UserLogin) => {
         const token: any = data.data.data.access_token
         if (token) { setInLocalStorage(localStorageVar.TOKEN_VAR, token) }
 
-        const user = { token : token, email : userData.username }
+        const user = { token : token, email : userData.email }
 
         const resp = { user }
         dispatch(userSlice.actions.loginSuccess(resp))
+      }
+    }  catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
+      dispatch(userSlice.actions.hasError(data))
+    }
+  }
+}
+
+
+export const userInfo = () => {
+  dispatch(userSlice.actions.startLoading())
+  return async () => {
+    try {
+      const response: any = await userLoginData.getUserInfo()
+      const { data } = response
+      if (response) {
+        const firstName: any = data.data.data.firstname
+        const lastName: any = data.data.data.lastName
+        const emailId: any = data.data.data.emailId
+
+        console.log(firstName)
+        const user = { firstName : firstName, lastName : lastName, emailId : emailId }
+
+        // const resp = { user }
+        dispatch(userSlice.actions.getUserInfoSuccess(user))
       }
     }  catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
       dispatch(userSlice.actions.hasError(data))

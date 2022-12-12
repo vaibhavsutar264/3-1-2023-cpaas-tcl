@@ -51,6 +51,8 @@ const userLoginData = {
     requests.post(`${routes.BASE_URL}${routes.FORGOT_PASSWORD}`, body),
   resetPassword: (token: any, body: any) =>
     requests.post(`${routes.BASE_URL}${routes.RESET_PASSWORD}/${token}`, body),
+  getUserInfo: () =>
+    requests.get(`${routes.BASE_URL}${routes.GET_USER_INFO}`)
 }
 
 const billing = {

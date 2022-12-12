@@ -7,6 +7,7 @@ export type AuthState = {
   isAuthenticated: boolean
   message: string | undefined
   emailSent: string | undefined
+  userInfo:any
 }
 
 export type AuthUser = {

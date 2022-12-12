@@ -7,12 +7,13 @@ export const apiRoutes = {
   SET_PASSWORD: '/api/v1/auth/password',
   FORGOT_PASSWORD: '/api/v1/password/forgot',
   RESET_PASSWORD: '/api/v1/password/reset',
+  GET_USER_INFO: '/cpaas/userinfo',
   LOGOUT: '/api/v1/logout',
 
   // Billing
   GET_INVOICES: '/orchestration/billing/invoices/getInvoices',
   VIEW_INVOICES: '/result_data/Download_Billing_Invoice',
-  DOWNLOAD_INVOICES: '/result_data/Download_Billing_Invoice',
+  DOWNLOAD_INVOICES: '/Download_Billing_Invoice',
   DOWNLOAD_INVOICES_CDR: '/result_data/Download_Billing_InvoiceCDR',
 }
 
@@ -45,6 +46,20 @@ export const thunkPaths = {
 export const slices = {
   AUTH_SLICE: 'auth',
   BILLING_SLICE: 'billing',
+}
+
+export const billingKeys = {
+  INVOICE_NUMBER: 'invoiceNumber',
+  CUSTOMER_LE: 'customerLe',
+  TATA_ENTITY: 'tataEntity',
+  PO_NUMBER: 'poNumber',
+  PAYMENT_STATUS: 'paymentStatus',
+  INVOICE_AMOUNT: 'invoiceAmount',
+  CURRENCY: 'currency',
+  INVOICE_DATE: 'invoiceDate',
+  DUE_DATE: 'dueDate',
+  PAYMENT_DATE_TIME: 'paymentDateTime',
+  TIME_ZONE: 'timeZone',
 }
 
 export const typeVar = {
@@ -92,9 +107,9 @@ export const dataTables = {
   BILLING: (values: [], masterData = []) => ({
     data: values,
     columns: [
-      { eleName: 'invoiceNumber', headTrans: 'id', sort: true, filter: false },
+      { eleName: 'Invoice_no', headTrans: 'id', sort: true, filter: false },
       {
-        eleName: 'customerLe',
+        eleName: 'Customer_LE',
         headTrans: 'customerLe',
         sort: true,
         filter: true,
@@ -104,13 +119,13 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'tataEntity',
+        eleName: 'Tata_Entity',
         headTrans: 'entity',
         sort: true,
         filter: false,
       },
       {
-        eleName: 'poNumber',
+        eleName: 'PO_number',
         headTrans: 'poNo',
         sort: true,
         filter: true,
@@ -120,7 +135,7 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'paymentStatus',
+        eleName: 'Payment_Status',
         headTrans: 'status',
         sort: true,
         filter: true,
@@ -130,7 +145,7 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'invoiceAmount',
+        eleName: 'Invoice_amt',
         headTrans: 'invoiceAmount',
         sort: true,
         filter: true,
@@ -140,12 +155,12 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'invoiceDate',
+        eleName: 'Invoice_date',
         headTrans: 'invoiceIssuedDate',
         sort: true,
         filter: false,
       },
-      { eleName: 'dueDate', headTrans: 'dueDate', sort: true, filter: false },
+      { eleName: 'Due_date', headTrans: 'dueDate', sort: true, filter: false },
     ],
     tableName: 'billing',
   }),

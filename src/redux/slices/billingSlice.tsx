@@ -161,12 +161,12 @@ export const downloadBillingInvoice = (title: any) => {
     dispatch(billingSlice.actions.startLoading())
     return async () => {
         // const response = await billing.downloadInvoice()
-        // await axios({ url: `${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`,
-        await axios({ url: "https://imageio.forbes.com/specials-images/imageserve/5ef3f7eec4f2390006f0c356/GUI--Graphical-User-Interface--concept-/960x0.jpg?format=jpg&width=960",
+        await axios({ url: `${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`,
+        // await axios({ url: "https://imageio.forbes.com/specials-images/imageserve/5ef3f7eec4f2390006f0c356/GUI--Graphical-User-Interface--concept-/960x0.jpg?format=jpg&width=960",
         method:'GET',
         responseType:'blob'}).then((res)=>{
             // const response = res.data.Billing_invoice_download_link
-            const url = window.URL.createObjectURL(new Blob([res.data]))
+            const url = window.URL.createObjectURL(new Blob([res.data.Billing_invoice_download_link]))
             // console.log(res.data.Billing_invoice_download_link)
             const link = document.createElement('a')
             link.href = url
