@@ -34,6 +34,7 @@ export const lightTheme = {
     sidebarLinkColor: '#52626F',
     sidebarSvgPathColor: '#52626F',
     languageColor: '#344857',
+    languageTopColor: '#222',
     languageSvgColor: '#344857 !important',
     usernameColor: '#344857',
     usernameSvgColor: '#344857 !important',
@@ -97,7 +98,8 @@ export const darkTheme = {
     sidebarActiveLinkBg: '#25292E',
     sidebarLinkColor: '#787785',
     sidebarSvgPathColor: '#787785',
-    languageColor: '#fff',
+    languageColor: '#344857',
+    languageTopColor: '#fff',
     languageSvgColor: '#fff !important',
     usernameColor: '#fff',
     usernameSvgColor: '#fff !important',
@@ -120,7 +122,7 @@ export const darkTheme = {
     tableBodyTdColor: '#fff',
     formTitleColor: '#fff !important',
     forgotPasswordColor: '#9D9FA1',
-    inputBorderColor: '#fff !important',
+    inputBorderColor: 'transparent !important',
     inputFieldBg: '#fff !important',
     inputLabelColor: '#787785',
     mailIconColor: '#787785',
@@ -265,6 +267,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   .dashboard__sidebar .sidebar__list .list__item .item__link .link__text {
     color: ${({ theme }) => theme.sidebarLinkColor};
+  }
+  [aria-expanded=false] #language, [aria-expanded=true] #language {
+    color: ${({ theme }) => theme.languageTopColor};
   }
   #language {
     color: ${({ theme }) => theme.languageColor};

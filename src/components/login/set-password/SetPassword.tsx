@@ -349,6 +349,7 @@ const SetPassword = () => {
                             <FormGroup>
                                 <FormControl
                                     className="input-wrapper yes-margin"
+                                    data-margin={true}
                                     id="password-box"
                                     sx={{
                                         display: 'flex',

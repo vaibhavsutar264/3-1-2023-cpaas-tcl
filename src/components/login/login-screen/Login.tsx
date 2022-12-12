@@ -198,6 +198,7 @@ const Login = () => {
                                 <FormGroup>
                                     <FormControl
                                         className="input-wrapper yes-margin"
+                                        data-margin={true}
                                         id="email-box"
                                         sx={{
                                             display: 'flex',

@@ -403,7 +403,8 @@
                         }
                     }
 
-                    &.yes-margin {
+                    &.yes-margin,
+                    &[data-margin=true] {
                         // margin-top: 71px !important;
                         margin-top: 5vh !important;
                         margin-bottom: 5vh !important;
@@ -426,9 +427,13 @@
                     .MuiFormControl-root {
                         label {
                             left: 70px;
-                            // top: 7px;
+
+                            top: 7px;
+
                             // arhan input code
-                            top: -4px;
+                            @media only screen and (max-width: 1400px) {
+                                top: -4px;
+                            }
 
                             text-align: left;
                             font-weight: normal;
@@ -594,6 +599,11 @@
     margin-right: 20px !important;
     margin-top: -30px !important;
     background: #c9c9c94d !important;
+
+    @media only screen and (max-width: 1400px) {
+        position: relative;
+        top: 7px;
+    }
 
     svg {
         font-size: 1rem !important;
@@ -1164,7 +1174,7 @@ MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiPaper-r
 #login-form {
     height: auto;
     max-height: 70vh;
-    overflow: hidden;
+    // overflow: hidden;
     top: 20vh;
     padding-top: 5vh;
     padding-bottom: 5vh;
