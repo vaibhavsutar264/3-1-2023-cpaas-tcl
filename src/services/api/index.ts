@@ -59,7 +59,7 @@ const billing = {
   viewInvoice: (data: any) =>
     requests.get(`${routes.BASE_URL}${routes.VIEW_INVOICES}`),
   downloadInvoice: () =>
-    axios.post(`${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`),
+    axios.get(`${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`),
   downloadInvoiceCdr: (data: any) =>
     requests.get(`${routes.BASE_URL}${routes.DOWNLOAD_INVOICES_CDR}`),
 }

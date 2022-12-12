@@ -40,6 +40,7 @@ import { typeVar } from '../../../utils/constants'
 import { base64Encode } from '../../../utils/Base64EncodeDecode'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
+import { useNavigate } from 'react-router-dom'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -64,6 +65,7 @@ interface State {
 }
 
 const SetPassword = () => {
+    const navigate = useNavigate()
     const [uFulfilled, setUFulfilled] = useState(false);
     const [lFulfilled, setLFulfilled] = useState(false);
     const [sFulfilled, setSFulfilled] = useState(false);
@@ -117,6 +119,7 @@ const SetPassword = () => {
                 username: user.email
             }
             await dispatch(updatePassword(userPassword))
+            navigate('/invoices')
         } catch (error) {
             console.error(error)
         }
