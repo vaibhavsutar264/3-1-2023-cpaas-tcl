@@ -35,6 +35,7 @@ declare module 'styled-components' {
         sidebarLinkColor: string
         sidebarSvgPathColor: string
         languageColor: string
+        languageTopColor: string
         languageSvgColor: string
         usernameColor: string
         usernameSvgColor: string
