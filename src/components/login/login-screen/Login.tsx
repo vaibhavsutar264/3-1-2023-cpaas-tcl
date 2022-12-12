@@ -98,8 +98,8 @@ const Login = () => {
         validationSchema: schema,
         onSubmit: () => {
             const userDetails: UserLogin = {
-                username: email,
-                password: base64Encode(password),
+                email: email,
+                password: password,
             }
             dispatch(login(userDetails))
         },

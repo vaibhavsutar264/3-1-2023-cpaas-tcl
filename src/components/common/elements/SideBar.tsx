@@ -227,12 +227,10 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                 </MenuItem>
                                 <Divider />
                                 <MenuItem onClick={handelLogout}>
-                                    {/* <a  className="profile__dropLink"> */}
                                     <span className="icon">
                                         <Setting />
                                     </span>
                                     <span className="text">{t<string>('logout')}</span>
-                                    {/* </a> */}
                                 </MenuItem>
                             </Menu>
                         </div>

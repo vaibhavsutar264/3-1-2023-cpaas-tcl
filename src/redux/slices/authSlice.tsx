@@ -81,8 +81,9 @@ export const login = (userData: UserLogin) => {
       const response: any = await userLoginData.login(userData)
       const { data } = response
       if (response) {
+        console.log(response)
         setInLocalStorage(localStorageVar.USER_VAR, JSON.stringify(data.data.data))
-        const token: any = data.data.access_token
+        const token: any = data.data.data.access_token
         if (token) { setInLocalStorage(localStorageVar.TOKEN_VAR, token) }
 
         const user = { token : token, email : userData.username }

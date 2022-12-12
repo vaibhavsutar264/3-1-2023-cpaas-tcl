@@ -4,6 +4,7 @@ import { billing } from '../../services/api/index'
 import { slices } from '../../utils/constants'
 import { getFilterConditons, getPageParms, searchArray, setUlrParms, sortArray } from '../../utils/helpers'
 import axios from 'axios'
+import routes from '../../services/api/routes'
 
 const initialState: any = {
     MasterData: [],
@@ -115,7 +116,8 @@ export const loadInvoices = (parms: any) => {
     return async () => {
         try {
             const response = await billing.loadInvoices(parms)
-            const d = response.data.Invoices
+            const d = response.data.result_data.Invoices
+            console.log(response)
             if (response) {
                 dispatch(billingSlice.actions.loadInvoices({ data: d }))
                 const pg = getPageParms(d.length)
@@ -156,23 +158,25 @@ export const viewInvoice = (id: any) => {
     }
 }
 export const downloadBillingInvoice = (title: any) => {
+    dispatch(billingSlice.actions.startLoading())
     return async () => {
-
-        await axios({ url:'https://imageio.forbes.com/specials-images/imageserve/5ef3f7eec4f2390006f0c356/GUI--Graphical-User-Interface--concept-/960x0.jpg?format=jpg&width=960',
+        // const response = await billing.downloadInvoice()
+        // await axios({ url: `${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`,
+        await axios({ url: "https://imageio.forbes.com/specials-images/imageserve/5ef3f7eec4f2390006f0c356/GUI--Graphical-User-Interface--concept-/960x0.jpg?format=jpg&width=960",
         method:'GET',
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-          },
         responseType:'blob'}).then((res)=>{
+            // const response = res.data.Billing_invoice_download_link
             const url = window.URL.createObjectURL(new Blob([res.data]))
+            // console.log(res.data.Billing_invoice_download_link)
             const link = document.createElement('a')
             link.href = url
             link.setAttribute('download', title)
             document.body.appendChild(link)
             link.click() 
+            dispatch(billingSlice.actions.downloadInvoiceData(res))
         }).catch(err => {
             alert(err)
+            dispatch(billingSlice.actions.hasError())
             console.log(err)
         })
         // try {
