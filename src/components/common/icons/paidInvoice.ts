@@ -1,6 +1,6 @@
 import { typeVar } from '../../../utils/constants'
-
-const UnpaidInvoice = () => {
+// comment
+const PaidInvoice = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -15,10 +15,9 @@ const UnpaidInvoice = () => {
                 transform="translate(-568.463 -402.501)"
             >
                 <path
-                    id="Path_13757"
-                    data-name="Path 13757"
+                    id="Path_13755"
+                    data-name="Path 13755"
                     d="M569.487,405.357c-.065.851,0,36.053,0,36.053l5.693-4.776,5.3,6.02,5.365-6.02,5.5,6.02,5.431-6.02,5.365,4.776-.393-37.1a14.6,14.6,0,0,0-4.973-.785H571.058S569.553,404.507,569.487,405.357Z"
-                    transform="translate(-0.145 -0.652)"
                     fill="#fff"
                     opacity="0.15"
                 />
@@ -34,10 +33,10 @@ const UnpaidInvoice = () => {
                     strokeWidth="1"
                 />
                 <path
-                    id="Path_13756"
-                    data-name="Path 13756"
-                    d="M199.872,117.693a1.105,1.105,0,0,0-1.563,0l-4.534,4.534-4.534-4.534a1.105,1.105,0,0,0-1.563,1.563l4.534,4.533-4.533,4.534a1.105,1.105,0,1,0,1.563,1.563l4.534-4.534,4.534,4.534a1.105,1.105,0,1,0,1.563-1.563l-4.534-4.534,4.534-4.534a1.105,1.105,0,0,0,0-1.563Z"
-                    transform="translate(391.879 295.839)"
+                    id="Path_13754"
+                    data-name="Path 13754"
+                    d="M208.651,169.916l-7.852,7.852-3.475-3.474a1.1,1.1,0,0,0-1.56,1.56l4.241,4.241a1.08,1.08,0,0,0,.766.328,1.035,1.035,0,0,0,.766-.328l8.591-8.591a1.09,1.09,0,0,0,0-1.56,1.016,1.016,0,0,0-1.477-.027Z"
+                    transform="translate(383.706 244.548)"
                     fill="#fff"
                 />
             </g>
@@ -45,4 +44,4 @@ const UnpaidInvoice = () => {
     )
 }
 
-export default UnpaidInvoice
+export default PaidInvoice
