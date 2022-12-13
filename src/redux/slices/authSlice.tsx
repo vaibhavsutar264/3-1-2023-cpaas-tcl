@@ -105,8 +105,8 @@ export const login = (userData: UserLogin) => {
         }
       }
     } catch (response: any) {
-      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
-      toast.error(data.data.message)
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
+      toast.error(data.message)
       dispatch(userSlice.actions.hasError(data))
     }
   }
@@ -152,8 +152,8 @@ export const logout = (body: any) => {
         removeFromLocalStorage(localStorageVar.USER_VAR)
       }
     } catch (response: any) {
-      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
-      toast.error(data.data.message)
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
+      toast.error(data.message)
       removeFromLocalStorage(localStorageVar.TOKEN_VAR)
       removeFromLocalStorage(localStorageVar.USER_VAR)
       dispatch(userSlice.actions.logOutSuccess())
@@ -186,8 +186,8 @@ export const forgotPassword = (userEmail: Email) => {
         dispatch(userSlice.actions.hasError(null))
       }
     } catch (response: any) {
-      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
-      toast.error(data.data.message)
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
+      toast.error(data.message)
       dispatch(userSlice.actions.hasError(data))
     }
   }
@@ -208,8 +208,8 @@ export const resetPassword = (body: any) => {
         }
       }
     } catch (response: any) {
-      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
-      toast.error(data.data.message)
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
+      toast.error(data.message)
       dispatch(userSlice.actions.hasError(data))
     }
   }
