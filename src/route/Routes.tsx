@@ -28,6 +28,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.RAISE_TICKET, element: <RaiseTicket /> },
                 { path: appRoutes.BILLING_DETAILS, element: <BillingDetails /> },
                 { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
+                { path: appRoutes.PDFVIEWER, element: <PdfViewer /> },
             ],
         },
         {
@@ -58,5 +59,6 @@ const Billing = Loadable(lazy(() => import('../components/billing/Billing')));
 const InvoiceBill = Loadable(lazy(() => import('../components/billing/InvoiceBill')));
 const RaiseTicket = Loadable(lazy(() => import('../components/billing/RaiseTicket')));
 const BillingDetails = Loadable(lazy(() => import('../components/billing/BillingDetails')));
+const PdfViewer = Loadable(lazy(() => import('../components/common/elements/PdfViewer')));
 
 export default Routes

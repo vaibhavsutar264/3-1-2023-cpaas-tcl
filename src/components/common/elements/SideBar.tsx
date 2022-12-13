@@ -77,8 +77,30 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     console.log(themeMode.body);
 
     useEffect(() => {
+        // const divElement = document.getElementById(
+        //     'sidebar-top'
+        // ) as HTMLDivElement
+        // const imgElement = document.getElementById(
+        //     'tata-logo-invoice'
+        // ) as HTMLImageElement
+        // if(divElement.style.backgroundColor === '#1E2023'){
+        //     imgElement.src = Logo
+        // } else{
+        //     imgElement.src = DarkLogo
+        // }
+        // if(divElement.style.backgroundColor === '#fff'){
+        //     imgElement.src = DarkLogo
+        // } else{
+        //     imgElement.src = DarkLogo
+        // }
+        
         dispatch(userInfo())
-    }, [])
+    }, [dispatch])
+
+    const divElement = document.getElementById(
+        'sidebar-top'
+    ) as HTMLDivElement
+    let getitem = getFromLocalStorage('theme')
 
     
     return (
@@ -86,7 +108,11 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
             <div className="dashboard__navbar" id="sidebar-top">
                 <div className="dashboard__container">
                     <Link className="logo" to="/">
-                        <img id='tata-logo-invoice' src={themeMode.body == '#fff !important' ? DarkLogo : Logo} alt="CPAAS TCL" />
+                    {
+                        (getitem = 'light')? 
+                        (<img id='tata-logo-invoice' src={DarkLogo} alt="CPAAS TCL" />) : 
+                        (<img id='tata-logo-invoice' src={Logo} alt="CPAAS TCL" />)
+                    }
                     </Link>
                     <div className="right__elements">
                         <div className="right__elementsItem search__group">

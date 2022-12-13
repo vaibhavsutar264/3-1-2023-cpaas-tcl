@@ -134,9 +134,7 @@ const DataTable = ({
                                 <TableCell style={{ width: 160 }} align="right">
                                     <ul className="actionButtons">
                                         <li className="actionButton__item">
-                                            <a href="/">
-                                                <Pdf />
-                                            </a>
+                                        
                                         </li>
                                         <li className="actionButton__item">
                                             <a href="/invoices/raiseticket" onClick={(e) => {

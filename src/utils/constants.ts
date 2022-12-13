@@ -87,6 +87,7 @@ export const appRoutes = {
   RESET_PASSWORD: '/password/reset/:token',
   NOT_FOUND: '*',
   BILLING: '/invoices',
+  PDFVIEWER: '/invoices/viewpdf',
   INVOICE: '/invoices/:id',
   RAISE_TICKET: '/invoices/raiseticket',
   INVOICE_BILL: '/invoices/invoicebill',
