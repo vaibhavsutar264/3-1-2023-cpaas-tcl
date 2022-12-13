@@ -56,10 +56,11 @@ const RaiseTicket = ({ handleShow, showIt }: any) => {
             transition: 'transform 350ms 0ms ease-in',
             transform: `translateX(${showIt ? 0 : 100}%)`,
         }}>
-            <CloseIcon sx={{
+            <CloseIcon onClick={handleShow} sx={{
                 position: 'absolute',
                 top: '40px',
                 right: '40px',
+                cursor: 'pointer'
             }} />
             <Stack>
                 <Typography variant='h5' component='h1' sx={{

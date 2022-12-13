@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { Toggle } from '../../../themes/Toggle'
 import { useDarkMode } from '../../../themes/useDarkMode'
-import { appThemes, localStorageVar, typeVar } from '../../../utils/constants'
+import { apiVrbls, appThemes, localStorageVar, typeVar } from '../../../utils/constants'
 import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
 
 
@@ -48,8 +48,7 @@ type SidebarProps = {
 
 export const SideBar = ({ toggleTheme }: SidebarProps) => {
     const dispatch = useDispatch()
-    const {firstName, lastName, emailId} = useSelector((state: any) => state.auth.userInfo || []);
-    const {email} = useSelector((state: any) => state.auth.user || []);
+    const { user } = useSelector((state: any) => state.auth || []);
     const { i18n } = useTranslation()
     const { t } = useLocales()
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -63,15 +62,16 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     }
 
     const handelLogout = () => {
-        dispatch(logout());
-        navigate('/')
+        dispatch(logout({
+            refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
+            username: user[apiVrbls.USER.EMAIL_ID]
+        }));
     }
     const [language, setLanguage] = React.useState('')
 
     const handleChangelanguage = (event: SelectChangeEvent) => {
         setLanguage(event.target.value)
     }
-
     const [theme, toggleTheme2] = useDarkMode()
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
     console.log(themeMode.body);
@@ -79,8 +79,11 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     useEffect(() => {
         dispatch(userInfo())
     }, [])
+    console.log(user);
 
-    
+    if (user == null) {
+        navigate('/')
+    }
     return (
         <>
             <div className="dashboard__navbar" id="sidebar-top">
@@ -184,11 +187,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                     src=""
                                     sx={{ width: 25, height: 25 }}
                                 />
-                                {getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null ? (
-                                    (email === emailId)?(<span className="userName">{firstName}</span>) : <span className="userName">User</span>
-                                    ) : (
-                                        <span className="userName">Tushar Bodke</span>
-                                  )}
+                                <span className="userName">{user?.firstname}</span>
                                 <ArrowDropDownIcon className="dropArrow" />
                             </Button>
                             <Menu
@@ -207,12 +206,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                             <Avatar alt="Remy Sharp" src="" />
                                         </div>
                                         <div className="profile__content">
-                                        {getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null ? (
-                                            <p className="name">{firstName}</p>
-                                            ) : (
-                                              <p className="name">User</p>
-                                          )}
-                                            <p className="deg">{t<string>('admin')}</p>
+                                            <p className="name">{user?.firstname}</p>
+                                            <p className="deg">{user?.firstname}</p>
                                             <p className="status">
                                                 {t<string>('lastActivity')}: 2 Aug, 2022 {t<string>('at')} 5:30{t<string>('amPm')}
                                             </p>

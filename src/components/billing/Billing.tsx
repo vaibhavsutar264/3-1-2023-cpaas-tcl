@@ -9,7 +9,7 @@ import {
     useDispatch as useAppDispatch,
     useSelector
 } from '../../redux/store'
-import { cardFilter, ChangePageBilling, filterData, loadInvoices, searchData, sortData } from '../../redux/slices/billingSlice'
+import { cardFilter, ChangePageBilling, downloadBillingInvoice, downloadBillingInvoiceCDR, filterData, loadInvoices, searchData, sortData } from '../../redux/slices/billingSlice'
 import useLocales from '../../hooks/useLocales'
 import Invoice from '../common/icons/Invoice'
 import Overdue from '../common/icons/Overdue'
@@ -38,6 +38,8 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
         setShowIt(!showIt);
     };
 
+    console.log(PageData);
+
     return (
         <div className="dashboard__wrapper">
             <RaiseTicket handleShow={handleShow} showIt={showIt} />
@@ -51,6 +53,8 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
                     {cards.map((q: any, i: any) => <Card data={q} key={`card-warpper${i}`} />)}
                 </div >
                 <DataTable
+                    handledownloadViewpdf={downloadBillingInvoiceCDR}
+                    handledownloadPdf={downloadBillingInvoice}
                     handleShow={handleShow}
                     pageAction={ChangePageBilling}
                     sortAction={sortData}

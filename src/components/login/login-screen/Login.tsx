@@ -40,6 +40,7 @@ import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useSelector } from 'react-redux'
 import { base64Encode } from '../../../utils/Base64EncodeDecode'
+import { apiVrbls, appRoutes } from '../../../utils/constants'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -75,18 +76,23 @@ const Login = () => {
         (state: any) => state.auth || {}
     )
     useEffect(() => {
-        if (isError) {
-            console.log(message)
-        }
         if (isAuthenticated) {
-            // toast.success('Logged in successful')
             console.log(message)
         }
     }, [isError, message, isAuthenticated])
 
+    console.log(user);
+
+
     useEffect(() => {
         if (getFromLocalStorage('token') && getFromLocalStorage('token') !== null) {
-            navigate('/setpassword')
+            if (user) {
+                if (user.attributes[apiVrbls.USER.IS_LOGGED_IN_FIRST]) {
+                    navigate(appRoutes.SET_PASSWORD)
+                } else {
+                    navigate(appRoutes.BILLING)
+                }
+            }
         }
     }, [user, navigate])
 

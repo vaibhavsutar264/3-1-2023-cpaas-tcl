@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { updatePassword } from '../../../redux/slices/authSlice'
+import { resetPassword, updatePassword } from '../../../redux/slices/authSlice'
 import { Password } from '../../../types/authType'
 import {
     useDispatch as useAppDispatch,
@@ -36,7 +36,7 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
-import { typeVar } from '../../../utils/constants'
+import { apiVrbls, typeVar } from '../../../utils/constants'
 import { base64Encode } from '../../../utils/Base64EncodeDecode'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
@@ -73,7 +73,7 @@ const SetPassword = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [open, setOpen] = useState(false)
-    const { isError, isSuccess, message, user } = useAppSelector(
+    const { isError, isSuccess, message, user, resetmessage } = useAppSelector(
         (state: any) => state.auth || {}
     )
     const dispatch = useAppDispatch()
@@ -109,17 +109,16 @@ const SetPassword = () => {
 
     const onSubmit = async (data: any) => {
         if (password !== confirmPassword) {
-            console.log('password and confirm password not same')
             toast.error('password and confirm password not same')
             return
         }
         try {
             const userPassword: Password = {
                 newPassword: base64Encode(password),
-                username: user.email
+                username: user[apiVrbls.USER.EMAIL_ID]
             }
-            await dispatch(updatePassword(userPassword))
-            navigate('/invoices')
+            await dispatch(resetPassword(userPassword))
+
         } catch (error) {
             console.error(error)
         }
@@ -308,6 +307,10 @@ const SetPassword = () => {
             'tooltip-main-box'
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
+    }
+
+    if (resetmessage === "SUCCESS") {
+        navigate('/invoices')
     }
 
     return (

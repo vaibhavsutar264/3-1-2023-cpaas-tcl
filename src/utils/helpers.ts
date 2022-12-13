@@ -49,7 +49,7 @@ export const searchArray = (array: any, value: any) => {
     if (value == "") {
         return array
     } else {
-        return array.filter((d: any) => `${Object.values(d).join(",")}`.includes(value))
+        return array.filter((d: any) => `${Object.values(d).join(",")}`.toLowerCase().includes(`${value}`.toLowerCase()))
 
     }
 }

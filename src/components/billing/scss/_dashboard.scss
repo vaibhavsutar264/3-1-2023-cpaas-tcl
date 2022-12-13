@@ -708,9 +708,11 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    
 
     .actionButton__item {
-        a {
+        span {
+            cursor: pointer;
             display: inline-block;
             width: 46px;
             height: 46px;

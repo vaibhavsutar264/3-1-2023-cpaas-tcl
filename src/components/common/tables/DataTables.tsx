@@ -24,7 +24,6 @@ import { getPageParms, setUlrParms } from '../../../utils/helpers'
 import { useDispatch as useAppDispatch } from '../../../redux/store'
 import { Link } from 'react-router-dom'
 import MultiSelect from '../elements/multiSelect'
-import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -44,7 +43,9 @@ const DataTable = ({
     take,
     filterAction,
     page,
-    handleShow
+    handleShow,
+    handledownloadPdf,
+    handledownloadViewpdf
 }: any) => {
     const { t } = useLocales()
     const { data, columns, tableName } = TableData
@@ -72,8 +73,12 @@ const DataTable = ({
 
     }
 
-    const handleDownload = (title: any) => {
-        dispatch(downloadBillingInvoice(title))
+    const handleDownload = (data: any) => {
+        dispatch(handledownloadPdf(data))
+    }
+
+    const handleViewPdf = (data: any) => {
+        dispatch(handledownloadViewpdf(data))
     }
 
     return (
@@ -133,27 +138,16 @@ const DataTable = ({
                                 ))}
                                 <TableCell style={{ width: 160 }} align="right">
                                     <ul className="actionButtons">
-                                        <li className="actionButton__item">
-                                            <a href="/">
-                                                <Pdf />
-                                            </a>
-                                        </li>
-                                        <li className="actionButton__item">
-                                            <a href="/invoices/raiseticket" onClick={(e) => {
-                                                e.preventDefault();
-                                                console.log('have started working out');
-                                                handleShow();
-                                            }}>
-                                                <Ticket />
-                                            </a>
-                                        </li>
+                                        <button className="actionButton__item" onClick={() => handleDownload(item)} >
+                                            <span><Download /></span>
+                                        </button>
+                                        <button className="actionButton__item" onClick={() => handleViewPdf(item)}>
+                                            <span> <Pdf /> </span>
+                                        </button>
+                                        <button className="actionButton__item" onClick={(e) => { handleShow() }}>
+                                            <span><Ticket /></span>
+                                        </button>
                                     </ul>
-                                    <button
-                                        className="actionButton__item"
-                                        onClick={(e) => handleDownload('image.png')}
-                                    >
-                                        <Download />
-                                    </button>
                                 </TableCell>
                             </TableRow>
                         ))}

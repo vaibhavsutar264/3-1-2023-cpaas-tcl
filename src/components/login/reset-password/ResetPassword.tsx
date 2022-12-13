@@ -5,7 +5,6 @@ import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { resetPassword } from '../../../redux/slices/authSlice'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Password } from '../../../types/authType'
 import {
     useDispatch as useAppDispatch,
     useSelector as useAppSelector,
@@ -45,7 +44,7 @@ import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
 import { useParams } from 'react-router-dom'
-import { typeVar } from '../../../utils/constants'
+import { apiVrbls, typeVar } from '../../../utils/constants'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
 
@@ -78,7 +77,7 @@ const ResetPassword = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [open, setOpen] = useState(true)
-    const { isError, isSuccess, message } = useAppSelector(
+    const { user, isError, isSuccess, message } = useAppSelector(
         (state: any) => state.auth || {}
     )
     const dispatch = useAppDispatch()
@@ -112,11 +111,13 @@ const ResetPassword = () => {
 
     const onSubmit = async (data: any) => {
         if (password !== confirmPassword) {
-            console.log('password and confirm password not same')
             return
         }
         try {
-            await dispatch(resetPassword(token, data))
+            await dispatch(resetPassword({
+                newPassword: password,
+                username: user[apiVrbls.USER.EMAIL_ID]
+            }))
         } catch (error) {
             console.error(error)
             reset()

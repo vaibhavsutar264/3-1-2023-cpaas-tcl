@@ -5,16 +5,16 @@ export const apiRoutes = {
   LOGIN: '/cpaas/token',
   MOCKLOGIN: '/auth/login',
   SET_PASSWORD: '/api/v1/auth/password',
-  FORGOT_PASSWORD: '/api/v1/password/forgot',
-  RESET_PASSWORD: '/api/v1/password/reset',
+  FORGOT_PASSWORD: '/cpaas/forgotPassword',
+  RESET_PASSWORD: '/cpaas/resetPassword',
   GET_USER_INFO: '/cpaas/userinfo',
-  LOGOUT: '/api/v1/logout',
+  LOGOUT: '/cpaas/logout',
 
   // Billing
   GET_INVOICES: '/orchestration/billing/invoices/getInvoices',
   VIEW_INVOICES: '/result_data/Download_Billing_Invoice',
-  DOWNLOAD_INVOICES: '/Download_Billing_Invoice',
-  DOWNLOAD_INVOICES_CDR: '/result_data/Download_Billing_InvoiceCDR',
+  DOWNLOAD_INVOICES: '/orchestration/billing/invoices/downloadBillingInvoice',
+  DOWNLOAD_INVOICES_CDR: '/orchestration/billing/invoices/downloadBillingInvoiceCDR',
 }
 
 export const apiHelpers = {
@@ -107,9 +107,9 @@ export const dataTables = {
   BILLING: (values: [], masterData = []) => ({
     data: values,
     columns: [
-      { eleName: 'Invoice_no', headTrans: 'id', sort: true, filter: false },
+      { eleName: apiVrbls.BILLING.INVOICE_ID, headTrans: 'id', sort: true, filter: false },
       {
-        eleName: 'Customer_LE',
+        eleName: apiVrbls.BILLING.CUSTOMER_LE,
         headTrans: 'customerLe',
         sort: true,
         filter: true,
@@ -119,13 +119,13 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'Tata_Entity',
+        eleName: apiVrbls.BILLING.TATA_ENTITY,
         headTrans: 'entity',
         sort: true,
         filter: false,
       },
       {
-        eleName: 'PO_number',
+        eleName: apiVrbls.BILLING.PO_NUMBER,
         headTrans: 'poNo',
         sort: true,
         filter: true,
@@ -135,7 +135,7 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'Payment_Status',
+        eleName: apiVrbls.BILLING.PAY_STATUS,
         headTrans: 'status',
         sort: true,
         filter: true,
@@ -145,7 +145,7 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'Invoice_amt',
+        eleName: apiVrbls.BILLING.INVOICE_AMT,
         headTrans: 'invoiceAmount',
         sort: true,
         filter: true,
@@ -155,7 +155,7 @@ export const dataTables = {
         }
       },
       {
-        eleName: 'Invoice_date',
+        eleName: apiVrbls.BILLING.INVOICE_DATE,
         headTrans: 'invoiceIssuedDate',
         sort: true,
         filter: false,
@@ -176,5 +176,31 @@ export const apiDefaultrespons = {
       "message": "Internal Error",
       "status": 404
     }
+  }
+}
+
+
+export const staticErrors = {
+  serverInactive: "Opps! Something went wrong"
+}
+
+
+export const apiVrbls = {
+  USER: {
+    ACCESS_TOKEN: "access_token",
+    IS_LOGGED_IN_FIRST: "isLoginFirstTime",
+    EMAIL_ID: "emailId"
+  },
+
+  BILLING: {
+    CURENCY: "Currency",
+    INVOICE_AMT: "Invoice_amt",
+    INVOICE_ID: "Invoice_no",
+    CUSTOMER_LE: "Customer_LE",
+    TATA_ENTITY: "Tata_Entity",
+    PO_NUMBER: "PO_number",
+    PAY_STATUS: "Payment_Status",
+    INVOICE_DATE: "Invoice_date"
+
   }
 }

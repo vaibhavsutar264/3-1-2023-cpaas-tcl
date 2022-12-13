@@ -22,7 +22,8 @@ import {
   getFromLocalStorage,
   setInLocalStorage,
 } from '../../hooks/useLocalStorage'
-import { localStorageVar , typeVar } from '../../utils/constants'
+import { apiVrbls, localStorageVar, typeVar } from '../../utils/constants'
+import { useSelector } from 'react-redux'
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -77,12 +78,14 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
   const { t } = useLocales()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-
+  const { user } = useSelector((state: any) => state.auth || []);
   const logoutHandler = async (e: SyntheticEvent) => {
     e.preventDefault()
-    dispatch(logout())
-    toast.success('Logged Out')
-    navigate('/')
+    dispatch(logout({
+      refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
+      username: user != null ? user[apiVrbls.USER.EMAIL_ID] : ""
+    }))
+    // navigate('/')
   }
 
   return (
@@ -94,7 +97,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
           </Link>
           <ul className="navbar-items">
             <li className="item">
-              {getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null ? (
+              {user !== null ? (
                 <Link to="" onClick={logoutHandler}>
                   {t<string>('logoutBtn')}
                 </Link>
@@ -129,7 +132,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                 >
                   {availableLanguages.map((language) => (
                     <MenuItem key={language} value={language}>
-                      
+
                       {language}
                     </MenuItem>
                   ))}

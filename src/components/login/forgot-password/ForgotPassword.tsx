@@ -64,12 +64,10 @@ const ForgotPassword = () => {
 
     useEffect(() => {
         if (isError) {
-            // toast.error(message)
             console.log(message)
         }
 
         if (isSuccess) {
-            toast.success("Email sent")
             console.log(message)
         }
     }, [isError, isSuccess, message, emailSent])

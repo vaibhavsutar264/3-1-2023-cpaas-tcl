@@ -7,8 +7,8 @@ import {
   getFromLocalStorage,
 } from '../../hooks/useLocalStorage'
 import { userLoginData } from '../../services/api/index'
-import { apiDefaultrespons, localStorageVar } from '../../utils/constants'
-import axios from 'axios'
+import { apiDefaultrespons, apiVrbls, localStorageVar, staticErrors } from '../../utils/constants'
+import { toast } from 'react-toastify'
 
 const initialState: AuthState = {
   user: null,
@@ -19,7 +19,9 @@ const initialState: AuthState = {
   isAuthenticated: false,
   message: '',
   emailSent: '',
-  userInfo:''
+  userInfo: '',
+  resetmessage: '',
+  forgotMessage: ''
 }
 
 export const userSlice = createSlice({
@@ -40,7 +42,7 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isSuccess = true
       state.isError = false
-      state.user = action.payload.user
+      state.user = action.payload
       state.isAuthenticated = true
       state.message = action.payload.message
     },
@@ -61,11 +63,12 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isSuccess = true
       state.emailSent = action.payload.message as string
+      state.forgotMessage = action.payload.data
     },
     resetPasswordSuccess: (state, action) => {
       state.isLoading = false
       state.isSuccess = true
-      state.message = action.payload.message as string
+      state.resetmessage = action.payload.data
     },
     logOutSuccess: (state) => {
       state.isLoading = false
@@ -87,20 +90,23 @@ export const login = (userData: UserLogin) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response: any = await userLoginData.login(userData)
-      const { data } = response
-      if (response) {
-        console.log(response)
-        setInLocalStorage(localStorageVar.USER_VAR, JSON.stringify(data.data.data))
-        const token: any = data.data.data.access_token
+      const { data }: any = await userLoginData.login(userData)
+      if (data) {
+        const token: any = data.data.data[apiVrbls.USER.ACCESS_TOKEN]
         if (token) { setInLocalStorage(localStorageVar.TOKEN_VAR, token) }
-
-        const user = { token : token, email : userData.email }
-
-        const resp = { user }
-        dispatch(userSlice.actions.loginSuccess(resp))
+        const user = { token: token, email: userData.email }
+        const { data: userInfo }: any = await userLoginData.getUserInfo(userData.email);
+        if (userInfo && userInfo.data.data) {
+          dispatch(userSlice.actions.loginSuccess(userInfo.data.data))
+          setInLocalStorage(localStorageVar.USER_VAR, token)
+        } else {
+          toast.error(userInfo.data.message)
+          dispatch(userSlice.actions.hasError(null))
+        }
       }
-    }  catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
+    } catch (response: any) {
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
+      toast.error(data.data.message)
       dispatch(userSlice.actions.hasError(data))
     }
   }
@@ -111,7 +117,7 @@ export const userInfo = () => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response: any = await userLoginData.getUserInfo()
+      const response: any = await userLoginData.getUserInfo(null)
       const { data } = response
       if (response) {
         const firstName: any = data.data.data.firstname
@@ -119,33 +125,38 @@ export const userInfo = () => {
         const emailId: any = data.data.data.emailId
 
         console.log(firstName)
-        const user = { firstName : firstName, lastName : lastName, emailId : emailId }
+        const user = { firstName: firstName, lastName: lastName, emailId: emailId }
 
         // const resp = { user }
         dispatch(userSlice.actions.getUserInfoSuccess(user))
       }
-    }  catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
+    } catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
       dispatch(userSlice.actions.hasError(data))
     }
   }
 }
 
-export const logout = () => {
+export const logout = (body: any) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
+      const { data } = await userLoginData.logout(body)
+      dispatch(userSlice.actions.logOutSuccess())
+      if (data) {
+        toast.success(data.data.message);
+        removeFromLocalStorage(localStorageVar.TOKEN_VAR)
+        removeFromLocalStorage(localStorageVar.USER_VAR)
+      } else {
+        toast.error(data.data.message)
+        removeFromLocalStorage(localStorageVar.TOKEN_VAR)
+        removeFromLocalStorage(localStorageVar.USER_VAR)
+      }
+    } catch (response: any) {
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
+      toast.error(data.data.message)
       removeFromLocalStorage(localStorageVar.TOKEN_VAR)
       removeFromLocalStorage(localStorageVar.USER_VAR)
-      //Logout API will take below input, refreshToken received during login + user email Id
-      /*{
-        "refreshToken": "string",
-        "username": "string"
-      }*/
-      // await userLoginData.logout()
       dispatch(userSlice.actions.logOutSuccess())
-    } catch (error) {
-      console.log(error)
-      dispatch(userSlice.actions.hasError(error))
     }
   }
 }
@@ -166,23 +177,40 @@ export const forgotPassword = (userEmail: Email) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const response = await userLoginData.forgotPassword(userEmail)
-      dispatch(userSlice.actions.forgotPasswordSuccess(response.data))
-      return response.data
-    } catch (error) {
-      dispatch(userSlice.actions.hasError(error))
+      const { data } = await userLoginData.forgotPassword(userEmail)
+      if (data) {
+        dispatch(userSlice.actions.forgotPasswordSuccess(data.data))
+        toast.success(data.data.message)
+      } else {
+        toast.error(data.data.message)
+        dispatch(userSlice.actions.hasError(null))
+      }
+    } catch (response: any) {
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
+      toast.error(data.data.message)
+      dispatch(userSlice.actions.hasError(data))
     }
   }
 }
 
-export const resetPassword = (token: any, passwordData: Password) => {
+export const resetPassword = (body: any) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
-      const { data } = await userLoginData.resetPassword(token, passwordData)
-      dispatch(userSlice.actions.resetPasswordSuccess(data))
-    } catch (error) {
-      dispatch(userSlice.actions.hasError(error))
+      const { data } = await userLoginData.resetPassword(body)
+      if (data.data) {
+        if (data.data.data == "SUCCESS") {
+          toast.success("Password reset successfull");
+          dispatch(userSlice.actions.resetPasswordSuccess(data.data))
+        } else {
+          toast.success(data.data.message)
+          dispatch(userSlice.actions.hasError(data))
+        }
+      }
+    } catch (response: any) {
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.data;
+      toast.error(data.data.message)
+      dispatch(userSlice.actions.hasError(data))
     }
   }
 }

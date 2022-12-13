@@ -115,10 +115,9 @@ export const runFilters = ({ page, take, sort }: any) => {
 export const loadInvoices = (parms: any) => {
     return async () => {
         try {
-            const response = await billing.loadInvoices(parms)
-            const d = response.data.result_data.Invoices
-            console.log(response)
-            if (response) {
+            const { data } = await billing.loadInvoices(parms)
+            const d = data.result_data.Invoices
+            if (data) {
                 dispatch(billingSlice.actions.loadInvoices({ data: d }))
                 const pg = getPageParms(d.length)
                 dispatch(ChangePageBilling(pg.curr, pg.take))
@@ -129,6 +128,7 @@ export const loadInvoices = (parms: any) => {
             }
             return d
         } catch (error) {
+            console.log(error);
             dispatch(billingSlice.actions.hasError())
             dispatch(billingSlice.actions.loadInvoices({ data: [] }))
             dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
@@ -157,61 +157,26 @@ export const viewInvoice = (id: any) => {
         }
     }
 }
-export const downloadBillingInvoice = (title: any) => {
+export const downloadBillingInvoice = (data: any) => {
     dispatch(billingSlice.actions.startLoading())
     return async () => {
-        // const response = await billing.downloadInvoice()
-        await axios({ url: `${routes.BASE_URL}${routes.DOWNLOAD_INVOICES}`,
-        // await axios({ url: "https://imageio.forbes.com/specials-images/imageserve/5ef3f7eec4f2390006f0c356/GUI--Graphical-User-Interface--concept-/960x0.jpg?format=jpg&width=960",
-        method:'GET',
-        responseType:'blob'}).then((res)=>{
-            // const response = res.data.Billing_invoice_download_link
-            const url = window.URL.createObjectURL(new Blob([res.data.Billing_invoice_download_link]))
-            // console.log(res.data.Billing_invoice_download_link)
-            const link = document.createElement('a')
-            link.href = url
-            link.setAttribute('download', title)
-            document.body.appendChild(link)
-            link.click() 
-            dispatch(billingSlice.actions.downloadInvoiceData(res))
-        }).catch(err => {
-            alert(err)
-            dispatch(billingSlice.actions.hasError())
-            console.log(err)
-        })
-        // try {
-        //     const response = await billing.downloadInvoice()
-        //     const d = response.data.Download_Billing_Invoice.Billing_invoice_download_link
-        //     if (response) {
-        //         dispatch(billingSlice.actions.downloadInvoiceData({ data: d }))
-        //     } else {
-        //         dispatch(billingSlice.actions.hasError())
-        //     }
-        //     return d
-        // } catch (error) {
-        //     dispatch(billingSlice.actions.hasError())
-        // }
+        const response = await billing.downloadInvoice(data)
+        if (response) {
+            // window.open(URL.createObjectURL(response.data));
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'file.pdf'); //or any other extension
+            document.body.appendChild(link);
+            link.click();
+        }
     }
 }
-export const downloadBillingInvoiceCDR = (parms: any) => {
+export const downloadBillingInvoiceCDR = (data: any) => {
     return async () => {
-        try {
-            const response = await billing.loadInvoices(parms)
-            const d = response.data.Invoices
-            if (response) {
-                dispatch(billingSlice.actions.loadInvoices({ data: d }))
-                const pg = getPageParms(d.length)
-                dispatch(ChangePageBilling(pg.curr, pg.take))
-            } else {
-                dispatch(billingSlice.actions.hasError())
-                dispatch(billingSlice.actions.loadInvoices({ data: [] }))
-                dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
-            }
-            return d
-        } catch (error) {
-            dispatch(billingSlice.actions.hasError())
-            dispatch(billingSlice.actions.loadInvoices({ data: [] }))
-            dispatch(billingSlice.actions.setpageData({ data: [], page: 1, take: 10 }))
+        const response = await billing.downloadInvoiceCdr(data)
+        if (response) {
+            window.open(URL.createObjectURL(response.data));
         }
     }
 }
