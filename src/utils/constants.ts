@@ -115,7 +115,7 @@ export const dataTables = {
         filter: true,
         filterData: {
           element: "customerLe",
-          values: masterData.map((e: any) => e.customerLe).filter((it, i, ar) => ar.indexOf(it) === i)
+          values: masterData.map((e: any) => e[apiVrbls.BILLING.CUSTOMER_LE]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
@@ -131,7 +131,7 @@ export const dataTables = {
         filter: true,
         filterData: {
           element: "poNumber",
-          values: masterData.map((e: any) => e.poNumber).filter((it, i, ar) => ar.indexOf(it) === i)
+          values: masterData.map((e: any) => e[apiVrbls.BILLING.PO_NUMBER]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
@@ -141,7 +141,7 @@ export const dataTables = {
         filter: true,
         filterData: {
           element: "paymentStatus",
-          values: masterData.map((e: any) => e.paymentStatus).filter((it, i, ar) => ar.indexOf(it) === i)
+          values: masterData.map((e: any) => e[apiVrbls.BILLING.PAY_STATUS]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
@@ -151,7 +151,7 @@ export const dataTables = {
         filter: true,
         filterData: {
           element: "currency",
-          values: masterData.map((e: any) => e.currency).filter((it, i, ar) => ar.indexOf(it) === i)
+          values: masterData.map((e: any) => e[apiVrbls.BILLING.INVOICE_AMT]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
@@ -201,6 +201,5 @@ export const apiVrbls = {
     PO_NUMBER: "PO_number",
     PAY_STATUS: "Payment_Status",
     INVOICE_DATE: "Invoice_date"
-
   }
 }

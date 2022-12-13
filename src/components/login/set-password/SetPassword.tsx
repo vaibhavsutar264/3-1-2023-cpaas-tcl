@@ -308,6 +308,7 @@ const SetPassword = () => {
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
     }
+console.log(resetmessage);
 
     if (resetmessage === "SUCCESS") {
         navigate('/invoices')

@@ -122,17 +122,18 @@ const ForgotPassword = () => {
                                         margin: '20px 0px',
                                     }}
                                 >
-                                    <InputLabel htmlFor="username" className="label__icon">
+                                    <InputLabel htmlFor="ammount" className="label__icon">
                                         <MailOutlineIcon id="mail-icon" />
                                     </InputLabel>
                                     <TextField
                                         className="input-field"
                                         required
-                                        id="username"
+                                        id="ammount"
                                         label={t<string>('email')}
                                         variant="standard"
                                         sx={{ width: 1, borderRadius: '10px !important' }}
-                                        name="email"
+                                        name="ammount"
+                                        type="text"
                                         onInput={handleEmailChange}
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}

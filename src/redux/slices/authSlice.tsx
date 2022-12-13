@@ -96,6 +96,7 @@ export const login = (userData: UserLogin) => {
         if (token) { setInLocalStorage(localStorageVar.TOKEN_VAR, token) }
         const user = { token: token, email: userData.email }
         const { data: userInfo }: any = await userLoginData.getUserInfo(userData.email);
+        dispatch(userSlice.actions.resetPasswordSuccess({ data: "" }))
         if (userInfo && userInfo.data.data) {
           dispatch(userSlice.actions.loginSuccess(userInfo.data.data))
           setInLocalStorage(localStorageVar.USER_VAR, token)
