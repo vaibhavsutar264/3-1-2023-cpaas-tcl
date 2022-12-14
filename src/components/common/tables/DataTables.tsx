@@ -141,11 +141,11 @@ const DataTable = ({
                                         <button className="actionButton__item" onClick={() => handleDownload(item)} >
                                             <span><Download /></span>
                                         </button>
-                                        <button className="actionButton__item" onClick={() => handleViewPdf(item)}>
-                                            <span> <Pdf /> </span>
-                                        </button>
                                         <button className="actionButton__item" onClick={(e) => { handleShow() }}>
                                             <span><Ticket /></span>
+                                        </button>
+                                        <button className="actionButton__item" onClick={() => handleViewPdf(item)}>
+                                            <span> <Pdf /> </span>
                                         </button>
                                     </ul>
                                 </TableCell>
