@@ -1,5 +1,5 @@
 import { typeVar } from '../../../utils/constants'
-// comment
+
 const Overdue = () => {
     return (
         <svg

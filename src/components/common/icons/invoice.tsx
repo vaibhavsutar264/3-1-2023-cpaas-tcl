@@ -1,5 +1,5 @@
 import { typeVar } from '../../../utils/constants'
-// comment
+
 const Invoice = () => {
     return (
         <svg

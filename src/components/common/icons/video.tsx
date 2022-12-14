@@ -1,5 +1,5 @@
 import { typeVar } from '../../../utils/constants'
-// comment
+
 const Video = () => {
   return (
     <svg

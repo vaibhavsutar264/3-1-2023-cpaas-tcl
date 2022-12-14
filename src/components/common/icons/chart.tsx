@@ -1,5 +1,5 @@
 import { typeVar } from '../../../utils/constants'
-// comment
+
 const Chart = () => {
   return (
     <svg
