@@ -71,77 +71,266 @@ const BillingDetail = () => {
                         // paddingBottom: '133px',
                     }} noValidate autoComplete="off"
                     >
-                    <TextField label="account name" variant="standard" type="text" value="L&T Technology" sx={{
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
-                        flexBasis: '30%',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="legal entity" variant="standard" type="text" value="LE1" sx={{
+                    }}>account name</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>L&T Technology</Typography>
+                    </Stack>
+
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="billing type" variant="standard" type="text" value="Postpay" sx={{
+                    }}>legal entity</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>LE1</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="billing cycle" variant="standard" type="text" value="Monthly" sx={{
+                    }}>billing type</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>Postpay</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="payment period" variant="standard" type="text" value="Net 30 days of the Invoice Date" sx={{
+                    }}>billing cycle</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>Monthly</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="VAT/GST No./Tax ID" variant="standard" type="text" value="BCL87630GTY" sx={{
+                    }}>payment period</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>Net 30 days of the Invoice Date</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="Company Pan or Eqvivalent No." variant="standard" type="text" value="AIDPG2390S" sx={{
-                        // border: '1px solid #eee',
-                        borderRadius: '10px !important',
+                    }}>VAT/GST No./Tax ID</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>BCL87630GTY</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
                         flexBasis: '30%',
-                    }}/>
-                    <TextField label="applicable currency" variant="standard" type="text" value="INR" sx={{
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="contact term" variant="standard" type="text" value="3 Months" sx={{
+                    }}>Company Pan or Equivalent No.</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>AIDPG23905</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="rate change notification period(in days)" variant="standard" type="text" value="7 Days" sx={{
+                    }}>applicable currency</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>INR</Typography>
+                    </Stack>
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="rate & coverage change time zone" variant="standard" type="text" value="GMT" sx={{
+                    }}>contact term</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>3 Months</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="account status & remark" variant="standard" type="text" value="Suspended due to non payment" sx={{
+                    }}>rate change notification period(in days)</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>7 Days</Typography>
+                    </Stack>
+
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
+                    }}>rate & coverage change time zone</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>GMT</Typography>
+                    </Stack>
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
+                        border: '1px solid #eee',
+                        borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
+                        flexBasis: '30%',
+                        textTransform: 'capitalize',
+                    }}>account status & remark</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>Suspended due to non payment</Typography>
+                    </Stack>
                 </Box>
                 </Box>
     </>

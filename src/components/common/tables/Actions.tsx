@@ -79,12 +79,12 @@ export const Actions = ({
           </CSVLink>
         </a>
       </div>
-      <button
+      {/* <button
         className="actionButton__item"
         onClick={(e) => handleDownload('image.png')}
       >
         Download
-      </button>
+      </button> */}
     </div>
   )
 }

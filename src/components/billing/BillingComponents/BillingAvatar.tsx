@@ -91,7 +91,7 @@ const BillingAvatar = () => {
                         flexBasis: '45%',
                         textTransform: 'capitalize',
                     }}/>
-                    <TextField label="timezone" variant="standard" type="text" value="Net 30 day#344857s of the Invoice Date" sx={{
+                    <TextField label="timezone" variant="standard" type="text" value="(GMT +5:30) Indian Standard Time - Kolkata" sx={{
                         // border: '1px solid #eee',
                         borderRadius: '10px !important',
                         flexBasis: '100%',

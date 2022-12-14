@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Table from '@mui/material/Table'
-import { IconButton, Menu, MenuItem, ListItemIcon, Tooltip } from '@mui/material'
+import { IconButton, Menu, MenuItem, ListItemIcon, Tooltip, ClickAwayListener } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
@@ -88,6 +88,17 @@ const DataTable = ({
     };
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    // Handle Tooltip closing & opening
+    const [opened, setOpen] = React.useState(false);
+
+    const handleTooltipClose = () => {
+        setOpen(false);
+    };
+
+    const handleTooltipOpen = () => {
+        setOpen(true);
     };
 
     return (
@@ -242,17 +253,31 @@ const DataTable = ({
                                         
                                         </li>
                                         </Tooltip>
-                                        <Tooltip title="RAISE A TICKET">
+                                        <ClickAwayListener onClickAway={handleTooltipClose}>
+                                        <Tooltip 
+                                          PopperProps={{
+                                            disablePortal: true,
+                                          }}
+                                          onClose={handleTooltipClose}
+                                          open={opened}
+                                          disableFocusListener
+                                          disableHoverListener
+                                          disableTouchListener
+                                        title="RAISE A TICKET">
                                         <li className="actionButton__item">
-                                            <a href="/invoices/raiseticket" onClick={(e) => {
+                                            {/* <a href="/invoices/raiseticket" onClick={(e) => {
                                                 e.preventDefault();
                                                 console.log('have started working out');
                                                 handleShow();
                                             }}>
+                                                <Ticket /> 
+                                            </a> */}
+                                            <IconButton onClick={handleTooltipOpen} >
                                                 <Ticket />
-                                            </a>
+                                            </IconButton>
                                         </li>
                                         </Tooltip>
+                                        </ClickAwayListener>
                                     </ul>
                                     <Tooltip title="DOWNLOAD">
                                     <button
