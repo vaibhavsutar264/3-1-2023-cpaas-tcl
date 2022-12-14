@@ -9,6 +9,7 @@ import { SideBar } from '../common/elements/SideBar'
 
 
 const BillingDetails = ({ toggleTheme }: { toggleTheme: any }) => {
+    
   return (
     <>
       <SideBar toggleTheme={toggleTheme} />

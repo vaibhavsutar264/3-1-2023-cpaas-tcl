@@ -67,7 +67,7 @@ const BillingAvatar = () => {
                         marginBottom: '40px',
                     }} noValidate autoComplete="off"
                     >
-                    <TextField label="first name" variant="standard" type="text" value="John" sx={{
+                    <TextField label="first name" variant="standard" type="text" sx={{
                         // border: '1px solid #eee',
                         borderRadius: '10px !important',
                         flexBasis: '45%',

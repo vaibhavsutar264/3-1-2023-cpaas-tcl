@@ -40,7 +40,6 @@ const requests = {
   patch: (url: string, body: Password) => httpInstance(null).patch(url, body),
   put: (url: string, body: any) => httpInstance(null).put(url, body),
   postPdf: (url: string, data: any, transformer: any) => httpInstance(transformer).get(url, { responseType: 'blob', headers: { 'Content-Type': 'application/pdf' } }),
-
 }
 
 const userLoginData = {
@@ -68,4 +67,8 @@ const billing = {
     requests.postPdf(`${routes.BASE_URL}${routes.DOWNLOAD_INVOICES_CDR}`, data, null),
 }
 
-export { userLoginData, billing }
+const account = {
+  getAccountDetails: () => requests.get(`${routes.BASE_URL}${routes.GET_BILLING_DETAILS}`, null),
+}
+
+export { userLoginData, billing, account }

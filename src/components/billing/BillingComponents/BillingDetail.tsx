@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Box, Stack, Typography, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material'
+import { dispatch } from '../../../redux/store'
+import {getAcDetails} from '../../../redux/slices/accountSlice'
+
 
 const BillingDetail = () => {
+    useEffect(() => {
+        dispatch(getAcDetails())
+    }, [])
   return (
     <>
       {/* 1st right row container starts here */}

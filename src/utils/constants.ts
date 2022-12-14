@@ -15,6 +15,9 @@ export const apiRoutes = {
   VIEW_INVOICES: '/result_data/Download_Billing_Invoice',
   DOWNLOAD_INVOICES: '/orchestration/billing/invoices/downloadBillingInvoice',
   DOWNLOAD_INVOICES_CDR: '/orchestration/billing/invoices/downloadBillingInvoiceCDR',
+
+  //account
+  GET_BILLING_DETAILS: '/orchestration/user/account_details/getAccountBillingDetails'
 }
 
 export const apiHelpers = {
@@ -46,6 +49,7 @@ export const thunkPaths = {
 export const slices = {
   AUTH_SLICE: 'auth',
   BILLING_SLICE: 'billing',
+  ACCOUNT_SLICE: 'accountDetails',
 }
 
 export const billingKeys = {
