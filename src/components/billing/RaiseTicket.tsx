@@ -60,7 +60,10 @@ const RaiseTicket = ({ handleShow, showIt }: any) => {
                 position: 'absolute',
                 top: '40px',
                 right: '40px',
-            }} />
+                '&:hover': {
+                    cursor: 'pointer',
+                }
+            }} onClick={handleShow} />
             <Stack>
                 <Typography variant='h5' component='h1' sx={{
                     maxWidth: 'unset',

@@ -156,6 +156,11 @@
         color: #a1a1a1;
         margin: 0;
         opacity: 1;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        max-width: 130px;
+        overflow: hidden;
+        white-space:normal;
     }
 }
 
@@ -1014,4 +1019,26 @@ form.raise-ticket-input .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
 .ib-subtitle {
     text-transform: uppercase;
     min-width: 72px;
+}
+
+
+
+// Change logout icon and text color
+[data-testid="LogoutOutlinedIcon"], .logout-text {
+    color: #D63548;
+}
+
+[data-name="setting"]#setting path {
+    fill: $black;
+    opacity: 1;
+}
+
+.userinfo-dropdown:hover {
+    color: unset;
+}
+
+.MuiTooltip-popper[role="tooltip"] {
+    // background-color: red;
+    // display: block !important;
+
 }

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Table from '@mui/material/Table'
-import { IconButton, Menu, MenuItem, ListItemIcon } from '@mui/material'
+import { IconButton, Menu, MenuItem, ListItemIcon, Tooltip } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import TableBody from '@mui/material/TableBody'
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
@@ -132,39 +134,60 @@ const DataTable = ({
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Invoice Number</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Invoice Number</span></MenuItem>
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Customer LE</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Customer LE</span></MenuItem>
                                     <MenuItem onClick={handleClose}>
                                     <ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon><ListItemIcon>
-                                        {/* <Logout fontSize="small" /> */}
-                                        <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Entity</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Entity</span></MenuItem>
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>PO No.</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>PO No.</span></MenuItem>
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Status</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Status</span></MenuItem>
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Invoice Amount</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Invoice Amount</span></MenuItem>
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Invoice Issued Date</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Invoice Issued Date</span></MenuItem>
                                     <MenuItem onClick={handleClose}><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                    </ListItemIcon>Due Date</MenuItem>
+                                        <CheckBoxIcon fontSize='small' />
+                                        {/* remove above icon and use below icon for when user unchecks the option */}
+                                        {/* <CheckBoxOutlineBlankIcon fontSize='small' /> */}
+                                    </ListItemIcon><span>Due Date</span></MenuItem>
                                 </Menu>
                                 {/* <a href="#" onClick={(e) => {
                                     e.preventDefault();
@@ -214,9 +237,12 @@ const DataTable = ({
                                 ))}
                                 <TableCell style={{ width: 160 }} align="right">
                                     <ul className="actionButtons">
+                                    <Tooltip title="VIEW INVOICE">
                                         <li className="actionButton__item">
                                         
                                         </li>
+                                        </Tooltip>
+                                        <Tooltip title="RAISE A TICKET">
                                         <li className="actionButton__item">
                                             <a href="/invoices/raiseticket" onClick={(e) => {
                                                 e.preventDefault();
@@ -226,13 +252,16 @@ const DataTable = ({
                                                 <Ticket />
                                             </a>
                                         </li>
+                                        </Tooltip>
                                     </ul>
+                                    <Tooltip title="DOWNLOAD">
                                     <button
                                         className="actionButton__item"
                                         onClick={(e) => handleDownload('image.png')}
                                     >
                                         <Download />
                                     </button>
+                                    </Tooltip>
                                 </TableCell>
                             </TableRow>
                         ))}

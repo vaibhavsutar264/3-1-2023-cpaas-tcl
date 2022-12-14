@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled } from '@mui/system'
 import { useEffect, useState } from 'react'
 import { Toggle } from '../../../themes/Toggle'
 import { useDarkMode } from '../../../themes/useDarkMode'
@@ -34,6 +35,8 @@ import { useTranslation } from 'react-i18next'
 import { logout, userInfo } from '../../../redux/slices/authSlice'
 import { useDispatch, useSelector } from '../../../redux/store'
 import Setting from '../icons/setting'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Dashboard from '../icons/dashboard'
 import UserManagement from '../icons/userManagement'
 import Services from '../icons/services'
@@ -246,9 +249,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                         </div>
                                     </div>
                                 </MenuItem>
-                                <Divider />
-                                <MenuItem onClick={handleClose}>
-                                    <a href="/" className="profile__dropLink">
+                                <MenuItem onClick={handleClose} style={{paddingTop:'8px'}}>
+                                    <a href="/" className="profile__dropLink userinfo-dropdown">
                                         <span className="icon">
                                             <Setting />
                                         </span>
@@ -256,19 +258,18 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                                     </a>
                                 </MenuItem>
                                 <MenuItem onClick={handleClose}>
-                                    <a href="/" className="profile__dropLink">
+                                    <a href="/" className="profile__dropLink userinfo-dropdown">
                                         <span className="icon">
-                                            <Setting />
+                                            <LockOutlinedIcon />
                                         </span>
                                         <span className="text">{t<string>('changePassword')}</span>
                                     </a>
                                 </MenuItem>
-                                <Divider />
-                                <MenuItem onClick={handelLogout}>
+                                <MenuItem onClick={handelLogout} style={{paddingTop:'12px'}}>
                                     <span className="icon">
-                                        <Setting />
+                                        <LogoutOutlinedIcon />
                                     </span>
-                                    <span className="text">{t<string>('logout')}</span>
+                                    <span className="text logout-text">{t<string>('logout')}</span>
                                 </MenuItem>
                             </Menu>
                         </div>
