@@ -1,5 +1,5 @@
 export const apiRoutes = {
-  BASE_URL: 'http://115.112.43.74:8585',
+  BASE_URL: 'http://localhost:4000',
 
   // User
   LOGIN: '/cpaas/token',
@@ -14,7 +14,7 @@ export const apiRoutes = {
   GET_INVOICES: '/orchestration/billing/invoices/getInvoices',
   VIEW_INVOICES: '/result_data/Download_Billing_Invoice',
   DOWNLOAD_INVOICES: '/orchestration/billing/invoices/downloadBillingInvoice',
-  DOWNLOAD_INVOICES_CDR: '/orchestration/billing/invoices/downloadBillingInvoiceCDR',
+  DOWNLOAD_INVOICES_CDR: '/orchestration/billing/invoices/downloadBillingInvoiceCDR', 
 
   //account
   GET_BILLING_DETAILS: '/orchestration/user/account_details/getAccountBillingDetails'
@@ -91,6 +91,7 @@ export const appRoutes = {
   RESET_PASSWORD: '/password/reset/:token',
   NOT_FOUND: '*',
   BILLING: '/invoices',
+  PDFVIEWER: '/invoices/viewpdf',
   INVOICE: '/invoices/:id',
   RAISE_TICKET: '/invoices/raiseticket',
   INVOICE_BILL: '/invoices/invoicebill',

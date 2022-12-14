@@ -130,14 +130,9 @@ const InvoiceBill = () => {
         {/* Top meta starts here */}
         <Box className="top-meta" mb={10}>
           <Typography
+            className="ib-title"
             variant="h2"
-            textTransform="capitalize"
             component="h1"
-            textAlign="right"
-            sx={{
-              maxWidth: 'unset',
-              padding: 0,
-            }}
             gutterBottom
           >
             invoice
@@ -150,12 +145,9 @@ const InvoiceBill = () => {
               justifyContent="flex-end"
             >
               <Typography
+              className="ib-subtitle"
                 variant="h6"
-                textTransform="uppercase"
                 component="h2"
-                sx={{
-                  minWidth: '72px',
-                }}
               >
                 date:
               </Typography>
@@ -175,12 +167,9 @@ const InvoiceBill = () => {
               justifyContent="flex-end"
             >
               <Typography
+              className="ib-subtitle"
                 variant="h6"
-                textTransform="uppercase"
                 component="h2"
-                sx={{
-                  minWidth: '72px',
-                }}
               >
                 invoice:
               </Typography>
@@ -207,12 +196,9 @@ const InvoiceBill = () => {
             <Box className="from" flexBasis="35%">
               <Stack direction="row" spacing={2}>
                 <Typography
+                  className="ib-subtitle"
                   variant="h6"
-                  textTransform="uppercase"
                   component="h2"
-                  sx={{
-                    minWidth: '72px',
-                  }}
                 >
                   from:
                 </Typography>
@@ -270,12 +256,9 @@ const InvoiceBill = () => {
             <Box className="from" flexBasis="33.34%">
               <Stack direction="row" spacing={2}>
                 <Typography
+                className="ib-subtitle"
                   variant="h6"
-                  textTransform="uppercase"
                   component="h2"
-                  sx={{
-                    minWidth: '72px',
-                  }}
                 >
                   to:
                 </Typography>
@@ -333,12 +316,9 @@ const InvoiceBill = () => {
             <Box className="from" flexBasis="35%">
               <Stack direction="row" spacing={2}>
                 <Typography
+                className="ib-subtitle"
                   variant="h6"
-                  textTransform="uppercase"
                   component="h2"
-                  sx={{
-                    minWidth: '72px',
-                  }}
                 >
                   terms:
                 </Typography>
@@ -366,12 +346,9 @@ const InvoiceBill = () => {
             <Box className="from" flexBasis="35%">
               <Stack direction="row" spacing={2}>
                 <Typography
+                  className="ib-subtitle"
                   variant="h6"
-                  textTransform="uppercase"
                   component="h2"
-                  sx={{
-                    minWidth: '72px',
-                  }}
                 >
                   date:
                 </Typography>

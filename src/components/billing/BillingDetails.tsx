@@ -5,29 +5,18 @@ import BillingAvatar from './BillingComponents/BillingAvatar'
 import BillingContact from './BillingComponents/BillingContact'
 import BillingDetail from './BillingComponents/BillingDetail'
 import BillingInvoice from './BillingComponents/BillingInvoice'
-import { SideBar } from '../common/elements/SideBar'
+import {SideBar}  from '../common/elements/SideBar'
 
 
 const BillingDetails = ({ toggleTheme }: { toggleTheme: any }) => {
-    
+
   return (
     <>
       <SideBar toggleTheme={toggleTheme} />
-    <Box sx={{
-        mt: 20,
-        display: 'flex',
-        justifyContent: 'flex-end',
-        bgcolor: '#d2e1ff',
-    }}>
-        <Grid container columns={{sm:8, md: 12}} rowSpacing={5} sx={{
-            width: 'calc(100% - 166px)',
-            px: '40px',
-            py: '50px',
-        }}>
+    <Box className="bd-container">
+        <Grid className="bd-inner-container" container columns={{sm:8, md: 12}}>
 
-            <Grid item container columnSpacing={5} columns={12} sm={12} md={12} minHeight='400px' sx={{
-                paddingTop: '40px',
-            }}>
+            <Grid className="bd-single-container"  item container columnSpacing={5} columns={12} sm={12} md={12}>
 
                 <Grid item xs={4}>
                 <BillingAvatar />
@@ -39,9 +28,7 @@ const BillingDetails = ({ toggleTheme }: { toggleTheme: any }) => {
 
             </Grid>
 
-            <Grid item container columnSpacing={5} columns={12} sm={12} md={12} minHeight='400px' sx={{
-                paddingTop: '40px',
-            }}>
+            <Grid className="bd-single-container" item container columnSpacing={5} columns={12} sm={12} md={12}>
 
                 <Grid item xs={4}>
                 <BillingContact />
