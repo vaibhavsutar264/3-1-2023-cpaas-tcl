@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Table from '@mui/material/Table'
+import { IconButton, Menu, MenuItem, ListItemIcon } from '@mui/material'
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import TableBody from '@mui/material/TableBody'
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
@@ -76,6 +78,16 @@ const DataTable = ({
         dispatch(downloadBillingInvoice(title))
     }
 
+    // Vertical Dropdown code
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <>
             <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
@@ -88,9 +100,78 @@ const DataTable = ({
                     <TableHead className="TableHead">
                         <TableRow id="table-head">
                             <StyledTableCell>
-                                <a href="/">
+                                <IconButton 
+                                    id="basic-button"
+                                    aria-controls={open ? 'basic-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}
+                                    sx={{
+                                        position: 'relative',
+                                    }}
+                                >
                                     <MoreVertIcon />
-                                </a>{' '}
+                                </IconButton>
+                                <Menu
+                                    id="basic-menu"
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                    }}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'left',
+                                      }}
+                                      transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'left',
+                                      }}
+                                >
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Invoice Number</MenuItem>
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Customer LE</MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                    <ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Entity</MenuItem>
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>PO No.</MenuItem>
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Status</MenuItem>
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Invoice Amount</MenuItem>
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Invoice Issued Date</MenuItem>
+                                    <MenuItem onClick={handleClose}><ListItemIcon>
+                                        {/* <Logout fontSize="small" /> */}
+                                        <DragIndicatorIcon fontSize='small' />
+                                    </ListItemIcon>Due Date</MenuItem>
+                                </Menu>
+                                {/* <a href="#" onClick={(e) => {
+                                    e.preventDefault();
+                                    console.log('anchor dropdown work started');
+                                }}>
+                                    <MoreVertIcon />
+                                </a>{' '} */}
                             </StyledTableCell>
 
                             {/* Table Heads */}
