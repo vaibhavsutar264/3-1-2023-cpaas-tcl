@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Table from '@mui/material/Table'
-import { IconButton, Menu, MenuItem, ListItemIcon, Tooltip } from '@mui/material'
+import { IconButton, Menu, MenuItem, ListItemIcon, Tooltip, ClickAwayListener } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
@@ -93,6 +93,17 @@ const DataTable = ({
     };
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    // Handle Tooltip closing & opening
+    const [opened, setOpen] = React.useState(false);
+
+    const handleTooltipClose = () => {
+        setOpen(false);
+    };
+
+    const handleTooltipOpen = () => {
+        setOpen(true);
     };
 
     return (

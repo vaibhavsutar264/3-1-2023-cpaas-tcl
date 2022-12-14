@@ -73,6 +73,7 @@ export const userSlice = createSlice({
     logOutSuccess: (state) => {
       state.isLoading = false
       state.user = null
+      state.userInfo = null
       state.isAuthenticated = false
     },
   },

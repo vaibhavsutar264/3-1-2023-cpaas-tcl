@@ -1,7 +1,10 @@
 import React from 'react'
 import {Box, Stack, Typography, TextField} from '@mui/material'
+import { useSelector } from '../../../redux/store';
 
 const BillingInvoice = () => {
+    const { accountDetails } = useSelector((state: any) => state.account);  
+    const { sendInvoiceToContact } = accountDetails
   return (
     <>
       {/* 2nd row container starts */}
@@ -48,48 +51,161 @@ const BillingInvoice = () => {
                         // paddingBottom: '133px',
                     }} noValidate autoComplete="off"
                     >
-                    <TextField label="name" variant="standard" type="text" value="L&T Technology" sx={{
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="address" variant="standard" type="text" value="LE1" sx={{
+                    }}>name</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.name}</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="city" variant="standard" type="text" value="Postpay" sx={{
+                    }}>address</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.address}</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="country" variant="standard" type="text" value="Monthly" sx={{
+                    }}>city</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.city}</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="pin" variant="standard" type="text" value="Net 30 days of the Invoice Date" sx={{
+                    }}>country</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.country}</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="email id" variant="standard" type="text" value="BCL87630GTY" sx={{
+                    }}>pin</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.pin}</Typography>
+                    </Stack>
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="customer authorized rate notification recepient" variant="standard" type="text" value="AIDPG2390S" sx={{
+                    }}>email id</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.emailId}</Typography>
+                    </Stack>
+
+                    
+                    <Stack sx={{
+                        flexBasis: '30%',
+                    }}>
+                        <Typography component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
+                        fontSize: '14px',
+                        color: '#344857',
+                        fontFamily: 'ubuntu',
+                        opacity: 0.7,
                         flexBasis: '30%',
                         textTransform: 'capitalize',
-                    }}/>
+                    }}>customer authorized rate notification recepient</Typography>
+                        <Typography component='span' sx={{
+                            color: '#344857',
+                            fontWeight: 700,
+                            fontSize: '16px',
+                            fontFamily: "ubuntu",
+                            lineHeight: '18px',
+                        }}>{sendInvoiceToContact.customerAuthorizedRateNotificationRecipient}</Typography>
+                    </Stack>
                 </Box>
                 </Box>
     </>
@@ -97,21 +213,3 @@ const BillingInvoice = () => {
 }
 
 export default BillingInvoice
-
-
-
-{/* <Grid item sm={3} md={4} minHeight='400px' sx={{
-                paddingTop: '40px',
-            }}>
-                <BillingAvatar />
-
-                <BillingContact />
-            </Grid>
-
-            <Grid item sm={5} md={8} minHeight='400px' sx={{
-                paddingTop: '40px',
-            }}>
-            <BillingDetail />
-
-            <BillingInvoice />
-            </Grid> */}
