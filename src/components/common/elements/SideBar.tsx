@@ -56,9 +56,10 @@ import { Sidebar } from 'rsuite'
 
 type SidebarProps = {
     toggleTheme: any
+    handleADWidth?: any
 }
 
-export const SideBar = ({ toggleTheme }: SidebarProps) => {
+export const SideBar = ({ toggleTheme, handleADWidth }: SidebarProps) => {
     const dispatch = useDispatch()
     const { user } = useSelector((state: any) => state.auth || []);
     const { i18n } = useTranslation()
@@ -287,7 +288,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                 </div>
             </div>
 
-            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in'}}>
+            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in', zIndex: 1, height: '100vh', position: 'fixed' }}>
                 <div className="sidebar__inner">
                     <ul className="sidebar__list">
                         <li className="list__item">
@@ -361,6 +362,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                     </ul>
                 </div>
                 <button type="button" className="sidebarToggle" onClick={() => {
+                    handleADWidth();
                     const texts = document.querySelectorAll<HTMLElement>('#link__text');
                     const sidebarLeft = document.querySelector('#sidebar-left') as HTMLElement;
                     
