@@ -125,10 +125,7 @@ export const userInfo = () => {
         const firstName: any = data.data.data.firstname
         const lastName: any = data.data.data.lastName
         const emailId: any = data.data.data.emailId
-
-        console.log(firstName)
         const user = { firstName: firstName, lastName: lastName, emailId: emailId }
-
         // const resp = { user }
         dispatch(userSlice.actions.getUserInfoSuccess(user))
       }

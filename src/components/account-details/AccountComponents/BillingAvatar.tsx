@@ -9,7 +9,6 @@ import { useSelector } from '../../../redux/store'
 
 const BillingAvatar = () => {
   const { user } = useSelector((state: any) => state.auth);  
-  console.log(user)
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 44,
     height: 44,

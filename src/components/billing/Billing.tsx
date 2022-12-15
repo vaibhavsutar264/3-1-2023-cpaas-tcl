@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import RaiseTicket from './RaiseTicket'
+import RaiseTicket from '../common/elements/RaiseTicket'
 import { SideBar } from '../common/elements/SideBar'
 import DataTable from '../common/tables/DataTables'
 import { BreadCrums } from '../common/elements/BreadCrum'
@@ -38,7 +38,6 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
         setShowIt(!showIt);
     };
 
-    console.log(PageData);
 
     return (
         <div className="dashboard__wrapper">

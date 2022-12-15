@@ -81,7 +81,6 @@ const Login = () => {
         }
     }, [isError, message, isAuthenticated])
 
-    console.log(user);
 
 
     useEffect(() => {

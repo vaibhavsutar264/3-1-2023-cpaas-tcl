@@ -78,7 +78,6 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     }
     const [theme, toggleTheme2] = useDarkMode()
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
-    console.log(themeMode.body);
 
     useEffect(() => {
         // const divElement = document.getElementById(
@@ -345,7 +344,6 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
 
 
                     if(text.style.display != 'none'){
-                        console.log(sidebarLeft.style.width);
                     for(let i=0;i<texts.length;i++){
                         texts[i].style.display = 'none'
                     }
@@ -353,7 +351,6 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                     sidebarLeft.style.width = 'max-content';
                 }
                 else {
-                    console.log(sidebarLeft.style.width);
                     for(let i=0;i<texts.length;i++){
                         texts[i].style.display = 'block'
                     }

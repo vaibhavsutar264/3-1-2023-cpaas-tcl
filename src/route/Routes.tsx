@@ -34,7 +34,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
           path: appRoutes.BILLING,
           element: <Billing toggleTheme={toggleTheme} />,
         },
-        // { path: appRoutes.BILLING_DETAILS, element: <BillingDetails /> },
+        // { path: appRoutes.BILLING_DETAILS, element: <AccountDetails /> },
         { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
       ],
     },
@@ -60,14 +60,11 @@ const SetPassword = Loadable(
 const Notfound = Loadable(lazy(() => import('../components/notfound/Notfound')))
 const HomeScreen = Loadable(lazy(() => import('../components/home/HomeScreen')))
 const Billing = Loadable(lazy(() => import('../components/billing/Billing')))
-const InvoiceBill = Loadable(
-  lazy(() => import('../components/billing/InvoiceBill'))
-)
 const RaiseTicket = Loadable(
-  lazy(() => import('../components/billing/RaiseTicket'))
+  lazy(() => import('../components/common/elements/RaiseTicket'))
 )
-const BillingDetails = Loadable(
-  lazy(() => import('../components/billing/BillingDetails'))
+const AccountDetails = Loadable(
+  lazy(() => import('../components/account-details/AccountDetails'))
 )
 
 export default Routes

@@ -48,7 +48,6 @@ export const getAcDetails = () => {
             }
             return data
         } catch (error) {
-            console.log(error);
             dispatch(accountSlice.actions.hasError())
         }
     }

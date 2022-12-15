@@ -207,7 +207,6 @@ const DataTable = ({
                                 </Menu>
                                 {/* <a href="#" onClick={(e) => {
                                     e.preventDefault();
-                                    console.log('anchor dropdown work started');
                                 }}>
                                     <MoreVertIcon />
                                 </a>{' '} */}

@@ -1,14 +1,14 @@
 import React from 'react'
 import {Box, Grid} from '@mui/material'
 
-import BillingAvatar from './BillingComponents/BillingAvatar'
-import BillingContact from './BillingComponents/BillingContact'
-import BillingDetail from './BillingComponents/BillingDetail'
-import BillingInvoice from './BillingComponents/BillingInvoice'
+import BillingAvatar from './AccountComponents/BillingAvatar'
+import BillingContact from './AccountComponents/BillingContact'
+import BillingDetail from './AccountComponents/BillingDetail'
+import BillingInvoice from './AccountComponents/BillingInvoice'
 import {SideBar}  from '../common/elements/SideBar'
 
 
-const BillingDetails = ({ toggleTheme }: { toggleTheme: any }) => {
+const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
 
   return (
     <>
@@ -46,4 +46,4 @@ const BillingDetails = ({ toggleTheme }: { toggleTheme: any }) => {
   )
 }
 
-export default BillingDetails;
+export default AccountDetails;

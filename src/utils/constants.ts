@@ -119,7 +119,7 @@ export const dataTables = {
         sort: true,
         filter: true,
         filterData: {
-          element: "customerLe",
+          element: apiVrbls.BILLING.CUSTOMER_LE,
           values: masterData.map((e: any) => e[apiVrbls.BILLING.CUSTOMER_LE]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
@@ -135,7 +135,7 @@ export const dataTables = {
         sort: true,
         filter: true,
         filterData: {
-          element: "poNumber",
+          element: apiVrbls.BILLING.PO_NUMBER,
           values: masterData.map((e: any) => e[apiVrbls.BILLING.PO_NUMBER]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
@@ -145,7 +145,7 @@ export const dataTables = {
         sort: true,
         filter: true,
         filterData: {
-          element: "paymentStatus",
+          element: apiVrbls.BILLING.PAY_STATUS,
           values: masterData.map((e: any) => e[apiVrbls.BILLING.PAY_STATUS]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
@@ -155,8 +155,8 @@ export const dataTables = {
         sort: true,
         filter: true,
         filterData: {
-          element: "currency",
-          values: masterData.map((e: any) => e[apiVrbls.BILLING.INVOICE_AMT]).filter((it, i, ar) => ar.indexOf(it) === i)
+          element: apiVrbls.BILLING.CURENCY,
+          values: masterData.map((e: any) => e[apiVrbls.BILLING.CURENCY]).filter((it, i, ar) => ar.indexOf(it) === i)
         }
       },
       {
