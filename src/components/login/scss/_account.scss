@@ -1202,3 +1202,8 @@ input:-webkit-autofill {
         fill: green !important;
     }
 }
+
+// make language selector color white - not showing currently
+#demo-select-small {
+    color: #fff !important;
+}
