@@ -95,7 +95,7 @@ export const appRoutes = {
   INVOICE: '/invoices/:id',
   RAISE_TICKET: '/invoices/raiseticket',
   INVOICE_BILL: '/invoices/invoicebill',
-  BILLING_DETAILS: '/invoices/billingdetails'
+  ACCOUNT_DETAILS: '/invoices/accountdetails'
 }
 
 export const breadCrums = {

@@ -65,11 +65,13 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
         setAnchorEl(null)
     }
 
-    const handelLogout = () => {
+    const handelLogout = async(e: React.SyntheticEvent) => {
+        e.preventDefault()
         dispatch(logout({
-            refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
-            username: user[apiVrbls.USER.EMAIL_ID]
-        }));
+          refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
+          username: user != null ? user[apiVrbls.USER.EMAIL_ID] : ""
+        }))
+        // navigate('/')
     }
     const [language, setLanguage] = React.useState('')
 
