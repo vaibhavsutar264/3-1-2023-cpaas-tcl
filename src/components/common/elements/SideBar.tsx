@@ -288,7 +288,7 @@ export const SideBar = ({ toggleTheme, handleADWidth }: SidebarProps) => {
                 </div>
             </div>
 
-            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in', zIndex: 1}}>
+            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in', zIndex: 1, height: '100vh', position: 'fixed' }}>
                 <div className="sidebar__inner">
                     <ul className="sidebar__list">
                         <li className="list__item">
