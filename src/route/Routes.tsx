@@ -23,22 +23,22 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.ROOT, element: <HomeScreen /> },
                 { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
                 { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
-                { path: appRoutes.INVOICE, element: <InvoiceBill /> },
-                { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
-                { path: appRoutes.RAISE_TICKET, element: <RaiseTicket /> },
-                { path: appRoutes.BILLING_DETAILS, element: <BillingDetails /> },
-                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
+                // { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
+                // { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
             ],
         },
         {
             path: '',
             element: <PrivateRoutes />,
             children: [
-                // { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
-                // {
-                //   path: appRoutes.SET_PASSWORD,
-                //   element: <SetPassword />,
-                // },
+                { path: appRoutes.INVOICE, element: <InvoiceBill /> },
+                { path: appRoutes.RAISE_TICKET, element: <RaiseTicket /> },
+                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
+                { path: appRoutes.BILLING_DETAILS, element: <BillingDetails /> },
+                {
+                  path: appRoutes.SET_PASSWORD,
+                  element: <SetPassword />,
+                },
             ],
         },
         {

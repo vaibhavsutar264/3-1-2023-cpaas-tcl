@@ -1,5 +1,5 @@
 export const apiRoutes = {
-  BASE_URL: 'http://localhost:4000',
+  BASE_URL: 'http://115.112.43.74:8585',
 
   // User
   LOGIN: '/cpaas/token',
