@@ -292,9 +292,9 @@
 }
 
 .dashboard__content {
-    width: calc(100vw - 300px);
     padding: 30px 50px;
     grid-area: dashboardContent;
+    margin-top: 90px;
 
     .content__header {
         width: 100%;

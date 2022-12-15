@@ -57,9 +57,10 @@ import { Sidebar } from 'rsuite'
 type SidebarProps = {
     toggleTheme: any
     handleADWidth?: any
+    handleBDWidth?: any
 }
 
-export const SideBar = ({ toggleTheme, handleADWidth }: SidebarProps) => {
+export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarProps) => {
     const dispatch = useDispatch()
     const { user } = useSelector((state: any) => state.auth || []);
     const { i18n } = useTranslation()
@@ -121,7 +122,7 @@ export const SideBar = ({ toggleTheme, handleADWidth }: SidebarProps) => {
     }
     return (
         <>
-            <div className="dashboard__navbar" id="sidebar-top">
+            <div className="dashboard__navbar" id="sidebar-top" style={{position: 'fixed', top: 0, zIndex: 2 }}>
                 <div className="dashboard__container">
                     {/* <Link className="logo" to="/">
                     {
@@ -288,7 +289,7 @@ export const SideBar = ({ toggleTheme, handleADWidth }: SidebarProps) => {
                 </div>
             </div>
 
-            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in', zIndex: 1, height: '100vh', position: 'fixed' }}>
+            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in', zIndex: 1, height: '100vh', position: 'fixed', top: '90px' }}>
                 <div className="sidebar__inner">
                     <ul className="sidebar__list">
                         <li className="list__item">
@@ -362,7 +363,12 @@ export const SideBar = ({ toggleTheme, handleADWidth }: SidebarProps) => {
                     </ul>
                 </div>
                 <button type="button" className="sidebarToggle" onClick={() => {
+                    if(handleADWidth){
                     handleADWidth();
+                    }
+                    if(handleBDWidth){
+                    handleBDWidth();
+                    }
                     const texts = document.querySelectorAll<HTMLElement>('#link__text');
                     const sidebarLeft = document.querySelector('#sidebar-left') as HTMLElement;
                     
