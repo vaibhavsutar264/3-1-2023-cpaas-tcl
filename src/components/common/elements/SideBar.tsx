@@ -38,12 +38,20 @@ import Setting from '../icons/setting'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Dashboard from '../icons/dashboard'
+import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
 import UserManagement from '../icons/userManagement'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import Services from '../icons/services'
+import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import Sms from '../icons/sms'
+import ChatBubbleTwoToneIcon from '@mui/icons-material/ChatBubbleTwoTone';
 import BillingInvoice from '../icons/billingInvoice'
+import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import Tickets from '../icons/tickets'
+import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 import Support from '../icons/support'
+import SettingsIcon from '@mui/icons-material/Settings';
 import { Sidebar } from 'rsuite'
 
 type SidebarProps = {
@@ -65,13 +73,11 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
         setAnchorEl(null)
     }
 
-    const handelLogout = async(e: React.SyntheticEvent) => {
-        e.preventDefault()
+    const handelLogout = () => {
         dispatch(logout({
-          refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
-          username: user != null ? user[apiVrbls.USER.EMAIL_ID] : ""
-        }))
-        // navigate('/')
+            refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
+            username: user[apiVrbls.USER.EMAIL_ID]
+        }));
     }
     const [language, setLanguage] = React.useState('')
 
@@ -80,6 +86,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     }
     const [theme, toggleTheme2] = useDarkMode()
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
+    console.log(themeMode.body);
 
     useEffect(() => {
         // const divElement = document.getElementById(
@@ -105,7 +112,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
     const divElement = document.getElementById(
         'sidebar-top'
     ) as HTMLDivElement
-    let getitem = getFromLocalStorage('theme')
+    const getitem = getFromLocalStorage('theme')
+    console.log(`the getitem value is ${getitem}`);
 
     if (user == null) {
         navigate('/')
@@ -114,9 +122,16 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
         <>
             <div className="dashboard__navbar" id="sidebar-top">
                 <div className="dashboard__container">
-                    <Link className="logo" to="/">
+                    {/* <Link className="logo" to="/">
                     {
                         (getitem = 'light')? 
+                        (<img id='tata-logo-invoice' src={DarkLogo} alt="CPAAS TCL" />) : 
+                        (<img id='tata-logo-invoice' src={Logo} alt="CPAAS TCL" />)
+                    }
+                    </Link> */}
+                    <Link className="logo" to="/">
+                    {
+                        (getitem == 'light')? 
                         (<img id='tata-logo-invoice' src={DarkLogo} alt="CPAAS TCL" />) : 
                         (<img id='tata-logo-invoice' src={Logo} alt="CPAAS TCL" />)
                     }
@@ -278,7 +293,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link active" to="">
                                 <span className="link__icon">
-                                    <Dashboard />
+                                    {/* <Dashboard /> */}
+                                    <SpeedOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('dashboard')}</span>
                             </Link>
@@ -286,7 +302,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <UserManagement />
+                                    {/* <UserManagement /> */}
+                                    <PersonOutlineOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">
                                     {t<string>('userManagement')}
@@ -296,7 +313,9 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <Services />
+                                    {/* <Services /> */}
+                                    {/* <HomeRepairServiceIcon /> */}
+                                    <HomeRepairServiceOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('services')}</span>
                             </Link>
@@ -304,7 +323,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <Sms />
+                                    {/* <Sms /> */}
+                                    <ChatBubbleTwoToneIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('sms')}</span>
                             </Link>
@@ -312,7 +332,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <BillingInvoice />
+                                    {/* <BillingInvoice /> */}
+                                    <ReceiptOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">
                                     {t<string>('billingInvoice')}
@@ -322,7 +343,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <Tickets />
+                                    {/* <Tickets /> */}
+                                    <ConfirmationNumberOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('tickets')}</span>
                             </Link>
@@ -330,7 +352,8 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <Support />
+                                    {/* <Support /> */}
+                                    <SettingsIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('support')}</span>
                             </Link>
@@ -346,6 +369,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
 
 
                     if(text.style.display != 'none'){
+                        console.log(sidebarLeft.style.width);
                     for(let i=0;i<texts.length;i++){
                         texts[i].style.display = 'none'
                     }
@@ -353,6 +377,7 @@ export const SideBar = ({ toggleTheme }: SidebarProps) => {
                     sidebarLeft.style.width = 'max-content';
                 }
                 else {
+                    console.log(sidebarLeft.style.width);
                     for(let i=0;i<texts.length;i++){
                         texts[i].style.display = 'block'
                     }
