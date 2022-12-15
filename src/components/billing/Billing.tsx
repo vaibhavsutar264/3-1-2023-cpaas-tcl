@@ -52,7 +52,7 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
                     {cards.map((q: any, i: any) => <Card data={q} key={`card-warpper${i}`} />)}
                 </div >
                 <DataTable
-                    handledownloadViewpdf={downloadBillingInvoiceCDR}
+                    handledownloadViewpdf={downloadBillingInvoice}
                     handledownloadPdf={downloadBillingInvoice}
                     handleShow={handleShow}
                     pageAction={ChangePageBilling}
