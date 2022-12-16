@@ -106,6 +106,8 @@ const DataTable = ({
     const handleTooltipOpen = () => {
         setOpen(true);
     };
+
+    const [invoiceState, setInvoiceState] = useState<boolean>(false);
     const handleInvoiceClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -138,6 +140,8 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[0].eleName = 'Invoice_no'
     };
+
+    const [customerState, setCustomerState] = useState<boolean>(false);
     const handleCustomerClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -169,6 +173,8 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[1].eleName = 'Customer_LE'
     };
+
+    const [entityState, setEntityState] = useState<boolean>(false);
     const handleEntityClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -200,6 +206,7 @@ const DataTable = ({
         columns[2].eleName = 'Tata_Entity'
     };
 
+    const [poState, setPoState] = useState<boolean>(false);
     const handlePoClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -231,6 +238,8 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[3].eleName = 'PO_number'
     };
+
+    const [statusState, setStatusState] = useState<boolean>(false);
     const handleStatusClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -262,6 +271,8 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[4].eleName = 'Payment_Status'
     };
+
+    const [amountState, setAmountState] = useState<boolean>(false);
     const handleAmountClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -293,6 +304,8 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[5].eleName = 'Invoice_amt'
     };
+
+    const [invoiceIssueState, setInvoiceIssueState] = useState<boolean>(false);
     const handleInvoiceIssueClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
@@ -324,6 +337,8 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[6].eleName = 'Invoice_date'
     };
+
+    const [dueCloseState, setDueCloseState] = useState<boolean>(false);
     const handleDueClose = (e: SyntheticEvent) => {
         e.preventDefault()
         const blankCheckoutElement = document.getElementById(
