@@ -67,6 +67,15 @@ export const lightTheme = {
     darkModeColor: '#222',
     sunModeBtnBg: '#fff !important',
     darkModeBtnBg: 'transparent !important',
+    bdContainerBg: '#F7F8FA',
+    bdSingleContentBg: '#fff',
+    prefilledTitle: '#344857',
+    prefilledContent: '#344857',
+    billingDetailsInput: '#344857',
+    billingDetailsLabel: '#344857',
+    bdSingleContentTitle: '#303030',
+    helpText: '#344857',
+    bdSelectFormColor: 'rgba(0, 0, 0, 0.6) !important',
 }
 
 export const darkTheme = {
@@ -137,6 +146,15 @@ export const darkTheme = {
     darkModeColor: '#D63548',
     sunModeBtnBg: 'transparent !important',
     darkModeBtnBg: '#fff !important',
+    bdContainerBg: '#1E2631',
+    bdSingleContentBg: '#252F3B',
+    prefilledTitle: '#787785',
+    prefilledContent: '#E8E8E8',
+    billingDetailsInput: '#E8E8E8',
+    billingDetailsLabel: '#787785 !important',
+    bdSingleContentTitle: '#E8E8E8',
+    helpText: '#787785',
+    bdSelectFormColor: '#E8E8E8 !important',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -373,5 +391,35 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   .darkMode svg path {
     fill: ${({ theme }) => theme.darkModeColor};
+  }
+  .bd-container {
+    background-color: ${({ theme }) => theme.bdContainerBg};
+  }
+  .bd-single-content {
+    background-color: ${({ theme }) => theme.bdSingleContentBg};
+  }
+  .prefilled-title {
+    color: ${({ theme }) => theme.prefilledTitle};
+  }
+  .prefilled-content {
+    color: ${({ theme }) => theme.prefilledContent};
+  }
+  .billing-details-input label {
+    color: ${({ theme }) => theme.billingDetailsLabel};
+  }
+  .billing-details-input .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+    color: ${({ theme }) => theme.billingDetailsInput};
+  }
+  .bd-container h1 {
+    color: ${({ theme }) => theme.bdSingleContentTitle};
+  }
+  .bd-container h6 {
+    color: ${({ theme }) => theme.helpText};
+  }
+  .bd-single-content .select-form label, .bd-single-content .select-form svg {
+    color: ${({ theme }) => theme.bdSelectFormColor};
+  }
+  .bd-single-content .select-form .MuiInputBase-root::before {
+    border-bottom: 1px solid ${({ theme }) => theme.bdSelectFormColor};
   }
 `
