@@ -23,6 +23,12 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
         { path: appRoutes.ROOT, element: <HomeScreen /> },
         { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
         { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
+        {
+          path: appRoutes.BILLING,
+          element: <Billing toggleTheme={toggleTheme} />,
+        },
+        { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
+        { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
       ],
     },
     {
@@ -30,12 +36,6 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
       element: <PrivateRoutes />,
       children: [
         // { path: appRoutes.INVOICE, element: <InvoiceBill /> },
-        {
-          path: appRoutes.BILLING,
-          element: <Billing toggleTheme={toggleTheme} />,
-        },
-        { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
-        { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
       ],
     },
     {

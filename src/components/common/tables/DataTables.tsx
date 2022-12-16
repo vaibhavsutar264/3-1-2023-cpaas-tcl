@@ -146,7 +146,7 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-customer'
         ) as HTMLElement
-        const invoiceIdHeadElement = document.getElementsByName('CUSTOMER LE')[0]
+        const invoiceIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0] 
         invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
@@ -163,7 +163,7 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-customer'
         ) as HTMLElement
-        const invoiceIdHeadElement = document.getElementsByName('CUSTOMER LE')[0]
+        const invoiceIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0]
         invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
