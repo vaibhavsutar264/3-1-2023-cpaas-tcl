@@ -7,7 +7,7 @@ import {getAcDetails} from '../../../redux/slices/accountSlice'
 const BillingDetail = () => {
     const { accountDetails } = useSelector((state: any) => state.account);  
     const { le1 } = accountDetails
-    // const { billingDetails } = le1
+    const { billingDetails } = le1
 
     useEffect(() => {
         dispatch(getAcDetails())
@@ -93,20 +93,13 @@ const BillingDetail = () => {
                         opacity: 0.7,
                         textTransform: 'capitalize',
                     }}>account name</Typography>
-                        {/* <Typography component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.accountName}</Typography> */}
                         <Typography component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.accountName}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -135,7 +128,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.legalEntity}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -164,7 +157,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.billingtype}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -193,7 +186,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.billingCycle}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -222,7 +215,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.paymentPeriod}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -251,7 +244,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.vatOrGSTNoOrTxId}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -280,7 +273,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.companyPAN}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -309,7 +302,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.applicableCurrency}</Typography>
                     </Stack>
                     <Stack sx={{
                         flexBasis: '30%',
@@ -337,7 +330,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.contractTerm}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -366,7 +359,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails.rateChangeNotificationPeriod}</Typography>
                     </Stack>
 
                     <Stack sx={{
