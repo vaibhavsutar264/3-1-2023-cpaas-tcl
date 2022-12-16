@@ -15,7 +15,7 @@ const BillingDetail = () => {
   return (
     <>
       {/* 1st right row container starts here */}
-      <Box sx={{
+      <Box  className='bd-single-content' sx={{
                 bgcolor: '#fff',
                 height: 1,
                 borderRadius: '20px',
@@ -40,6 +40,7 @@ const BillingDetail = () => {
                     fontFamily: 'ubuntu',
                 }}>Billing Details</Typography>
                 <Box
+                    className='select-form'
                     component="form"
                     sx={{
                         '& > :not(style)': { m: 1, width: '25ch' },
@@ -84,7 +85,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -93,14 +94,14 @@ const BillingDetail = () => {
                         opacity: 0.7,
                         textTransform: 'capitalize',
                     }}>account name</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.accountName}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -112,7 +113,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -122,14 +123,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>legal entity</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.legalEntity}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -141,7 +142,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -151,14 +152,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>billing type</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.billingtype}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -170,7 +171,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -180,14 +181,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>billing cycle</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.billingCycle}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -199,7 +200,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -209,14 +210,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>payment period</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.paymentPeriod}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -228,7 +229,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -238,14 +239,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>VAT/GST No./Tax ID</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.vatOrGSTNoOrTxId}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -257,7 +258,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -267,14 +268,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>Company Pan or Equivalent No.</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.companyPAN}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -286,7 +287,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -296,14 +297,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>applicable currency</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.applicableCurrency}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -314,7 +315,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -324,14 +325,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>contact term</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.contractTerm}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -343,7 +344,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -353,14 +354,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>rate change notification period(in days)</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.rateChangeNotificationPeriod}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -372,7 +373,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -382,14 +383,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>rate & coverage change time zone</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.rateCoverageChangeTimeZone}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -400,7 +401,7 @@ const BillingDetail = () => {
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
-                        <Typography component='h3' sx={{
+                        <Typography className='prefilled-title' component='h3' sx={{
                         border: '1px solid #eee',
                         borderRadius: '10px !important',
                         fontSize: '14px',
@@ -410,14 +411,14 @@ const BillingDetail = () => {
                         flexBasis: '30%',
                         textTransform: 'capitalize',
                     }}>account status & remark</Typography>
-                        {/* <Typography component='span' sx={{
+                        {/* <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.accountStatus}</Typography> */}
-                        <Typography component='span' sx={{
+                        <Typography className='prefilled-content' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',

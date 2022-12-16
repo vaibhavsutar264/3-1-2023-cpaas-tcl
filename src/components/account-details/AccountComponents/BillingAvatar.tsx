@@ -18,7 +18,7 @@ const BillingAvatar = () => {
   return (
     <>
       {/* 1st left row container starts here */}
-      <Box sx={{
+      <Box className='bd-single-content' sx={{
                 bgcolor: '#fff',
                 height: 1,
                 borderRadius: '20px',

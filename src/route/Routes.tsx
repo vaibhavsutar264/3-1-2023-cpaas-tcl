@@ -34,7 +34,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
           path: appRoutes.BILLING,
           element: <Billing toggleTheme={toggleTheme} />,
         },
-        { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails /> },
+        { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
         { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
       ],
     },

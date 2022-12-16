@@ -68,5 +68,14 @@ declare module 'styled-components' {
         darkModeColor: string
         sunModeBtnBg: string
         darkModeBtnBg: string
+        bdContainerBg: string
+        bdSingleContentBg: string
+        prefilledTitle: string
+        prefilledContent: string
+        billingDetailsInput: string
+        billingDetailsLabel: string
+        bdSingleContentTitle: string
+        helpText: string
+        bdSelectFormColor: string
     }
 }
