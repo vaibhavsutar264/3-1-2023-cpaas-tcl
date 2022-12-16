@@ -108,15 +108,15 @@ const DataTable = ({
     };
     const handleInvoiceClose = (e: SyntheticEvent) => {
         e.preventDefault()
-        const invoicenumElement = document.getElementById(
-            'hiding'
-        ) as HTMLElement
         const blankCheckoutElement = document.getElementById(
             'checkbox-blank'
         ) as HTMLElement
         const CheckoutElement = document.getElementById(
             'checkbox'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+        // const invoiceIdHeadElement = document.getElementsByName('Invoice_no')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[0].eleName = null
@@ -132,6 +132,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[0].eleName = 'Invoice_no'
@@ -144,6 +146,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-customer'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('CUSTOMER LE')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[1].eleName = null
@@ -159,6 +163,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-customer'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('CUSTOMER LE')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[1].eleName = 'Customer_LE'
@@ -171,6 +177,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-entity'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('ENTITY')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[2].eleName = null
@@ -185,6 +193,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-entity'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('ENTITY')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[2].eleName = 'Tata_Entity'
@@ -198,6 +208,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-po'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('PO NO.')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[3].eleName = null
@@ -213,6 +225,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-po'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('PO NO.')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[3].eleName = 'PO_number'
@@ -225,6 +239,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-status'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('STATUS')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[4].eleName = null
@@ -240,6 +256,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-status'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('STATUS')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[4].eleName = 'Payment_Status'
@@ -252,6 +270,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-invoice-amount'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('INVOICE AMOUNT')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[5].eleName = null
@@ -267,6 +287,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-invoice-amount'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('INVOICE AMOUNT')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[5].eleName = 'Invoice_amt'
@@ -279,6 +301,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-invoice-issue'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('INVOICE ISSUED DATE')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[6].eleName = null
@@ -294,6 +318,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-invoice-issue'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('INVOICE ISSUED DATE')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[6].eleName = 'Invoice_date'
@@ -306,6 +332,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-due-date'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('DUE DATE')[0]
+        invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[7].eleName = null
@@ -321,11 +349,14 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-due-date'
         ) as HTMLElement
+        const invoiceIdHeadElement = document.getElementsByName('DUE DATE')[0]
+        invoiceIdHeadElement.style.display = 'block'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[7].eleName = 'Due_date'
     };
-
+        const blank2CheckoutElement = document.getElementsByName('Invoice Id')[0]
+        console.log(blank2CheckoutElement)
     return (
         <>
             <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
@@ -431,7 +462,7 @@ const DataTable = ({
                             {columns.map((head: any, index: any) => (
                                 <StyledTableCell key={`${head.headTrans}${index}`} align="right">
                                     <div className="th_wrapper">
-                                        <button id='hiding' className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
+                                        <button id='hiding' name={t<string>(`tables.${tableName}.${head.headTrans}`)} className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
                                             {t<string>(`tables.${tableName}.${head.headTrans}`)}
                                         </button>
                                         <span>
