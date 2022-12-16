@@ -99,7 +99,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.accountName}</Typography>
+                        }}>{billingDetails && billingDetails.accountName}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -128,7 +128,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.legalEntity}</Typography>
+                        }}>{billingDetails && billingDetails.legalEntity}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -157,7 +157,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.billingtype}</Typography>
+                        }}>{billingDetails && billingDetails.billingtype}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -186,7 +186,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.billingCycle}</Typography>
+                        }}>{billingDetails && billingDetails.billingCycle}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -215,7 +215,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.paymentPeriod}</Typography>
+                        }}>{billingDetails && billingDetails.paymentPeriod}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -244,7 +244,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.vatOrGSTNoOrTxId}</Typography>
+                        }}>{billingDetails && billingDetails.vatOrGSTNoOrTxId}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -273,7 +273,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.companyPAN}</Typography>
+                        }}>{billingDetails && billingDetails.companyPAN}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -302,7 +302,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.applicableCurrency}</Typography>
+                        }}>{billingDetails && billingDetails.applicableCurrency}</Typography>
                     </Stack>
                     <Stack sx={{
                         flexBasis: '30%',
@@ -330,7 +330,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.contractTerm}</Typography>
+                        }}>{billingDetails && billingDetails.contractTerm}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -359,7 +359,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{billingDetails.rateChangeNotificationPeriod}</Typography>
+                        }}>{billingDetails && billingDetails.rateChangeNotificationPeriod}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -388,7 +388,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails && billingDetails.rateCoverageChangeTimeZone}</Typography>
                     </Stack>
                     <Stack sx={{
                         flexBasis: '30%',
@@ -416,7 +416,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>name</Typography>
+                        }}>{billingDetails && billingDetails.accountStatus}</Typography>
                     </Stack>
                 </Box>
                 </Box>

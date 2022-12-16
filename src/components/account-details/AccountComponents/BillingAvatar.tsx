@@ -8,7 +8,7 @@ import { useSelector } from '../../../redux/store'
 
 
 const BillingAvatar = () => {
-  const { user } = useSelector((state: any) => state.auth);  
+  const { user } = useSelector((state: any) => state.auth || {});  
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 44,
     height: 44,
@@ -69,19 +69,19 @@ const BillingAvatar = () => {
                         marginBottom: '40px',
                     }} noValidate autoComplete="off"
                     >
-                    <TextField label="first name" value={`${user.firstname}`} variant="standard" type="text" sx={{
+                    <TextField label="first name" value={`${user && user.firstname}`} variant="standard" type="text" sx={{
                         // border: '1px solid #eee',
                         borderRadius: '10px !important',
                         flexBasis: '45%',
                         textTransform: 'capitalize',
                     }}/>
-                    <TextField label="last name" variant="standard" type="text" value={`${user.lastName}`} sx={{
+                    <TextField label="last name" variant="standard" type="text" value={`${user && user.lastName}`} sx={{
                         // border: '1px solid #eee',
                         borderRadius: '10px !important',
                         flexBasis: '45%',
                         textTransform: 'capitalize',
                     }}/>
-                    <TextField label="mobile no" variant="standard" type="text" value={`${user.attributes.phoneNumber}`} sx={{
+                    <TextField label="mobile no" variant="standard" type="text" value={`${user && user.attributes.phoneNumber}`} sx={{
                         // border: '1px solid #eee',
                         borderRadius: '10px !important',
                         flexBasis: '45%',
@@ -93,7 +93,7 @@ const BillingAvatar = () => {
                         flexBasis: '45%',
                         textTransform: 'capitalize',
                     }}/>
-                    <TextField label="timezone" variant="standard" type="text" value={`${user.attributes.timezone}`} sx={{
+                    <TextField label="timezone" variant="standard" type="text" value={`${user && user.attributes.timezone}`} sx={{
                         // border: '1px solid #eee',
                         borderRadius: '10px !important',
                         flexBasis: '100%',
