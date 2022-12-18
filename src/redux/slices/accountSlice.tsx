@@ -43,6 +43,7 @@ export const getAcDetails = () => {
             const { data } = await account.getAccountDetails()
             if (data) {
                 dispatch(accountSlice.actions.getDetails(data.data.data.legalentities[0]))
+                // dispatch(accountSlice.actions.getDetails(data))
             } else {
                 dispatch(accountSlice.actions.hasError())
             }

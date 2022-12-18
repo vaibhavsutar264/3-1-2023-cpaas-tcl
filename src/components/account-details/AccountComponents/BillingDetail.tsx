@@ -1,21 +1,39 @@
 import React, { useEffect } from 'react'
+<<<<<<< HEAD
 import { Box, Stack, Typography, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material'
 import { dispatch, useSelector } from '../../../redux/store'
+=======
+import {Box, Stack, Typography, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material'
+import { useDispatch, useSelector } from '../../../redux/store'
+>>>>>>> 6857b087da60299b50e1ef1689c6cb7a7d59ceeb
 import { getAcDetails } from '../../../redux/slices/accountSlice'
 
 
 const BillingDetail = () => {
+<<<<<<< HEAD
     const { accountDetails } = useSelector((state: any) => state.account);
+=======
+    const dispatch = useDispatch()
+    const { accountDetails } = useSelector((state: any) => state.account);  
+>>>>>>> 6857b087da60299b50e1ef1689c6cb7a7d59ceeb
     const { le1 } = accountDetails
     // const { billingDetails } = le1
 
     useEffect(() => {
         dispatch(getAcDetails())
+<<<<<<< HEAD
     }, [])
     return (
         <>
             {/* 1st right row container starts here */}
             <Box className='bd-single-content' sx={{
+=======
+    }, [dispatch])
+  return (
+    <>
+      {/* 1st right row container starts here */}
+      <Box  className='bd-single-content' sx={{
+>>>>>>> 6857b087da60299b50e1ef1689c6cb7a7d59ceeb
                 bgcolor: '#fff',
                 height: 1,
                 borderRadius: '20px',

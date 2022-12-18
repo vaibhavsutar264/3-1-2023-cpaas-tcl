@@ -86,8 +86,10 @@ const userLoginData = {
     ),
   getUserInfo: (username: any) =>
     requests.get(
+      // `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${username}`,
       `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${username}`,
-      userInfoTransformer
+      // userInfoTransformer
+      null
     ),
 }
 
@@ -112,10 +114,11 @@ const billing = {
       null
     ),
 }
-
 const account = {
   getAccountDetails: () =>
     requests.get(`${routes.BASE_URL}${routes.GET_BILLING_DETAILS}`, null),
+  editUserDetails: (id: any, user: any ) =>
+    requests.put(`${routes.BASE_URL}${routes.GET_USER_INFO}/${id}`,user),
 }
 
 export { userLoginData, billing, account }

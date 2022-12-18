@@ -17,6 +17,7 @@ import PaidInvoice from '../common/icons/paidInvoice'
 import UnpaidInvoice from '../common/icons/unpaidInvoice'
 import Card from '../common/elements/card'
 import { getCardCount } from '../../utils/helpers'
+import { getAcDetails } from '../../redux/slices/accountSlice'
 
 export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
 
@@ -25,6 +26,7 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(loadInvoices({ searchValue: "" }))
+        dispatch(getAcDetails())
     }, [dispatch])
     const { t } = useLocales()
     const cards = [
