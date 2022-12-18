@@ -1,4 +1,41 @@
 {
+  "loginjson": [
+    {
+      "id": 1,
+      "email": "json-server3",
+      "password": "typicod3e"
+    },
+    {
+      "email": "vaibhav@gmail.com",
+      "password": "Vaibhav@1234",
+      "id": 2
+    },
+    {
+      "email": "vaibhavsutar264@gmail.com",
+      "password": "Vaibhav@1234",
+      "id": 3
+    },
+    {
+      "email": "vaibhavsutar264@gmail.com",
+      "password": "Vaibhav@1234",
+      "id": 4
+    }
+  ],
+  "cpaas": [{
+    "id": 1,
+    "emailId": "bruno@email.com",
+    "firstname": "bruno",
+    "lastName": "Id22p",
+    "attributes": {
+      "isLoginFirstTime": "true",
+      "phoneNumber": "917777777777",
+      "timezone": "IST",
+      "preferredCommunicationMode": "EMAIL"
+    },
+    "message": "User Details Fetched Successsfully",
+    "status": 200
+  }],
+
   "result_data": {
     "Invoices": [
       {
@@ -1526,28 +1563,6 @@
         "dueDate": "2000-09-23",
         "paymentDateTime": "2000-07-23",
         "timeZone": "IST"
-      }
-    ],
-    "loginjson": [
-      {
-        "id": 1,
-        "email": "json-server",
-        "password": "typicode"
-      },
-      {
-        "email": "vaibhav@gmail.com",
-        "password": "Vaibhav@1234",
-        "id": 2
-      },
-      {
-        "email": "vaibhavsutar264@gmail.com",
-        "password": "Vaibhav@1234",
-        "id": 3
-      },
-      {
-        "email": "vaibhavsutar264@gmail.com",
-        "password": "Vaibhav@1234",
-        "id": 4
       }
     ],
     "abcd": [

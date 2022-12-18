@@ -1,117 +1,211 @@
-import React from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
-import {Box, Stack, Badge, Avatar, TextField, Button} from '@mui/material'
+import { Box, Stack, Badge, Avatar, TextField, Button } from '@mui/material'
 import AvatarImg from '../../../assets/images/avatar.png'
 import AvatarBg from '../../../assets/images/avatar-bg.png'
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
-import { useSelector } from '../../../redux/store'
+import { useSelector, useDispatch } from '../../../redux/store'
+import { userLoginData, account } from '../../../services/api/index'
+import { useNavigate } from 'react-router-dom'
+import { getAcDetails } from '../../../redux/slices/accountSlice'
 
+
+const initialValue = {
+    firstname: '',
+    lastName: ''
+}
 
 const BillingAvatar = () => {
-  const { user } = useSelector((state: any) => state.auth || {});  
+    const dispatch = useDispatch();
+  const { user } = useSelector((state: any) => state.auth || {})
+  const { emailId } = user;
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 44,
     height: 44,
     // border: `2px solid ${theme.palette.background.paper}`,
-  }));
+  }))
+  const [users, setUsers] = useState(initialValue);
+  const { firstname, lastName } = users;
+//   const { id } = useParams();
+  const id = 'a2fd942d-66c9-4628-bb12-8bd60dbb79fd'
+//   const email = 'bruno@email.com'
+  
+  const navigate = useNavigate();
 
+  useEffect(() => {
+      loadUserDetails();
+      dispatch(getAcDetails())
+  }, [dispatch]);
+
+  const loadUserDetails = async() => {
+    const response = await userLoginData.getUserInfo(emailId);
+    //   const response = await getUsers(id);
+      setUsers(response.data.data.data);
+  }
+
+  const editUserDetails = async() => {
+      return await account.editUserDetails(id, users);
+      navigate('/');
+  }
+
+  const onValueChange = (e: SyntheticEvent) => {
+      console.log((e.target as HTMLInputElement).value);
+      setUsers({...users, [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value})
+  }
+  console.log(users)
   return (
     <>
       {/* 1st left row container starts here */}
-      <Box className='bd-single-content' sx={{
-                bgcolor: '#fff',
-                height: 1,
-                borderRadius: '20px',
-                py: '52px',
-                px: '50px',
-                // mb: '40px',
-                backgroundImage: `url(${AvatarBg})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'contain',
-                }}>
-                {/* 1st row starts here */}
-                <Box sx={{
-                    mb: '36px',
-                }}>
-                    <Stack direction='row' justifyContent='center' alignItems='center'>
-                    {/* <Avatar alt="Remy Sharp" src={AvatarImg} sx={{
+      <Box
+        className="bd-single-content"
+        sx={{
+          bgcolor: '#fff',
+          height: 1,
+          borderRadius: '20px',
+          py: '52px',
+          px: '50px',
+          // mb: '40px',
+          backgroundImage: `url(${AvatarBg})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+        }}
+      >
+        {/* 1st row starts here */}
+        <Box
+          sx={{
+            mb: '36px',
+          }}
+        >
+          <Stack direction="row" justifyContent="center" alignItems="center">
+            {/* <Avatar alt="Remy Sharp" src={AvatarImg} sx={{
                         width: '156px',
                         height: '156px',
                     }} /> */}
-                    <Badge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    badgeContent={
-                        <SmallAvatar sx={{ bgcolor: '#EDEFF0', color: '#52626F' }} variant="circular">
-                            <CameraAltOutlinedIcon />
-                        </SmallAvatar>
-                    }
-                    >
-                    <Avatar alt="Travis Howard" src={AvatarImg} sx={{
-                        width: '156px',
-                        height: '156px',
-                    }} />
-                    </Badge>
-                    </Stack>
-                </Box>
-            
+            <Badge
+              overlap="circular"
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              badgeContent={
+                <SmallAvatar
+                  sx={{ bgcolor: '#EDEFF0', color: '#52626F' }}
+                  variant="circular"
+                >
+                  <CameraAltOutlinedIcon />
+                </SmallAvatar>
+              }
+            >
+              <Avatar
+                alt="Travis Howard"
+                src={AvatarImg}
+                sx={{
+                  width: '156px',
+                  height: '156px',
+                }}
+              />
+            </Badge>
+          </Stack>
+        </Box>
 
-                {/* 2nd row starts here */}
-                    <Box
-                    component="form"
-                    className='billing-details-input'
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '25ch' },
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        rowGap: '48px',
-                        justifyContent: 'space-between',
-                        marginBottom: '40px',
-                    }} noValidate autoComplete="off"
-                    >
-                    <TextField label="first name" value={`${user && user.firstname}`} variant="standard" type="text" sx={{
-                        // border: '1px solid #eee',
-                        borderRadius: '10px !important',
-                        flexBasis: '45%',
-                        textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="last name" variant="standard" type="text" value={`${user && user.lastName}`} sx={{
-                        // border: '1px solid #eee',
-                        borderRadius: '10px !important',
-                        flexBasis: '45%',
-                        textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="mobile no" variant="standard" type="text" value={`${user && user.attributes.phoneNumber}`} sx={{
-                        // border: '1px solid #eee',
-                        borderRadius: '10px !important',
-                        flexBasis: '45%',
-                        textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="communication" variant="standard" type="text" value='Phone' sx={{
-                        // border: '1px solid #eee',
-                        borderRadius: '10px !important',
-                        flexBasis: '45%',
-                        textTransform: 'capitalize',
-                    }}/>
-                    <TextField label="timezone" variant="standard" type="text" value={`${user && user.attributes.timezone}`} sx={{
-                        // border: '1px solid #eee',
-                        borderRadius: '10px !important',
-                        flexBasis: '100%',
-                        textTransform: 'capitalize',
-                    }}/>
-                </Box>
-                <Button color='error' variant='outlined' sx={{
-                    textTransform: 'uppercase',
-                    borderRadius: '100px',
-                    width: 1,
-                    px: 6,
-                    py: 2,
-                    fontSize: '12px',
-                    lineHeight: '13px',
-                    fontWeight: 700,
-                    fontFamily: 'ubuntu',
-                }}>edit personal details</Button>
-                </Box>
+        {/* 2nd row starts here */}
+        <Box
+          component="form"
+          className="billing-details-input"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+            display: 'flex',
+            flexWrap: 'wrap',
+            rowGap: '48px',
+            justifyContent: 'space-between',
+            marginBottom: '40px',
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            label="first name"
+            value={firstname}
+            onChange={(e) => onValueChange(e)}
+            name='firstname'
+            variant="standard"
+            type="text"
+            sx={{
+              // border: '1px solid #eee',
+              borderRadius: '10px !important',
+              flexBasis: '45%',
+              textTransform: 'capitalize',
+            }}
+          />
+          <TextField
+            label="last name"
+            variant="standard"
+            type="text"
+            value={lastName}
+            name='lastName'
+            onChange={(e) => onValueChange(e)}
+            sx={{
+              // border: '1px solid #eee',
+              borderRadius: '10px !important',
+              flexBasis: '45%',
+              textTransform: 'capitalize',
+            }}
+          />
+          {/* <TextField
+            label="mobile no"
+            variant="standard"
+            type="text"
+            value={`${users && users.attributes.phoneNumber}`}
+            onChange={(e) => onValueChange(e)}
+            sx={{
+              // border: '1px solid #eee',
+              borderRadius: '10px !important',
+              flexBasis: '45%',
+              textTransform: 'capitalize',
+            }}
+          />
+          <TextField
+            label="communication"
+            variant="standard"
+            type="text"
+            value="Phone"
+            sx={{
+              // border: '1px solid #eee',
+              borderRadius: '10px !important',
+              flexBasis: '45%',
+              textTransform: 'capitalize',
+            }}
+          />
+          <TextField
+            label="timezone"
+            variant="standard"
+            type="text"
+            value={`${users && users.attributes.timezone}`}
+            onChange={(e) => onValueChange(e)}
+            sx={{
+              // border: '1px solid #eee',
+              borderRadius: '10px !important',
+              flexBasis: '100%',
+              textTransform: 'capitalize',
+            }}
+          /> */}
+        </Box>
+        <Button
+          color="error"
+          variant="outlined"
+          onClick={() => editUserDetails()}
+          sx={{
+            textTransform: 'uppercase',
+            borderRadius: '100px',
+            width: 1,
+            px: 6,
+            py: 2,
+            fontSize: '12px',
+            lineHeight: '13px',
+            fontWeight: 700,
+            fontFamily: 'ubuntu',
+          }}
+        >
+          edit personal details
+        </Button>
+      </Box>
     </>
   )
 }

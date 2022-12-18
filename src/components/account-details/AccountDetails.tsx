@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Box, Grid} from '@mui/material'
 
 import BillingAvatar from './AccountComponents/BillingAvatar'
@@ -6,15 +6,20 @@ import BillingContact from './AccountComponents/BillingContact'
 import BillingDetail from './AccountComponents/BillingDetail'
 import BillingInvoice from './AccountComponents/BillingInvoice'
 import {SideBar}  from '../common/elements/SideBar'
-
+import { useDispatch, useSelector } from '../../redux/store'
+import { getAcDetails } from '../../redux/slices/accountSlice'
 
 const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
-
+  const dispatch = useDispatch()
   const [aDWidth, setADWidth] = useState('300px');
   const handleADWidth = () => {
     const currentWidth = aDWidth == '300px'? '130px' : '300px';
     setADWidth(currentWidth);
   };
+
+  useEffect(() => {
+    dispatch(getAcDetails())
+  }, [dispatch])
 
   return (
     <>

@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react'
 import {Box, Stack, Typography, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material'
-import { dispatch, useSelector } from '../../../redux/store'
-import {getAcDetails} from '../../../redux/slices/accountSlice'
+import { useDispatch, useSelector } from '../../../redux/store'
+import { getAcDetails } from '../../../redux/slices/accountSlice'
 
 
 const BillingDetail = () => {
+    const dispatch = useDispatch()
     const { accountDetails } = useSelector((state: any) => state.account);  
     const { le1 } = accountDetails
     // const { billingDetails } = le1
 
     useEffect(() => {
         dispatch(getAcDetails())
-    }, [])
+    }, [dispatch])
   return (
     <>
       {/* 1st right row container starts here */}
