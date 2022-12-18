@@ -86,8 +86,10 @@ const userLoginData = {
     ),
   getUserInfo: (username: any) =>
     requests.get(
+      // `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${username}`,
       `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${username}`,
-      userInfoTransformer
+      // userInfoTransformer
+      null
     ),
 }
 
@@ -112,9 +114,6 @@ const billing = {
       null
     ),
 }
-// export const editUser = async (id, user) => {
-//   return await axios.put(`${usersUrl}/${id}`, user)
-// }
 const account = {
   getAccountDetails: () =>
     requests.get(`${routes.BASE_URL}${routes.GET_BILLING_DETAILS}`, null),

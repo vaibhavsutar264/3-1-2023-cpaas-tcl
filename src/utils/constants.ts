@@ -9,7 +9,7 @@ export const apiRoutes = {
   SET_PASSWORD: '/api/v1/auth/password',
   FORGOT_PASSWORD: '/cpaas/forgotPassword',
   RESET_PASSWORD: '/cpaas/resetPassword',
-  GET_USER_INFO: '/cpaas/userinfo',
+  GET_USER_INFO: '/cpaas',
   LOGOUT: '/cpaas/logout',
 
   // Billing

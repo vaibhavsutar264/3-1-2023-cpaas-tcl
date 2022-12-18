@@ -27,7 +27,7 @@ const BillingAvatar = () => {
   const [users, setUsers] = useState(initialValue);
   const { firstname, lastName } = users;
 //   const { id } = useParams();
-  const id = 'a2fd942d-66c9-4628-bb12-8bd60dbb79fd'
+  const id = 1
 //   const email = 'bruno@email.com'
   
   const navigate = useNavigate();
@@ -40,15 +40,16 @@ const BillingAvatar = () => {
   const loadUserDetails = async() => {
     const response = await userLoginData.getUserInfo(emailId);
     //   const response = await getUsers(id);
-      setUsers(response.data.data.data);
+      setUsers(response.data);
   }
 
   const editUserDetails = async() => {
-      return await account.editUserDetails(id, users);
+    const response = await account.editUserDetails(id, users);
       navigate('/');
   }
 
   const onValueChange = (e: SyntheticEvent) => {
+    e.preventDefault()
       console.log((e.target as HTMLInputElement).value);
       setUsers({...users, [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value})
   }
