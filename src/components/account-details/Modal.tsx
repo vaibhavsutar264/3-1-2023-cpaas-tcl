@@ -47,7 +47,7 @@ function Modal() {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
+                    <Button onClick={handleClose}>
                         login
                     </Button>
                 </DialogActions>

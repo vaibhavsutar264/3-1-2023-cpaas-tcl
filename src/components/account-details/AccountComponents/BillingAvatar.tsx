@@ -24,8 +24,12 @@ const BillingAvatar = () => {
     height: 44,
     // border: `2px solid ${theme.palette.background.paper}`,
   }))
-  const [users, setUsers] = useState(initialValue);
-  const { firstname, lastName } = users;
+
+  const [firstname, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  // const [users, setUsers] = useState(initialValue);
+  // const { firstname, lastName } = users;
 //   const { id } = useParams();
   const id = 1
 //   const email = 'bruno@email.com'
@@ -38,22 +42,35 @@ const BillingAvatar = () => {
   }, [dispatch]);
 
   const loadUserDetails = async() => {
-    const response = await userLoginData.getUserInfo(emailId);
-    //   const response = await getUsers(id);
-      setUsers(response.data);
+    const response = await userLoginData.getUserInfo(id).then((res) => {
+      setFirstname(res.data.firstname);
+      setLastName(res.data.lastName);
+    })
+      // setUsers(response.data);
   }
 
-  const editUserDetails = async() => {
-    const response = await account.editUserDetails(id, users);
-      navigate('/');
+  const data = {
+    firstname: firstname,
+    lastName: lastName
+  };
+
+  // function Update(e) {
+  //   e.preventDefault();
+  //   axios.put(`http://localhost:3001/users/${id}`, data).then(navigate("/"));
+  // }
+
+  const editUserDetails = async(e: SyntheticEvent) => {
+    e.preventDefault();
+    await account.editUserDetails(id, data);
+    navigate('/');
   }
 
-  const onValueChange = (e: SyntheticEvent) => {
-    e.preventDefault()
-      console.log((e.target as HTMLInputElement).value);
-      setUsers({...users, [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value})
-  }
-  console.log(users)
+  // const onValueChange = (e: SyntheticEvent) => {
+  //   e.preventDefault()
+  //     console.log((e.target as HTMLInputElement).value);
+  //     setUsers({...users, [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value})
+  // }
+  console.log(firstname)
   return (
     <>
       {/* 1st left row container starts here */}
@@ -107,6 +124,7 @@ const BillingAvatar = () => {
         </Box>
 
         {/* 2nd row starts here */}
+        <form>
         <Box
           component="form"
           className="billing-details-input"
@@ -124,8 +142,8 @@ const BillingAvatar = () => {
           <TextField
             label="first name"
             value={firstname}
-            onChange={(e) => onValueChange(e)}
-            name='firstname'
+            onChange={(e) => setFirstname(e.target.value)}
+            // name='firstname'
             variant="standard"
             type="text"
             sx={{
@@ -140,8 +158,8 @@ const BillingAvatar = () => {
             variant="standard"
             type="text"
             value={lastName}
-            name='lastName'
-            onChange={(e) => onValueChange(e)}
+            // name='lastName'
+            onChange={(e) => setLastName(e.target.value)}
             sx={{
               // border: '1px solid #eee',
               borderRadius: '10px !important',
@@ -191,7 +209,8 @@ const BillingAvatar = () => {
         <Button
           color="error"
           variant="outlined"
-          onClick={() => editUserDetails()}
+          type="submit"
+          onClick={editUserDetails}
           sx={{
             textTransform: 'uppercase',
             borderRadius: '100px',
@@ -206,6 +225,7 @@ const BillingAvatar = () => {
         >
           edit personal details
         </Button>
+        </form>
       </Box>
     </>
   )

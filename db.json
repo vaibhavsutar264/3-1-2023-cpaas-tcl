@@ -23,74 +23,8 @@
   ],
   "cpaas": [
     {
-      "0": {
-        "0": {
-          "0": {
-            "id": 1,
-            "emailId": "bruno@email.com",
-            "firstname": "bruno",
-            "lastName": "ffdddffffffffddId21fff12p",
-            "attributes": {
-              "isLoginFirstTime": "true",
-              "phoneNumber": "917777777777",
-              "timezone": "IST",
-              "preferredCommunicationMode": "EMAIL"
-            },
-            "message": "User Details Fetched Successsfully",
-            "status": 200
-          },
-          "1": {
-            "id": 2,
-            "emailId": "bruno2@email.com",
-            "firstname": "bruno",
-            "lastName": "Id22p",
-            "attributes": {
-              "isLoginFirstTime": "true",
-              "phoneNumber": "917777777777",
-              "timezone": "IST",
-              "preferredCommunicationMode": "EMAIL"
-            },
-            "message": "User Details Fetched Successsfully",
-            "status": 200
-          },
-          "firstname": "brucccnoc",
-          "lastName": "fcccfdddffffffffddId21fff12pc",
-          "id": 1
-        },
-        "1": {
-          "id": 2,
-          "emailId": "bruno2@email.com",
-          "firstname": "bruno",
-          "lastName": "Id22p",
-          "attributes": {
-            "isLoginFirstTime": "true",
-            "phoneNumber": "917777777777",
-            "timezone": "IST",
-            "preferredCommunicationMode": "EMAIL"
-          },
-          "message": "User Details Fetched Successsfully",
-          "status": 200
-        },
-        "firstname": "vaibhav",
-        "lastName": "sutar2",
-        "id": 1
-      },
-      "1": {
-        "id": 2,
-        "emailId": "bruno2@email.com",
-        "firstname": "bruno",
-        "lastName": "Id22p",
-        "attributes": {
-          "isLoginFirstTime": "true",
-          "phoneNumber": "917777777777",
-          "timezone": "IST",
-          "preferredCommunicationMode": "EMAIL"
-        },
-        "message": "User Details Fetched Successsfully",
-        "status": 200
-      },
-      "firstname": "ccc",
-      "lastName": "ccc",
+      "firstname": "vaibhav",
+      "lastName": "sutaraaa",
       "id": 1
     },
     {
