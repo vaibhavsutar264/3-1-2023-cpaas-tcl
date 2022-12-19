@@ -7,7 +7,7 @@ import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { userLoginData, account } from '../../../services/api/index'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getAcDetails } from '../../../redux/slices/accountSlice'
+import { getAcDetails, updateUserDetails } from '../../../redux/slices/accountSlice'
 
 
 const initialValue = {
@@ -62,9 +62,10 @@ const BillingAvatar = () => {
   }
 
   const editUserDetails = async(e: SyntheticEvent) => {
+    dispatch(updateUserDetails(id, data))
     e.preventDefault();
     // await account.editUserDetails(id, data).then(navigate("/invoices"));
-    await account.editUserDetails(id, data)
+    // await account.editUserDetails(id, data)
     navigate('/');
   }
 
