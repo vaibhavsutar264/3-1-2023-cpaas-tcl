@@ -32,8 +32,8 @@ const BillingAvatar = () => {
 
   // const [users, setUsers] = useState(initialValue);
   // const { firstname, lastName } = users;
-  const { id } = useParams();
-  // const id = 1
+  // const { id } = useParams();
+  const id = 1
 //   const email = 'bruno@email.com'
   
   const navigate = useNavigate();
@@ -45,10 +45,11 @@ const BillingAvatar = () => {
 
   const loadUserDetails = async() => {
     const response = await userLoginData.getUserInfo(id).then((res) => {
-      setFirstname(res.data.firstname);
-      setLastName(res.data.lastName);
-      setPhoneNumber(res.data.attributes.phoneNumber);
-      setTimezone(res.data.attributes.timezone);
+      setFirstname(res.data.data.data.firstname);
+      setLastName(res.data.data.data.firstname);
+      setPhoneNumber(res.data.data.data.attributes.phoneNumber);
+      setTimezone(res.data.data.data.attributes.timezone);
+      console.log(res.data.phoneNumber)
     })
       // setUsers(response.data);
   }

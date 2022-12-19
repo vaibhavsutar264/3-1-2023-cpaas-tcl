@@ -23,15 +23,11 @@
   ],
   "cpaas": [
     {
-      "id": 1,
-      "firstname": "vaibhdsdxsdxssxssxav",
-      "lastName": "sutsxsaraaa",
-      "attributes": {
-        "isLoginFirstTime": "true",
-        "phoneNumber": "917777777777",
-        "timezone": "IST",
-        "preferredCommunicationMode": "EMAIL"
-      }
+      "firstname": "rahul",
+      "lastName": "abd",
+      "phoneNumber": "8879155277",
+      "timezone": "IST",
+      "id": 1
     },
     {
       "id": 2,
