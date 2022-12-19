@@ -76,16 +76,16 @@ const AccountDetails = Loadable(
     lazy(() => import('../components/account-details/AccountDetails'))
 )
 const Modal = Loadable(
-    lazy(() => import('../components/account-details/Modal'))
+    lazy(() => import('../components/modals/Modal'))
 )
 const ModalTicket = Loadable(
-    lazy(() => import('../components/account-details/ModalTicket'))
+    lazy(() => import('../components/modals/ModalTicket'))
 )
 const ModalWelcome = Loadable(
-    lazy(() => import('../components/account-details/ModalWelcome'))
+    lazy(() => import('../components/modals/ModalWelcome'))
 )
 const ModalMail = Loadable(
-    lazy(() => import('../components/account-details/ModalMail'))
+    lazy(() => import('../components/modals/ModalMail'))
 )
 
 export default Routes
