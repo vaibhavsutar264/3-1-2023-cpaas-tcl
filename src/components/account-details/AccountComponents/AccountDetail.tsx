@@ -13,6 +13,13 @@ const BillingDetail = () => {
     useEffect(() => {
         dispatch(getAcDetails())
     }, [dispatch])
+
+        const [age, setAge] = React.useState('');
+      
+        const handleChange = (event: SelectChangeEvent) => {
+          setAge(event.target.value as string);
+        };
+
   return (
     <>
       {/* 1st right row container starts here */}
@@ -40,7 +47,7 @@ const BillingDetail = () => {
                             fontWeight: 700,
                             fontFamily: 'ubuntu',
                         }}>Billing Details</Typography>
-                        <Box
+                        {/* <Box
                             className='select-form'
                             component="form"
                             sx={{
@@ -50,7 +57,7 @@ const BillingDetail = () => {
                                 }
                             }} noValidate autoComplete="off"
                         >
-                            <FormControl variant='standard' fullWidth
+                            <FormControl fullWidth
                                 sx={{
                                     flexBasis: '40%',
                                 }}>
@@ -59,6 +66,40 @@ const BillingDetail = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     label="Age"
+                                >
+                                    <MenuItem value='legal entity name1'>Legal Entity Name1</MenuItem>
+                                    <MenuItem value='legal entity name2'>Legal Entity Name2</MenuItem>
+                                    <MenuItem value='legal entity name3'>Legal Entity Name3</MenuItem>
+                                </Select>
+                            </FormControl>
+                            </Box> */}
+
+                        <Box id='select-entity-form' sx={{ minWidth: 200,
+                        '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+                            top: '1px',
+                            height: 'min-content',
+                            backgroundColor: '#fff !important',
+                        },
+                            '& [role="button"]': {
+                                color: '#222',
+                                textTransform: 'capitalize',
+                                fontWeight: 400,
+                            },
+                            '& label': {
+                                // top: '-9px',
+                                top: age.length > 1? '1px' : '-11px',
+                                height: 'min-content',
+                                backgroundColor: '#fff !important',
+                            }
+                        }}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">Select Legal Entity</InputLabel>
+                                <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={age}
+                                label="Age"
+                                onChange={handleChange}
                                 >
                                     <MenuItem value='legal entity name1'>Legal Entity Name1</MenuItem>
                                     <MenuItem value='legal entity name2'>Legal Entity Name2</MenuItem>

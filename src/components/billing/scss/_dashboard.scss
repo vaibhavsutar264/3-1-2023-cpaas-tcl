@@ -1056,3 +1056,20 @@ form.raise-ticket-input .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
 .MuiTooltip-popper[role="tooltip"] {
     
 }
+
+
+// Account details styles 
+.billing-details-input {
+
+    & input {
+        padding-bottom: 8px;
+    }
+
+    & legend {
+
+        & span {
+
+            display: none;
+        }
+    }
+}

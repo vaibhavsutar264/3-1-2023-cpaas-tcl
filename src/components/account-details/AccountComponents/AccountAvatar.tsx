@@ -75,6 +75,13 @@ const BillingAvatar = () => {
   //     setUsers({...users, [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value})
   // }
   console.log(firstname)
+
+  const [editable, setEditable] = useState<boolean>(false);
+
+  const editMode = () => {
+    // setEditable(!editable);
+  };
+
   return (
     <>
       {/* 1st left row container starts here */}
@@ -139,9 +146,12 @@ const BillingAvatar = () => {
             '& > :not(style)': { m: 1, width: '25ch' },
             display: 'flex',
             flexWrap: 'wrap',
-            rowGap: '48px',
+            rowGap: '20px',
             justifyContent: 'space-between',
             marginBottom: '40px',
+            '& label': {
+              top: editable? '14px' : 0,
+            }
           }}
           noValidate
           autoComplete="off"
@@ -151,7 +161,7 @@ const BillingAvatar = () => {
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
             // name='firstname'
-            variant="standard"
+            variant={editable? 'outlined' : 'standard'}
             type="text"
             sx={{
               // border: '1px solid #eee',
@@ -162,7 +172,7 @@ const BillingAvatar = () => {
           />
           <TextField
             label="last name"
-            variant="standard"
+            variant={editable? 'outlined' : 'standard'}
             type="text"
             value={lastName}
             // name='lastName'
@@ -176,7 +186,7 @@ const BillingAvatar = () => {
           />
           <TextField
             label="mobile no"
-            variant="standard"
+            variant={editable? 'outlined' : 'standard'}
             type="text"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
@@ -189,7 +199,7 @@ const BillingAvatar = () => {
           />
           <TextField
             label="communication"
-            variant="standard"
+            variant={editable? 'outlined' : 'standard'}
             type="text"
             value="Phone"
             sx={{
@@ -201,7 +211,7 @@ const BillingAvatar = () => {
           />
           <TextField
             label="timezone"
-            variant="standard"
+            variant={editable? 'outlined' : 'standard'}
             type="text"
             value={timezone}
             onChange={(e) => setTimezone(e.target.value)}
@@ -218,6 +228,7 @@ const BillingAvatar = () => {
           variant="outlined"
           type="submit"
           onClick={editUserDetails}
+          onClick={editMode}
           sx={{
             textTransform: 'uppercase',
             borderRadius: '100px',
@@ -228,9 +239,13 @@ const BillingAvatar = () => {
             lineHeight: '13px',
             fontWeight: 700,
             fontFamily: 'ubuntu',
+            '&:hover': {
+              backgroundColor: '#D63548',
+              color: '#fff',
+          },
           }}
         >
-          edit personal details
+          {editable? 'save' : 'edit personal details'}
         </Button>
         </form>
       </Box>
