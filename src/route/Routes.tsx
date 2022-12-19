@@ -3,6 +3,9 @@ import Loading from '../components/loader/Loading'
 import PrivateRoutes from '../utils/PrivateRoutes'
 import { appRoutes } from '../utils/constants'
 import { useRoutes } from 'react-router-dom'
+import { useSelector, useDispatch } from '../redux/store'
+
+
 
 // eslint-disable-next-line react/display-name
 const Loadable = (Component: any) => (props: any) => {
@@ -14,6 +17,7 @@ const Loadable = (Component: any) => (props: any) => {
 }
 
 function Routes({ toggleTheme }: { toggleTheme: any }) {
+    const { user } = useSelector((state: any) => state.auth || {})
     return useRoutes([
         // { path: appRoutes.ROOT, element: { <HomeScreen /> } },
         {
@@ -27,6 +31,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                     path: appRoutes.BILLING,
                     element: <Billing toggleTheme={toggleTheme} />,
                 },
+                // { path: `${appRoutes.ACCOUNT_DETAILS}/${user.id}`, element: <AccountDetails toggleTheme={toggleTheme} /> },
                 { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
                 { path: appRoutes.MODAL, element: <Modal /> },
                 { path: appRoutes.MODAL_TICKET, element: <ModalTicket /> },

@@ -6,7 +6,7 @@ import AvatarBg from '../../../assets/images/avatar-bg.png'
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { userLoginData, account } from '../../../services/api/index'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getAcDetails } from '../../../redux/slices/accountSlice'
 
 
@@ -27,11 +27,13 @@ const BillingAvatar = () => {
 
   const [firstname, setFirstname] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [timezone, setTimezone] = useState("");
 
   // const [users, setUsers] = useState(initialValue);
   // const { firstname, lastName } = users;
-//   const { id } = useParams();
-  const id = 1
+  const { id } = useParams();
+  // const id = 1
 //   const email = 'bruno@email.com'
   
   const navigate = useNavigate();
@@ -45,23 +47,23 @@ const BillingAvatar = () => {
     const response = await userLoginData.getUserInfo(id).then((res) => {
       setFirstname(res.data.firstname);
       setLastName(res.data.lastName);
+      setPhoneNumber(res.data.attributes.phoneNumber);
+      setTimezone(res.data.attributes.timezone);
     })
       // setUsers(response.data);
   }
 
   const data = {
     firstname: firstname,
-    lastName: lastName
-  };
-
-  // function Update(e) {
-  //   e.preventDefault();
-  //   axios.put(`http://localhost:3001/users/${id}`, data).then(navigate("/"));
-  // }
+    lastName: lastName,
+    phoneNumber: phoneNumber,
+    timezone: timezone
+  }
 
   const editUserDetails = async(e: SyntheticEvent) => {
     e.preventDefault();
-    await account.editUserDetails(id, data);
+    // await account.editUserDetails(id, data).then(navigate("/invoices"));
+    await account.editUserDetails(id, data)
     navigate('/');
   }
 
@@ -167,12 +169,12 @@ const BillingAvatar = () => {
               textTransform: 'capitalize',
             }}
           />
-          {/* <TextField
+          <TextField
             label="mobile no"
             variant="standard"
             type="text"
-            value={`${users && users.attributes.phoneNumber}`}
-            onChange={(e) => onValueChange(e)}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
             sx={{
               // border: '1px solid #eee',
               borderRadius: '10px !important',
@@ -196,15 +198,15 @@ const BillingAvatar = () => {
             label="timezone"
             variant="standard"
             type="text"
-            value={`${users && users.attributes.timezone}`}
-            onChange={(e) => onValueChange(e)}
+            value={timezone}
+            onChange={(e) => setTimezone(e.target.value)}
             sx={{
               // border: '1px solid #eee',
               borderRadius: '10px !important',
               flexBasis: '100%',
               textTransform: 'capitalize',
             }}
-          /> */}
+          />
         </Box>
         <Button
           color="error"
