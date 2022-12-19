@@ -1,3 +1,4 @@
+
 export const apiRoutes = {
     // BASE_URL: 'http://115.112.43.74:8585',
     BASE_URL: 'http://localhost:4000',
@@ -97,7 +98,7 @@ export const appRoutes = {
     INVOICE: '/invoices/:id',
     RAISE_TICKET: '/invoices/raiseticket',
     INVOICE_BILL: '/invoices/invoicebill',
-    ACCOUNT_DETAILS: '/invoices/accountdetails',
+    ACCOUNT_DETAILS: '/invoices/accountdetails/',
     MODAL: '/invoices/accountdetails/modal',
 }
 

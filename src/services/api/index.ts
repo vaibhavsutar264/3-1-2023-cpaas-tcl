@@ -9,6 +9,7 @@ import {
   logoutTransformer,
   resetPasswordTransformer,
   userInfoTransformer,
+  userInfoInternalTransformer
 } from '../../utils/transformers'
 import routes from './routes'
 const httpInstance = (transformer: any) =>
@@ -87,9 +88,9 @@ const userLoginData = {
   getUserInfo: (id: any) =>
     requests.get(
       // `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${username}`,
-      `${routes.BASE_URL}${routes.GET_USER_INFO}/${id}`,
       // userInfoTransformer
-      null
+      `${routes.BASE_URL}${routes.GET_USER_INFO}/${id}`,
+      userInfoInternalTransformer
     ),
 }
 

@@ -6,7 +6,7 @@ import AvatarBg from '../../../assets/images/avatar-bg.png'
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { userLoginData, account } from '../../../services/api/index'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getAcDetails } from '../../../redux/slices/accountSlice'
 
 
@@ -32,8 +32,8 @@ const BillingAvatar = () => {
 
   // const [users, setUsers] = useState(initialValue);
   // const { firstname, lastName } = users;
-//   const { id } = useParams();
-  const id = 1
+  const { id } = useParams();
+  // const id = 1
 //   const email = 'bruno@email.com'
   
   const navigate = useNavigate();
