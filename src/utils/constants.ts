@@ -99,6 +99,9 @@ export const appRoutes = {
     INVOICE_BILL: '/invoices/invoicebill',
     ACCOUNT_DETAILS: '/invoices/accountdetails',
     MODAL: '/invoices/accountdetails/modal',
+    MODAL_TICKET: '/invoices/accountdetails/modalticket',
+    MODAL_WELCOME: '/invoices/accountdetails/modalwelcome',
+    MODAL_MAIL: '/invoices/accountdetails/modalmail'
 }
 
 export const breadCrums = {

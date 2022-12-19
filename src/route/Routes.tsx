@@ -29,6 +29,9 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 },
                 { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
                 { path: appRoutes.MODAL, element: <Modal /> },
+                { path: appRoutes.MODAL_TICKET, element: <ModalTicket /> },
+                { path: appRoutes.MODAL_WELCOME, element: <ModalWelcome /> },
+                { path: appRoutes.MODAL_MAIL, element: <ModalMail /> },
                 { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
             ],
         },
@@ -69,6 +72,15 @@ const AccountDetails = Loadable(
 )
 const Modal = Loadable(
     lazy(() => import('../components/account-details/Modal'))
+)
+const ModalTicket = Loadable(
+    lazy(() => import('../components/account-details/ModalTicket'))
+)
+const ModalWelcome = Loadable(
+    lazy(() => import('../components/account-details/ModalWelcome'))
+)
+const ModalMail = Loadable(
+    lazy(() => import('../components/account-details/ModalMail'))
 )
 
 export default Routes

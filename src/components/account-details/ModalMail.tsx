@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { Dialog, IconButton } from '@mui/material';
+import { Dialog, IconButton, Link } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -10,9 +10,10 @@ import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import PasswordProtected from '../../assets/images/svg/password-protected.svg'
+import TicketRaised from '../../assets/images/svg/ticket-raised.svg'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-function Modal() {
+function ModalMail() {
     const [open, setOpen] = React.useState(true);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -37,23 +38,19 @@ function Modal() {
                 aria-labelledby="responsive-dialog-title"
             >
                 <IconButton onClick={handleClose}><CloseRoundedIcon /></IconButton>
-                <img src={PasswordProtected} alt="" />
+                <img src={TicketRaised} alt="" />
                 <DialogTitle id="responsive-dialog-title" textAlign='center'>
-                    {"Password Updated"}
+                    {"Check Your Mail"}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText textAlign='center'>
-                        Your password has been changed successfully
+                    <p className='darker-text'>We have sent a link on your registered email <span className='bolder-text'>mit***@gmail.com</span></p>
+                    <p className='lighter-text'>Didn&lsquo;t receive link? <Link href="#" color='error' underline='always'>Resend</Link></p>
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>
-                        login
-                    </Button>
-                </DialogActions>
             </Dialog>
         </div>
     );
 }
 
-export default Modal;
+export default ModalMail;

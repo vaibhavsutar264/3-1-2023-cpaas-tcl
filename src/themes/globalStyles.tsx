@@ -35,7 +35,7 @@ export const lightTheme = {
     sidebarSvgPathColor: '#52626F',
     languageColor: '#344857',
     languageTopColor: '#222',
-    languageSvgColor: '#344857 !important',
+    languageSvgColor: '#fff !important',
     usernameColor: '#344857',
     usernameSvgColor: '#344857 !important',
     sidebarToggleBg: '#fff',
@@ -76,6 +76,9 @@ export const lightTheme = {
     bdSingleContentTitle: '#303030',
     helpText: '#344857',
     bdSelectFormColor: 'rgba(0, 0, 0, 0.6) !important',
+    modalBg: '#fff',
+    modalTitle: '#344857',
+    closeModalSvg: '#010101',
 }
 
 export const darkTheme = {
@@ -155,6 +158,9 @@ export const darkTheme = {
     bdSingleContentTitle: '#E8E8E8',
     helpText: '#787785',
     bdSelectFormColor: '#E8E8E8 !important',
+    modalBg: '#3A4548',
+    modalTitle: '#fff',
+    closeModalSvg: '#E8E8E8',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -421,5 +427,14 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   .bd-single-content .select-form .MuiInputBase-root::before {
     border-bottom: 1px solid ${({ theme }) => theme.bdSelectFormColor};
+  }
+  [role=dialog][aria-labelledby=responsive-dialog-title] {
+    background-color: ${({ theme }) => theme.modalBg};
+  }
+  [role=dialog][aria-labelledby=responsive-dialog-title] h2, [role=dialog][aria-labelledby=responsive-dialog-title] .MuiDialogTitle-root+.css-ypiqx9-MuiDialogContent-root, [role=dialog][aria-labelledby=responsive-dialog-title] .darker-text, [role=dialog][aria-labelledby=responsive-dialog-title] .bolder-text, [role=dialog][aria-labelledby=responsive-dialog-title] .lighter-text, [role=dialog][aria-labelledby=responsive-dialog-title] .MuiTypography-body1 {
+    color: ${({ theme }) => theme.modalTitle};
+  }
+  [role=dialog][aria-labelledby=responsive-dialog-title] button svg {
+    color: ${({ theme }) => theme.closeModalSvg};
   }
 `

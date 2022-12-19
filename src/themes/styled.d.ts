@@ -77,5 +77,8 @@ declare module 'styled-components' {
         bdSingleContentTitle: string
         helpText: string
         bdSelectFormColor: string
+        modalBg: string
+        modalTitle: string
+        closeModalSvg: string
     }
 }

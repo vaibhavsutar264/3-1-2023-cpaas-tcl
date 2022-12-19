@@ -183,8 +183,16 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                             </div>
                         </div>
                         <div className="right__elementsItem language__selector">
-                            <FormControl sx={{ m: 1, minWidth: 100 }}>
-                                <Select
+                            {/* <FormControl sx={{ m: 1, minWidth: 100 }}> */}
+                            <FormControl
+                                sx={{
+                                m: 1,
+                                minWidth: 100,
+                                }}
+                                size="small"
+                                id="lang-background-white"
+                            >
+                                {/* <Select 
                                     value={language}
                                     onChange={handleChangelanguage}
                                     displayEmpty
@@ -205,7 +213,30 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                             {lng}
                                         </MenuItem>
                                     ))}
-                                </Select>
+                                </Select> */}
+
+                  <Select
+                    labelId="demo-select-small"
+                    id="demo-select-small"
+                    value={i18n.language}
+                    label="Language"
+                    onChange={(e) => {
+                    i18n.changeLanguage(e.target.value)
+                    setInLocalStorage('lng', e.target.value)
+                  }}
+                  sx={
+                    {
+                      // bgcolor: "white !important",
+                    }
+                  }
+                >
+                  {availableLanguages.map((language) => (
+                    <MenuItem key={language} value={language}>
+                        
+                      {language}
+                    </MenuItem>
+                  ))}
+                </Select>
                             </FormControl>
                         </div>
                         <div className="right__elementsItem notification">

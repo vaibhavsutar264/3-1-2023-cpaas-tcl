@@ -10,9 +10,10 @@ import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import PasswordProtected from '../../assets/images/svg/password-protected.svg'
+import TicketRaised from '../../assets/images/svg/ticket-raised.svg'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-function Modal() {
+function ModalTicket() {
     const [open, setOpen] = React.useState(true);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -37,23 +38,18 @@ function Modal() {
                 aria-labelledby="responsive-dialog-title"
             >
                 <IconButton onClick={handleClose}><CloseRoundedIcon /></IconButton>
-                <img src={PasswordProtected} alt="" />
+                <img src={TicketRaised} alt="" />
                 <DialogTitle id="responsive-dialog-title" textAlign='center'>
-                    {"Password Updated"}
+                    {"Ticket Raised"}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText textAlign='center'>
-                        Your password has been changed successfully
+                    <p className='darker-text'>Ticket has been raised for ticket number <span className='ticket-number'>AM2398756710</span> we will get back to you shortly</p>
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>
-                        login
-                    </Button>
-                </DialogActions>
             </Dialog>
         </div>
     );
 }
 
-export default Modal;
+export default ModalTicket;
