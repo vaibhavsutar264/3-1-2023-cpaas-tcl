@@ -81,5 +81,7 @@ declare module 'styled-components' {
         modalTitle: string
         closeModalSvg: string
         resendLink: string
+        langInvoicesBg: string
+        langInvoicesTxt: string
     }
 }

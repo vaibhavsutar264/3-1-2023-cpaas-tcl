@@ -69,14 +69,23 @@ export const Actions = ({
       <div className="action__elementItem" id="date-picker">
       </div>
       <div className="action__elementItem">
-        <a href="/" className="iconCta">
+        {/* <a href="/" className="iconCta">
           <span className="icon">
             <Export />
           </span>
           <CSVLink {...ExportToCsv} className="text" data-testid="csv-link">
             {t<string>('exportToCsv')}
           </CSVLink>
-        </a>
+        </a> */}
+
+          <span className="iconCta">
+          <span className="icon">
+            <Export />
+          </span>
+          <CSVLink {...ExportToCsv} className="text" data-testid="csv-link">
+            {t<string>('exportToCsv')}
+          </CSVLink>
+        </span>
       </div>
       {/* <button
         className="actionButton__item"

@@ -1111,6 +1111,7 @@ p.text-error-success {
     >li {
         justify-content: center;
         position: relative;
+        font-family: ubuntu;
 
         &::after {
             content: '';
@@ -1206,4 +1207,8 @@ input:-webkit-autofill {
 // make language selector color white - not showing currently
 #demo-select-small {
     color: #fff !important;
+}
+
+label {
+    font-family: ubuntu !important;
 }

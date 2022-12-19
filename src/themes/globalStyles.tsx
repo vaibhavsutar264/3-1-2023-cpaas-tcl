@@ -35,7 +35,7 @@ export const lightTheme = {
     sidebarSvgPathColor: '#52626F',
     languageColor: '#344857',
     languageTopColor: '#222',
-    languageSvgColor: '#fff !important',
+    languageSvgColor: '#344857 !important',
     usernameColor: '#344857',
     usernameSvgColor: '#344857 !important',
     sidebarToggleBg: '#fff',
@@ -80,6 +80,8 @@ export const lightTheme = {
     modalTitle: '#344857',
     closeModalSvg: '#010101',
     resendLink: '#d32f2f',
+    langInvoicesBg: 'transparent',
+    langInvoicesTxt: '#344857 !important',
 }
 
 export const darkTheme = {
@@ -163,6 +165,8 @@ export const darkTheme = {
     modalTitle: '#fff',
     closeModalSvg: '#E8E8E8',
     resendLink: '#ff6060',
+    langInvoicesBg: 'transparent',
+    langInvoicesTxt: '#fff',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -441,5 +445,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   [role=dialog][aria-labelledby=responsive-dialog-title] .MuiLink-underlineAlways {
     color: ${({ theme }) => theme.resendLink};
+  }
+  #lang-background-invoices {
+    background-color: ${({ theme }) => theme.langInvoicesBg};
+  }
+  #demo-select-small {
+    color: ${({ theme }) => theme.langInvoicesTxt};
   }
 `

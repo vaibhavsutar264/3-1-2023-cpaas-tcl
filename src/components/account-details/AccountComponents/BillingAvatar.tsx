@@ -115,12 +115,15 @@ const BillingAvatar = () => {
             >
               <Avatar
                 alt="Travis Howard"
-                src={AvatarImg}
+                // src={AvatarImg}
                 sx={{
                   width: '156px',
                   height: '156px',
+                  bgcolor: '#870000',
                 }}
-              />
+              >
+                JD
+              </Avatar>
             </Badge>
           </Stack>
         </Box>

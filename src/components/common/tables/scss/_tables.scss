@@ -13,3 +13,20 @@
         content: none;
     }
 }
+
+.iconCta {
+
+    a {
+        color: #d63548;
+        text-decoration: none;
+    }
+
+    &:hover a {
+        color: #fff;
+    }
+}
+
+
+.action__elementItem .iconCta:hover span.icon svg path {
+    fill: #fff !important;
+}
