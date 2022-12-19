@@ -53,6 +53,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import Support from '../icons/support'
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Sidebar } from 'rsuite'
+import Globe from '../../../assets/images/svg/globe.svg'
 
 type SidebarProps = {
     toggleTheme: any
@@ -188,9 +189,11 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                 sx={{
                                 m: 1,
                                 minWidth: 100,
+                                position: 'relative',
                                 }}
                                 size="small"
-                                id="lang-background-white"
+                                // id="lang-background-white"
+                                id="lang-background-invoices"
                             >
                                 {/* <Select 
                                     value={language}
@@ -214,7 +217,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         </MenuItem>
                                     ))}
                                 </Select> */}
-
+                                <img src={Globe} alt="" style={{width:'18px', height:'18px', position:'absolute', top:'50%', left:'-12px', transform:'translateY(-50%)',}} />
                   <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
