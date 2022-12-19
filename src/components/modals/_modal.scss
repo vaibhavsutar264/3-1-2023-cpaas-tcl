@@ -71,6 +71,37 @@
         }
     }
 
+    // Specific for ticket raised modal
+    & .darker-text {
+        font-size: 20px;
+        font-family: 'ubuntu';
+        line-height: 1.5;
+        color: #000000;
+        padding-bottom: 7vh;
+
+        & .ticket-number {
+            color: #D63548;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'ubuntu';
+        }
+
+        & .bolder-text {
+            font-weight: 700;
+        }
+
+    }
+
+    & .lighter-text {
+        font-size: 16px;
+        color: #344857;
+    }
+
+}
 
 
+// No internal overflow
+
+.css-ypiqx9-MuiDialogContent-root {
+    overflow-y: unset !important;
 }

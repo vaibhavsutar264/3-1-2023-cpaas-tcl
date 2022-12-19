@@ -9,11 +9,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
-import PasswordProtected from '../../assets/images/svg/password-protected.svg'
+import WelcomeCPass from '../../assets/images/svg/welcome-cpass.svg'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-function Modal() {
-    const [open, setOpen] = React.useState(false);
+function ModalWelcome() {
+    const [open, setOpen] = React.useState(true);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -36,19 +36,19 @@ function Modal() {
                 onClose={handleClose}
                 aria-labelledby="responsive-dialog-title"
             >
-                <IconButton><CloseRoundedIcon /></IconButton>
-                <img src={PasswordProtected} alt="" />
+                <IconButton onClick={handleClose}><CloseRoundedIcon /></IconButton>
+                <img src={WelcomeCPass} alt="" />
                 <DialogTitle id="responsive-dialog-title" textAlign='center'>
-                    {"Password Updated"}
+                    {"Welcome to CPass"}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText textAlign='center'>
-                        Your password has been changed successfully
+                        Perfect! You have successfully activated your account.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>
-                        login
+                        jump to dashboard
                     </Button>
                 </DialogActions>
             </Dialog>
@@ -56,4 +56,4 @@ function Modal() {
     );
 }
 
-export default Modal;
+export default ModalWelcome;
