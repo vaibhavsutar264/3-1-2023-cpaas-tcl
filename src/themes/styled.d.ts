@@ -80,5 +80,6 @@ declare module 'styled-components' {
         modalBg: string
         modalTitle: string
         closeModalSvg: string
+        resendLink: string
     }
 }

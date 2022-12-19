@@ -79,6 +79,7 @@ export const lightTheme = {
     modalBg: '#fff',
     modalTitle: '#344857',
     closeModalSvg: '#010101',
+    resendLink: '#d32f2f',
 }
 
 export const darkTheme = {
@@ -161,6 +162,7 @@ export const darkTheme = {
     modalBg: '#3A4548',
     modalTitle: '#fff',
     closeModalSvg: '#E8E8E8',
+    resendLink: '#ff6060',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -436,5 +438,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   [role=dialog][aria-labelledby=responsive-dialog-title] button svg {
     color: ${({ theme }) => theme.closeModalSvg};
+  }
+  [role=dialog][aria-labelledby=responsive-dialog-title] .MuiLink-underlineAlways {
+    color: ${({ theme }) => theme.resendLink};
   }
 `
