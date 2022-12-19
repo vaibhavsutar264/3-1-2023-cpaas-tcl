@@ -26,6 +26,11 @@ export const accountSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.accountDetails = action.payload
+        },
+        updateDetails: (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.updateUser = action.payload
         }
     },
 })
@@ -43,6 +48,24 @@ export const getAcDetails = () => {
             const { data } = await account.getAccountDetails()
             if (data) {
                 dispatch(accountSlice.actions.getDetails(data.data.data.legalentities[0]))
+                // dispatch(accountSlice.actions.getDetails(data))
+            } else {
+                dispatch(accountSlice.actions.hasError())
+            }
+            return data
+        } catch (error) {
+            dispatch(accountSlice.actions.hasError())
+        }
+    }
+}
+
+
+export const updateUserDetails = (id: any, data: any) => {
+    return async () => {
+        try {
+            const { data: any } = await account.editUserDetails(id, data)
+            if (data) {
+                dispatch(accountSlice.actions.updateDetails(data))
                 // dispatch(accountSlice.actions.getDetails(data))
             } else {
                 dispatch(accountSlice.actions.hasError())

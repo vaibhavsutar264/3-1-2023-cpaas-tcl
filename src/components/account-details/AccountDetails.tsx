@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {Box, Grid} from '@mui/material'
 
-import BillingAvatar from './AccountComponents/BillingAvatar'
-import BillingContact from './AccountComponents/BillingContact'
-import BillingDetail from './AccountComponents/BillingDetail'
-import BillingInvoice from './AccountComponents/BillingInvoice'
+import BillingAvatar from './AccountComponents/AccountAvatar'
+import BillingContact from './AccountComponents/AccountContact'
+import BillingDetail from './AccountComponents/AccountDetail'
+import BillingInvoice from './AccountComponents/AccountInvoice'
 import {SideBar}  from '../common/elements/SideBar'
 import { useDispatch, useSelector } from '../../redux/store'
 import { getAcDetails } from '../../redux/slices/accountSlice'
@@ -19,6 +19,7 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
 
   useEffect(() => {
     dispatch(getAcDetails())
+    getAcDetails()
   }, [dispatch])
 
   return (
