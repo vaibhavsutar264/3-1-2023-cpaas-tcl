@@ -44,7 +44,7 @@ const BillingAvatar = () => {
   }, [dispatch]);
 
   const loadUserDetails = async() => {
-    const response = await userLoginData.getUserInfo(id).then((res) => {
+    const response = await userLoginData.getUserInfo(emailId).then((res) => {
       setFirstname(res.data.data.data.firstname);
       setLastName(res.data.data.data.firstname);
       setPhoneNumber(res.data.data.data.attributes.phoneNumber);
