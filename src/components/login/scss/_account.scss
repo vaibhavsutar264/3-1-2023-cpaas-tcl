@@ -1070,6 +1070,10 @@ p.text-error-success {
 #lang-background-white {
     background-color: $langBg;
     border-radius: 39px;
+
+    fieldset {
+        border: 0;
+    }
 }
 
 // .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {

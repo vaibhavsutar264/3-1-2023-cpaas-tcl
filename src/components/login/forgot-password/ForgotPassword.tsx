@@ -31,6 +31,8 @@ import WhatsappImg from '../../../assets/images/svg/Whatsapp.svg'
 import BannerBg from '../../common/elements/banner'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import useLocales from '../../../hooks/useLocales'
+import Header from '../../header/Header'
+import { useDarkMode } from '../../../themes/useDarkMode'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -91,7 +93,11 @@ const ForgotPassword = () => {
         }
     }
 
+    const [theme, toggleTheme] = useDarkMode()
+
     return (
+        <>
+        <Header toggleTheme={toggleTheme} />
         <Box className="account__screen">
             {/* ACCOUNT SCREEN BANNER START*/}
             <BannerBg />
@@ -174,6 +180,7 @@ const ForgotPassword = () => {
             </Box>
             {/* ACCOUNT FROM END */}
         </Box>
+        </>
     )
 }
 

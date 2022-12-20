@@ -137,61 +137,76 @@ const AccountAvatar = () => {
           <Box
             component="form"
             className="billing-details-input"
-            sx={{
-              '& > :not(style)': { m: 1, width: '25ch' },
-              display: 'flex',
-              flexWrap: 'wrap',
-              rowGap: '20px',
-              justifyContent: 'space-between',
-              marginBottom: '40px',
-              '& label': {
-                top: editable ? '14px' : 0,
-              },
-            }}
+sx={{
+  '& > :not(style)': { m: 1, width: '25ch' },
+  display: 'flex',
+  flexWrap: 'wrap',
+  rowGap: '20px',
+  justifyContent: 'space-between',
+  marginBottom: '40px',
+  '& label': {
+    top: editable? '14px' : 0,
+  },
+  '& label:not(.MuiFormLabel-filled, .MuiInputLabel-shrink)': {
+    top: '-3px',
+  },
+  // '& label:not(.MuiFormLabel-filled || .MuiInputLabel-shrink)': {
+  //   top: '-3px',
+  // },
+  // '& label:not(.MuiFormLabel-filled && .MuiInputLabel-shrink)': {
+  //   top: '-3px',
+  // },
+  // '& label:not(.MuiFormLabel-filled OR .MuiInputLabel-shrink)': {
+  //   top: '-3px',
+  // },
+  // '& label:not(.MuiFormLabel-filled AND .MuiInputLabel-shrink)': {
+  //   top: '-3px',
+  // }
+}}
             noValidate
             autoComplete="off"
           >
-            <TextField
-              label="first name"
-              value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
-              // name='firstname'
-              variant={editable ? 'outlined' : 'standard'}
-              type="text"
-              sx={{
-                // border: '1px solid #eee',
-                borderRadius: '10px !important',
-                flexBasis: '45%',
-                textTransform: 'capitalize',
-              }}
-            />
-            <TextField
-              label="last name"
-              variant={editable ? 'outlined' : 'standard'}
-              type="text"
-              value={lastName}
-              // name='lastName'
-              onChange={(e) => setLastName(e.target.value)}
-              sx={{
-                // border: '1px solid #eee',
-                borderRadius: '10px !important',
-                flexBasis: '45%',
-                textTransform: 'capitalize',
-              }}
-            />
-            <TextField
-              label="mobile no"
-              variant={editable ? 'outlined' : 'standard'}
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              sx={{
-                // border: '1px solid #eee',
-                borderRadius: '10px !important',
-                flexBasis: '45%',
-                textTransform: 'capitalize',
-              }}
-            />
+          <TextField
+          label="first name"
+          value={firstname}
+          onChange={(e) => setFirstname(e.target.value)}
+          // name='firstname'
+          variant={editable? 'outlined' : 'standard'}
+          type="text"
+          sx={{
+            // border: '1px solid #eee',
+            borderRadius: '10px !important',
+            flexBasis: '45%',
+            textTransform: 'capitalize',
+          }}
+        />
+        <TextField
+          label="last name"
+          variant={editable? 'outlined' : 'standard'}
+          type="text"
+          value={lastName}
+          // name='lastName'
+          onChange={(e) => setLastName(e.target.value)}
+          sx={{
+            // border: '1px solid #eee',
+            borderRadius: '10px !important',
+            flexBasis: '45%',
+            textTransform: 'capitalize',
+          }}
+        />
+        <TextField
+          label="mobile no"
+          variant={editable? 'outlined' : 'standard'}
+          type="text"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          sx={{
+            // border: '1px solid #eee',
+            borderRadius: '10px !important',
+            flexBasis: '45%',
+            textTransform: 'capitalize',
+          }}
+        />
             <TextField
               label="communication"
               variant={editable ? 'outlined' : 'standard'}

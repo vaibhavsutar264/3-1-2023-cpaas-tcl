@@ -41,6 +41,9 @@ import BannerBg from '../../common/elements/banner'
 import { useSelector } from 'react-redux'
 import { base64Encode } from '../../../utils/Base64EncodeDecode'
 import { apiVrbls, appRoutes } from '../../../utils/constants'
+import Header from '../../header/Header'
+import { useDarkMode } from '../../../themes/useDarkMode'
+
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -170,8 +173,11 @@ const Login = () => {
         event.preventDefault()
     }
 
+  const [theme, toggleTheme] = useDarkMode()
+
     return (
         <>
+    <Header toggleTheme={toggleTheme} />
             <Box className="account__screen">
                 {/* ACCOUNT SCREEN BANNER START*/}
                 <BannerBg />

@@ -327,7 +327,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                 <div className="sidebar__inner">
                     <ul className="sidebar__list">
                         <li className="list__item">
-                            <Link className="item__link active" to="/accountdetails">
+                            <Link className="item__link active" to="/dashboard">
                                 <span className="link__icon">
                                     {/* <Dashboard /> */}
                                     <SpeedOutlinedIcon />

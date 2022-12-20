@@ -8,6 +8,7 @@ const HomeScreen = () => {
   const [theme, toggleTheme] = useDarkMode()
   return (
     <>
+    <Header toggleTheme={toggleTheme} />
       <div className="main-div">
         <h1 data-testid="password-exist" className="homescreen-text">
           {t<string>('home')}
