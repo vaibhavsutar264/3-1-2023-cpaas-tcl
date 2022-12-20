@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {Box, Stack, Typography, TextField} from '@mui/material'
 import { useSelector } from '../../../redux/store';
 
-const BillingInvoice = () => {
+const BillingInvoice = ({age, setAge}:{age: any, setAge: any}) => {
     const { accountDetails } = useSelector((state: any) => state.account || {});  
     const { legalentities } = accountDetails
 
