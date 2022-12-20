@@ -17,41 +17,41 @@ const initialValue = {
 
 const BillingAvatar = () => {
     const dispatch = useDispatch();
-  const { user } = useSelector((state: any) => state.auth || {})
+  const { user, userEmail } = useSelector((state: any) => state.auth || {})
   const { emailId } = user;
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 44,
     height: 44,
-    // border: `2px solid ${theme.palette.background.paper}`,
   }))
 
   const [firstname, setFirstname] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [timezone, setTimezone] = useState("");
-
-  // const [users, setUsers] = useState(initialValue);
-  // const { firstname, lastName } = users;
   // const { id } = useParams();
   const id = 1
-//   const email = 'bruno@email.com'
   
   const navigate = useNavigate();
 
   useEffect(() => {
       loadUserDetails();
-      dispatch(getAcDetails())
   }, [dispatch]);
 
   const loadUserDetails = async() => {
     const response = await userLoginData.getUserInfo(emailId).then((res) => {
-      setFirstname(res.data.data.data.firstname);
-      setLastName(res.data.data.data.firstname);
-      setPhoneNumber(res.data.data.data.attributes.phoneNumber);
-      setTimezone(res.data.data.data.attributes.timezone);
-      console.log(res.data.phoneNumber)
+      if(res.data.data.data.emailId == userEmail){
+        setFirstname(res.data.data.data.firstname);
+        setLastName(res.data.data.data.lastName);
+        setPhoneNumber(res.data.data.data.attributes.phoneNumber);
+        setTimezone(res.data.data.data.attributes.timezone);
+      }else{
+        setFirstname('firstname is not available due to non registered email');
+        setLastName('lastName is not available due to non registered email');
+        setPhoneNumber('phoneNumber is not available due to non registered email');
+        setTimezone('timezone is not available due to non registered email');
+      }
+      
     })
-      // setUsers(response.data);
   }
 
   const data = {
@@ -68,12 +68,6 @@ const BillingAvatar = () => {
     // await account.editUserDetails(id, data)
     navigate('/');
   }
-
-  // const onValueChange = (e: SyntheticEvent) => {
-  //   e.preventDefault()
-  //     console.log((e.target as HTMLInputElement).value);
-  //     setUsers({...users, [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value})
-  // }
   console.log(firstname)
   return (
     <>
@@ -124,7 +118,7 @@ const BillingAvatar = () => {
                   bgcolor: '#870000',
                 }}
               >
-                JD
+              {firstname.charAt(0) + lastName.charAt(0)}
               </Avatar>
             </Badge>
           </Stack>

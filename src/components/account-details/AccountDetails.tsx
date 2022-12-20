@@ -19,7 +19,6 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
 
   useEffect(() => {
     dispatch(getAcDetails())
-    getAcDetails()
   }, [dispatch])
 
   return (

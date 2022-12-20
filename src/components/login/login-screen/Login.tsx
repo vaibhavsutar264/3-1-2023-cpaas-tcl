@@ -82,7 +82,6 @@ const Login = () => {
     }, [isError, message, isAuthenticated])
 
 
-
     useEffect(() => {
         if (getFromLocalStorage('token') && getFromLocalStorage('token') !== null) {
             if (user) {
@@ -108,7 +107,7 @@ const Login = () => {
                 email: email,
                 password: password,
             }
-            dispatch(login(userDetails))
+            dispatch(login(userDetails,email))
         },
     })
     const { handleSubmit, handleChange, touched, errors } = formik

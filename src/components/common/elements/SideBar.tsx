@@ -32,7 +32,7 @@ import { availableLanguages } from '../../../i18n'
 import { getFromLocalStorage, setInLocalStorage } from '../../../hooks/useLocalStorage'
 import useLocales from '../../../hooks/useLocales'
 import { useTranslation } from 'react-i18next'
-import { logout, userInfo } from '../../../redux/slices/authSlice'
+import { logout } from '../../../redux/slices/authSlice'
 import { useDispatch, useSelector } from '../../../redux/store'
 import Setting from '../icons/setting'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -91,26 +91,26 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
     console.log(themeMode.body);
 
-    useEffect(() => {
-        // const divElement = document.getElementById(
-        //     'sidebar-top'
-        // ) as HTMLDivElement
-        // const imgElement = document.getElementById(
-        //     'tata-logo-invoice'
-        // ) as HTMLImageElement
-        // if(divElement.style.backgroundColor === '#1E2023'){
-        //     imgElement.src = Logo
-        // } else{
-        //     imgElement.src = DarkLogo
-        // }
-        // if(divElement.style.backgroundColor === '#fff'){
-        //     imgElement.src = DarkLogo
-        // } else{
-        //     imgElement.src = DarkLogo
-        // }
+    // useEffect(() => {
+    //     // const divElement = document.getElementById(
+    //     //     'sidebar-top'
+    //     // ) as HTMLDivElement
+    //     // const imgElement = document.getElementById(
+    //     //     'tata-logo-invoice'
+    //     // ) as HTMLImageElement
+    //     // if(divElement.style.backgroundColor === '#1E2023'){
+    //     //     imgElement.src = Logo
+    //     // } else{
+    //     //     imgElement.src = DarkLogo
+    //     // }
+    //     // if(divElement.style.backgroundColor === '#fff'){
+    //     //     imgElement.src = DarkLogo
+    //     // } else{
+    //     //     imgElement.src = DarkLogo
+    //     // }
         
-        dispatch(userInfo())
-    }, [dispatch])
+    //     dispatch(userInfo())
+    // }, [dispatch])
 
     const divElement = document.getElementById(
         'sidebar-top'

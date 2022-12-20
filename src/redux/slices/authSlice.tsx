@@ -21,7 +21,8 @@ const initialState: AuthState = {
   emailSent: '',
   userInfo: '',
   resetmessage: '',
-  forgotMessage: ''
+  forgotMessage: '',
+  userEmail: ''
 }
 
 export const userSlice = createSlice({
@@ -45,6 +46,13 @@ export const userSlice = createSlice({
       state.user = action.payload
       state.isAuthenticated = true
       state.message = action.payload.message
+    },
+    loginCredential: (state, action) => {
+      state.isLoading = false
+      state.isSuccess = true
+      state.isError = false
+      state.userEmail = action.payload
+      state.isAuthenticated = true
     },
     getUserInfoSuccess: (state, action) => {
       state.isLoading = false
@@ -87,7 +95,7 @@ export const { startLoading, hasError } = userSlice.actions
 
 // -----------------------------------------------------------------
 
-export const login = (userData: UserLogin) => {
+export const login = (userData: UserLogin, emailcredential: any) => {
   dispatch(userSlice.actions.startLoading())
   return async () => {
     try {
@@ -100,6 +108,7 @@ export const login = (userData: UserLogin) => {
         dispatch(userSlice.actions.resetPasswordSuccess({ data: "" }))
         if (userInfo && userInfo.data.data) {
           dispatch(userSlice.actions.loginSuccess(userInfo.data.data))
+          dispatch(userSlice.actions.loginCredential(emailcredential))
           setInLocalStorage(localStorageVar.USER_VAR, token)
         } else {
           toast.error(userInfo.data.message)

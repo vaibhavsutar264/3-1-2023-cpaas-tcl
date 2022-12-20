@@ -85,9 +85,9 @@ const userLoginData = {
       body,
       resetPasswordTransformer
     ),
-  getUserInfo: (username: any) =>
+  getUserInfo: (emailId: any) =>
     requests.get(
-      `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${username}`,
+      `${routes.BASE_URL}${routes.GET_USER_INFO}?emailId=${emailId}`,
       userInfoTransformer
       // `${routes.BASE_URL}${routes.GET_USER_INFO}/${id}`,
       // userInfoInternalTransformer

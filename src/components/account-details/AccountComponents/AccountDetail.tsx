@@ -7,12 +7,31 @@ import { getAcDetails } from '../../../redux/slices/accountSlice'
 const BillingDetail = () => {
     const dispatch = useDispatch()
     const { accountDetails } = useSelector((state: any) => state.account);  
-    const { le1 } = accountDetails
+    const { legalentities } = accountDetails
     // const { billingDetails } = le1
 
     useEffect(() => {
-        dispatch(getAcDetails())
+        // dispatch(getAcDetails())
     }, [dispatch])
+
+    let entityNo = 0
+    let le = "le1"
+
+
+    const entityone = () => {
+        entityNo = 0
+        le="le1"
+    }
+    const entitytwo = () => {
+        entityNo = 1
+        le="le2"
+    }
+    const entitythree = () => {
+        entityNo = 2
+        le="le3"
+    }
+
+
   return (
     <>
       {/* 1st right row container starts here */}
@@ -60,9 +79,9 @@ const BillingDetail = () => {
                                     id="demo-simple-select"
                                     label="Age"
                                 >
-                                    <MenuItem value='legal entity name1'>Legal Entity Name1</MenuItem>
-                                    <MenuItem value='legal entity name2'>Legal Entity Name2</MenuItem>
-                                    <MenuItem value='legal entity name3'>Legal Entity Name3</MenuItem>
+                                    <MenuItem value='legal entity name1' onClick={entityone}>Legal Entity Name1</MenuItem>
+                                    <MenuItem value='legal entity name2' onClick={entitytwo}>Legal Entity Name2</MenuItem>
+                                    <MenuItem value='legal entity name3' onClick={entitythree}>Legal Entity Name3</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -108,7 +127,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails.accountName}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.accountName}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -137,7 +156,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.legalEntity}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.legalEntity}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -166,7 +185,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.billingtype}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.billingtype}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -195,7 +214,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.billingCycle}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.billingCycle}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -224,7 +243,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.paymentPeriod}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.paymentPeriod}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -253,7 +272,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.vatOrGSTNoOrTxId}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.vatOrGSTNoOrTxId}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -282,7 +301,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.companyPAN}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.companyPAN}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -311,7 +330,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.applicableCurrency}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.applicableCurrency}</Typography>
                     </Stack>
                     <Stack sx={{
                         flexBasis: '30%',
@@ -339,9 +358,8 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.contractTerm}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.contractTerm}</Typography>
                     </Stack>
-
                     <Stack sx={{
                         flexBasis: '30%',
                     }}>
@@ -368,7 +386,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.rateChangeNotificationPeriod}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.rateChangeNotificationPeriod}</Typography>
                     </Stack>
 
                     <Stack sx={{
@@ -397,7 +415,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.rateCoverageChangeTimeZone}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.rateCoverageChangeTimeZone}</Typography>
                     </Stack>
                     <Stack sx={{
                         flexBasis: '30%',
@@ -425,7 +443,7 @@ const BillingDetail = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{le1.billingDetails && le1.billingDetails.accountStatus}</Typography>
+                        }}>{legalentities[entityNo].le1.billingDetails.accountStatus}</Typography>
                     </Stack>
                 </Box>
             </Box>

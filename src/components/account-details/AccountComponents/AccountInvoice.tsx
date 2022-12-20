@@ -4,7 +4,7 @@ import { useSelector } from '../../../redux/store';
 
 const BillingInvoice = () => {
     const { accountDetails } = useSelector((state: any) => state.account || {});  
-    const { sendInvoiceToContact } = accountDetails
+    const { legalentities } = accountDetails
 
   return (
     <>
@@ -79,7 +79,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.name}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.name}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -108,7 +108,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.address}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.address}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -137,7 +137,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.city}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.city}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -166,7 +166,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.country}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.country}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -195,7 +195,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.pin}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.pin}</Typography>
                     </Stack>
                     
                     <Stack sx={{
@@ -224,7 +224,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.emailId}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.emailId}</Typography>
                     </Stack>
 
                     
@@ -254,7 +254,7 @@ const BillingInvoice = () => {
                             fontSize: '16px',
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
-                        }}>{sendInvoiceToContact && sendInvoiceToContact.customerAuthorizedRateNotificationRecipient}</Typography>
+                        }}>{legalentities[0].sendInvoiceToContact.customerAuthorizedRateNotificationRecipient}</Typography>
                     </Stack>
                 </Box>
                 </Box>
