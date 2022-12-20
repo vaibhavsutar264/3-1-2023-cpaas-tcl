@@ -47,6 +47,8 @@ import { useParams } from 'react-router-dom'
 import { apiVrbls, typeVar } from '../../../utils/constants'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
+import Header from '../../header/Header'
+import { useDarkMode } from '../../../themes/useDarkMode'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -306,7 +308,11 @@ const ResetPassword = () => {
         tooltipMainBoxElement.style.display = 'none'
     }
 
+    const [theme, toggleTheme] = useDarkMode()
+
     return (
+        <>
+        <Header toggleTheme={toggleTheme} />
         <Box className="account__screen">
             {/* ACCOUNT SCREEN BANNER START*/}
             <BannerBg />
@@ -607,6 +613,7 @@ const ResetPassword = () => {
             </Box>
             {/* ACCOUNT FROM END */}
         </Box>
+        </>
     )
 }
 

@@ -70,7 +70,7 @@ const BillingAvatar = () => {
   }
   console.log(firstname)
 
-  const [editable, setEditable] = useState<boolean>(false);
+  const [editable, setEditable] = useState<boolean>(true);
 
   // const editMode = () => {
   //   // setEditable(!editable);
@@ -145,7 +145,22 @@ const BillingAvatar = () => {
             marginBottom: '40px',
             '& label': {
               top: editable? '14px' : 0,
-            }
+            },
+            '& label:not(.MuiFormLabel-filled, .MuiInputLabel-shrink)': {
+              top: '-3px',
+            },
+            // '& label:not(.MuiFormLabel-filled || .MuiInputLabel-shrink)': {
+            //   top: '-3px',
+            // },
+            // '& label:not(.MuiFormLabel-filled && .MuiInputLabel-shrink)': {
+            //   top: '-3px',
+            // },
+            // '& label:not(.MuiFormLabel-filled OR .MuiInputLabel-shrink)': {
+            //   top: '-3px',
+            // },
+            // '& label:not(.MuiFormLabel-filled AND .MuiInputLabel-shrink)': {
+            //   top: '-3px',
+            // }
           }}
           noValidate
           autoComplete="off"

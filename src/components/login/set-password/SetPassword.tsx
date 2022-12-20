@@ -41,6 +41,8 @@ import { base64Encode } from '../../../utils/Base64EncodeDecode'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
 import { useNavigate } from 'react-router-dom'
+import Header from '../../header/Header'
+import { useDarkMode } from '../../../themes/useDarkMode'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -313,7 +315,11 @@ const SetPassword = () => {
         navigate('/invoices')
     }
 
+    const [theme, toggleTheme] = useDarkMode()
+
     return (
+        <>
+        <Header toggleTheme={toggleTheme} />
         <Box className="account__screen">
             {/* ACCOUNT SCREEN BANNER START*/}
             <BannerBg />
@@ -620,6 +626,7 @@ const SetPassword = () => {
             </Box>
             {/* ACCOUNT FROM END */}
         </Box>
+        </>
     )
 }
 

@@ -117,7 +117,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                 {/* <InputLabel id="demo-select-small">Language</InputLabel> */}
                 <Select
                   labelId="demo-select-small"
-                  id="demo-select-small"
+                  id="demo-select-header-small"
                   value={i18n.language}
                   label="Language"
                   onChange={(e) => {
