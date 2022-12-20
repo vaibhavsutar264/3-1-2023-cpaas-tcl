@@ -19,7 +19,7 @@ import Card from '../common/elements/card'
 import { getCardCount } from '../../utils/helpers'
 import { getAcDetails } from '../../redux/slices/accountSlice'
 
-export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
+export const Dashboard = ({ toggleTheme }: { toggleTheme: any }) => {
 
     const { isError, isLoading, isSuccess, PageData = [], MasterData = [], total, page, take } = useSelector((state: any) => state.billing);
 
@@ -50,30 +50,14 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
 
     return (
         <div className="dashboard__wrapper">
-            <RaiseTicket handleShow={handleShow} showIt={showIt} />
             <SideBar toggleTheme={toggleTheme} handleBDWidth={handleBDWidth} />
             <div className="dashboard__content" style={{ width: `calc(100% - ${bDWidth})`, marginLeft: `${bDWidth}` }}>
-                <div className="content__header">
-                    <BreadCrums data={breadCrums.BILLING} />
-                    <PageSearch searchFn={searchData} />
+                <div>
+                    <h1>Welcome to Dashboard</h1>
                 </div>
-                <div className="card-wrapper-1">
-                    {cards.map((q: any, i: any) => <Card data={q} key={`card-warpper${i}`} />)}
-                </div >
-                <DataTable
-                    handledownloadViewpdf={downloadBillingInvoice}
-                    handledownloadPdf={downloadBillingInvoice}
-                    handleShow={handleShow}
-                    pageAction={ChangePageBilling}
-                    sortAction={sortData}
-                    filterAction={filterData}
-                    Total={total}
-                    page={page}
-                    take={take}
-                    TableData={dataTables.BILLING(PageData, MasterData)} />
             </div>
         </div>
     )
 }
 
-export default Billing
+export default Dashboard
