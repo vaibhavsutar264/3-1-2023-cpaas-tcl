@@ -67,7 +67,7 @@ interface State {
     showPassword: boolean
 }
 
-const Login = () => {
+const Login = ({toggleTheme}:any) => {
     const { t } = useLocales()
     const navigate = useNavigate()
     const [open, setOpen] = useState(true)
@@ -92,7 +92,7 @@ const Login = () => {
                 // if (user) {
                     navigate(appRoutes.SET_PASSWORD)
                 } else {
-                    navigate(appRoutes.BILLING)
+                    navigate(appRoutes.DASHBOARD)
                     // navigate(appRoutes.ROOT)
                 }
             }
@@ -173,11 +173,9 @@ const Login = () => {
         event.preventDefault()
     }
 
-  const [theme, toggleTheme] = useDarkMode()
-
     return (
         <>
-    <Header toggleTheme={toggleTheme} />
+            <Header toggleTheme={toggleTheme} />
             <Box className="account__screen">
                 {/* ACCOUNT SCREEN BANNER START*/}
                 <BannerBg />

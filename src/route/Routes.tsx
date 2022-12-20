@@ -23,10 +23,10 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
         {
             path: '',
             children: [
-                { path: appRoutes.LOGIN, element: <Login /> },
-                { path: appRoutes.ROOT, element: <HomeScreen /> },
-                { path: appRoutes.RESET_PASSWORD, element: <ResetPassword /> },
-                { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword /> },
+                { path: appRoutes.LOGIN, element: <Login toggleTheme={toggleTheme} /> },
+                { path: appRoutes.ROOT, element: <HomeScreen toggleTheme={toggleTheme}/> },
+                { path: appRoutes.RESET_PASSWORD, element: <ResetPassword toggleTheme={toggleTheme}/> },
+                { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword toggleTheme={toggleTheme}/> },
                 // {
                 //     path: appRoutes.BILLING,
                 //     element: <Billing toggleTheme={toggleTheme} />,
@@ -37,6 +37,16 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.MODAL_TICKET, element: <ModalTicket /> },
                 { path: appRoutes.MODAL_WELCOME, element: <ModalWelcome /> },
                 { path: appRoutes.MODAL_MAIL, element: <ModalMail /> },
+                // {path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
+                // { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
+                // {
+                //     path: appRoutes.BILLING,
+                //     element: <Billing toggleTheme={toggleTheme} />,
+                // },
+                // {
+                //     path: appRoutes.DASHBOARD,
+                //     element: <Dashboard toggleTheme={toggleTheme} />,
+                // },
                 // { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
             ],
         },
@@ -44,7 +54,7 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
             path: '',
             element: <PrivateRoutes />,
             children: [
-                {path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
+                {path: appRoutes.SET_PASSWORD, element: <SetPassword toggleTheme={toggleTheme}/> },
                 { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
                 {
                     path: appRoutes.BILLING,

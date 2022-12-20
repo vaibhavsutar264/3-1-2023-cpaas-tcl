@@ -5,7 +5,7 @@ import HelpImg from '../../../assets/images/need-help.png'
 
 
 
-const BillingContact = () => {
+const AccountContact = () => {
   return (
     <>
         {/* 1st right row container starts here */}
@@ -73,4 +73,4 @@ const BillingContact = () => {
   )
 }
 
-export default BillingContact
+export default AccountContact

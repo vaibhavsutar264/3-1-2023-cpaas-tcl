@@ -5,10 +5,9 @@ import { GlobalStyles, lightTheme, darkTheme } from '../../themes/globalStyles'
 import Header from '../header/Header'
 import CustomizedDialogs from '../common/elements/DialogBox'
 
-const HomeScreen = () => {
+const HomeScreen = ({toggleTheme}:any) => {
   const { t } = useLocales()
-  const [theme, toggleTheme] = useDarkMode()
-  const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
+  // const [theme, toggleTheme] = useDarkMode()
   return (
     <>
     <Header toggleTheme={toggleTheme} />

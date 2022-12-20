@@ -11,7 +11,7 @@ import { apiDefaultrespons, apiVrbls, localStorageVar, staticErrors } from '../.
 import { toast } from 'react-toastify'
 
 const initialState: AuthState = {
-  user: null,
+  user: null, 
   profile: undefined,
   isError: false,
   isLoading: false,
@@ -19,7 +19,6 @@ const initialState: AuthState = {
   isAuthenticated: false,
   message: '',
   emailSent: '',
-  userInfo: '',
   resetmessage: '',
   forgotMessage: '',
   userEmail: ''
@@ -54,14 +53,6 @@ export const userSlice = createSlice({
       state.userEmail = action.payload
       state.isAuthenticated = true
     },
-    getUserInfoSuccess: (state, action) => {
-      state.isLoading = false
-      state.isSuccess = true
-      state.isError = false
-      state.userInfo = action.payload
-      state.isAuthenticated = true
-      state.message = action.payload.message
-    },
     setPasswordSuccess: (state, action) => {
       state.isLoading = false
       state.isSuccess = true
@@ -81,7 +72,6 @@ export const userSlice = createSlice({
     logOutSuccess: (state) => {
       state.isLoading = false
       state.user = null
-      state.userInfo = null
       state.isAuthenticated = false
     },
   },
@@ -124,25 +114,25 @@ export const login = (userData: UserLogin, emailcredential: any) => {
 }
 
 
-export const userInfo = () => {
-  dispatch(userSlice.actions.startLoading())
-  return async () => {
-    try {
-      const response: any = await userLoginData.getUserInfo(null)
-      const { data } = response
-      if (response) {
-        const firstName: any = data.data.data.firstname
-        const lastName: any = data.data.data.lastName
-        const emailId: any = data.data.data.emailId
-        const user = { firstName: firstName, lastName: lastName, emailId: emailId }
-        // const resp = { user }
-        dispatch(userSlice.actions.getUserInfoSuccess(user))
-      }
-    } catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
-      dispatch(userSlice.actions.hasError(data))
-    }
-  }
-}
+// export const userInfo = () => {
+//   dispatch(userSlice.actions.startLoading())
+//   return async () => {
+//     try {
+//       const response: any = await userLoginData.getUserInfo(null)
+//       const { data } = response
+//       if (response) {
+//         const firstName: any = data.data.data.firstname
+//         const lastName: any = data.data.data.lastName
+//         const emailId: any = data.data.data.emailId
+//         const user = { firstName: firstName, lastName: lastName, emailId: emailId }
+//         // const resp = { user }
+//         dispatch(userSlice.actions.getUserInfoSuccess(user))
+//       }
+//     } catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
+//       dispatch(userSlice.actions.hasError(data))
+//     }
+//   }
+// }
 
 export const logout = (body: any) => {
   dispatch(userSlice.actions.startLoading())
