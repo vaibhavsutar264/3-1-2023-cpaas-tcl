@@ -1,5 +1,7 @@
 import useLocales from '../../hooks/useLocales'
 import { useDarkMode } from '../../themes/useDarkMode'
+import { appThemes } from '../../utils/constants'
+import { GlobalStyles, lightTheme, darkTheme } from '../../themes/globalStyles'
 import Header from '../header/Header'
 import CustomizedDialogs from '../common/elements/DialogBox'
 

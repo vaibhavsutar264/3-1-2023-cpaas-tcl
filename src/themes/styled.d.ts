@@ -91,5 +91,10 @@ declare module 'styled-components' {
         editableInputBorder: string
         avatarInitialsBg: string
         avatarInitials: string
+        datatableIconBg: string
+        iconCtaNBg: string
+        datatableIconHoverBg: string
+        iconCtaTxt: string
+        datatableIconHoverTxt: string
     }
 }

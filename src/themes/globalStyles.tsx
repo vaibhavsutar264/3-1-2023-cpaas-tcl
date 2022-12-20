@@ -90,6 +90,11 @@ export const lightTheme = {
     editableInputBorder: '',
     avatarInitialsBg: '#E1E1E1 !important',
     avatarInitials: '#344857 !important',
+    datatableIconBg: '#F7F8FA !important',
+    iconCtaNBg: '#fff !important',
+    datatableIconHoverBg: '#d63548 !important',
+    iconCtaTxt: '#d63548 a!important',
+    datatableIconHoverTxt: '#fff !important',
 }
 
 export const darkTheme = {
@@ -183,6 +188,11 @@ export const darkTheme = {
     editableInputBorder: '#787785 !important',
     avatarInitialsBg: '#343A47 !important',
     avatarInitials: '#FFFFFF !important',
+    datatableIconBg: '#fff !important',
+    iconCtaNBg: '#d63548 !important',
+    datatableIconHoverBg: '#d63548 !importnt',
+    iconCtaTxt: '#fff !important',
+    datatableIconHoverTxt: '#fff !importnt',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -487,5 +497,18 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   .MuiAvatar-root.avatar-initials {
     background-color: ${({ theme }) => theme.avatarInitialsBg};
     color: ${({ theme }) => theme.avatarInitials};
+  }
+  .actionButtons .actionButton__item span {
+    background-color: ${({ theme }) => theme.datatableIconBg};
+  }
+  .action__elements .action__elementItem .iconCta:hover {
+    background-color: ${({ theme }) => theme.datatableIconHoverBg};
+  }
+  .action__elementItem .iconCta {
+    background: ${({ theme }) => theme.iconCtaNBg};
+  }
+  .action__elementItem .iconCta a, .action__elementItem .iconCta svg path {
+    color: ${({ theme }) => theme.iconCtaTxt};
+    fill: ${({ theme }) => theme.iconCtaTxt};
   }
 `
