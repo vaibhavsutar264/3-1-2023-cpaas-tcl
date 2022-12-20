@@ -72,9 +72,9 @@ const BillingAvatar = () => {
 
   const [editable, setEditable] = useState<boolean>(false);
 
-  const editMode = () => {
-    // setEditable(!editable);
-  };
+  // const editMode = () => {
+  //   // setEditable(!editable);
+  // };
 
   return (
     <>
@@ -222,7 +222,6 @@ const BillingAvatar = () => {
           variant="outlined"
           type="submit"
           onClick={editUserDetails}
-          onClick={editMode}
           sx={{
             textTransform: 'uppercase',
             borderRadius: '100px',
