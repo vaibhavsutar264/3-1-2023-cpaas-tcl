@@ -101,9 +101,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                 <Link to="" onClick={logoutHandler}>
                   {t<string>('logoutBtn')}
                 </Link>
-              ) : (
-                <Link to="/login">{t<string>('loginBtn')}</Link>
-              )}
+              ) : ( window.location.pathname.match(/^\/login/) ? ('') : <Link to="/login">{t<string>('loginBtn')}</Link>)}
             </li>
             <li className="item">
               <FormControl

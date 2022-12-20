@@ -611,12 +611,11 @@ const AccountDetail = ({
                   lineHeight: '18px',
                 }}
               >
-                {leEntity &&
-                  leEntity?.billingDetails.rateCoverLegalEntityChangeTimeZone}
+                {leEntity && leEntity?.billingDetails.rateCoverageChangeTimeZone}
               </Typography>
             </Stack>
             <Stack
-              sx={{
+              sx={{ 
                 flexBasis: '30%',
               }}
             >

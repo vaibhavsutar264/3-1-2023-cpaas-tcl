@@ -43,7 +43,7 @@ import WhatsappImg from '../../../assets/images/svg/Whatsapp.svg'
 import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { apiVrbls, typeVar } from '../../../utils/constants'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
@@ -71,6 +71,7 @@ interface State {
 }
 
 const ResetPassword = ({toggleTheme}:any) => {
+    const navigate = useNavigate()
     const [uFulfilled, setUFulfilled] = useState(false);
     const [lFulfilled, setLFulfilled] = useState(false);
     const [sFulfilled, setSFulfilled] = useState(false);
@@ -117,8 +118,10 @@ const ResetPassword = ({toggleTheme}:any) => {
         try {
             await dispatch(resetPassword({
                 newPassword: password,
-                username: user[apiVrbls.USER.EMAIL_ID]
+                // username: user[apiVrbls.USER.EMAIL_ID]
+                username: null
             }))
+            navigate('/modal')
         } catch (error) {
             reset()
         }

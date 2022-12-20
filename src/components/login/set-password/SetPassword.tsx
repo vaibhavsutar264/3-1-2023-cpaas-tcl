@@ -309,9 +309,8 @@ const SetPassword = ({toggleTheme}:any) => {
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
     }
-
     if (resetmessage === "SUCCESS") {
-        navigate('/invoices')
+        navigate('/modalwelcome')
     }
 
     return (

@@ -195,11 +195,10 @@ const Login = ({toggleTheme}:any) => {
                         </Box>
                         <Box sx={{ width: 1 }} className="account__form__error">
                             <p className="error__msg">
-                                {isError && message == 'Invalid email and password' ? (
+                                {message && message.message == 'Incorrect username or password' ? (
                                     <p>{t<string>('yourEmailIdPasswordNotMatch')}</p>
                                 ) : (
-                                    /* JSON.stringify(message) */
-                                    null
+                                    ''
                                 )}
                             </p>
                         </Box>

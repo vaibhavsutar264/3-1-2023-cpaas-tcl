@@ -32,6 +32,7 @@ import BannerBg from '../../common/elements/banner'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import useLocales from '../../../hooks/useLocales'
 import Header from '../../header/Header'
+import { useNavigate } from 'react-router-dom'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -47,6 +48,7 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 }))
 
 const ForgotPassword = ({toggleTheme}:any) => {
+    const navigate = useNavigate()
     const [open, setOpen] = useState(true)
     const dispatch = useAppDispatch()
     const { t } = useLocales()
@@ -61,6 +63,7 @@ const ForgotPassword = ({toggleTheme}:any) => {
             email: email,
         }
         dispatch(forgotPassword(userEmail))
+        navigate('/modalmail')
     }
 
     useEffect(() => {

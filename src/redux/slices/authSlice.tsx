@@ -36,7 +36,7 @@ export const userSlice = createSlice({
       state.isLoading = false
       state.isError = true
       state.isAuthenticated = false
-      state.message = action.payload.data?.message
+      state.message = action.payload
     },
     loginSuccess: (state, action) => {
       state.isLoading = false
@@ -102,7 +102,7 @@ export const login = (userData: UserLogin, emailcredential: any) => {
           setInLocalStorage(localStorageVar.USER_VAR, token)
         } else {
           toast.error(userInfo.data.message)
-          dispatch(userSlice.actions.hasError(null))
+          dispatch(userSlice.actions.hasError(userInfo.data.message))
         }
       }
     } catch (response: any) {
