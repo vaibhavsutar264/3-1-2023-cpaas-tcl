@@ -42,7 +42,6 @@ import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../header/Header'
-import { useDarkMode } from '../../../themes/useDarkMode'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -66,7 +65,7 @@ interface State {
     showPassword: boolean
 }
 
-const SetPassword = () => {
+const SetPassword = ({toggleTheme}:any) => {
     const navigate = useNavigate()
     const [uFulfilled, setUFulfilled] = useState(false);
     const [lFulfilled, setLFulfilled] = useState(false);
@@ -314,8 +313,6 @@ const SetPassword = () => {
     if (resetmessage === "SUCCESS") {
         navigate('/invoices')
     }
-
-    const [theme, toggleTheme] = useDarkMode()
 
     return (
         <>

@@ -32,7 +32,6 @@ import BannerBg from '../../common/elements/banner'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import useLocales from '../../../hooks/useLocales'
 import Header from '../../header/Header'
-import { useDarkMode } from '../../../themes/useDarkMode'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -47,7 +46,7 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     },
 }))
 
-const ForgotPassword = () => {
+const ForgotPassword = ({toggleTheme}:any) => {
     const [open, setOpen] = useState(true)
     const dispatch = useAppDispatch()
     const { t } = useLocales()
@@ -92,8 +91,6 @@ const ForgotPassword = () => {
             submitButtonElement.className = 'customBtn-01'
         }
     }
-
-    const [theme, toggleTheme] = useDarkMode()
 
     return (
         <>

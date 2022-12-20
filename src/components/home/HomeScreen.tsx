@@ -3,9 +3,9 @@ import { useDarkMode } from '../../themes/useDarkMode'
 import Header from '../header/Header'
 import CustomizedDialogs from '../common/elements/DialogBox'
 
-const HomeScreen = () => {
+const HomeScreen = ({toggleTheme}:any) => {
   const { t } = useLocales()
-  const [theme, toggleTheme] = useDarkMode()
+  // const [theme, toggleTheme] = useDarkMode()
   return (
     <>
     <Header toggleTheme={toggleTheme} />

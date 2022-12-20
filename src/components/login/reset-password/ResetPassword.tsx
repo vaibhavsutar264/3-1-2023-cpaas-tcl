@@ -48,7 +48,6 @@ import { apiVrbls, typeVar } from '../../../utils/constants'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
 import Header from '../../header/Header'
-import { useDarkMode } from '../../../themes/useDarkMode'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -71,7 +70,7 @@ interface State {
     showPassword: boolean
 }
 
-const ResetPassword = () => {
+const ResetPassword = ({toggleTheme}:any) => {
     const [uFulfilled, setUFulfilled] = useState(false);
     const [lFulfilled, setLFulfilled] = useState(false);
     const [sFulfilled, setSFulfilled] = useState(false);
@@ -307,8 +306,6 @@ const ResetPassword = () => {
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
     }
-
-    const [theme, toggleTheme] = useDarkMode()
 
     return (
         <>
