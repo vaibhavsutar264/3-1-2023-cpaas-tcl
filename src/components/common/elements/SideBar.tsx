@@ -296,7 +296,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                     </div>
                                 </MenuItem>
                                 <MenuItem onClick={handleClose} style={{paddingTop:'8px'}}>
-                                    <a href="/" className="profile__dropLink userinfo-dropdown">
+                                    <a href="/accountdetails" className="profile__dropLink userinfo-dropdown">
                                         <span className="icon">
                                             <Setting />
                                         </span>
@@ -327,7 +327,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                 <div className="sidebar__inner">
                     <ul className="sidebar__list">
                         <li className="list__item">
-                            <Link className="item__link active" to="">
+                            <Link className="item__link active" to="/accountdetails">
                                 <span className="link__icon">
                                     {/* <Dashboard /> */}
                                     <SpeedOutlinedIcon />
@@ -366,7 +366,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                             </Link>
                         </li>
                         <li className="list__item">
-                            <Link className="item__link" to="">
+                            <Link className="item__link" to="/invoices">
                                 <span className="link__icon">
                                     {/* <BillingInvoice /> */}
                                     <ReceiptOutlinedIcon />

@@ -25,6 +25,8 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
 
   return (
     <>
+
+    
       <SideBar toggleTheme={toggleTheme} handleADWidth={handleADWidth} />
     <Box className="bd-container" style={{ width: `calc(100% - ${aDWidth})`, marginLeft: `${aDWidth}` }}>
         <Grid className="bd-inner-container" container columns={{sm:8, md: 12}}>
