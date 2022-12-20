@@ -411,6 +411,18 @@
             background-color: rgb(26, 115, 232) !important;
 
             & .cardType__inner {
+                
+                & .cardType__icon {
+
+                    & svg {
+
+                        & path {
+
+                            opacity: 1;
+                            fill: #fff;
+                        }
+                    }
+                }
 
                 & .cardType__text {
 

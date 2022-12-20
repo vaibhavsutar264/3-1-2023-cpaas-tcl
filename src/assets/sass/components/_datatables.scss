@@ -1,0 +1,24 @@
+ul.actionButtons {
+
+    & button.actionButton__item {
+        &:hover {
+            
+            & span {
+                
+                transition: all 200ms 0ms ease-in;
+                background-color: $red !important;
+
+            & svg {
+
+                & path {
+                    transition: all 200ms 0ms ease-in;
+                    fill: $white !important;
+
+                }
+            }
+
+        }
+        }
+
+    }
+}

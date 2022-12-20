@@ -365,7 +365,7 @@ const ResetPassword = () => {
                                         id="password"
                                         label={t<string>('password')}
                                         variant="standard"
-                                        sx={{ width: 1, borderRadius: '10px !important', height: '40px', }}
+                                        sx={{ width: 1, borderRadius: '10px !important', }}
                                         type={values.showPassword ? 'text' : 'password'}
                                         inputProps={{
                                             'data-testid': 'password-element',

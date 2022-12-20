@@ -1,11 +1,14 @@
 import useLocales from '../../hooks/useLocales'
 import { useDarkMode } from '../../themes/useDarkMode'
+import { appThemes } from '../../utils/constants'
+import { GlobalStyles, lightTheme, darkTheme } from '../../themes/globalStyles'
 import Header from '../header/Header'
 import CustomizedDialogs from '../common/elements/DialogBox'
 
 const HomeScreen = () => {
   const { t } = useLocales()
   const [theme, toggleTheme] = useDarkMode()
+  const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
   return (
     <>
     <Header toggleTheme={toggleTheme} />

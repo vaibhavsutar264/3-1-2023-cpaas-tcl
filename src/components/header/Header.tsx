@@ -87,6 +87,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
     }))
     navigate('/')
   }
+  
 
   return (
     <>
