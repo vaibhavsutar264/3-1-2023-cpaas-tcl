@@ -18,15 +18,15 @@ const BillingDetail = () => {
     let le = "le1"
 
 
-    const entityone = () => {
+    const entityOne = () => {
         entityNo = 0
         le="le1"
     }
-    const entitytwo = () => {
+    const entityTwo = () => {
         entityNo = 1
         le="le2"
     }
-    const entitythree = () => {
+    const entityThree = () => {
         entityNo = 2
         le="le3"
     }
@@ -118,9 +118,9 @@ const BillingDetail = () => {
                                 label="Age"
                                 onChange={handleChange}
                                 >
-                                    <MenuItem value='legal entity name1'>Legal Entity Name1</MenuItem>
-                                    <MenuItem value='legal entity name2'>Legal Entity Name2</MenuItem>
-                                    <MenuItem value='legal entity name3'>Legal Entity Name3</MenuItem>
+                                    <MenuItem onClick={entityOne} value='legal entity name1'>Legal Entity Name1</MenuItem>
+                                    <MenuItem onClick={entityTwo} value='legal entity name2'>Legal Entity Name2</MenuItem>
+                                    <MenuItem onClick={entityThree} value='legal entity name3'>Legal Entity Name3</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>

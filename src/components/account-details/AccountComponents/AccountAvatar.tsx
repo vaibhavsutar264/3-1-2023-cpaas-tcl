@@ -70,7 +70,7 @@ const BillingAvatar = () => {
   }
   console.log(firstname)
 
-  const [editable, setEditable] = useState<boolean>(false);
+  const [editable, setEditable] = useState<boolean>(true);
 
   // const editMode = () => {
   //   // setEditable(!editable);
