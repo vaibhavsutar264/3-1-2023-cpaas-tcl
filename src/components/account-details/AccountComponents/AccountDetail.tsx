@@ -14,28 +14,131 @@ const BillingDetail = () => {
         // dispatch(getAcDetails())
     }, [dispatch])
 
-    let entityNo = 0
-    let le = "le1"
+    const entityNo = 0
 
-
-    const entityOne = () => {
-        entityNo = 0
-        le="le1"
-    }
-    const entityTwo = () => {
-        entityNo = 1
-        le="le2"
-    }
-    const entityThree = () => {
-        entityNo = 2
-        le="le3"
-    }
+    // const handleChange = () => {
+    //     if (entityNo == 0){
+    //       return legalentities[0].le1.billingDetails.accountName
+    //     }   
+    // else if (entityNo == 1){
+    // legalentities[1].le2.billingDetails.accountName}
+    // else
+    //   return '';
+    //   };
 
         const [age, setAge] = React.useState('');
       
         const handleChange = (event: SelectChangeEvent) => {
           setAge(event.target.value as string);
         };
+
+        if(age == 'legal entity name2'){
+            const entityNo = 1
+            const accountNameElement = document.getElementById(
+                'account-name-details'
+            ) as HTMLElement
+            const legalEntityElement = document.getElementById(
+                'legal-entity'
+            ) as HTMLElement
+            const billingTypeElement = document.getElementById(
+                'billing-type'
+            ) as HTMLElement
+            const billingCycleElement = document.getElementById(
+                'billing-cycle'
+            ) as HTMLElement
+            const paymentPeriodElement = document.getElementById(
+                'payment-period'
+            ) as HTMLElement
+            const vatElement = document.getElementById(
+                'vat'
+            ) as HTMLElement
+            const companyPanElement = document.getElementById(
+                'company-pan'
+            ) as HTMLElement
+            const applicableCurrencyElement = document.getElementById(
+                'applicable-currency'
+            ) as HTMLElement
+            const contractTermElement = document.getElementById(
+                'contract-term'
+            ) as HTMLElement
+            const notificationElement = document.getElementById(
+                'rate-change-notification-period'
+            ) as HTMLElement
+            const coverageElement = document.getElementById(
+                'rate-coverage-change-timeZone'
+            ) as HTMLElement
+            const accountStatusElement = document.getElementById(
+                'account-status'
+            ) as HTMLElement
+            accountNameElement.innerHTML = legalentities[entityNo].le2.billingDetails.accountName
+            legalEntityElement.innerHTML = legalentities[entityNo].le2.billingDetails.legalEntity
+            billingTypeElement.innerHTML = legalentities[entityNo].le2.billingDetails.billingtype
+            billingCycleElement.innerHTML = legalentities[entityNo].le2.billingDetails.billingCycle
+            paymentPeriodElement.innerHTML = legalentities[entityNo].le2.billingDetails.paymentPeriod
+            vatElement.innerHTML = legalentities[entityNo].le2.billingDetails.vatOrGSTNoOrTxId
+            companyPanElement.innerHTML = legalentities[entityNo].le2.billingDetails.companyPAN
+            applicableCurrencyElement.innerHTML = legalentities[entityNo].le2.billingDetails.applicableCurrency
+            contractTermElement.innerHTML = legalentities[entityNo].le2.billingDetails.contractTerm
+            notificationElement.innerHTML = legalentities[entityNo].le2.billingDetails.rateChangeNotificationPeriod
+            coverageElement.innerHTML = legalentities[entityNo].le2.billingDetails.rateCoverageChangeTimeZone
+            accountStatusElement.innerHTML = legalentities[entityNo].le2.billingDetails.accountStatus
+        }
+
+
+        if(age == 'legal entity name1'){
+            const entityNo = 0
+            const accountNameElement = document.getElementById(
+                'account-name-details'
+            ) as HTMLElement
+            const legalEntityElement = document.getElementById(
+                'legal-entity'
+            ) as HTMLElement
+            const billingTypeElement = document.getElementById(
+                'billing-type'
+            ) as HTMLElement
+            const billingCycleElement = document.getElementById(
+                'billing-cycle'
+            ) as HTMLElement
+            const paymentPeriodElement = document.getElementById(
+                'payment-period'
+            ) as HTMLElement
+            const vatElement = document.getElementById(
+                'vat'
+            ) as HTMLElement
+            const companyPanElement = document.getElementById(
+                'company-pan'
+            ) as HTMLElement
+            const applicableCurrencyElement = document.getElementById(
+                'applicable-currency'
+            ) as HTMLElement
+            const contractTermElement = document.getElementById(
+                'contract-term'
+            ) as HTMLElement
+            const notificationElement = document.getElementById(
+                'rate-change-notification-period'
+            ) as HTMLElement
+            const coverageElement = document.getElementById(
+                'rate-coverage-change-timeZone'
+            ) as HTMLElement
+            const accountStatusElement = document.getElementById(
+                'account-status'
+            ) as HTMLElement
+            accountNameElement.innerHTML = legalentities[entityNo].le1.billingDetails.accountName
+            legalEntityElement.innerHTML = legalentities[entityNo].le1.billingDetails.legalEntity
+            billingTypeElement.innerHTML = legalentities[entityNo].le1.billingDetails.billingtype
+            billingCycleElement.innerHTML = legalentities[entityNo].le1.billingDetails.billingCycle
+            paymentPeriodElement.innerHTML = legalentities[entityNo].le1.billingDetails.paymentPeriod
+            vatElement.innerHTML = legalentities[entityNo].le1.billingDetails.vatOrGSTNoOrTxId
+            companyPanElement.innerHTML = legalentities[entityNo].le1.billingDetails.companyPAN
+            applicableCurrencyElement.innerHTML = legalentities[entityNo].le1.billingDetails.applicableCurrency
+            contractTermElement.innerHTML = legalentities[entityNo].le1.billingDetails.contractTerm
+            notificationElement.innerHTML = legalentities[entityNo].le1.billingDetails.rateChangeNotificationPeriod
+            coverageElement.innerHTML = legalentities[entityNo].le1.billingDetails.rateCoverageChangeTimeZone
+            accountStatusElement.innerHTML = legalentities[entityNo].le1.billingDetails.accountStatus
+        }
+
+
+        console.log(age)
 
   return (
     <>
@@ -118,9 +221,9 @@ const BillingDetail = () => {
                                 label="Age"
                                 onChange={handleChange}
                                 >
-                                    <MenuItem onClick={entityOne} value='legal entity name1'>Legal Entity Name1</MenuItem>
-                                    <MenuItem onClick={entityTwo} value='legal entity name2'>Legal Entity Name2</MenuItem>
-                                    <MenuItem onClick={entityThree} value='legal entity name3'>Legal Entity Name3</MenuItem>
+                                    <MenuItem value='legal entity name1'>Legal Entity Name1</MenuItem>
+                                    <MenuItem value='legal entity name2'>Legal Entity Name2</MenuItem>
+                                    <MenuItem value='legal entity name3'>Legal Entity Name3</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -160,7 +263,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.accountName}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='account-name-details' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -189,7 +292,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.legalEntity}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='legal-entity' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -218,7 +321,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.billingtype}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='billing-type' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -247,7 +350,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.billingCycle}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='billing-cycle' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -276,7 +379,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.paymentPeriod}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='payment-period' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -305,7 +408,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.vatOrGSTNoOrTxId}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='vat' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -334,7 +437,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.companyPAN}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='company-pan' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -363,7 +466,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.applicableCurrency}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='applicable-currency' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -391,7 +494,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.contractTerm}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='contract-term' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -419,7 +522,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.rateChangeNotificationPeriod}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='rate-change-notification-period' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -448,7 +551,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.rateCoverageChangeTimeZone}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='rate-coverage-change-timeZone' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
@@ -476,7 +579,7 @@ const BillingDetail = () => {
                             fontFamily: "ubuntu",
                             lineHeight: '18px',
                         }}>{billingDetails.accountStatus}</Typography> */}
-                        <Typography className='prefilled-content' component='span' sx={{
+                        <Typography className='prefilled-content' id='account-status' component='span' sx={{
                             color: '#344857',
                             fontWeight: 700,
                             fontSize: '16px',
