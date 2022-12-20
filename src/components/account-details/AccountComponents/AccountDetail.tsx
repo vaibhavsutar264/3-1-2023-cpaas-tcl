@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from '../../../redux/store'
 import { getAcDetails } from '../../../redux/slices/accountSlice'
 
 
-const BillingDetail = () => {
+const BillingDetail = ({age, setAge}:{age: any, setAge: any}) => {
     const dispatch = useDispatch()
     const { accountDetails } = useSelector((state: any) => state.account);  
     const { legalentities } = accountDetails
@@ -26,7 +26,7 @@ const BillingDetail = () => {
     //   return '';
     //   };
 
-        const [age, setAge] = React.useState('');
+        // const [age, setAge] = React.useState('');
       
         const handleChange = (event: SelectChangeEvent) => {
           setAge(event.target.value as string);
@@ -136,6 +136,59 @@ const BillingDetail = () => {
             coverageElement.innerHTML = legalentities[entityNo].le1.billingDetails.rateCoverageChangeTimeZone
             accountStatusElement.innerHTML = legalentities[entityNo].le1.billingDetails.accountStatus
         }
+
+        if(age == 'legal entity name3'){
+            const entityNo = 2
+            const accountNameElement = document.getElementById(
+                'account-name-details'
+            ) as HTMLElement
+            const legalEntityElement = document.getElementById(
+                'legal-entity'
+            ) as HTMLElement
+            const billingTypeElement = document.getElementById(
+                'billing-type'
+            ) as HTMLElement
+            const billingCycleElement = document.getElementById(
+                'billing-cycle'
+            ) as HTMLElement
+            const paymentPeriodElement = document.getElementById(
+                'payment-period'
+            ) as HTMLElement
+            const vatElement = document.getElementById(
+                'vat'
+            ) as HTMLElement
+            const companyPanElement = document.getElementById(
+                'company-pan'
+            ) as HTMLElement
+            const applicableCurrencyElement = document.getElementById(
+                'applicable-currency'
+            ) as HTMLElement
+            const contractTermElement = document.getElementById(
+                'contract-term'
+            ) as HTMLElement
+            const notificationElement = document.getElementById(
+                'rate-change-notification-period'
+            ) as HTMLElement
+            const coverageElement = document.getElementById(
+                'rate-coverage-change-timeZone'
+            ) as HTMLElement
+            const accountStatusElement = document.getElementById(
+                'account-status'
+            ) as HTMLElement
+            accountNameElement.innerHTML = legalentities[entityNo].le3.billingDetails.accountName
+            legalEntityElement.innerHTML = legalentities[entityNo].le3.billingDetails.legalEntity
+            billingTypeElement.innerHTML = legalentities[entityNo].le3.billingDetails.billingtype
+            billingCycleElement.innerHTML = legalentities[entityNo].le3.billingDetails.billingCycle
+            paymentPeriodElement.innerHTML = legalentities[entityNo].le3.billingDetails.paymentPeriod
+            vatElement.innerHTML = legalentities[entityNo].le3.billingDetails.vatOrGSTNoOrTxId
+            companyPanElement.innerHTML = legalentities[entityNo].le3.billingDetails.companyPAN
+            applicableCurrencyElement.innerHTML = legalentities[entityNo].le3.billingDetails.applicableCurrency
+            contractTermElement.innerHTML = legalentities[entityNo].le3.billingDetails.contractTerm
+            notificationElement.innerHTML = legalentities[entityNo].le3.billingDetails.rateChangeNotificationPeriod
+            coverageElement.innerHTML = legalentities[entityNo].le3.billingDetails.rateCoverageChangeTimeZone
+            accountStatusElement.innerHTML = legalentities[entityNo].le3.billingDetails.accountStatus
+        }
+
 
 
         console.log(age)

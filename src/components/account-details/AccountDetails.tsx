@@ -21,6 +21,8 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
     dispatch(getAcDetails())
   }, [dispatch])
 
+  const [age, setAge] = React.useState('');
+
   return (
     <>
 
@@ -36,7 +38,7 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
                 </Grid>
 
                 <Grid item xs={8}>
-                <BillingDetail />
+                <BillingDetail age={age} setAge={setAge}/>
                 </Grid>
 
             </Grid>
@@ -48,7 +50,7 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
                 </Grid>
 
                 <Grid item xs={8}>
-                <BillingInvoice />
+                <BillingInvoice age={age} setAge={setAge}/>
                 </Grid>
 
             </Grid>
