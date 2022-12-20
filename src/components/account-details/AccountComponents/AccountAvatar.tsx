@@ -7,70 +7,71 @@ import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { userLoginData, account } from '../../../services/api/index'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getAcDetails, updateUserDetails } from '../../../redux/slices/accountSlice'
-
+import {
+  getAcDetails,
+  updateUserDetails,
+} from '../../../redux/slices/accountSlice'
 
 const initialValue = {
-    firstname: '',
-    lastName: ''
+  firstname: '',
+  lastName: '',
 }
 
-const BillingAvatar = () => {
-    const dispatch = useDispatch();
+const AccountAvatar = () => {
+  const dispatch = useDispatch()
   const { user, userEmail } = useSelector((state: any) => state.auth || {})
-  const { emailId } = user;
+  const { emailId } = user
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 44,
     height: 44,
   }))
 
-  const [firstname, setFirstname] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [timezone, setTimezone] = useState("");
+  const [firstname, setFirstname] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [timezone, setTimezone] = useState('')
   // const { id } = useParams();
   const id = 1
-  
-  const navigate = useNavigate();
+
+  const navigate = useNavigate()
 
   useEffect(() => {
-      loadUserDetails();
-  }, [dispatch]);
+    loadUserDetails()
+  }, [dispatch])
 
-  const loadUserDetails = async() => {
+  const loadUserDetails = async () => {
     const response = await userLoginData.getUserInfo(emailId).then((res) => {
-      if(res.data.data.data.emailId == userEmail){
-        setFirstname(res.data.data.data.firstname);
-        setLastName(res.data.data.data.lastName);
-        setPhoneNumber(res.data.data.data.attributes.phoneNumber);
-        setTimezone(res.data.data.data.attributes.timezone);
-      }else{
-        setFirstname('firstname is not available due to non registered email');
-        setLastName('lastName is not available due to non registered email');
-        setPhoneNumber('phoneNumber is not available due to non registered email');
-        setTimezone('timezone is not available due to non registered email');
+      if (res.data.data.data.emailId == userEmail) {
+        setFirstname(res.data.data.data.firstname)
+        setLastName(res.data.data.data.lastName)
+        setPhoneNumber(res.data.data.data.attributes.phoneNumber)
+        setTimezone(res.data.data.data.attributes.timezone)
+      } else {
+        setFirstname('firstname is not available due to non registered email')
+        setLastName('lastName is not available due to non registered email')
+        setPhoneNumber(
+          'phoneNumber is not available due to non registered email'
+        )
+        setTimezone('timezone is not available due to non registered email')
       }
-      
     })
   }
 
-  const data = {
-    firstname: firstname,
-    lastName: lastName,
-    phoneNumber: phoneNumber,
-    timezone: timezone
-  }
-
-  const editUserDetails = async(e: SyntheticEvent) => {
-    dispatch(updateUserDetails(id, data))
-    e.preventDefault();
+  const editUserDetails = async (e: SyntheticEvent) => {
+    const body = {
+      firstname: firstname,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      timezone: timezone,
+    }
+    dispatch(updateUserDetails(body))
+    e.preventDefault()
     // await account.editUserDetails(id, data).then(navigate("/invoices"));
     // await account.editUserDetails(id, data)
-    navigate('/');
   }
   console.log(firstname)
 
-  const [editable, setEditable] = useState<boolean>(false);
+  const [editable, setEditable] = useState<boolean>(true)
 
   // const editMode = () => {
   //   // setEditable(!editable);
@@ -125,7 +126,7 @@ const BillingAvatar = () => {
                   bgcolor: '#870000',
                 }}
               >
-              {firstname.charAt(0) + lastName.charAt(0)}
+                {firstname.charAt(0) + lastName.charAt(0)}
               </Avatar>
             </Badge>
           </Stack>
@@ -133,117 +134,116 @@ const BillingAvatar = () => {
 
         {/* 2nd row starts here */}
         <form>
-        <Box
-          component="form"
-          className="billing-details-input"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-            display: 'flex',
-            flexWrap: 'wrap',
-            rowGap: '20px',
-            justifyContent: 'space-between',
-            marginBottom: '40px',
-            '& label': {
-              top: editable? '14px' : 0,
-            }
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            label="first name"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            // name='firstname'
-            variant={editable? 'outlined' : 'standard'}
-            type="text"
+          <Box
+            component="form"
+            className="billing-details-input"
             sx={{
-              // border: '1px solid #eee',
-              borderRadius: '10px !important',
-              flexBasis: '45%',
-              textTransform: 'capitalize',
+              '& > :not(style)': { m: 1, width: '25ch' },
+              display: 'flex',
+              flexWrap: 'wrap',
+              rowGap: '20px',
+              justifyContent: 'space-between',
+              marginBottom: '40px',
+              '& label': {
+                top: editable ? '14px' : 0,
+              },
             }}
-          />
-          <TextField
-            label="last name"
-            variant={editable? 'outlined' : 'standard'}
-            type="text"
-            value={lastName}
-            // name='lastName'
-            onChange={(e) => setLastName(e.target.value)}
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              label="first name"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              // name='firstname'
+              variant={editable ? 'outlined' : 'standard'}
+              type="text"
+              sx={{
+                // border: '1px solid #eee',
+                borderRadius: '10px !important',
+                flexBasis: '45%',
+                textTransform: 'capitalize',
+              }}
+            />
+            <TextField
+              label="last name"
+              variant={editable ? 'outlined' : 'standard'}
+              type="text"
+              value={lastName}
+              // name='lastName'
+              onChange={(e) => setLastName(e.target.value)}
+              sx={{
+                // border: '1px solid #eee',
+                borderRadius: '10px !important',
+                flexBasis: '45%',
+                textTransform: 'capitalize',
+              }}
+            />
+            <TextField
+              label="mobile no"
+              variant={editable ? 'outlined' : 'standard'}
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              sx={{
+                // border: '1px solid #eee',
+                borderRadius: '10px !important',
+                flexBasis: '45%',
+                textTransform: 'capitalize',
+              }}
+            />
+            <TextField
+              label="communication"
+              variant={editable ? 'outlined' : 'standard'}
+              type="text"
+              sx={{
+                // border: '1px solid #eee',
+                borderRadius: '10px !important',
+                flexBasis: '45%',
+                textTransform: 'capitalize',
+              }}
+            />
+            <TextField
+              label="timezone"
+              variant={editable ? 'outlined' : 'standard'}
+              type="text"
+              value={timezone}
+              onChange={(e) => setTimezone(e.target.value)}
+              sx={{
+                // border: '1px solid #eee',
+                borderRadius: '10px !important',
+                flexBasis: '100%',
+                textTransform: 'capitalize',
+              }}
+            />
+          </Box>
+          <Button
+            color="error"
+            variant="outlined"
+            type="button"
+            onClick={editUserDetails}
             sx={{
-              // border: '1px solid #eee',
-              borderRadius: '10px !important',
-              flexBasis: '45%',
-              textTransform: 'capitalize',
+              textTransform: 'uppercase',
+              borderRadius: '100px',
+              width: 1,
+              px: 6,
+              py: 2,
+              fontSize: '12px',
+              lineHeight: '13px',
+              fontWeight: 700,
+              fontFamily: 'ubuntu',
+              '&:hover': {
+                backgroundColor: '#D63548',
+                color: '#fff',
+              },
             }}
-          />
-          <TextField
-            label="mobile no"
-            variant={editable? 'outlined' : 'standard'}
-            type="text"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            sx={{
-              // border: '1px solid #eee',
-              borderRadius: '10px !important',
-              flexBasis: '45%',
-              textTransform: 'capitalize',
-            }}
-          />
-          <TextField
-            label="communication"
-            variant={editable? 'outlined' : 'standard'}
-            type="text"
-            value="Phone"
-            sx={{
-              // border: '1px solid #eee',
-              borderRadius: '10px !important',
-              flexBasis: '45%',
-              textTransform: 'capitalize',
-            }}
-          />
-          <TextField
-            label="timezone"
-            variant={editable? 'outlined' : 'standard'}
-            type="text"
-            value={timezone}
-            onChange={(e) => setTimezone(e.target.value)}
-            sx={{
-              // border: '1px solid #eee',
-              borderRadius: '10px !important',
-              flexBasis: '100%',
-              textTransform: 'capitalize',
-            }}
-          />
-        </Box>
-        <Button
-          color="error"
-          variant="outlined"
-          type="submit"
-          onClick={editUserDetails}
-          sx={{
-            textTransform: 'uppercase',
-            borderRadius: '100px',
-            width: 1,
-            px: 6,
-            py: 2,
-            fontSize: '12px',
-            lineHeight: '13px',
-            fontWeight: 700,
-            fontFamily: 'ubuntu',
-            '&:hover': {
-              backgroundColor: '#D63548',
-              color: '#fff',
-          },
-          }}
-        >
-          {editable? 'save' : 'edit personal details'}
-        </Button>
+          >
+            {editable ? 'save' : 'edit personal details'}
+          </Button>
         </form>
       </Box>
     </>
   )
 }
 
-export default BillingAvatar
+export default AccountAvatar

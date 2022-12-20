@@ -78,7 +78,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
 
     const handelLogout = () => {
         dispatch(logout({
-            refreshToken: `${localStorage.getItem(localStorageVar.TOKEN_VAR)}`,
+            refreshToken: `${getFromLocalStorage(localStorageVar.TOKEN_VAR)}`,
             username: user[apiVrbls.USER.EMAIL_ID]
         }));
     }

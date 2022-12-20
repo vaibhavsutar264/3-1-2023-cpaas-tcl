@@ -20,6 +20,7 @@ export const apiRoutes = {
     DOWNLOAD_INVOICES_CDR: '/orchestration/billing/invoices/downloadBillingInvoiceCDR',
 
     //account
+    UPDATE_USER_INFO: '/orchestration/user/account_details/updateUserDetails',
     GET_ACCOUNT_BILLING_DETAILS: '/orchestration/user/account_details/getAccountBillingDetails'
 }
 
