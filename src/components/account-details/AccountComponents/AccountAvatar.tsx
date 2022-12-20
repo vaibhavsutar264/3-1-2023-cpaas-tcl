@@ -3,11 +3,15 @@ import { styled } from '@mui/material/styles'
 import { Box, Stack, Badge, Avatar, TextField, Button } from '@mui/material'
 import AvatarImg from '../../../assets/images/avatar.png'
 import AvatarBg from '../../../assets/images/avatar-bg.png'
+// import AvatarDarkBg from '../../../assets/images/avatar-dark-bg.png'
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { userLoginData, account } from '../../../services/api/index'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getAcDetails, updateUserDetails } from '../../../redux/slices/accountSlice'
+import { getFromLocalStorage, setInLocalStorage } from '../../../hooks/useLocalStorage'
+
+
 
 
 const initialValue = {
@@ -76,6 +80,9 @@ const BillingAvatar = () => {
   //   // setEditable(!editable);
   // };
 
+  const getitem = getFromLocalStorage('theme')
+    console.log(`the getitem value is ${getitem}`);
+
   return (
     <>
       {/* 1st left row container starts here */}
@@ -89,6 +96,11 @@ const BillingAvatar = () => {
           px: '50px',
           // mb: '40px',
           backgroundImage: `url(${AvatarBg})`,
+        //   backgroundImage: {
+        //     getitem == 'light'? 
+        //     `url(${AvatarBg})` : 
+        //     `url(${AvatarBg})`
+        // },
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
         }}
@@ -118,11 +130,11 @@ const BillingAvatar = () => {
             >
               <Avatar
                 alt="Travis Howard"
+                className='avatar-initials'
                 // src={AvatarImg}
                 sx={{
                   width: '156px',
                   height: '156px',
-                  bgcolor: '#870000',
                 }}
               >
               {firstname.charAt(0) + lastName.charAt(0)}
