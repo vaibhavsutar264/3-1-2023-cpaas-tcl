@@ -83,5 +83,11 @@ declare module 'styled-components' {
         resendLink: string
         langInvoicesBg: string
         langInvoicesTxt: string
+        selectEntityLabelBg: string
+        selectEntityLabel: string
+        selectEntityBorder: string
+        selectEntityLabelShrink: string
+        selectEntityInput: string
+        editableInputBorder: string
     }
 }

@@ -63,6 +63,10 @@ const BillingContact = () => {
                     lineHeight: '13px',
                     fontWeight: 700,
                     fontFamily: 'ubuntu',
+                    '&:hover': {
+                        backgroundColor: '#D63548',
+                        color: '#fff',
+                    },
                 }}>contact us</Button>
                 </Box>
     </>

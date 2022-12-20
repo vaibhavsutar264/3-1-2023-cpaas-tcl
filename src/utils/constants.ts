@@ -98,7 +98,7 @@ export const appRoutes = {
     INVOICE: '/invoices/:id',
     RAISE_TICKET: '/invoices/raiseticket',
     INVOICE_BILL: '/invoices/invoicebill',
-    ACCOUNT_DETAILS: '/invoices/accountdetails/',
+    ACCOUNT_DETAILS: '/accountdetails',
     MODAL: '/modal',
     MODAL_TICKET: '/modalticket',
     MODAL_WELCOME: '/modalwelcome',
