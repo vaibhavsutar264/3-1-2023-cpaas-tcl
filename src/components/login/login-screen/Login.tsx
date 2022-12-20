@@ -92,7 +92,7 @@ const Login = () => {
                 // if (user) {
                     navigate(appRoutes.SET_PASSWORD)
                 } else {
-                    navigate(appRoutes.BILLING)
+                    navigate(appRoutes.DASHBOARD)
                     // navigate(appRoutes.ROOT)
                 }
             }

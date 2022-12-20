@@ -3,14 +3,16 @@ import { styled } from '@mui/material/styles'
 import { Box, Stack, Badge, Avatar, TextField, Button } from '@mui/material'
 import AvatarImg from '../../../assets/images/avatar.png'
 import AvatarBg from '../../../assets/images/avatar-bg.png'
+// import AvatarDarkBg from '../../../assets/images/avatar-dark-bg.png'
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { userLoginData, account } from '../../../services/api/index'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  getAcDetails,
-  updateUserDetails,
-} from '../../../redux/slices/accountSlice'
+import { getAcDetails, updateUserDetails } from '../../../redux/slices/accountSlice'
+import { getFromLocalStorage, setInLocalStorage } from '../../../hooks/useLocalStorage'
+
+
+
 
 const initialValue = {
   firstname: '',
@@ -30,6 +32,7 @@ const AccountAvatar = () => {
   const [lastName, setLastName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [timezone, setTimezone] = useState('')
+  const [communication, setCommunication] = useState('')
   // const { id } = useParams();
   const id = 1
 
@@ -46,6 +49,7 @@ const AccountAvatar = () => {
         setLastName(res.data.data.data.lastName)
         setPhoneNumber(res.data.data.data.attributes.phoneNumber)
         setTimezone(res.data.data.data.attributes.timezone)
+        setCommunication(res.data.data.data.attributes.preferredCommunicationMode)
       } else {
         setFirstname('firstname is not available due to non registered email')
         setLastName('lastName is not available due to non registered email')
@@ -53,6 +57,7 @@ const AccountAvatar = () => {
           'phoneNumber is not available due to non registered email'
         )
         setTimezone('timezone is not available due to non registered email')
+        setCommunication('communication is not available due to non registered email')
       }
     })
   }
@@ -63,6 +68,7 @@ const AccountAvatar = () => {
       lastName: lastName,
       phoneNumber: phoneNumber,
       timezone: timezone,
+      communication: communication
     }
     dispatch(updateUserDetails(body))
     e.preventDefault()
@@ -77,6 +83,9 @@ const AccountAvatar = () => {
   //   // setEditable(!editable);
   // };
 
+  const getitem = getFromLocalStorage('theme')
+    console.log(`the getitem value is ${getitem}`);
+
   return (
     <>
       {/* 1st left row container starts here */}
@@ -90,6 +99,11 @@ const AccountAvatar = () => {
           px: '50px',
           // mb: '40px',
           backgroundImage: `url(${AvatarBg})`,
+        //   backgroundImage: {
+        //     getitem == 'light'? 
+        //     `url(${AvatarBg})` : 
+        //     `url(${AvatarBg})`
+        // },
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
         }}
@@ -119,11 +133,11 @@ const AccountAvatar = () => {
             >
               <Avatar
                 alt="Travis Howard"
+                className='avatar-initials'
                 // src={AvatarImg}
                 sx={{
                   width: '156px',
                   height: '156px',
-                  bgcolor: '#870000',
                 }}
               >
                 {firstname.charAt(0) + lastName.charAt(0)}
@@ -211,6 +225,8 @@ sx={{
               label="communication"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
+              value={communication}
+              onChange={(e) => setCommunication(e.target.value)}
               sx={{
                 // border: '1px solid #eee',
                 borderRadius: '10px !important',

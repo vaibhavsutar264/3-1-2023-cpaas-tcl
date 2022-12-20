@@ -1,0 +1,18 @@
+.billing-details-input input {
+    margin: 0;
+    letter-spacing: 0.00938em;
+    color: #344857;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: ubuntu;
+    line-height: 18px;
+}
+
+.MuiAvatar-root {
+    &.avatar-initials {
+        font-size: 40px;
+        font-family: ubuntu;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+}

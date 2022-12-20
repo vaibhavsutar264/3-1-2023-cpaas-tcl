@@ -559,14 +559,14 @@ const DataTable = ({
                                 ))}
                                 <TableCell style={{ width: 160 }} align="right">
                                     <ul className="actionButtons">
-                                    <Tooltip title="RAISE A TICKET">
-                                    <button className="actionButton__item" onClick={(e) => { handleShow() }}>
-                                    <span><Ticket /></span>
-                                    </button>
-                                    </Tooltip>
                                     <Tooltip title="VIEW INVOICE">
                                     <button className="actionButton__item" onClick={() => handleViewPdf(item)}>
                                     <span> <Pdf /> </span>
+                                    </button>
+                                    </Tooltip>
+                                    <Tooltip title="RAISE A TICKET">
+                                    <button className="actionButton__item" onClick={(e) => { handleShow() }}>
+                                    <span><Ticket /></span>
                                     </button>
                                     </Tooltip>
                                     <Tooltip title="DOWNLOAD">

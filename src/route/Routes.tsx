@@ -37,6 +37,16 @@ function Routes({ toggleTheme }: { toggleTheme: any }) {
                 { path: appRoutes.MODAL_TICKET, element: <ModalTicket /> },
                 { path: appRoutes.MODAL_WELCOME, element: <ModalWelcome /> },
                 { path: appRoutes.MODAL_MAIL, element: <ModalMail /> },
+                // {path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
+                // { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
+                // {
+                //     path: appRoutes.BILLING,
+                //     element: <Billing toggleTheme={toggleTheme} />,
+                // },
+                // {
+                //     path: appRoutes.DASHBOARD,
+                //     element: <Dashboard toggleTheme={toggleTheme} />,
+                // },
                 // { path: appRoutes.SET_PASSWORD, element: <SetPassword /> },
             ],
         },

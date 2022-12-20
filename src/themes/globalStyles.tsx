@@ -71,7 +71,7 @@ export const lightTheme = {
     bdSingleContentBg: '#fff',
     prefilledTitle: '#344857',
     prefilledContent: '#344857',
-    billingDetailsInput: '#344857',
+    billingDetailsInput: '#344857 !important',
     billingDetailsLabel: '#344857',
     bdSingleContentTitle: '#303030',
     helpText: '#344857',
@@ -88,6 +88,8 @@ export const lightTheme = {
     selectEntityBorder: 'rgba(0, 0, 0, 0.23)',
     selectEntityInput: '#333 !important',
     editableInputBorder: '',
+    avatarInitialsBg: '#E1E1E1 !important',
+    avatarInitials: '#344857 !important',
 }
 
 export const darkTheme = {
@@ -162,7 +164,7 @@ export const darkTheme = {
     bdSingleContentBg: '#252F3B',
     prefilledTitle: '#787785',
     prefilledContent: '#E8E8E8',
-    billingDetailsInput: '#E8E8E8',
+    billingDetailsInput: '#E8E8E8 !important',
     billingDetailsLabel: '#787785 !important',
     bdSingleContentTitle: '#E8E8E8',
     helpText: '#787785',
@@ -179,6 +181,8 @@ export const darkTheme = {
     selectEntityBorder: '#fff !important',
     selectEntityInput: '#fff !important',
     editableInputBorder: '#787785 !important',
+    avatarInitialsBg: '#343A47 !important',
+    avatarInitials: '#FFFFFF !important',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -431,7 +435,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   .billing-details-input label {
     color: ${({ theme }) => theme.billingDetailsLabel};
   }
-  .billing-details-input .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  .billing-details-input input {
     color: ${({ theme }) => theme.billingDetailsInput};
   }
   .bd-container h1 {
@@ -479,5 +483,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   .billing-details-input fieldset {
     border-color: ${({ theme }) => theme.editableInputBorder};
+  }
+  .MuiAvatar-root.avatar-initials {
+    background-color: ${({ theme }) => theme.avatarInitialsBg};
+    color: ${({ theme }) => theme.avatarInitials};
   }
 `
