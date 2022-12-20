@@ -11,7 +11,7 @@ import { apiDefaultrespons, apiVrbls, localStorageVar, staticErrors } from '../.
 import { toast } from 'react-toastify'
 
 const initialState: AuthState = {
-  user: null, 
+  user: null,
   profile: undefined,
   isError: false,
   isLoading: false,
@@ -21,7 +21,8 @@ const initialState: AuthState = {
   emailSent: '',
   resetmessage: '',
   forgotMessage: '',
-  userEmail: ''
+  userEmail: '',
+  forgotPassEmail: false,
 }
 
 export const userSlice = createSlice({
@@ -59,10 +60,22 @@ export const userSlice = createSlice({
       state.message = action.payload.message as string
     },
     forgotPasswordSuccess: (state, action) => {
+      state.forgotPassEmail = true
       state.isLoading = false
       state.isSuccess = true
       state.emailSent = action.payload.message as string
       state.forgotMessage = action.payload.data
+    },
+    resetforgotPasswordparms: (state, action) => {
+      state.forgotPassEmail = false
+    },
+    resetLoginParms: (state, action) => {
+      state.isLoading = false
+      state.isSuccess = false
+      state.isError = false
+      state.user = null
+      state.isAuthenticated = false
+      state.message = ""
     },
     resetPasswordSuccess: (state, action) => {
       state.isLoading = false
@@ -113,26 +126,29 @@ export const login = (userData: UserLogin, emailcredential: any) => {
   }
 }
 
+export const getuserInfo = (email: any) => {
+  dispatch(userSlice.actions.startLoading())
+  return async () => {
+    try {
+      const { data: userInfo }: any = await userLoginData.getUserInfo(email);
+      if (userInfo && userInfo.data.data) {
+        dispatch(userSlice.actions.loginSuccess(userInfo.data.data))
+      } else {
+        toast.error(userInfo.data.message)
+      }
+    } catch (response: any) {
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
+      toast.error(data.message)
+      dispatch(userSlice.actions.hasError(data))
+    }
+  }
+}
 
-// export const userInfo = () => {
-//   dispatch(userSlice.actions.startLoading())
-//   return async () => {
-//     try {
-//       const response: any = await userLoginData.getUserInfo(null)
-//       const { data } = response
-//       if (response) {
-//         const firstName: any = data.data.data.firstname
-//         const lastName: any = data.data.data.lastName
-//         const emailId: any = data.data.data.emailId
-//         const user = { firstName: firstName, lastName: lastName, emailId: emailId }
-//         // const resp = { user }
-//         dispatch(userSlice.actions.getUserInfoSuccess(user))
-//       }
-//     } catch ({ data = apiDefaultrespons.LOGIN_ERRRO }) {
-//       dispatch(userSlice.actions.hasError(data))
-//     }
-//   }
-// }
+export const resetLoginParms = () => {
+  return async () => {
+    dispatch(userSlice.actions.resetLoginParms(null))
+  }
+}
 
 export const logout = (body: any) => {
   dispatch(userSlice.actions.startLoading())
@@ -188,6 +204,12 @@ export const forgotPassword = (userEmail: Email) => {
       toast.error(data.message)
       dispatch(userSlice.actions.hasError(data))
     }
+  }
+}
+
+export const resetForgotPaswordPrms = () => {
+  return async () => {
+    dispatch(userSlice.actions.resetforgotPasswordparms(null))
   }
 }
 

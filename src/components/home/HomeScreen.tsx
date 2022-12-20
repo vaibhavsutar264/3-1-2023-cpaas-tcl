@@ -1,13 +1,8 @@
 import useLocales from '../../hooks/useLocales'
-import { useDarkMode } from '../../themes/useDarkMode'
-import { appThemes } from '../../utils/constants'
-import { GlobalStyles, lightTheme, darkTheme } from '../../themes/globalStyles'
 import Header from '../header/Header'
-import CustomizedDialogs from '../common/elements/DialogBox'
 
 const HomeScreen = ({toggleTheme}:any) => {
   const { t } = useLocales()
-  // const [theme, toggleTheme] = useDarkMode()
   return (
     <>
     <Header toggleTheme={toggleTheme} />
@@ -19,7 +14,6 @@ const HomeScreen = ({toggleTheme}:any) => {
           <h1 className="h1-padding">TCL-CPAAS {t<string>('home')}</h1>
         </div>
       </div>
-      {/* <CustomizedDialogs /> */}
     </>
   )
 }

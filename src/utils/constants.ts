@@ -1,8 +1,8 @@
 
 export const apiRoutes = {
     // BASE_URL: 'http://115.112.43.74:8585',
-    // BASE_URL: '',
-    BASE_URL: 'http://localhost:8585',
+    BASE_URL: '',
+    // BASE_URL: 'http://localhost:8585',
     // BASE_URL: 'http://api.sspdev.digodev.com',
 
     // User
@@ -97,15 +97,8 @@ export const appRoutes = {
     NOT_FOUND: '*',
     BILLING: '/invoices',
     DASHBOARD: '/dashboard',
-    PDFVIEWER: '/invoices/viewpdf',
-    INVOICE: '/invoices/:id',
-    RAISE_TICKET: '/invoices/raiseticket',
-    INVOICE_BILL: '/invoices/invoicebill',
     ACCOUNT_DETAILS: '/accountdetails',
-    MODAL: '/modal',
-    MODAL_TICKET: '/modalticket',
-    MODAL_WELCOME: '/modalwelcome',
-    MODAL_MAIL: '/modalmail'
+    WELOCME: '/welcome',
 }
 
 export const breadCrums = {

@@ -1,9 +1,6 @@
 import React from 'react'
 import {Box, Stack, Typography, Button} from '@mui/material'
-// import HelpImg from '../../../assets/images/help.jpg'
 import HelpImg from '../../../assets/images/need-help.png'
-
-
 
 const AccountContact = () => {
   return (

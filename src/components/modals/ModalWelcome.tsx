@@ -11,48 +11,36 @@ import { styled } from '@mui/system';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 import WelcomeCPass from '../../assets/images/svg/welcome-cpass.svg'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { useNavigate } from 'react-router-dom';
+import { appRoutes } from '../../utils/constants';
 
-function ModalWelcome() {
-    const [open, setOpen] = React.useState(true);
+function ModalWelcome({ open }: any) {
+    const navigate = useNavigate()
+
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
     return (
-        <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open responsive dialog
-            </Button>
-            <Dialog
-                fullScreen={fullScreen}
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="responsive-dialog-title"
-            >
-                <IconButton onClick={handleClose}><CloseRoundedIcon /></IconButton>
-                <img src={WelcomeCPass} alt="" />
-                <DialogTitle id="responsive-dialog-title" textAlign='center'>
-                    {"Welcome to CPass"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText textAlign='center'>
-                        Perfect! You have successfully activated your account.
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>
-                        jump to dashboard
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+        <Dialog
+            fullScreen={fullScreen}
+            open={open}
+            aria-labelledby="responsive-dialog-title"
+        >
+            <IconButton onClick={() => { navigate(appRoutes.BILLING) }} ><CloseRoundedIcon /></IconButton>
+            <img src={WelcomeCPass} alt="" />
+            <DialogTitle id="responsive-dialog-title" textAlign='center'>
+                {"Welcome to CPass"}
+            </DialogTitle>
+            <DialogContent>
+                <DialogContentText textAlign='center'>
+                    Perfect! You have successfully activated your account.
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={() => { navigate(appRoutes.BILLING) }} >
+                    jump to dashboard
+                </Button>
+            </DialogActions>
+        </Dialog>
     );
 }
 

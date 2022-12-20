@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Box,
   Stack,
@@ -7,11 +7,9 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  TextField,
   SelectChangeEvent,
 } from '@mui/material'
 import { useDispatch, useSelector } from '../../../redux/store'
-import { getAcDetails } from '../../../redux/slices/accountSlice'
 
 const AccountDetail = ({
   LegalEntity,
@@ -21,11 +19,14 @@ const AccountDetail = ({
   const dispatch = useDispatch()
   const [leEntity, setLeEntity] = useState<any>(null)
   const { accountDetails } = useSelector((state: any) => state.account)
-  const { legalentities } = accountDetails
+
   useEffect(() => {
-    setLeEntity(accountDetails.legalentities[0][GetLegalEntities()[0]])
-    setsendInvoice(accountDetails.legalentities[0].sendInvoiceToContact)
-    setLegalEntity(GetLegalEntities()[0])
+    try {
+      setLeEntity(accountDetails.legalentities[0][GetLegalEntities()[0]])
+      setsendInvoice(accountDetails.legalentities[0].sendInvoiceToContact)
+      setLegalEntity(GetLegalEntities()[0])
+    } catch { }
+
   }, [dispatch])
 
   const GetLegalEntities = () => {
@@ -88,11 +89,11 @@ const AccountDetail = ({
               sx={{
                 minWidth: 200,
                 '& .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused':
-                  {
-                    top: '1px',
-                    height: 'min-content',
-                    backgroundColor: '#fff !important',
-                  },
+                {
+                  top: '1px',
+                  height: 'min-content',
+                  backgroundColor: '#fff !important',
+                },
                 '& [role="button"]': {
                   color: '#222',
                   textTransform: 'capitalize',
@@ -140,8 +141,6 @@ const AccountDetail = ({
               flexWrap: 'wrap',
               justifyContent: 'space-between',
               rowGap: '48px',
-              // marginBottom: '40px',
-              // paddingBottom: '133px',
             }}
             noValidate
             autoComplete="off"
@@ -203,13 +202,6 @@ const AccountDetail = ({
               >
                 legal entity
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.legalEntity}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="legal-entity"
@@ -247,13 +239,6 @@ const AccountDetail = ({
               >
                 billing type
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.billingtype}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="billing-type"
@@ -291,13 +276,6 @@ const AccountDetail = ({
               >
                 billing cycle
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.billingCycle}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="billing-cycle"
@@ -335,13 +313,6 @@ const AccountDetail = ({
               >
                 payment period
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.paymentPeriod}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="payment-period"
@@ -417,13 +388,6 @@ const AccountDetail = ({
               >
                 Company Pan or Equivalent No.
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.companyPAN}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="company-pan"
@@ -461,13 +425,6 @@ const AccountDetail = ({
               >
                 applicable currency
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.applicableCurrency}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="applicable-currency"
@@ -504,13 +461,6 @@ const AccountDetail = ({
               >
                 contact term
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.contractTerm}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="contract-term"
@@ -547,13 +497,6 @@ const AccountDetail = ({
               >
                 rate change notification period(in days)
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.rateChangeNotificationPeriod}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="rate-change-notification-period"
@@ -570,7 +513,6 @@ const AccountDetail = ({
                   leEntity?.billingDetails.rateChangeNotificationPeriod}
               </Typography>
             </Stack>
-
             <Stack
               sx={{
                 flexBasis: '30%',
@@ -592,13 +534,6 @@ const AccountDetail = ({
               >
                 rate & coverLegalEntity change time zone
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.rateCoverLegalEntityChangeTimeZone}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="rate-coverLegalEntity-change-timeZone"
@@ -615,7 +550,7 @@ const AccountDetail = ({
               </Typography>
             </Stack>
             <Stack
-              sx={{ 
+              sx={{
                 flexBasis: '30%',
               }}
             >
@@ -635,13 +570,6 @@ const AccountDetail = ({
               >
                 account status & remark
               </Typography>
-              {/* <Typography className='prefilled-content' component='span' sx={{
-                            color: '#344857',
-                            fontWeight: 700,
-                            fontSize: '16px',
-                            fontFamily: "ubuntu",
-                            lineHeight: '18px',
-                        }}>{billingDetails.accountStatus}</Typography> */}
               <Typography
                 className="prefilled-content"
                 id="account-status"
