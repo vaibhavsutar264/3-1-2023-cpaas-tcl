@@ -33,6 +33,8 @@ import { apiVrbls, appRoutes, localStorageVar } from '../../../utils/constants'
 import Header from '../../header/Header'
 import * as Yup from 'yup'
 import DoneIcon from '@mui/icons-material/Done';
+import { on } from 'events'
+
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -72,13 +74,11 @@ const Login = ({ toggleTheme }: any) => {
         weightRange: '',
         showPassword: false,
     })
+    
     useEffect(() => {
         if (!isAuthenticated) {
             dispatch(resetLoginParms())
         }
-    }, [])
-
-    useEffect(() => {
         if (getFromLocalStorage(localStorageVar.TOKEN_VAR) && getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null) {
             if (user) {
                 if (user.attributes[apiVrbls.USER.IS_LOGGED_IN_FIRST]) {
@@ -88,8 +88,8 @@ const Login = ({ toggleTheme }: any) => {
                 }
             }
         }
-    }, [user, navigate])
-
+    }, [user, navigate, isAuthenticated, dispatch])
+      
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -122,11 +122,11 @@ const Login = ({ toggleTheme }: any) => {
         setEmail((e.target as HTMLInputElement).value)
         const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
         const emailBoxElement = document.getElementById('email-box') as HTMLInputElement
-        if ((e.target as HTMLInputElement).value.match(emailVariable)) {
-            emailBoxElement.className = 'input-wrapper success'
-        } else {
-            emailBoxElement.className = 'input-wrapper'
-        }
+        // if ((e.target as HTMLInputElement).value.match(emailVariable)) {
+        //     // emailBoxElement.className = 'input-wrapper success'
+        // } else {
+        //     // emailBoxElement.className = 'input-wrapper'
+        // }
     }
 
     const handlePasswordChange = (e: SyntheticEvent) => {
@@ -143,6 +143,15 @@ const Login = ({ toggleTheme }: any) => {
             passwordBoxElement.className = 'input-wrapper password-checkHide'
             setOpen(true)
         }
+    }
+
+
+    const handlePasteChange = (e: SyntheticEvent) => {
+        (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value
+        const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
+        setPassword((e.target as HTMLInputElement).value)
+        submitButtonElement.className = 'customBtn-01 btn-enable-style'
+        return setPassword((e.target as HTMLInputElement).value)
     }
 
     const handleClickShowPassword = () => {
@@ -247,6 +256,7 @@ const Login = ({ toggleTheme }: any) => {
                                             inputProps={{ 'data-testid': 'password-element' }}
                                             className="form-control input-custom input-field"
                                             value={password}
+                                            onPaste={handlePasteChange}
                                             onInput={handlePasswordChange}
                                             onChange={handleChange}
                                             InputProps={{

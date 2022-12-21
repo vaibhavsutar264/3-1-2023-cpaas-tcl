@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import DateRange from './DateRange'
+// import DateRange from './DateRange'
 
 import { CSVLink } from 'react-csv'
 import { typeVar, billingKeys } from '../../../utils/constants'
@@ -7,15 +7,18 @@ import useLocales from '../../../hooks/useLocales'
 import Export from '../icons/export'
 import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
 import { dispatch } from '../../../redux/store'
+import DateRange from "../../DateRange/DateRangePicker";
 
 export const Actions = ({
   data,
   pagination,
   changeTake,
+  dateChange
 }: {
   data: []
   pagination: any
   changeTake: any
+  dateChange: any
 }) => {
   const { t } = useLocales()
   const modifyTake = (e: any) => {
@@ -66,18 +69,9 @@ export const Actions = ({
         </div>
       </div>
       <div className="action__elementItem" id="date-picker">
-      <DateRange/>
+      {/*<DateRange dateChange={dateChange}/> */}
       </div>
       <div className="action__elementItem">
-        {/* <a href="/" className="iconCta">
-          <span className="icon">
-            <Export />
-          </span>
-          <CSVLink {...ExportToCsv} className="text" data-testid="csv-link">
-            {t<string>('exportToCsv')}
-          </CSVLink>
-        </a> */}
-
           <span className="iconCta">
           <span className="icon">
             <Export />
@@ -87,12 +81,6 @@ export const Actions = ({
           </CSVLink>
         </span>
       </div>
-      {/* <button
-        className="actionButton__item"
-        onClick={(e) => handleDownload('image.png')}
-      >
-        Download
-      </button> */}
     </div>
   )
 }

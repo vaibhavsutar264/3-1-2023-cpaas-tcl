@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect } from 'react'
 import { useDarkMode } from '../../../themes/useDarkMode'
 import { apiVrbls, appRoutes, appThemes, localStorageVar, typeVar } from '../../../utils/constants'
 import { lightTheme, darkTheme } from '../../../themes/globalStyles'
@@ -39,6 +40,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsIcon from '@mui/icons-material/Settings';
 import Globe from '../../../assets/images/svg/globe.svg'
 import GlobeDark from '../../../assets/images/svg/globe-dark.svg'
+import Ticket from '../icons/tickets'
 
 
 type SidebarProps = {
@@ -77,6 +79,14 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
     if (user == null) {
         navigate('/')
     }
+
+// useEffect(() => {
+//     const noTranslate= document.getElementById('demo-select-small')
+//     console.log(noTranslate?.innerHTML)
+//     // noTranslate.innerHTML = `English`  
+// },[])
+
+
     return (
         <>
             <div className="dashboard__navbar" id="sidebar-top" style={{ position: 'fixed', top: 0, zIndex: 2 }}>
@@ -104,10 +114,10 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         e.target.placeholder = '';
                                     }}
                                     onBlur={(e) => {
-                                        e.target.placeholder = `${t<string>('searchProductsOrdersAndClients')}`
+                                        e.target.placeholder = `${t<string>('searchWithinSite')}`
                                     }}
                                     sx={{ ml: 1, flex: 1 }}
-                                    placeholder={t<string>('searchProductsOrdersAndClients')}
+                                    placeholder={t<string>('searchWithinSite')}
                                     inputProps={{
                                         'aria-label': 'Search Products, Orders and Clients',
                                     }}
@@ -156,12 +166,11 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         setInLocalStorage('lng', e.target.value)
                                     }}
                                 >
-                                    {availableLanguages.map((language) => (
+                                    {availableLanguages? availableLanguages.map((language) => (
                                         <MenuItem key={language} value={language}>
-
                                             {language}
                                         </MenuItem>
-                                    ))}
+                                    )): 'English' }
                                 </Select>
                             </FormControl>
                         </div>
@@ -296,7 +305,8 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <ConfirmationNumberOutlinedIcon />
+                                    {/* <ConfirmationNumberOutlinedIcon /> */}
+                                    <Ticket />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('tickets')}</span>
                             </Link>

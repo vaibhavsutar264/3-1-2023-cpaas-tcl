@@ -738,6 +738,16 @@
             letter-spacing: -0.64px;
             color: #344857;
             opacity: 1;
+
+            &:nth-child(4) {
+                height: 60px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                border-bottom: 0;
+            }
         }
 
         th {

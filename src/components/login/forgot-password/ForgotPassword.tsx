@@ -113,7 +113,7 @@ const ForgotPassword = ({ toggleTheme }: any) => {
                                             className="input-field"
                                             required
                                             id="ammount"
-                                            label={t<string>('email')}
+                                            label={t<string>('enterYourRegisteredEmailId')}
                                             variant="standard"
                                             autoComplete='false'
                                             sx={{ width: 1, borderRadius: '10px !important' }}

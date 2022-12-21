@@ -14,6 +14,11 @@ import { styled } from '@mui/material/styles'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import Globe from '../../assets/images/svg/globe.svg'
+import GlobeDark from '../../assets/images/svg/globe-dark.svg'
+
 import {
   getFromLocalStorage,
   setInLocalStorage,
@@ -84,6 +89,8 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
     navigate('/')
   }
 
+  const getitem = getFromLocalStorage(localStorageVar.THEME_VAR)
+
 
   return (
     <>
@@ -101,16 +108,16 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
               ) : (window.location.pathname.match(/^\/login/) ? ('') : <Link to="/login">{t<string>('loginBtn')}</Link>)}
             </li>
             <li className="item">
-              <FormControl
+              {/* <FormControl
                 sx={{
                   m: 1,
                   minWidth: 100,
                 }}
                 size="small"
                 id="lang-background-white"
-              >
+              > */}
                 {/* <InputLabel id="demo-select-small">Language</InputLabel> */}
-                <Select
+                {/* <Select
                   labelId="demo-select-small"
                   id="demo-select-header-small"
                   value={i18n.language}
@@ -127,10 +134,42 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                     </MenuItem>
                   ))}
                 </Select>
-              </FormControl>
+              </FormControl> */}
+              
+              <FormControl
+                    sx={{
+                        m: 1,
+                        minWidth: 100,
+                        position: 'relative',
+                    }}
+                    size="small"
+                    // id="lang-background-white"
+                    id="lang-background-invoices" className='lang-background-loginscreens'
+                >
+                    <img
+                        src={(getitem == 'light') ? Globe : GlobeDark}
+                        alt="" style={{ width: '18px', height: '18px', position: 'absolute', top: '50%', left: '-12px', transform: 'translateY(-50%)', }} />
+                    <Select
+                        labelId="demo-select-small"
+                        id="demo-select-small"
+                        value={i18n.language}
+                        label="Language"
+                        onChange={(e) => {
+                            i18n.changeLanguage(e.target.value)
+                            setInLocalStorage('lng', e.target.value)
+                        }}
+                    >
+                        {availableLanguages.map((language) => (
+                            <MenuItem key={language} value={language}>
+
+                                {language}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
             </li>
             <li className="item">
-              <FormGroup>
+              {/* <FormGroup>
                 <FormControlLabel
                   sx={{
                     marginRight: 0,
@@ -147,7 +186,19 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                   }
                   label=""
                 />
-              </FormGroup>
+              </FormGroup> */}
+
+              <div className="right__elementsItem theme__toggle">
+                <div className="toggle__wrapper">
+                    <button className="lightMode active" onClick={toggleTheme}>
+                        <LightModeIcon />
+                    </button>
+                    <button className="darkMode" onClick={toggleTheme}>
+                        <DarkModeIcon />
+                    </button>
+                </div>
+            </div>
+
             </li>
           </ul>
         </div>

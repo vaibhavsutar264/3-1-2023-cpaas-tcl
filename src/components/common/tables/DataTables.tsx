@@ -29,6 +29,7 @@ import { useDispatch as useAppDispatch } from '../../../redux/store'
 import { Link } from 'react-router-dom'
 import MultiSelect from '../elements/multiSelect'
 import { apiVrbls } from '../../../utils/constants';
+import moment from "moment";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -50,7 +51,9 @@ const DataTable = ({
     page,
     handleShow,
     handledownloadPdf,
-    handledownloadViewpdf
+    handledownloadViewpdf,
+    setStartDate,
+    setEndDate
 }: any) => {
     const { t } = useLocales()
     const { data, columns, tableName } = TableData
@@ -390,7 +393,7 @@ const DataTable = ({
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
         dueIdHeadElement.style.display = dueState? 'block': 'none'
         setDueState(!dueState);
-
+        
         dueIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
@@ -416,11 +419,14 @@ const DataTable = ({
         CheckoutElement.style.display = 'block'
         columns[7].eleName = 'Due_date'
     };
-        // const blank2CheckoutElement = document.getElementsByName('Invoice Id')[0]
-        // console.log(blank2CheckoutElement)
+
+    const onDateChange =(val: any)=>{
+        setStartDate(val.start.format("YYYY-MM-DD"));
+        setEndDate(val.end.format("YYYY-MM-DD"));
+      }
     return (
         <>
-            <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} />
+            <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange}/>
             <p data-testid="para-element"></p>
             <TableContainer
                 component={Paper}
@@ -525,12 +531,12 @@ const DataTable = ({
                                     <div className="th_wrapper">
                                         <button id='hiding' name={t<string>(`tables.${tableName}.${head.headTrans}`)} className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
                                             {t<string>(`tables.${tableName}.${head.headTrans}`)}
+                                            <span>
+                                                {' '}
+                                                {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
+                                                {' '}
+                                            </span>
                                         </button>
-                                        <span>
-                                            {' '}
-                                            {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
-                                            {' '}
-                                        </span>
                                     </div>
                                 </StyledTableCell>
                             ))}

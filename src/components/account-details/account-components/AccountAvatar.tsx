@@ -17,6 +17,7 @@ const AccountAvatar = () => {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [timezone, setTimezone] = useState('')
   const [communication, setCommunication] = useState('')
+  const [editable, setEditable] = useState<boolean>(false)
 
   useEffect(() => {
     dispatch(getuserInfo(emailId));
@@ -29,7 +30,16 @@ const AccountAvatar = () => {
     }
   }, [dispatch])
 
+  const buttonElement = document.getElementById(
+    'button-edit'
+) as HTMLElement
+
+// if(buttonElement.innerText == 'edit personal details'){
+
+// }
+
   const editUserDetails = async (e: SyntheticEvent) => {
+    e.preventDefault()
     const body = {
       firstname: firstname,
       lastName: lastName,
@@ -38,9 +48,12 @@ const AccountAvatar = () => {
       communication: communication
     }
     dispatch(updateUserDetails(body))
-    e.preventDefault()
+    setEditable(false)
   }
-  const [editable, setEditable] = useState<boolean>(true)
+
+  const abcd = ()=>{
+    setEditable(!false)
+  }
 
   return (
     <>
@@ -185,7 +198,8 @@ const AccountAvatar = () => {
             color="error"
             variant="outlined"
             type="button"
-            onClick={editUserDetails}
+            id='button-edit'
+            onClick={editable ? editUserDetails : abcd}
             sx={{
               textTransform: 'uppercase',
               borderRadius: '100px',
