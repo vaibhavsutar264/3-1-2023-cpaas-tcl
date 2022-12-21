@@ -32,6 +32,7 @@ import BannerBg from '../../common/elements/banner'
 import { apiVrbls, appRoutes, localStorageVar } from '../../../utils/constants'
 import Header from '../../header/Header'
 import * as Yup from 'yup'
+import DoneIcon from '@mui/icons-material/Done';
 import { on } from 'events'
 
 
@@ -107,17 +108,25 @@ const Login = ({ toggleTheme }: any) => {
         }
     })
     const { handleSubmit, handleChange, touched, errors } = formik
-    
+
+    const validateEmail = (email: any) => {
+        return /^[^ ]+@[^ ]+\.[a-z]{2,4}$/.test(email)
+    }
+
+    const validatePassword = (password: any) => {
+        return `${password}`.length >= 5;
+    }
+
     const handleEmailChange = (e: SyntheticEvent) => {
         e.preventDefault()
         setEmail((e.target as HTMLInputElement).value)
         const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
         const emailBoxElement = document.getElementById('email-box') as HTMLInputElement
-        if ((e.target as HTMLInputElement).value.match(emailVariable)) {
-            emailBoxElement.className = 'input-wrapper success'
-        } else {
-            emailBoxElement.className = 'input-wrapper'
-        }
+        // if ((e.target as HTMLInputElement).value.match(emailVariable)) {
+        //     // emailBoxElement.className = 'input-wrapper success'
+        // } else {
+        //     // emailBoxElement.className = 'input-wrapper'
+        // }
     }
 
     const handlePasswordChange = (e: SyntheticEvent) => {
@@ -127,11 +136,11 @@ const Login = ({ toggleTheme }: any) => {
         const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
         const passwordBoxElement = document.getElementById('password-box') as HTMLButtonElement
         if ((e.target as HTMLInputElement).value.match(patternVariable)) {
-            submitButtonElement.className = 'customBtn-01 btn-enable-style'
+            passwordBoxElement.className = 'input-wrapper password-checkHide success'
             setOpen(false)
         } else {
             (e.target as HTMLInputElement).className = 'form-control input-custom'
-            submitButtonElement.className = 'customBtn-01'
+            passwordBoxElement.className = 'input-wrapper password-checkHide'
             setOpen(true)
         }
     }
@@ -200,6 +209,8 @@ const Login = ({ toggleTheme }: any) => {
                                         >
                                             <MailOutlineIcon id="mail-icon" />
                                         </InputLabel>
+                                        {validateEmail(email) && <span className='checkIcon'><DoneIcon color='success' /></span>}
+                                        
                                         <TextField
                                             className="input-field"
                                             required
@@ -304,9 +315,8 @@ const Login = ({ toggleTheme }: any) => {
                                             type="submit"
                                             id="btn-enable-style"
                                             data-testid="button-element"
-                                            disabled={open}
                                             variant="contained"
-                                            className="customBtn-01"
+                                            className={`customBtn-01 ${(validatePassword(password) && validateEmail(email)) ? 'btn-enable-style' : 'no-pointers'} `}
                                             sx={{
                                                 fontSize: '18px',
                                                 lineHeight: '21px',
