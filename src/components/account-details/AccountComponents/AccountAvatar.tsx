@@ -40,7 +40,7 @@ const AccountAvatar = () => {
     dispatch(updateUserDetails(body))
     e.preventDefault()
   }
-  const [editable, setEditable] = useState<boolean>(true)
+  const [editable, setEditable] = useState<boolean>(false)
 
   return (
     <>
