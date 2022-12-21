@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react'
 import {
   Box,
@@ -10,8 +11,7 @@ import {
   SelectChangeEvent,
 } from '@mui/material'
 import { useDispatch, useSelector } from '../../../redux/store'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 
 const AccountDetail = ({
   LegalEntity,
@@ -27,8 +27,7 @@ const AccountDetail = ({
       setLeEntity(accountDetails.legalentities[0][GetLegalEntities()[0]])
       setsendInvoice(accountDetails.legalentities[0].sendInvoiceToContact)
       setLegalEntity(GetLegalEntities()[0])
-    } catch { }
-
+    } catch {}
   }, [dispatch])
 
   const GetLegalEntities = () => {
@@ -38,22 +37,22 @@ const AccountDetail = ({
       return []
     }
   }
-  const handleChange = (event: SelectChangeEvent) => {
-    const index = GetLegalEntities().indexOf(event.target.value)
-    setLeEntity(accountDetails.legalentities[index][event.target.value])
+  const handleChange = (value: any) => {
+    const index = GetLegalEntities().indexOf(value)
+    setLeEntity(accountDetails.legalentities[index][value])
     setsendInvoice(accountDetails.legalentities[index].sendInvoiceToContact)
-    setLegalEntity(event.target.value)
+    setLegalEntity(value)
   }
 
-  const [dropdownActive, setDropdownActive] = useState<boolean>(false);
+  const [dropdownActive, setDropdownActive] = useState<boolean>(false)
   const handleDropdown = () => {
-    setDropdownActive(!dropdownActive);
-    console.log(dropdownActive);
+    setDropdownActive(!dropdownActive)
+    console.log(dropdownActive)
   }
 
-  const [selectValue, setSelectValue] = useState<string>('legal entity name1');
+  const [selectValue, setSelectValue] = useState<string>('legal entity name1')
   const handleSelectValue = (event: SelectChangeEvent) => {
-    setSelectValue(event.target.value);
+    setSelectValue(event.target.value)
   }
 
   return (
@@ -141,18 +140,30 @@ const AccountDetail = ({
               )}
             </Box> */}
 
-          <div className='select-legal-field-container'>
-            <div className='select-legal-field' role="button" 
-     tabIndex={0} onClick={handleDropdown}>
-              <span>legal entity name1</span>
-              <KeyboardArrowDownIcon />
-            </div>
+            <div className="select-legal-field-container">
+              <div
+                className="select-legal-field"
+                role="button"
+                tabIndex={0}
+                onClick={handleDropdown}
+              >
+                <span>legal entity name1</span>
+                <KeyboardArrowDownIcon />
+              </div>
 
-            <ul>
-              <li className='option1'>legal entity name1</li>
-              <li className='option2'>legal entity name2</li>
-              <li className='option3'>legal entity name3</li>
-            </ul>
+              <ul>
+                {GetLegalEntities().map((val: any, index: any) => (
+                  <li
+                    key={`lenty${index}`}
+                    onClick={() => {
+                      handleChange(val)
+                    }}
+                  >
+                    {' '}
+                    Legal Entity Name {index + 1}
+                  </li>
+                ))}
+              </ul>
             </div>
           </Stack>
         </Box>
@@ -573,7 +584,8 @@ const AccountDetail = ({
                   lineHeight: '18px',
                 }}
               >
-                {leEntity && leEntity?.billingDetails.rateCoverageChangeTimeZone}
+                {leEntity &&
+                  leEntity?.billingDetails.rateCoverageChangeTimeZone}
               </Typography>
             </Stack>
             <Stack
