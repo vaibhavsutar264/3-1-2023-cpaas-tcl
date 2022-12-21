@@ -13,8 +13,7 @@ import PasswordProtected from '../../assets/images/svg/password-protected.svg'
 import TicketRaised from '../../assets/images/svg/ticket-raised.svg'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-function ModalMail() {
-    const [open, setOpen] = React.useState(true);
+function ModalMail({ open, setOpen, modalData }: any) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -28,9 +27,6 @@ function ModalMail() {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open responsive dialog
-            </Button>
             <Dialog
                 fullScreen={fullScreen}
                 open={open}
@@ -44,8 +40,8 @@ function ModalMail() {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText textAlign='center'>
-                    <p className='darker-text'>We have sent a link on your registered email <span className='bolder-text'>mit***@gmail.com</span></p>
-                    <p className='lighter-text'>Didn&lsquo;t receive link? <Link href="#" color='error' underline='always'>Resend</Link></p>
+                        <p className='darker-text'>We have sent a link on your registered email <span className='bolder-text'>{modalData.email}</span></p>
+                        <p className='lighter-text'>Didn&lsquo;t receive link? <Link style={{ cursor: 'pointer' }} onClick={modalData.action} color='error' underline='always'>Resend</Link></p>
                     </DialogContentText>
                 </DialogContent>
             </Dialog>

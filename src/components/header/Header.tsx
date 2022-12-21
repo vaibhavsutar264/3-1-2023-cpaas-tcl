@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from 'react'
+import { SyntheticEvent } from 'react'
 import { useDispatch as useAppDispatch } from '../../redux/store'
 // import { logout } from '../../redux-sample/auth/authSlice'
 import { logout } from '../../redux/slices/authSlice'
@@ -7,17 +7,13 @@ import Logo from '../../assets/images/CPaaSLogo.png'
 import { availableLanguages } from '../../i18n'
 import useLocales from '../../hooks/useLocales'
 import { useTranslation } from 'react-i18next'
-
 import MenuItem from '@mui/material/MenuItem'
-import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-
 import { styled } from '@mui/material/styles'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
-import { toast } from 'react-toastify'
 import {
   getFromLocalStorage,
   setInLocalStorage,
@@ -87,7 +83,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
     }))
     navigate('/')
   }
-  
+
 
   return (
     <>
@@ -102,7 +98,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                 <Link to="" onClick={logoutHandler}>
                   {t<string>('logoutBtn')}
                 </Link>
-              ) : ( window.location.pathname.match(/^\/login/) ? ('') : <Link to="/login">{t<string>('loginBtn')}</Link>)}
+              ) : (window.location.pathname.match(/^\/login/) ? ('') : <Link to="/login">{t<string>('loginBtn')}</Link>)}
             </li>
             <li className="item">
               <FormControl
@@ -123,11 +119,6 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                     i18n.changeLanguage(e.target.value)
                     setInLocalStorage('lng', e.target.value)
                   }}
-                  sx={
-                    {
-                      // bgcolor: "white !important",
-                    }
-                  }
                 >
                   {availableLanguages.map((language) => (
                     <MenuItem key={language} value={language}>

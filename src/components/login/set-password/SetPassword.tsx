@@ -36,7 +36,7 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
-import { apiVrbls, typeVar } from '../../../utils/constants'
+import { apiVrbls, appRoutes, typeVar } from '../../../utils/constants'
 import { base64Encode } from '../../../utils/Base64EncodeDecode'
 import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
@@ -65,7 +65,7 @@ interface State {
     showPassword: boolean
 }
 
-const SetPassword = ({toggleTheme}:any) => {
+const SetPassword = ({ toggleTheme }: any) => {
     const navigate = useNavigate()
     const [uFulfilled, setUFulfilled] = useState(false);
     const [lFulfilled, setLFulfilled] = useState(false);
@@ -310,318 +310,318 @@ const SetPassword = ({toggleTheme}:any) => {
         tooltipMainBoxElement.style.display = 'none'
     }
     if (resetmessage === "SUCCESS") {
-        navigate('/modalwelcome')
+        navigate(appRoutes.WELOCME)
     }
 
     return (
         <>
-        <Header toggleTheme={toggleTheme} />
-        <Box className="account__screen">
-            {/* ACCOUNT SCREEN BANNER START*/}
-            <BannerBg />
-            {/* ACCOUNT SCREEN BANNER END */}
-            {/* ACCOUNT SCREEN ANIMATION START */}
-            <BackgroundBox />
-            {/* ACCOUNT SCREEN ANIMATION END */}
-            {/* ACCOUNT FORM START */}
-            <Box
-                sx={{ flexGrow: 1 }}
-                id="login-form"
-                className="account__form login-form"
-            >
-                <div className="form__inner">
-                    <Box sx={{ width: 1 }} className="account__form__header">
-                        <h3 className="title">{t<string>('setPassword')}</h3>
-                        {/* <p className="sub__title">{t<string>('generatePassword')}</p> */}
-                        <Typography
-                            className="helper__title"
-                            variant="body1"
-                            sx={{
-                                textAlign: 'center',
-                                fontFamily: 'ubuntu',
-                                letterSpacing: 0,
-                                opacity: 0.6,
-                            }}
-                        >
-                            {t<string>('generatePassword')}
-                        </Typography>
-                    </Box>
-                    <Box sx={{ width: 1 }} className="account__form__error">
-                        <p className="error__msg">{message && message}</p>
-                    </Box>
-                    <Box sx={{ flexGrow: 1 }} className="account__form__body">
-                        <form onSubmit={handleSubmit(onSubmit)} action="#" method="post">
-                            <FormGroup>
-                                <FormControl
-                                    className="input-wrapper yes-margin"
-                                    data-margin={true}
-                                    id="password-box"
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        position: 'relative',
-                                        width: 1,
-                                        margin: '20px 0px',
-                                    }}
-                                >
-                                    <InputLabel htmlFor="username" className="label__icon">
-                                        <LockOpenIcon id="unlock-icon" />
-                                    </InputLabel>
-                                    <TextField
-                                        className="input-field"
-                                        required
-                                        id="password"
-                                        label={t<string>('password')}
-                                        variant="standard"
-                                        sx={{ width: 1, borderRadius: '10px !important' }}
-                                        // name="password"
-                                        // type="password"
-                                        type={values.showPassword ? 'text' : 'password'}
-                                        inputProps={{
-                                            'data-testid': 'password-element',
-                                            autoComplete: 'off',
-                                        }}
-                                        value={password}
-                                        onInput={handlePasswordChange}
-                                        {...register('password')}
-                                        InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        className="password-toggle"
-                                                        aria-label="toggle password visibility"
-                                                        onClick={handleClickShowPassword}
-                                                        onMouseDown={handleMouseDownPassword}
-                                                        edge="end"
-                                                    >
-                                                        {!values.showPassword ? (
-                                                            <VisibilityOffOutlinedIcon />
-                                                        ) : (
-                                                            <VisibilityOutlinedIcon />
-                                                        )}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            ),
-                                        }}
-                                    />
-                                    {/* Tooltip start */}
-                                    <div id="tooltip-main-box" className="tooltipCustom">
-                                        <button
-                                            onClick={tooltipCloseFunction}
-                                            id="tooltip-close"
-                                            type="button"
-                                            className="tooltipClose"
-                                        >
-                                            {' '}
-                                            <CloseIcon />
-                                        </button>
-                                        <div className="tooltipContent">
-                                            <p className="tooltipTitle">Password must have</p>
-                                            <ul className="tooltioList">
-                                                <li id="uppercase" className="tooltipList-item">
-                                                    <span className="tooltip-icon" id="uppercaseTick">
-                                                        {uFulfilled ? <BigCheck /> : <CheckIcon />}
-                                                    </span>
-                                                    <span className="tooltip-text">Upper</span>
-                                                </li>
-                                                <li id="lowercase" className="tooltipList-item">
-                                                    <span className="tooltip-icon" id="lowercaseTick">
-                                                        {lFulfilled ? <BigCheck /> : <CheckIcon />}
-                                                    </span>
-                                                    <span className="tooltip-text">Lower Case</span>
-                                                </li>
-                                                <li id="symbol" className="tooltipList-item">
-                                                    <span className="tooltip-icon" id="symbolTick">
-                                                        {sFulfilled ? <BigCheck /> : <CheckIcon />}
-                                                    </span>
-                                                    <span className="tooltip-text">A Symbol (@#&)</span>
-                                                </li>
-                                                <li id="atleast" className="tooltipList-item">
-                                                    <span className="tooltip-icon" id="atleastTick">
-                                                        {charsFulfilled ? <BigCheck /> : <CheckIcon />}
-                                                    </span>
-                                                    <span className="tooltip-text">
-                                                        At least 8 characters
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <Box sx={{ width: '100%', mr: 1 }}>
-                                                <p className="tooltipTitle StrengthTitle">
-                                                    Password Strength:{' '}
-                                                    <span
-                                                        id="moderate-strength-text"
-                                                        style={{ color: '#ed6c02' }}
-                                                    >
-                                                        Moderate
-                                                    </span>
-                                                    <span
-                                                        id="high-strength-text"
-                                                        style={{ color: 'green' }}
-                                                    >
-                                                        High
-                                                    </span>
-                                                </p>
-                                                <LinearProgress
-                                                    id="linear-progress-moderate"
-                                                    variant="determinate"
-                                                    color="warning"
-                                                    value={50}
-                                                />
-                                                <LinearProgress
-                                                    id="linear-progress-success"
-                                                    variant="determinate"
-                                                    color="success"
-                                                    value={100}
-                                                />
-                                            </Box>
-                                        </div>
-                                    </div>
-                                    {/* Tooltip end */}
-                                </FormControl>
-                                {errors.password && (
-                                    <p>
-                                        {errors.password.message == 'Password is required !!' ? (
-                                            <p className="text-error">{t<string>('enterPassword')}</p>
-                                        ) : (
-                                            ''
-                                        )}
-                                        {errors.password.message ==
-                                            'password must be at least 8 characters' ? (
-                                            <p className="text-error">
-                                                {t<string>('atleastEightCharPassword')}
-                                            </p>
-                                        ) : (
-                                            ''
-                                        )}
-                                    </p>
-                                )}
-                                <FormControl
-                                    className="input-wrapper password-checkHide no-margin"
-                                    id="confirm-password-box"
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        position: 'relative',
-                                        width: 1,
-                                        margin: '20px 0px',
-                                    }}
-                                >
-                                    <InputLabel htmlFor="confirmPassword" className="label__icon">
-                                        <LockOpenIcon id="unlock-icon" />
-                                    </InputLabel>
-                                    <TextField
-                                        className="input-field"
-                                        required
-                                        id="confirmPassword"
-                                        label={t<string>('confirmPassword')}
-                                        variant="standard"
-                                        sx={{ width: 1, borderRadius: '10px !important' }}
-                                        type={confirmValues.showPassword ? 'text' : 'password'}
-                                        autoComplete="false"
-                                        inputProps={{ 'data-testid': 'confirm-password-element' }}
-                                        value={confirmPassword}
-                                        onInput={handleConfirmPasswordChange}
-                                        {...register('confirmPassword')}
-                                        InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        className="password-toggle"
-                                                        aria-label="toggle password visibility"
-                                                        onClick={handleClickShowConfirmPassword}
-                                                        onMouseDown={handleMouseDownPassword}
-                                                        edge="end"
-                                                    >
-                                                        {!confirmValues.showPassword ? (
-                                                            <VisibilityOffOutlinedIcon />
-                                                        ) : (
-                                                            <VisibilityOutlinedIcon />
-                                                        )}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            ),
-                                        }}
-                                    />
-                                </FormControl>
-                                {errors.confirmPassword && (
-                                    <p>
-                                        {errors.confirmPassword.message ==
-                                            'Password is required !!' ? (
-                                            <p className="text-error">{t<string>('enterPassword')}</p>
-                                        ) : (
-                                            ''
-                                        )}
-                                        {errors.confirmPassword.message ==
-                                            'confirmPassword must be at least 8 characters' ? (
-                                            <p className="text-error">
-                                                {t<string>('atleastEightCharPassword')}
-                                            </p>
-                                        ) : (
-                                            ''
-                                        )}
-                                    </p>
-                                )}
-                                <p
-                                    id="match-both-password-error"
-                                    className={
-                                        password !== confirmPassword
-                                            ? 'text-error'
-                                            : 'text-error-success'
-                                    }
-                                >
-                                    {password.length > 0 && confirmPassword.length > 0
-                                        ? password !== confirmPassword
-                                            ? `${t<string>('bothPasswordMustMatch')}`
-                                            : `${t<string>('paswordsMatched')}`
-                                        : `${t<string>('bothPasswordMustMatch')}`}
-                                </p>
-                                <FormControl
-                                    className="input-wrapper submitBtn"
-                                    sx={{
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        position: 'relative',
-                                        width: 1,
-                                        marginTop: '50px',
-                                    }}
-                                >
-                                    <ColorButton
-                                        variant="contained"
-                                        id="btn-enable-style"
-                                        data-testid="button-element"
-                                        type="submit"
-                                        name="submit"
-                                        disabled={
-                                            password.length > 0 && confirmPassword.length > 0
-                                                ? password !== confirmPassword
-                                                    ? true
-                                                    : false
-                                                : true
-                                        }
+            <Header toggleTheme={toggleTheme} />
+            <Box className="account__screen">
+                {/* ACCOUNT SCREEN BANNER START*/}
+                <BannerBg />
+                {/* ACCOUNT SCREEN BANNER END */}
+                {/* ACCOUNT SCREEN ANIMATION START */}
+                <BackgroundBox />
+                {/* ACCOUNT SCREEN ANIMATION END */}
+                {/* ACCOUNT FORM START */}
+                <Box
+                    sx={{ flexGrow: 1 }}
+                    id="login-form"
+                    className="account__form login-form"
+                >
+                    <div className="form__inner">
+                        <Box sx={{ width: 1 }} className="account__form__header">
+                            <h3 className="title">{t<string>('setPassword')}</h3>
+                            {/* <p className="sub__title">{t<string>('generatePassword')}</p> */}
+                            <Typography
+                                className="helper__title"
+                                variant="body1"
+                                sx={{
+                                    textAlign: 'center',
+                                    fontFamily: 'ubuntu',
+                                    letterSpacing: 0,
+                                    opacity: 0.6,
+                                }}
+                            >
+                                {t<string>('generatePassword')}
+                            </Typography>
+                        </Box>
+                        <Box sx={{ width: 1 }} className="account__form__error">
+                            <p className="error__msg">{message && message}</p>
+                        </Box>
+                        <Box sx={{ flexGrow: 1 }} className="account__form__body">
+                            <form onSubmit={handleSubmit(onSubmit)} action="#" method="post">
+                                <FormGroup>
+                                    <FormControl
+                                        className="input-wrapper yes-margin"
+                                        data-margin={true}
+                                        id="password-box"
                                         sx={{
-                                            fontSize: '18px',
-                                            lineHeight: '21px',
-                                            fontFamily: 'ubuntu',
-                                            letterSpacing: '-0.72px',
+                                            display: 'flex',
+                                            alignItems: 'flex-end',
+                                            position: 'relative',
+                                            width: 1,
+                                            margin: '20px 0px',
                                         }}
+                                    >
+                                        <InputLabel htmlFor="username" className="label__icon">
+                                            <LockOpenIcon id="unlock-icon" />
+                                        </InputLabel>
+                                        <TextField
+                                            className="input-field"
+                                            required
+                                            id="password"
+                                            label={t<string>('password')}
+                                            variant="standard"
+                                            sx={{ width: 1, borderRadius: '10px !important' }}
+                                            // name="password"
+                                            // type="password"
+                                            type={values.showPassword ? 'text' : 'password'}
+                                            inputProps={{
+                                                'data-testid': 'password-element',
+                                                autoComplete: 'off',
+                                            }}
+                                            value={password}
+                                            onInput={handlePasswordChange}
+                                            {...register('password')}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <IconButton
+                                                            className="password-toggle"
+                                                            aria-label="toggle password visibility"
+                                                            onClick={handleClickShowPassword}
+                                                            onMouseDown={handleMouseDownPassword}
+                                                            edge="end"
+                                                        >
+                                                            {!values.showPassword ? (
+                                                                <VisibilityOffOutlinedIcon />
+                                                            ) : (
+                                                                <VisibilityOutlinedIcon />
+                                                            )}
+                                                        </IconButton>
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
+                                        {/* Tooltip start */}
+                                        <div id="tooltip-main-box" className="tooltipCustom">
+                                            <button
+                                                onClick={tooltipCloseFunction}
+                                                id="tooltip-close"
+                                                type="button"
+                                                className="tooltipClose"
+                                            >
+                                                {' '}
+                                                <CloseIcon />
+                                            </button>
+                                            <div className="tooltipContent">
+                                                <p className="tooltipTitle">Password must have</p>
+                                                <ul className="tooltioList">
+                                                    <li id="uppercase" className="tooltipList-item">
+                                                        <span className="tooltip-icon" id="uppercaseTick">
+                                                            {uFulfilled ? <BigCheck /> : <CheckIcon />}
+                                                        </span>
+                                                        <span className="tooltip-text">Upper</span>
+                                                    </li>
+                                                    <li id="lowercase" className="tooltipList-item">
+                                                        <span className="tooltip-icon" id="lowercaseTick">
+                                                            {lFulfilled ? <BigCheck /> : <CheckIcon />}
+                                                        </span>
+                                                        <span className="tooltip-text">Lower Case</span>
+                                                    </li>
+                                                    <li id="symbol" className="tooltipList-item">
+                                                        <span className="tooltip-icon" id="symbolTick">
+                                                            {sFulfilled ? <BigCheck /> : <CheckIcon />}
+                                                        </span>
+                                                        <span className="tooltip-text">A Symbol (@#&)</span>
+                                                    </li>
+                                                    <li id="atleast" className="tooltipList-item">
+                                                        <span className="tooltip-icon" id="atleastTick">
+                                                            {charsFulfilled ? <BigCheck /> : <CheckIcon />}
+                                                        </span>
+                                                        <span className="tooltip-text">
+                                                            At least 8 characters
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                                <Box sx={{ width: '100%', mr: 1 }}>
+                                                    <p className="tooltipTitle StrengthTitle">
+                                                        Password Strength:{' '}
+                                                        <span
+                                                            id="moderate-strength-text"
+                                                            style={{ color: '#ed6c02' }}
+                                                        >
+                                                            Moderate
+                                                        </span>
+                                                        <span
+                                                            id="high-strength-text"
+                                                            style={{ color: 'green' }}
+                                                        >
+                                                            High
+                                                        </span>
+                                                    </p>
+                                                    <LinearProgress
+                                                        id="linear-progress-moderate"
+                                                        variant="determinate"
+                                                        color="warning"
+                                                        value={50}
+                                                    />
+                                                    <LinearProgress
+                                                        id="linear-progress-success"
+                                                        variant="determinate"
+                                                        color="success"
+                                                        value={100}
+                                                    />
+                                                </Box>
+                                            </div>
+                                        </div>
+                                        {/* Tooltip end */}
+                                    </FormControl>
+                                    {errors.password && (
+                                        <p>
+                                            {errors.password.message == 'Password is required !!' ? (
+                                                <p className="text-error">{t<string>('enterPassword')}</p>
+                                            ) : (
+                                                ''
+                                            )}
+                                            {errors.password.message ==
+                                                'password must be at least 8 characters' ? (
+                                                <p className="text-error">
+                                                    {t<string>('atleastEightCharPassword')}
+                                                </p>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </p>
+                                    )}
+                                    <FormControl
+                                        className="input-wrapper password-checkHide no-margin"
+                                        id="confirm-password-box"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'flex-end',
+                                            position: 'relative',
+                                            width: 1,
+                                            margin: '20px 0px',
+                                        }}
+                                    >
+                                        <InputLabel htmlFor="confirmPassword" className="label__icon">
+                                            <LockOpenIcon id="unlock-icon" />
+                                        </InputLabel>
+                                        <TextField
+                                            className="input-field"
+                                            required
+                                            id="confirmPassword"
+                                            label={t<string>('confirmPassword')}
+                                            variant="standard"
+                                            sx={{ width: 1, borderRadius: '10px !important' }}
+                                            type={confirmValues.showPassword ? 'text' : 'password'}
+                                            autoComplete="false"
+                                            inputProps={{ 'data-testid': 'confirm-password-element' }}
+                                            value={confirmPassword}
+                                            onInput={handleConfirmPasswordChange}
+                                            {...register('confirmPassword')}
+                                            InputProps={{
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <IconButton
+                                                            className="password-toggle"
+                                                            aria-label="toggle password visibility"
+                                                            onClick={handleClickShowConfirmPassword}
+                                                            onMouseDown={handleMouseDownPassword}
+                                                            edge="end"
+                                                        >
+                                                            {!confirmValues.showPassword ? (
+                                                                <VisibilityOffOutlinedIcon />
+                                                            ) : (
+                                                                <VisibilityOutlinedIcon />
+                                                            )}
+                                                        </IconButton>
+                                                    </InputAdornment>
+                                                ),
+                                            }}
+                                        />
+                                    </FormControl>
+                                    {errors.confirmPassword && (
+                                        <p>
+                                            {errors.confirmPassword.message ==
+                                                'Password is required !!' ? (
+                                                <p className="text-error">{t<string>('enterPassword')}</p>
+                                            ) : (
+                                                ''
+                                            )}
+                                            {errors.confirmPassword.message ==
+                                                'confirmPassword must be at least 8 characters' ? (
+                                                <p className="text-error">
+                                                    {t<string>('atleastEightCharPassword')}
+                                                </p>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </p>
+                                    )}
+                                    <p
+                                        id="match-both-password-error"
                                         className={
-                                            password.length > 0 && confirmPassword.length > 0
-                                                ? password !== confirmPassword
-                                                    ? 'customBtn-01'
-                                                    : 'customBtn-01 btn-enable-style'
-                                                : 'customBtn-01'
+                                            password !== confirmPassword
+                                                ? 'text-error'
+                                                : 'text-error-success'
                                         }
                                     >
-                                        {t<string>('done')}
-                                    </ColorButton>
-                                </FormControl>
-                            </FormGroup>
-                        </form>
-                    </Box>
-                </div>
+                                        {password.length > 0 && confirmPassword.length > 0
+                                            ? password !== confirmPassword
+                                                ? `${t<string>('bothPasswordMustMatch')}`
+                                                : `${t<string>('paswordsMatched')}`
+                                            : `${t<string>('bothPasswordMustMatch')}`}
+                                    </p>
+                                    <FormControl
+                                        className="input-wrapper submitBtn"
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'flex-end',
+                                            position: 'relative',
+                                            width: 1,
+                                            marginTop: '50px',
+                                        }}
+                                    >
+                                        <ColorButton
+                                            variant="contained"
+                                            id="btn-enable-style"
+                                            data-testid="button-element"
+                                            type="submit"
+                                            name="submit"
+                                            disabled={
+                                                password.length > 0 && confirmPassword.length > 0
+                                                    ? password !== confirmPassword
+                                                        ? true
+                                                        : false
+                                                    : true
+                                            }
+                                            sx={{
+                                                fontSize: '18px',
+                                                lineHeight: '21px',
+                                                fontFamily: 'ubuntu',
+                                                letterSpacing: '-0.72px',
+                                            }}
+                                            className={
+                                                password.length > 0 && confirmPassword.length > 0
+                                                    ? password !== confirmPassword
+                                                        ? 'customBtn-01'
+                                                        : 'customBtn-01 btn-enable-style'
+                                                    : 'customBtn-01'
+                                            }
+                                        >
+                                            {t<string>('done')}
+                                        </ColorButton>
+                                    </FormControl>
+                                </FormGroup>
+                            </form>
+                        </Box>
+                    </div>
+                </Box>
+                {/* ACCOUNT FROM END */}
             </Box>
-            {/* ACCOUNT FROM END */}
-        </Box>
         </>
     )
 }

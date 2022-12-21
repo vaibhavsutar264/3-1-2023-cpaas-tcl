@@ -10,6 +10,7 @@ export type AuthState = {
   resetmessage: any
   forgotMessage: any
   userEmail: any
+  forgotPassEmail: boolean
 }
 
 export type AuthUser = {

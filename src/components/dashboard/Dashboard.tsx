@@ -29,12 +29,7 @@ export const Dashboard = ({ toggleTheme }: { toggleTheme: any }) => {
         dispatch(getAcDetails())
     }, [dispatch])
     const { t } = useLocales()
-    const cards = [
-        { titel: t('allInvoice'), value: getCardCount(MasterData, 'Payment_Status', ''), icon: <Invoice />, action: cardFilter("Payment_Status", "") },
-        { titel: t('overdue'), value: getCardCount(MasterData, 'Payment_Status', 'overdue'), icon: <Overdue />, action: cardFilter("Payment_Status", "overdue") },
-        { titel: t('unpaidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'pending'), icon: <UnpaidInvoice />, action: cardFilter("Payment_Status", "pending") },
-        { titel: t('paidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'completed'), icon: <PaidInvoice />, action: cardFilter("Payment_Status", "completed") },
-    ]
+
 
     const [showIt, setShowIt] = useState(false);
     const handleShow = () => {

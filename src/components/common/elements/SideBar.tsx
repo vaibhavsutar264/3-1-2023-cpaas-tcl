@@ -1,20 +1,13 @@
 import * as React from 'react'
-import { styled } from '@mui/system'
-import { useEffect, useState } from 'react'
-import { Toggle } from '../../../themes/Toggle'
 import { useDarkMode } from '../../../themes/useDarkMode'
-import { apiVrbls, appThemes, localStorageVar, typeVar } from '../../../utils/constants'
-import { GlobalStyles, lightTheme, darkTheme } from '../../../themes/globalStyles'
-
-
+import { apiVrbls, appRoutes, appThemes, localStorageVar, typeVar } from '../../../utils/constants'
+import { lightTheme, darkTheme } from '../../../themes/globalStyles'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import Avatar from '@mui/material/Avatar'
 import Badge from '@mui/material/Badge'
 import Button from '@mui/material/Button'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
-import Divider from '@mui/material/Divider'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
@@ -37,22 +30,13 @@ import { useDispatch, useSelector } from '../../../redux/store'
 import Setting from '../icons/setting'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import Dashboard from '../icons/dashboard'
 import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
-import UserManagement from '../icons/userManagement'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import Services from '../icons/services'
 import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairServiceOutlined';
-import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
-import Sms from '../icons/sms'
 import ChatBubbleTwoToneIcon from '@mui/icons-material/ChatBubbleTwoTone';
-import BillingInvoice from '../icons/billingInvoice'
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import Tickets from '../icons/tickets'
 import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
-import Support from '../icons/support'
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Sidebar } from 'rsuite'
 import Globe from '../../../assets/images/svg/globe.svg'
 import GlobeDark from '../../../assets/images/svg/globe-dark.svg'
 
@@ -77,69 +61,32 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
     const handleClose = () => {
         setAnchorEl(null)
     }
-
     const handelLogout = () => {
         dispatch(logout({
             refreshToken: `${getFromLocalStorage(localStorageVar.TOKEN_VAR)}`,
             username: user[apiVrbls.USER.EMAIL_ID]
         }));
     }
-    const [language, setLanguage] = React.useState('')
-
-    const handleChangelanguage = (event: SelectChangeEvent) => {
-        setLanguage(event.target.value)
-    }
-    const [theme, toggleTheme2] = useDarkMode()
+    const [theme] = useDarkMode()
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
-    console.log(themeMode.body);
+    const getitem = getFromLocalStorage(localStorageVar.THEME_VAR)
 
-    // useEffect(() => {
-    //     // const divElement = document.getElementById(
-    //     //     'sidebar-top'
-    //     // ) as HTMLDivElement
-    //     // const imgElement = document.getElementById(
-    //     //     'tata-logo-invoice'
-    //     // ) as HTMLImageElement
-    //     // if(divElement.style.backgroundColor === '#1E2023'){
-    //     //     imgElement.src = Logo
-    //     // } else{
-    //     //     imgElement.src = DarkLogo
-    //     // }
-    //     // if(divElement.style.backgroundColor === '#fff'){
-    //     //     imgElement.src = DarkLogo
-    //     // } else{
-    //     //     imgElement.src = DarkLogo
-    //     // }
-        
-    //     dispatch(userInfo())
-    // }, [dispatch])
-
-    const divElement = document.getElementById(
-        'sidebar-top'
-    ) as HTMLDivElement
-    const getitem = getFromLocalStorage('theme')
-    console.log(`the getitem value is ${getitem}`);
-
+    const getActiveClass = (path: any) => {
+        return window.location.pathname.includes(path) ? 'active' : ''
+    }
     if (user == null) {
         navigate('/')
     }
     return (
         <>
-            <div className="dashboard__navbar" id="sidebar-top" style={{position: 'fixed', top: 0, zIndex: 2 }}>
+            <div className="dashboard__navbar" id="sidebar-top" style={{ position: 'fixed', top: 0, zIndex: 2 }}>
                 <div className="dashboard__container">
-                    {/* <Link className="logo" to="/">
-                    {
-                        (getitem = 'light')? 
-                        (<img id='tata-logo-invoice' src={DarkLogo} alt="CPAAS TCL" />) : 
-                        (<img id='tata-logo-invoice' src={Logo} alt="CPAAS TCL" />)
-                    }
-                    </Link> */}
                     <Link className="logo" to="/">
-                    {
-                        (getitem == 'light')? 
-                        (<img id='tata-logo-invoice' src={DarkLogo} alt="CPAAS TCL" />) : 
-                        (<img id='tata-logo-invoice' src={Logo} alt="CPAAS TCL" />)
-                    }
+                        {
+                            (getitem == 'light') ?
+                                (<img id='tata-logo-invoice' src={DarkLogo} alt="CPAAS TCL" />) :
+                                (<img id='tata-logo-invoice' src={Logo} alt="CPAAS TCL" />)
+                        }
                     </Link>
                     <div className="right__elements">
                         <div className="right__elementsItem search__group">
@@ -186,64 +133,36 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                             </div>
                         </div>
                         <div className="right__elementsItem language__selector">
-                            {/* <FormControl sx={{ m: 1, minWidth: 100 }}> */}
                             <FormControl
                                 sx={{
-                                m: 1,
-                                minWidth: 100,
-                                position: 'relative',
+                                    m: 1,
+                                    minWidth: 100,
+                                    position: 'relative',
                                 }}
                                 size="small"
                                 // id="lang-background-white"
                                 id="lang-background-invoices"
                             >
-                                {/* <Select 
-                                    value={language}
-                                    onChange={handleChangelanguage}
-                                    displayEmpty
-                                    inputProps={{ 'aria-label': 'Without label' }}
+                                <img
+                                    src={(getitem == 'light') ? Globe : GlobeDark}
+                                    alt="" style={{ width: '18px', height: '18px', position: 'absolute', top: '50%', left: '-12px', transform: 'translateY(-50%)', }} />
+                                <Select
+                                    labelId="demo-select-small"
+                                    id="demo-select-small"
+                                    value={i18n.language}
+                                    label="Language"
+                                    onChange={(e) => {
+                                        i18n.changeLanguage(e.target.value)
+                                        setInLocalStorage('lng', e.target.value)
+                                    }}
                                 >
-                                    <MenuItem value="">
-                                        <span id="language">Language</span>
-                                    </MenuItem>
-                                    {availableLanguages.map((lng, i) => (
-                                        <MenuItem
-                                            onClick={() => {
-                                                i18n.changeLanguage(lng)
-                                                setInLocalStorage('lng', lng)
-                                            }}
-                                            key={i}
-                                            value={10}
-                                        >
-                                            {lng}
+                                    {availableLanguages.map((language) => (
+                                        <MenuItem key={language} value={language}>
+
+                                            {language}
                                         </MenuItem>
                                     ))}
-                                </Select> */}
-                                <img 
-                                src={(getitem == 'light')? Globe: GlobeDark}
-                                alt="" style={{width:'18px', height:'18px', position:'absolute', top:'50%', left:'-12px', transform:'translateY(-50%)',}} />
-                  <Select
-                    labelId="demo-select-small"
-                    id="demo-select-small"
-                    value={i18n.language}
-                    label="Language"
-                    onChange={(e) => {
-                    i18n.changeLanguage(e.target.value)
-                    setInLocalStorage('lng', e.target.value)
-                  }}
-                  sx={
-                    {
-                      // bgcolor: "white !important",
-                    }
-                  }
-                >
-                  {availableLanguages.map((language) => (
-                    <MenuItem key={language} value={language}>
-                        
-                      {language}
-                    </MenuItem>
-                  ))}
-                </Select>
+                                </Select>
                             </FormControl>
                         </div>
                         <div className="right__elementsItem notification">
@@ -299,7 +218,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         </div>
                                     </div>
                                 </MenuItem>
-                                <MenuItem onClick={handleClose} style={{paddingTop:'8px'}}>
+                                <MenuItem onClick={handleClose} style={{ paddingTop: '8px' }}>
                                     <a href="/accountdetails" className="profile__dropLink userinfo-dropdown">
                                         <span className="icon">
                                             <Setting />
@@ -315,7 +234,7 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         <span className="text">{t<string>('changePassword')}</span>
                                     </a>
                                 </MenuItem>
-                                <MenuItem onClick={handelLogout} style={{paddingTop:'12px'}}>
+                                <MenuItem onClick={handelLogout} style={{ paddingTop: '12px' }}>
                                     <span className="icon">
                                         <LogoutOutlinedIcon />
                                     </span>
@@ -327,13 +246,12 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                 </div>
             </div>
 
-            <div className="dashboard__sidebar" id="sidebar-left" style={{transition: 'all 350ms 0ms ease-in', zIndex: 1, height: '100vh', position: 'fixed', top: '90px' }}>
+            <div className="dashboard__sidebar" id="sidebar-left" style={{ transition: 'all 350ms 0ms ease-in', zIndex: 1, height: '100vh', position: 'fixed', top: '90px' }}>
                 <div className="sidebar__inner">
                     <ul className="sidebar__list">
                         <li className="list__item">
-                            <Link className="item__link active" to="/dashboard">
+                            <Link className={`item__link ${getActiveClass(appRoutes.DASHBOARD)}`} to={appRoutes.DASHBOARD}>
                                 <span className="link__icon">
-                                    {/* <Dashboard /> */}
                                     <SpeedOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('dashboard')}</span>
@@ -342,7 +260,6 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    {/* <UserManagement /> */}
                                     <PersonOutlineOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">
@@ -353,8 +270,6 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    {/* <Services /> */}
-                                    {/* <HomeRepairServiceIcon /> */}
                                     <HomeRepairServiceOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('services')}</span>
@@ -363,16 +278,14 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    {/* <Sms /> */}
                                     <ChatBubbleTwoToneIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('sms')}</span>
                             </Link>
                         </li>
                         <li className="list__item">
-                            <Link className="item__link" to="/invoices">
+                            <Link className={`item__link ${getActiveClass(appRoutes.BILLING)}`} to={appRoutes.BILLING}>
                                 <span className="link__icon">
-                                    {/* <BillingInvoice /> */}
                                     <ReceiptOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">
@@ -383,7 +296,6 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    {/* <Tickets /> */}
                                     <ConfirmationNumberOutlinedIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('tickets')}</span>
@@ -392,7 +304,6 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    {/* <Support /> */}
                                     <SettingsIcon />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('support')}</span>
@@ -401,100 +312,33 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                     </ul>
                 </div>
                 <button type="button" className="sidebarToggle" onClick={() => {
-                    if(handleADWidth){
-                    handleADWidth();
+                    if (handleADWidth) {
+                        handleADWidth();
                     }
-                    if(handleBDWidth){
-                    handleBDWidth();
+                    if (handleBDWidth) {
+                        handleBDWidth();
                     }
                     const texts = document.querySelectorAll<HTMLElement>('#link__text');
                     const sidebarLeft = document.querySelector('#sidebar-left') as HTMLElement;
-                    
                     const text = document.querySelector('#link__text') as HTMLElement;
-
-
-
-                    if(text.style.display != 'none'){
+                    if (text.style.display != 'none') {
                         console.log(sidebarLeft.style.width);
-                    for(let i=0;i<texts.length;i++){
-                        texts[i].style.display = 'none'
+                        for (let i = 0; i < texts.length; i++) {
+                            texts[i].style.display = 'none'
+                        }
+                        sidebarLeft.style.width = 'max-content';
                     }
-
-                    sidebarLeft.style.width = 'max-content';
-                }
-                else {
-                    console.log(sidebarLeft.style.width);
-                    for(let i=0;i<texts.length;i++){
-                        texts[i].style.display = 'block'
+                    else {
+                        console.log(sidebarLeft.style.width);
+                        for (let i = 0; i < texts.length; i++) {
+                            texts[i].style.display = 'block'
+                        }
+                        sidebarLeft.style.width = '300px';
                     }
-
-                    sidebarLeft.style.width = '300px';
-                }
-
-
                 }}>
                     <KeyboardDoubleArrowLeftIcon />
                 </button>
             </div>
-
-{/* <div className="dashboard__sidebar" id="sidebar-left" style={{width: 'max-content'}}>
-                <div className="sidebar__inner">
-                    <ul className="sidebar__list">
-                        <li className="list__item">
-                            <Link className="item__link active" to="">
-                                <span className="link__icon">
-                                    <Dashboard />
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="list__item">
-                            <Link className="item__link" to="">
-                                <span className="link__icon">
-                                    <UserManagement />
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="list__item">
-                            <Link className="item__link" to="">
-                                <span className="link__icon">
-                                    <Services />
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="list__item">
-                            <Link className="item__link" to="">
-                                <span className="link__icon">
-                                    <Sms />
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="list__item">
-                            <Link className="item__link" to="">
-                                <span className="link__icon">
-                                    <BillingInvoice />
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="list__item">
-                            <Link className="item__link" to="">
-                                <span className="link__icon">
-                                    <Tickets />
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="list__item">
-                            <Link className="item__link" to="">
-                                <span className="link__icon">
-                                    <Support />
-                                </span>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-                <button type="button" className="sidebarToggle" onClick={() => console.log('sidebar toggle will work')}>
-                    <KeyboardDoubleArrowLeftIcon />
-                </button>
-            </div> */}
         </>
     )
 }

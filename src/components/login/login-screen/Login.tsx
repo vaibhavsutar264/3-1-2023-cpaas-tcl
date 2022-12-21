@@ -1,19 +1,13 @@
 import * as React from 'react'
 import { SyntheticEvent, useState, useEffect } from 'react'
-import { login } from '../../../redux/slices/authSlice'
-import { AuthState, UserLogin } from '../../../types/authType'
+import { login, resetLoginParms } from '../../../redux/slices/authSlice'
+import { UserLogin } from '../../../types/authType'
 import {
-    RootState,
     useDispatch as useAppDispatch,
     useSelector as useAppSelector,
 } from '../../../redux/store'
 import { useFormik } from 'formik'
-import schema from './Yup'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { Typography } from '@mui/material'
-
-// Importing Material UI
+import { Link, useNavigate } from 'react-router-dom'
 import {
     Box,
     TextField,
@@ -29,20 +23,15 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import LockOpenIcon from '@mui/icons-material/LockOpen'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
-// Importing Images
 import useLocales from '../../../hooks/useLocales'
 import { getFromLocalStorage } from '../../../hooks/useLocalStorage'
 import BackgroundBox from '../../common/elements/backGroundBox'
 import BannerBg from '../../common/elements/banner'
-import { useSelector } from 'react-redux'
-import { base64Encode } from '../../../utils/Base64EncodeDecode'
-import { apiVrbls, appRoutes } from '../../../utils/constants'
+import { apiVrbls, appRoutes, localStorageVar } from '../../../utils/constants'
 import Header from '../../header/Header'
-import { useDarkMode } from '../../../themes/useDarkMode'
+import * as Yup from 'yup'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -67,33 +56,35 @@ interface State {
     showPassword: boolean
 }
 
-const Login = ({toggleTheme}:any) => {
+const Login = ({ toggleTheme }: any) => {
     const { t } = useLocales()
     const navigate = useNavigate()
     const [open, setOpen] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
     const dispatch = useAppDispatch()
-    const { user, isError, isSuccess, message, isAuthenticated } = useAppSelector(
-        (state: any) => state.auth || {}
-    )
+    const { user, isError, isAuthenticated } = useAppSelector((state: any) => state.auth || {})
+    const [values, setValues] = React.useState<State>({
+        email: '',
+        password: '',
+        amount: '',
+        weight: '',
+        weightRange: '',
+        showPassword: false,
+    })
     useEffect(() => {
-        if (isAuthenticated) {
-            console.log(message)
+        if (!isAuthenticated) {
+            dispatch(resetLoginParms())
         }
-    }, [isError, message, isAuthenticated])
-
+    }, [])
 
     useEffect(() => {
-        if (getFromLocalStorage('token') && getFromLocalStorage('token') !== null) {
+        if (getFromLocalStorage(localStorageVar.TOKEN_VAR) && getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null) {
             if (user) {
                 if (user.attributes[apiVrbls.USER.IS_LOGGED_IN_FIRST]) {
-                // if (user) {
                     navigate(appRoutes.SET_PASSWORD)
                 } else {
                     navigate(appRoutes.DASHBOARD)
-                    // navigate(appRoutes.ROOT)
                 }
             }
         }
@@ -104,24 +95,25 @@ const Login = ({toggleTheme}:any) => {
             email: '',
             password: '',
         },
-        validationSchema: schema,
+        validationSchema: Yup.object({
+            email: Yup.string().email().required(),
+            password: Yup.string().min(5).required(),
+        }),
         onSubmit: () => {
             const userDetails: UserLogin = {
                 email: email,
                 password: password,
             }
-            dispatch(login(userDetails,email))
-        },
+            dispatch(login(userDetails, email))
+        }
     })
     const { handleSubmit, handleChange, touched, errors } = formik
-
+    
     const handleEmailChange = (e: SyntheticEvent) => {
         e.preventDefault()
         setEmail((e.target as HTMLInputElement).value)
         const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
-        const emailBoxElement = document.getElementById(
-            'email-box'
-        ) as HTMLInputElement
+        const emailBoxElement = document.getElementById('email-box') as HTMLInputElement
         if ((e.target as HTMLInputElement).value.match(emailVariable)) {
             emailBoxElement.className = 'input-wrapper success'
         } else {
@@ -133,12 +125,8 @@ const Login = ({toggleTheme}:any) => {
         e.preventDefault()
         setPassword((e.target as HTMLInputElement).value)
         const patternVariable = '.{5,}'
-        const submitButtonElement = document.getElementById(
-            'btn-enable-style'
-        ) as HTMLButtonElement
-        const passwordBoxElement = document.getElementById(
-            'password-box'
-        ) as HTMLButtonElement
+        const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
+        const passwordBoxElement = document.getElementById('password-box') as HTMLButtonElement
         if ((e.target as HTMLInputElement).value.match(patternVariable)) {
             submitButtonElement.className = 'customBtn-01 btn-enable-style'
             passwordBoxElement.className = 'input-wrapper password-checkHide success'
@@ -151,25 +139,11 @@ const Login = ({toggleTheme}:any) => {
         }
     }
 
-    const [values, setValues] = React.useState<State>({
-        email: '',
-        password: '',
-        amount: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-    })
-
     const handleClickShowPassword = () => {
-        setValues({
-            ...values,
-            showPassword: !values.showPassword,
-        })
+        setValues({ ...values, showPassword: !values.showPassword })
     }
 
-    const handleMouseDownPassword = (
-        event: React.MouseEvent<HTMLButtonElement>
-    ) => {
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
     }
 
@@ -179,10 +153,8 @@ const Login = ({toggleTheme}:any) => {
             <Box className="account__screen">
                 {/* ACCOUNT SCREEN BANNER START*/}
                 <BannerBg />
-                {/* ACCOUNT SCREEN BANNER END */}
                 {/* ACCOUNT SCREEN ANIMATION START */}
                 <BackgroundBox />
-                {/* ACCOUNT SCREEN ANIMATION END */}
                 {/* ACCOUNT FORM START */}
                 <Box
                     sx={{ flexGrow: 1 }}
@@ -192,19 +164,17 @@ const Login = ({toggleTheme}:any) => {
                     <div className="form__inner">
                         <Box sx={{ width: 1 }} className="account__form__header">
                             <h3 className="title">{t<string>('login')}</h3>
+                            <span className="box-help-text">{t<string>('enterEmailIdPassword')}</span>
                         </Box>
                         <Box sx={{ width: 1 }} className="account__form__error">
                             <p className="error__msg">
-                                {message && message.message == 'Incorrect username or password' ? (
-                                    <p>{t<string>('yourEmailIdPasswordNotMatch')}</p>
-                                ) : (
-                                    ''
-                                )}
+                                {isError ? (<p>{t<string>('yourEmailIdPasswordNotMatch')}</p>) : ('')}
                             </p>
                         </Box>
                         <Box sx={{ flexGrow: 1 }} className="account__form__body">
                             <form onSubmit={handleSubmit} action="#" method="post">
                                 <FormGroup>
+                                    {/* Email id Input */}
                                     <FormControl
                                         className="input-wrapper yes-margin"
                                         data-margin={true}
@@ -242,23 +212,7 @@ const Login = ({toggleTheme}:any) => {
                                             value={email}
                                         />
                                     </FormControl>
-                                    {touched.email && errors.email && (
-                                        <p>
-                                            {errors.email == 'Enter your email' ? (
-                                                <p className="text-error">{t<string>('email')}</p>
-                                            ) : (
-                                                ''
-                                            )}
-                                            {errors.email == 'email must be a valid email' ? (
-                                                <p className="text-error">
-                                                    {t<string>('mustBeValidEmail')}
-                                                </p>
-                                            ) : (
-                                                ''
-                                            )}
-                                        </p>
-                                    )}
-
+                                    {/* Password Input */}
                                     <FormControl
                                         className="input-wrapper password-checkHide no-margin"
                                         id="password-box"
@@ -308,25 +262,7 @@ const Login = ({toggleTheme}:any) => {
                                             }}
                                         />
                                     </FormControl>
-                                    {touched.password && errors.password && (
-                                        <p>
-                                            {errors.password == 'Enter your password' ? (
-                                                <p className="text-error">
-                                                    {t<string>('enterPassword')}
-                                                </p>
-                                            ) : (
-                                                ''
-                                            )}
-                                            {errors.password ==
-                                                'password must be at least 5 characters' ? (
-                                                <p className="text-error">
-                                                    {t<string>('atleastFiveCharPassword')}
-                                                </p>
-                                            ) : (
-                                                ''
-                                            )}
-                                        </p>
-                                    )}
+                                    {/* Forgot Password Link */}
                                     <FormControl
                                         className="input-wrapper password-checkHide no-margin fp-margin"
                                         sx={{
@@ -337,15 +273,16 @@ const Login = ({toggleTheme}:any) => {
                                             margin: '20px 0px',
                                         }}
                                     >
-                                        <a
-                                            href="/forgot-password"
-                                            id="forgot-password"
+                                        <Link
+                                            to={appRoutes.FORGOT_PASSWORD}
+                                            id={appRoutes.FORGOT_PASSWORD}
                                             className="forgot-password"
                                             style={{ width: 'max-content', fontFamily: 'ubuntu' }}
                                         >
                                             {t<string>('forgotPassword')}
-                                        </a>
+                                        </Link>
                                     </FormControl>
+                                    {/* Login Button */}
                                     <FormControl
                                         className="input-wrapper submitBtn"
                                         sx={{
@@ -378,7 +315,6 @@ const Login = ({toggleTheme}:any) => {
                         </Box>
                     </div>
                 </Box>
-                {/* ACCOUNT FROM END */}
             </Box>
         </>
     )

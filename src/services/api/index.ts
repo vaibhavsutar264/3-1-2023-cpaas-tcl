@@ -18,9 +18,8 @@ const httpInstance = (transformer: any) =>
     ...(transformer && { transformResponse: [transformer] }),
     headers: {
       [apiHelpers.HEADER_CONTENT_TYPE]: apiHelpers.CONTENT_TYPE_APP_JSON,
-      [apiHelpers.HEADER_AUTHORIZATION]: `${apiHelpers.TOKEN_TYPE} ${
-        getFromLocalStorage(localStorageVar.TOKEN_VAR) || null
-      }`,
+      [apiHelpers.HEADER_AUTHORIZATION]: `${apiHelpers.TOKEN_TYPE} ${getFromLocalStorage(localStorageVar.TOKEN_VAR) || null
+        }`,
     },
   })
 
@@ -89,8 +88,6 @@ const userLoginData = {
     requests.get(
       `${routes.BASE_URL}${routes.GET_USER_INFO}?username=${emailId}`,
       userInfoTransformer
-      // `${routes.BASE_URL}${routes.GET_USER_INFO}/${id}`,
-      // userInfoInternalTransformer
     ),
 }
 
@@ -118,8 +115,8 @@ const billing = {
 const account = {
   getAccountDetails: () =>
     requests.get(`${routes.BASE_URL}${routes.GET_ACCOUNT_BILLING_DETAILS}`, null),
-  editUserDetails: (body: any ) =>
-    requests.post(`${routes.BASE_URL}${routes.UPDATE_USER_INFO}`,body, null),
+  editUserDetails: (body: any) =>
+    requests.post(`${routes.BASE_URL}${routes.UPDATE_USER_INFO}`, body, null),
 }
 
 export { userLoginData, billing, account }
