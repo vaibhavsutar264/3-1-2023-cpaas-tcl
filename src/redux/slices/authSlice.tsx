@@ -166,10 +166,10 @@ export const logout = (body: any) => {
         removeFromLocalStorage(localStorageVar.USER_VAR)
       }
     } catch (response: any) {
-      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
-      toast.error(data.message)
       removeFromLocalStorage(localStorageVar.TOKEN_VAR)
       removeFromLocalStorage(localStorageVar.USER_VAR)
+      const { data = { data: { message: staticErrors.serverInactive } } } = response.response.data;
+      toast.error(data.message)
       dispatch(userSlice.actions.logOutSuccess())
     }
   }
