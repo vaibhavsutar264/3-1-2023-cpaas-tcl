@@ -82,6 +82,7 @@ declare module 'styled-components' {
         closeModalSvg: string
         resendLink: string
         langInvoicesBg: string
+        langInvoicesLoginscreensBg: string
         langInvoicesTxt: string
         selectEntityLabelBg: string
         selectEntityLabel: string
@@ -96,5 +97,7 @@ declare module 'styled-components' {
         datatableIconHoverBg: string
         iconCtaTxt: string
         datatableIconHoverTxt: string
+        langInvoicesLoginscreensSvg: string
+        forgotPasswordLnkColor: string
     }
 }
