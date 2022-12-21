@@ -39,6 +39,7 @@ import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumb
 import SettingsIcon from '@mui/icons-material/Settings';
 import Globe from '../../../assets/images/svg/globe.svg'
 import GlobeDark from '../../../assets/images/svg/globe-dark.svg'
+import Ticket from '../icons/tickets'
 
 
 type SidebarProps = {
@@ -296,7 +297,8 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                         <li className="list__item">
                             <Link className="item__link" to="">
                                 <span className="link__icon">
-                                    <ConfirmationNumberOutlinedIcon />
+                                    {/* <ConfirmationNumberOutlinedIcon /> */}
+                                    <Ticket />
                                 </span>
                                 <span className="link__text" id="link__text">{t<string>('tickets')}</span>
                             </Link>
