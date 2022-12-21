@@ -32,6 +32,7 @@ import BannerBg from '../../common/elements/banner'
 import { apiVrbls, appRoutes, localStorageVar } from '../../../utils/constants'
 import Header from '../../header/Header'
 import * as Yup from 'yup'
+import { on } from 'events'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -72,13 +73,11 @@ const Login = ({ toggleTheme }: any) => {
         weightRange: '',
         showPassword: false,
     })
+    
     useEffect(() => {
         if (!isAuthenticated) {
             dispatch(resetLoginParms())
         }
-    }, [])
-
-    useEffect(() => {
         if (getFromLocalStorage(localStorageVar.TOKEN_VAR) && getFromLocalStorage(localStorageVar.TOKEN_VAR) !== null) {
             if (user) {
                 if (user.attributes[apiVrbls.USER.IS_LOGGED_IN_FIRST]) {
@@ -88,8 +87,8 @@ const Login = ({ toggleTheme }: any) => {
                 }
             }
         }
-    }, [user, navigate])
-
+    }, [user, navigate, isAuthenticated, dispatch])
+      
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -129,14 +128,21 @@ const Login = ({ toggleTheme }: any) => {
         const passwordBoxElement = document.getElementById('password-box') as HTMLButtonElement
         if ((e.target as HTMLInputElement).value.match(patternVariable)) {
             submitButtonElement.className = 'customBtn-01 btn-enable-style'
-            passwordBoxElement.className = 'input-wrapper password-checkHide success'
             setOpen(false)
         } else {
             (e.target as HTMLInputElement).className = 'form-control input-custom'
             submitButtonElement.className = 'customBtn-01'
-            passwordBoxElement.className = 'input-wrapper password-checkHide'
             setOpen(true)
         }
+    }
+
+
+    const handlePasteChange = (e: SyntheticEvent) => {
+        (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value
+        const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
+        setPassword((e.target as HTMLInputElement).value)
+        submitButtonElement.className = 'customBtn-01 btn-enable-style'
+        return setPassword((e.target as HTMLInputElement).value)
     }
 
     const handleClickShowPassword = () => {
@@ -239,6 +245,7 @@ const Login = ({ toggleTheme }: any) => {
                                             inputProps={{ 'data-testid': 'password-element' }}
                                             className="form-control input-custom input-field"
                                             value={password}
+                                            onPaste={handlePasteChange}
                                             onInput={handlePasswordChange}
                                             onChange={handleChange}
                                             InputProps={{

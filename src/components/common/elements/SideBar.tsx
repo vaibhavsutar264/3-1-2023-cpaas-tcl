@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect } from 'react'
 import { useDarkMode } from '../../../themes/useDarkMode'
 import { apiVrbls, appRoutes, appThemes, localStorageVar, typeVar } from '../../../utils/constants'
 import { lightTheme, darkTheme } from '../../../themes/globalStyles'
@@ -77,6 +78,14 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
     if (user == null) {
         navigate('/')
     }
+
+// useEffect(() => {
+//     const noTranslate= document.getElementById('demo-select-small')
+//     console.log(noTranslate?.innerHTML)
+//     // noTranslate.innerHTML = `English`  
+// },[])
+
+
     return (
         <>
             <div className="dashboard__navbar" id="sidebar-top" style={{ position: 'fixed', top: 0, zIndex: 2 }}>
@@ -156,12 +165,11 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         setInLocalStorage('lng', e.target.value)
                                     }}
                                 >
-                                    {availableLanguages.map((language) => (
+                                    {availableLanguages? availableLanguages.map((language) => (
                                         <MenuItem key={language} value={language}>
-
                                             {language}
                                         </MenuItem>
-                                    ))}
+                                    )): 'English' }
                                 </Select>
                             </FormControl>
                         </div>

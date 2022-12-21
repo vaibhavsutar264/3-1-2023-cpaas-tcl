@@ -393,7 +393,7 @@ const DataTable = ({
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
         dueIdHeadElement.style.display = dueState? 'block': 'none'
         setDueState(!dueState);
-
+        
         dueIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
@@ -531,12 +531,12 @@ const DataTable = ({
                                     <div className="th_wrapper">
                                         <button id='hiding' name={t<string>(`tables.${tableName}.${head.headTrans}`)} className='voidBtn' onClick={sort.bind(null, head)} key={`clickkey-${head.headTrans}${index}`} >
                                             {t<string>(`tables.${tableName}.${head.headTrans}`)}
+                                            <span>
+                                                {' '}
+                                                {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
+                                                {' '}
+                                            </span>
                                         </button>
-                                        <span>
-                                            {' '}
-                                            {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
-                                            {' '}
-                                        </span>
                                     </div>
                                 </StyledTableCell>
                             ))}

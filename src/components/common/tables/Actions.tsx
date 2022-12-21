@@ -69,18 +69,9 @@ export const Actions = ({
         </div>
       </div>
       <div className="action__elementItem" id="date-picker">
-      <DateRange dateChange={dateChange}/>
+      {/*<DateRange dateChange={dateChange}/> */}
       </div>
       <div className="action__elementItem">
-        {/* <a href="/" className="iconCta">
-          <span className="icon">
-            <Export />
-          </span>
-          <CSVLink {...ExportToCsv} className="text" data-testid="csv-link">
-            {t<string>('exportToCsv')}
-          </CSVLink>
-        </a> */}
-
           <span className="iconCta">
           <span className="icon">
             <Export />
@@ -90,12 +81,6 @@ export const Actions = ({
           </CSVLink>
         </span>
       </div>
-      {/* <button
-        className="actionButton__item"
-        onClick={(e) => handleDownload('image.png')}
-      >
-        Download
-      </button> */}
     </div>
   )
 }

@@ -60,7 +60,7 @@
                 "Invoice_amt": 1000.87,
                 "Currency": "Rupees",
                 "Invoice_date": "2000-06-23",
-                "Due_date": "2000-09-23",
+                "Due_date": "18 Nov 2022",
                 "Payment done date & time": "2000-07-23",
                 "Time Zone": "IST"
             },
@@ -74,7 +74,7 @@
                 "Invoice_amt": 2000.87,
                 "Currency": "Rupees",
                 "Invoice_date": "2000-06-23",
-                "Due_date": "2000-09-23",
+                "Due_date": "19 Nov 2022",
                 "Payment done date & time": "2000-07-23",
                 "Time Zone": "IST"
             },
@@ -88,7 +88,7 @@
                 "Invoice_amt": 3000.87,
                 "Currency": "Rupees",
                 "Invoice_date": "2000-06-23",
-                "Due_date": "2000-09-23",
+                "Due_date": "19 Nov 2022",
                 "Payment done date & time": "2000-07-23",
                 "Time Zone": "IST"
             },
@@ -102,7 +102,7 @@
                 "Invoice_amt": 4000.87,
                 "Currency": "Dollar",
                 "Invoice_date": "2000-06-23",
-                "Due_date": "2000-09-23",
+                "Due_date": "20 Nov 2022",
                 "Payment done date & time": "2000-07-23",
                 "Time Zone": "IST"
             },
@@ -1530,7 +1530,7 @@
                 "Invoice_amt": 4000.87,
                 "Currency": "Dollar",
                 "Invoice_date": "2000-06-23",
-                "Due_date": "2000-09-23",
+                "Due_date": "21 Nov 2022",
                 "Payment done date & time": "2000-07-23",
                 "Time Zone": "IST"
             },
@@ -1544,7 +1544,7 @@
                 "Invoice_amt": 5000.87,
                 "Currency": "Rupees",
                 "Invoice_date": "2000-06-23",
-                "Due_date": "2000-09-23",
+                "Due_date": "22 Nov 2022",
                 "Payment done date & time": "2000-07-23",
                 "Time Zone": "IST"
             },
