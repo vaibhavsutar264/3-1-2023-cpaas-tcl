@@ -14,6 +14,9 @@ import { styled } from '@mui/material/styles'
 import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import LightModeIcon from '@mui/icons-material/LightMode'
+
 import {
   getFromLocalStorage,
   setInLocalStorage,
@@ -130,7 +133,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
               </FormControl>
             </li>
             <li className="item">
-              <FormGroup>
+              {/* <FormGroup>
                 <FormControlLabel
                   sx={{
                     marginRight: 0,
@@ -147,7 +150,19 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                   }
                   label=""
                 />
-              </FormGroup>
+              </FormGroup> */}
+
+              <div className="right__elementsItem theme__toggle">
+                <div className="toggle__wrapper">
+                    <button className="lightMode active" onClick={toggleTheme}>
+                        <LightModeIcon />
+                    </button>
+                    <button className="darkMode" onClick={toggleTheme}>
+                        <DarkModeIcon />
+                    </button>
+                </div>
+            </div>
+
             </li>
           </ul>
         </div>

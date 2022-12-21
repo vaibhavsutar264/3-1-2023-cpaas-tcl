@@ -104,10 +104,10 @@ export const SideBar = ({ toggleTheme, handleADWidth, handleBDWidth }: SidebarPr
                                         e.target.placeholder = '';
                                     }}
                                     onBlur={(e) => {
-                                        e.target.placeholder = `${t<string>('searchProductsOrdersAndClients')}`
+                                        e.target.placeholder = `${t<string>('searchWithinSite')}`
                                     }}
                                     sx={{ ml: 1, flex: 1 }}
-                                    placeholder={t<string>('searchProductsOrdersAndClients')}
+                                    placeholder={t<string>('searchWithinSite')}
                                     inputProps={{
                                         'aria-label': 'Search Products, Orders and Clients',
                                     }}
