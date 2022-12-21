@@ -18,14 +18,17 @@ import UnpaidInvoice from '../common/icons/unpaidInvoice'
 import Card from '../common/elements/card'
 import { getCardCount } from '../../utils/helpers'
 import { getAcDetails } from '../../redux/slices/accountSlice'
+import moment from 'moment'
 
 export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
 
     const { isError, isLoading, isSuccess, PageData = [], MasterData = [], total, page, take } = useSelector((state: any) => state.billing);
+    const [startDate,setStartDate] = useState(moment().subtract(1, "months").format('YYYY-MM-DD'));
+    const [endDate,setEndDate] = useState(moment().format('YYYY-MM-DD'));
 
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(loadInvoices({ searchValue: "" }))
+        dispatch(loadInvoices({ searchValue: "",startDate: startDate, endDate: endDate }))
         dispatch(getAcDetails())
     }, [dispatch])
     const { t } = useLocales()
@@ -70,6 +73,8 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
                     Total={total}
                     page={page}
                     take={take}
+                    setStartDate={setStartDate}
+                    setEndDate={setEndDate}
                     TableData={dataTables.BILLING(PageData, MasterData)} />
             </div>
         </div>

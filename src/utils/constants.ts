@@ -2,7 +2,7 @@
 export const apiRoutes = {
     // BASE_URL: 'http://115.112.43.74:8585',
     // BASE_URL: '',
-    BASE_URL: 'http://localhost:8585',
+    BASE_URL: 'http://localhost:4000',
     // BASE_URL: 'http://api.sspdev.digodev.com',
 
     // User
@@ -15,7 +15,7 @@ export const apiRoutes = {
     LOGOUT: '/cpaas/logout',
 
     // Billing
-    GET_INVOICES: '/orchestration/billing/invoices/getInvoices',
+    GET_INVOICES: '/result_data',
     VIEW_INVOICES: '/result_data/Download_Billing_Invoice',
     DOWNLOAD_INVOICES: '/orchestration/billing/invoices/downloadBillingInvoice',
     DOWNLOAD_INVOICES_CDR: '/orchestration/billing/invoices/downloadBillingInvoiceCDR',
