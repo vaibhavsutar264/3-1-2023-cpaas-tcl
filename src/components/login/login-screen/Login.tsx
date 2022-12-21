@@ -113,11 +113,11 @@ const Login = ({ toggleTheme }: any) => {
         setEmail((e.target as HTMLInputElement).value)
         const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
         const emailBoxElement = document.getElementById('email-box') as HTMLInputElement
-        if ((e.target as HTMLInputElement).value.match(emailVariable)) {
-            emailBoxElement.className = 'input-wrapper success'
-        } else {
-            emailBoxElement.className = 'input-wrapper'
-        }
+        // if ((e.target as HTMLInputElement).value.match(emailVariable)) {
+        //     // emailBoxElement.className = 'input-wrapper success'
+        // } else {
+        //     // emailBoxElement.className = 'input-wrapper'
+        // }
     }
 
     const handlePasswordChange = (e: SyntheticEvent) => {
