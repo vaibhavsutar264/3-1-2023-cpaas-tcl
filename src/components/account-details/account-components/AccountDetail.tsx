@@ -10,6 +10,8 @@ import {
   SelectChangeEvent,
 } from '@mui/material'
 import { useDispatch, useSelector } from '../../../redux/store'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 
 const AccountDetail = ({
   LegalEntity,
@@ -41,6 +43,17 @@ const AccountDetail = ({
     setLeEntity(accountDetails.legalentities[index][event.target.value])
     setsendInvoice(accountDetails.legalentities[index].sendInvoiceToContact)
     setLegalEntity(event.target.value)
+  }
+
+  const [dropdownActive, setDropdownActive] = useState<boolean>(false);
+  const handleDropdown = () => {
+    setDropdownActive(!dropdownActive);
+    console.log(dropdownActive);
+  }
+
+  const [selectValue, setSelectValue] = useState<string>('legal entity name1');
+  const handleSelectValue = (event: SelectChangeEvent) => {
+    setSelectValue(event.target.value);
   }
 
   return (
@@ -84,7 +97,7 @@ const AccountDetail = ({
             >
               Billing Details
             </Typography>
-            <Box
+            {/* <Box
               id="select-entity-form"
               sx={{
                 minWidth: 200,
@@ -126,7 +139,21 @@ const AccountDetail = ({
                   </Select>
                 </FormControl>
               )}
-            </Box>
+            </Box> */}
+
+          <div className='select-legal-field-container'>
+            <div className='select-legal-field' role="button" 
+     tabIndex={0} onClick={handleDropdown}>
+              <span>legal entity name1</span>
+              <KeyboardArrowDownIcon />
+            </div>
+
+            <ul>
+              <li className='option1'>legal entity name1</li>
+              <li className='option2'>legal entity name2</li>
+              <li className='option3'>legal entity name3</li>
+            </ul>
+            </div>
           </Stack>
         </Box>
 

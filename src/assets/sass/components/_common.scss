@@ -7,3 +7,18 @@
   color: #9CA6AD;
   width: 80%;
 }
+
+.no-pointers {
+  pointer-events: none;
+}
+
+.checkIcon {
+  position: absolute;
+  z-index: 9;
+  right: 6%;
+  top: 40%;
+}
+
+.checkIcon svg path {
+  fill: green !important;
+}
