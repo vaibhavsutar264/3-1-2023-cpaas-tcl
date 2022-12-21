@@ -129,7 +129,7 @@ const Login = ({ toggleTheme }: any) => {
         const passwordBoxElement = document.getElementById('password-box') as HTMLButtonElement
         if ((e.target as HTMLInputElement).value.match(patternVariable)) {
             submitButtonElement.className = 'customBtn-01 btn-enable-style'
-            passwordBoxElement.className = 'input-wrapper password-checkHide success'
+            // passwordBoxElement.className = 'input-wrapper password-checkHide success'
             setOpen(false)
         } else {
             (e.target as HTMLInputElement).className = 'form-control input-custom'

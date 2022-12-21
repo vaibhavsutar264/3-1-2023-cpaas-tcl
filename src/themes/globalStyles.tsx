@@ -81,6 +81,8 @@ export const lightTheme = {
     closeModalSvg: '#010101',
     resendLink: '#d32f2f',
     langInvoicesBg: 'transparent',
+    langInvoicesLoginscreensBg: '#fff !important',
+    langInvoicesLoginscreensSvg: '#222 !important',
     langInvoicesTxt: '#344857 !important',
     selectEntityLabelBg: '#fff !important',
     selectEntityLabel: 'rgba(0, 0, 0, 0.6)',
@@ -95,6 +97,7 @@ export const lightTheme = {
     datatableIconHoverBg: '#d63548 !important',
     iconCtaTxt: '#d63548 a!important',
     datatableIconHoverTxt: '#fff !important',
+    forgotPasswordLnkColor: '#092133 !important',
 }
 
 export const darkTheme = {
@@ -179,6 +182,8 @@ export const darkTheme = {
     closeModalSvg: '#E8E8E8',
     resendLink: '#ff6060',
     langInvoicesBg: 'transparent',
+    langInvoicesLoginscreensBg: '#3A4548 !important',
+    langInvoicesLoginscreensSvg: '#fff !important',
     langInvoicesTxt: '#fff',
     selectEntityLabelBg: '#252f3b !important',
     selectEntityLabel: '#fff',
@@ -193,6 +198,7 @@ export const darkTheme = {
     datatableIconHoverBg: '#d63548 !importnt',
     iconCtaTxt: '#fff !important',
     datatableIconHoverTxt: '#fff !importnt',
+    forgotPasswordLnkColor: '#9D9FA1 !important',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -264,6 +270,9 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   #forgot-password{
     color: ${({ theme }) => theme.forgotPasswordColor};
+  }
+  .forgot-password{
+    color: ${({ theme }) => theme.forgotPasswordLnkColor};
   }
   #sidebar-top{
     background-color: ${({ theme }) => theme.sidebarTopBg};
@@ -474,6 +483,12 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   #lang-background-invoices {
     background-color: ${({ theme }) => theme.langInvoicesBg};
+  }
+  #lang-background-invoices.lang-background-loginscreens {
+    background-color: ${({ theme }) => theme.langInvoicesLoginscreensBg};
+  }
+  #lang-background-invoices.lang-background-loginscreens svg {
+    color: ${({ theme }) => theme.langInvoicesLoginscreensSvg};
   }
   #demo-select-small {
     color: ${({ theme }) => theme.langInvoicesTxt};

@@ -130,3 +130,22 @@ div#demo-select-small {
   height: auto;
   margin-right: 7px;
 }
+
+
+#lang-background-invoices {
+  
+  &.lang-background-loginscreens {
+    background-color: #fff;
+    border-radius: 30px;
+
+    & img {
+      left: 10px !important;
+    }
+
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+      width: 120px !important;
+      padding-left: 20px !important;
+    }
+}
+
+}
