@@ -91,17 +91,17 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
 
   const getitem = getFromLocalStorage(localStorageVar.THEME_VAR)
   // const noTranslate= document.getElementById('demo-select-small')
-  const noTranslate= document.getElementsByClassName('notranslate')
+  const noTranslate = document.getElementsByClassName('notranslate')
   console.log(noTranslate)
   // noTranslate[0].innerHTML = 'English'
 
-//   if(document.getElementsByClassName('notranslate') != null){
-//     noTranslate[0].innerHTML = 'English';
-// }
+  //   if(document.getElementsByClassName('notranslate') != null){
+  //     noTranslate[0].innerHTML = 'English';
+  // }
 
-document.addEventListener("DOMContentLoaded", function(event) { 
-  noTranslate[0].innerHTML = 'English';
-});
+  document.addEventListener("DOMContentLoaded", function (event) {
+    noTranslate[0].innerHTML = 'English';
+  });
 
   return (
     <>
@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 size="small"
                 id="lang-background-white"
               > */}
-                {/* <InputLabel id="demo-select-small">Language</InputLabel> */}
-                {/* <Select
+              {/* <InputLabel id="demo-select-small">Language</InputLabel> */}
+              {/* <Select
                   labelId="demo-select-small"
                   id="demo-select-header-small"
                   value={i18n.language}
@@ -146,38 +146,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
                   ))}
                 </Select>
               </FormControl> */}
-              
+
               <FormControl
-                    sx={{
-                        m: 1,
-                        minWidth: 100,
-                        position: 'relative',
-                    }}
-                    size="small"
-                    // id="lang-background-white"
-                    id="lang-background-invoices" className='lang-background-loginscreens'
+                sx={{
+                  m: 1,
+                  minWidth: 100,
+                  position: 'relative',
+                }}
+                size="small"
+                // id="lang-background-white"
+                id="lang-background-invoices" className='lang-background-loginscreens'
+              >
+                <img
+                  src={(getitem == 'light') ? Globe : GlobeDark}
+                  alt="" style={{ width: '18px', height: '18px', position: 'absolute', top: '50%', left: '-12px', transform: 'translateY(-50%)', }} />
+                <Select
+                  MenuProps={{
+                    disableScrollLock: true,
+                  }}
+                  className='buidfix1'
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  value={i18n.language == ('en-ZA' || 'en-US') ? "English" : i18n.language}
+                  label="Language"
+                  onChange={(e) => {
+                    i18n.changeLanguage(e.target.value)
+                    setInLocalStorage('lng', e.target.value)
+                  }}
                 >
-                    <img
-                        src={(getitem == 'light') ? Globe : GlobeDark}
-                        alt="" style={{ width: '18px', height: '18px', position: 'absolute', top: '50%', left: '-12px', transform: 'translateY(-50%)', }} />
-                    <Select
-                        className='buidfix1'
-                        labelId="demo-select-small"
-                        id="demo-select-small"
-                        value={i18n.language == ('en-ZA' || 'en-US')? "English": i18n.language}
-                        label="Language"
-                        onChange={(e) => {
-                            i18n.changeLanguage(e.target.value)
-                            setInLocalStorage('lng', e.target.value)
-                        }}
-                    >
-                    {availableLanguages.map((language) => (
-                      <MenuItem key={language} value={language}>
-                          {language == 'en-ZA'? "English": language} 
-                      </MenuItem>
-                  ))}            
-                    </Select>
-                </FormControl>
+                  {availableLanguages.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      {language == 'en-ZA' ? "English" : language}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             </li>
             <li className="item">
               {/* <FormGroup>
@@ -201,14 +204,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
               <div className="right__elementsItem theme__toggle">
                 <div className="toggle__wrapper">
-                    <button className="lightMode active" onClick={toggleTheme}>
-                        <LightModeIcon />
-                    </button>
-                    <button className="darkMode" onClick={toggleTheme}>
-                        <DarkModeIcon />
-                    </button>
+                  <button className="lightMode active" onClick={toggleTheme}>
+                    <LightModeIcon />
+                  </button>
+                  <button className="darkMode" onClick={toggleTheme}>
+                    <DarkModeIcon />
+                  </button>
                 </div>
-            </div>
+              </div>
 
             </li>
           </ul>

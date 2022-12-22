@@ -35,8 +35,8 @@ function ModalWelcome({ open }: any) {
                     Perfect! You have successfully activated your account.
                 </DialogContentText>
             </DialogContent>
-            <DialogActions>
-                <Button onClick={() => { navigate(appRoutes.BILLING) }} >
+            <DialogActions className='buildfix3'>
+                <Button className='buildfix2' onClick={() => { navigate(appRoutes.BILLING) }} >
                     jump to dashboard
                 </Button>
             </DialogActions>
