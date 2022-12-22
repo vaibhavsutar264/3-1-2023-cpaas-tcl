@@ -183,6 +183,9 @@ export const SideBar = ({
                   }}
                 />
                 <Select
+                  MenuProps={{
+                    disableScrollLock: true,
+                  }}
                   labelId="demo-select-small"
                   id="demo-select-small"
                   value={i18n.language == ('en-ZA' || 'en-US') ? 'English' : i18n.language}

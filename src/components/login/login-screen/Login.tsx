@@ -147,11 +147,12 @@ const Login = ({ toggleTheme }: any) => {
 
 
     const handlePasteChange = (e: SyntheticEvent) => {
-        (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value
-        const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
+        e.preventDefault()
+        // (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value
+        // const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
         setPassword((e.target as HTMLInputElement).value)
-        submitButtonElement.className = 'customBtn-01 btn-enable-style'
-        return setPassword((e.target as HTMLInputElement).value)
+        // submitButtonElement.className = 'customBtn-01 btn-enable-style'
+        // return setPassword((e.target as HTMLInputElement).value)
     }
 
     const handleClickShowPassword = () => {

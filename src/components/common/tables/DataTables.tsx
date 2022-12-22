@@ -157,7 +157,7 @@ const DataTable = ({
         const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
         invoiceIdHeadElement.style.display = invoiceState? 'block': 'none'
         setInvoiceState(!invoiceState);
-        invoiceIdHeadElement.style.display = 'block'
+        invoiceIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[0].eleName = 'Invoice_no'
@@ -193,7 +193,7 @@ const DataTable = ({
         const customerIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0] 
         customerIdHeadElement.style.display = customerState? 'block': 'none'
         setCustomerState(!customerState);
-        customerIdHeadElement.style.display = 'block'
+        customerIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[1].eleName = 'Customer_LE'
@@ -228,7 +228,7 @@ const DataTable = ({
         const entityIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.entity')}`)[0]
         entityIdHeadElement.style.display = entityState? 'block': 'none'
         setEntityState(!entityState);
-        entityIdHeadElement.style.display = 'block'
+        entityIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[2].eleName = 'Tata_Entity'
@@ -266,7 +266,7 @@ const DataTable = ({
         poIdHeadElement.style.display = poState? 'block': 'none'
         setPoState(!poState);
 
-        poIdHeadElement.style.display = 'block'
+        poIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[3].eleName = 'PO_number'
@@ -303,7 +303,7 @@ const DataTable = ({
         statusIdHeadElement.style.display = statusState? 'block': 'none'
         setStatusState(!statusState);
 
-        statusIdHeadElement.style.display = 'block'
+        statusIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[4].eleName = 'Payment_Status'
@@ -340,7 +340,7 @@ const DataTable = ({
         amountIdHeadElement.style.display = amountState? 'block': 'none'
         setAmountState(!amountState);
 
-        amountIdHeadElement.style.display = 'block'
+        amountIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[5].eleName = 'Invoice_amt'
@@ -377,7 +377,7 @@ const DataTable = ({
         invoiceIssueIdHeadElement.style.display = invoiceIssueState? 'block': 'none'
         setInvoiceIssueState(!invoiceIssueState);
 
-        invoiceIssueIdHeadElement.style.display = 'block'
+        invoiceIssueIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[6].eleName = 'Invoice_date'
@@ -390,14 +390,18 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-due-date'
         ) as HTMLElement
+        const tableElement = document.getElementById(
+            'table-data'
+        ) as HTMLElement
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
         dueIdHeadElement.style.display = dueState? 'block': 'none'
         setDueState(!dueState);
         
         dueIdHeadElement.style.display = 'none'
+        // tableElement.lastElementChild?.remove()
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
-        columns[7].eleName = null
+        columns[7].eleName = 'null'
         console.log(columns[7])
     };
 
@@ -414,7 +418,7 @@ const DataTable = ({
         dueIdHeadElement.style.display = dueState? 'block': 'none'
         setDueState(!dueState);
 
-        dueIdHeadElement.style.display = 'block'
+        dueIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
         columns[7].eleName = 'Due_date'
