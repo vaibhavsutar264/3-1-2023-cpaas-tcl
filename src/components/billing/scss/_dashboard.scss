@@ -92,6 +92,8 @@
                 button {
                     background: white;
                     width: 225px;
+                    // arhan
+                    // width: 300px;
                     height: 90px;
                     padding: 0;
                     margin: 0;
@@ -162,7 +164,7 @@
         opacity: 1;
         margin-top: 6px;
         margin-bottom: 6px;
-        max-width: 130px;
+        max-width: 100%;
         overflow: hidden;
         white-space:normal;
     }
@@ -200,7 +202,9 @@
 
 .profile__menu .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
     width: 100%;
-    max-width: 225px;
+    // max-width: 225px;
+    // arhan
+    max-width: 300px;
     right: 0;
     left: auto !important;
 }
@@ -1072,6 +1076,7 @@ form.raise-ticket-input .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
 // Change logout icon and text color
 [data-testid="LogoutOutlinedIcon"], .logout-text {
     color: #D63548;
+    font-size: 14px;
 }
 
 [data-name="setting"]#setting path {

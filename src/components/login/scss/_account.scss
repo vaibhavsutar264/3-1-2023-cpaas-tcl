@@ -1111,11 +1111,14 @@ p.text-error-success {
 .css-6hp17o-MuiList-root-MuiMenu-list {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    padding: 22px !important;
+    background-color: #fff;
 
     >li {
         justify-content: center;
         position: relative;
         font-family: ubuntu;
+        padding: 0 !important;
 
         &::after {
             content: '';
@@ -1123,10 +1126,14 @@ p.text-error-success {
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 70%;
+            width: 300px;
             height: 1px;
-            background-color: $grey2;
-            opacity: 0.2;
+            background-color: #7070701A;
+            opacity: 1;
+        }
+
+        &:nth-child(2)::after {
+            content: none;
         }
 
         &:last-of-type::after {
