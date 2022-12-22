@@ -25,7 +25,7 @@ function ModalWelcome({ open }: any) {
             open={open}
             aria-labelledby="responsive-dialog-title"
         >
-            <IconButton onClick={() => { navigate(appRoutes.BILLING) }} ><CloseRoundedIcon /></IconButton>
+            <IconButton onClick={() => { navigate(appRoutes.DASHBOARD) }} ><CloseRoundedIcon /></IconButton>
             <img src={WelcomeCPass} alt="" />
             <DialogTitle id="responsive-dialog-title" textAlign='center'>
                 {"Welcome to CPass"}
@@ -36,7 +36,7 @@ function ModalWelcome({ open }: any) {
                 </DialogContentText>
             </DialogContent>
             <DialogActions className='buildfix3'>
-                <Button className='buildfix2' onClick={() => { navigate(appRoutes.BILLING) }} >
+                <Button className='buildfix2' onClick={() => { navigate(appRoutes.DASHBOARD) }} >
                     jump to dashboard
                 </Button>
             </DialogActions>

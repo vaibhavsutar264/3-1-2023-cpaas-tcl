@@ -56,7 +56,6 @@ export const Actions = ({
         <div className="tableRow__show">
           <div className="selectRow">
             <select name="" id="PageNumberInput" onChange={modifyTake}>
-              <option value="10">{t<string>('showing')} 5</option>
               <option value="10">{t<string>('showing')} 10</option>
               <option value="15">{t<string>('showing')} 15</option>
               <option value="25">{t<string>('showing')} 25</option>

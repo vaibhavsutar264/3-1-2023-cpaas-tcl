@@ -19,6 +19,7 @@ import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft'
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../../assets/images/CPaaSLogo.png'
@@ -62,6 +63,7 @@ export const SideBar = ({
   handleADWidth,
   handleBDWidth,
 }: SidebarProps) => {
+  const [isOpen, setIsOpen] = React.useState(false)
   const dispatch = useDispatch()
   const { user } = useSelector((state: any) => state.auth || [])
   const { i18n } = useTranslation()
@@ -390,6 +392,7 @@ export const SideBar = ({
           type="button"
           className="sidebarToggle"
           onClick={() => {
+            setIsOpen((pre: any) => (!pre))
             if (handleADWidth) {
               handleADWidth()
             }
@@ -416,7 +419,9 @@ export const SideBar = ({
             }
           }}
         >
-          <KeyboardDoubleArrowLeftIcon />
+          {isOpen ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+
+
         </button>
       </div>
     </>
