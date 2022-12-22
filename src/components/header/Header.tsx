@@ -90,7 +90,18 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
   }
 
   const getitem = getFromLocalStorage(localStorageVar.THEME_VAR)
+  // const noTranslate= document.getElementById('demo-select-small')
+  const noTranslate= document.getElementsByClassName('notranslate')
+  console.log(noTranslate)
+  // noTranslate[0].innerHTML = 'English'
 
+//   if(document.getElementsByClassName('notranslate') != null){
+//     noTranslate[0].innerHTML = 'English';
+// }
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+  noTranslate[0].innerHTML = 'English';
+});
 
   return (
     <>
@@ -153,18 +164,18 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                         className='buidfix1'
                         labelId="demo-select-small"
                         id="demo-select-small"
-                        value={i18n.language}
+                        value={i18n.language == ('en-ZA' || 'en-US')? "English": i18n.language}
                         label="Language"
                         onChange={(e) => {
                             i18n.changeLanguage(e.target.value)
                             setInLocalStorage('lng', e.target.value)
                         }}
                     >
-                        {availableLanguages.map((language) => (
-                            <MenuItem key={language} value={language}>
-                                {language}
-                            </MenuItem>
-                        ))}
+                    {availableLanguages.map((language) => (
+                      <MenuItem key={language} value={language}>
+                          {language == 'en-ZA'? "English": language} 
+                      </MenuItem>
+                  ))}            
                     </Select>
                 </FormControl>
             </li>
