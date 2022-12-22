@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import { useDispatch } from '../../../redux/store'
 
 const Card = ({ data }: any) => {
     const dispatch = useDispatch();
+    const [active, setActive] = useState(null)
+    const blankCheckoutElement = document.getElementsByClassName(
+        'cardType__1'
+    )
+
+    // blankCheckoutElement
+    // blankCheckoutElement.onclick(function (){
+    //     blankCheckoutElement.classList("active").siblings().removeClass("active");
+    //   })
     return <button
-        onClick={() => { dispatch(data.action) }}
-        className="cardType__1"
+        onClick={() => { dispatch(data.action); setActive(data.titel)}}
+        className={`cardType__1 ${active == data.titel && 'active'}`}
         style={{
             cursor: 'pointer'
         }}

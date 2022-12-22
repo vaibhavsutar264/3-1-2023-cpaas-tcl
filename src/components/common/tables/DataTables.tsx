@@ -57,6 +57,7 @@ const DataTable = ({
 }: any) => {
     const { t } = useLocales()
     const { data, columns, tableName } = TableData
+
     const dispatch = useAppDispatch();
     const totalCount = Math.ceil(Total / take)
     const [sortdir, setSortdir]: any = useState(null)
@@ -428,6 +429,14 @@ const DataTable = ({
         setStartDate(val.start.format("YYYY-MM-DD"));
         setEndDate(val.end.format("YYYY-MM-DD"));
       }
+      const [tableData, setTableData] = useState(data);
+      const onSearch = (e: any,head: any,index: any)=>{
+        console.log(head)
+        // const filterData = data.filter((obj : any)=>obj[head['Payment_Status']].toString().includes(e.target.value));
+        const filterData = data.filter((obj : any)=>obj[head['eleName']].toString().includes(e.target.value));
+        console.log(filterData)
+        setTableData(filterData);
+      }
     return (
         <>
             <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange}/>
@@ -540,6 +549,11 @@ const DataTable = ({
                                                 {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
                                                 {' '}
                                             </span>
+                                                <input 
+                                                  id={`input-${index}`} 
+                                                  onChange={(e)=>onSearch(e,head,index)}
+                                                  placeholder={'Search'}
+                                                />
                                         </button>
                                     </div>
                                 </StyledTableCell>
@@ -554,7 +568,7 @@ const DataTable = ({
                     </TableHead>
                     {/* Table Body */}
                     <TableBody data-testid="table-body-element" className="TableBody" data->
-                        {data && data.map((item: any, index: any) => (
+                        {tableData && tableData.map((item: any, index: any) => (
                             <TableRow id="table-data" key={item.id}>
                                 <TableCell component="th" scope="row">
                                     {' '}
