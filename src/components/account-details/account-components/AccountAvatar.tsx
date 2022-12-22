@@ -10,7 +10,6 @@ import { getuserInfo } from '../../../redux/slices/authSlice'
 const AccountAvatar = () => {
   const dispatch = useDispatch()
   const { user, userEmail } = useSelector((state: any) => state.auth || {})
-  const { emailId } = user
   const SmallAvatar = styled(Avatar)(({ theme }: any) => ({ width: 44, height: 44 }))
   const [firstname, setFirstname] = useState('')
   const [lastName, setLastName] = useState('')
@@ -20,7 +19,7 @@ const AccountAvatar = () => {
   const [editable, setEditable] = useState<boolean>(false)
 
   useEffect(() => {
-    dispatch(getuserInfo(emailId));
+    dispatch(getuserInfo(user.emailId));
     if (user) {
       setFirstname(user.firstname)
       setLastName(user.lastName)
@@ -28,7 +27,7 @@ const AccountAvatar = () => {
       setTimezone(user.attributes.timezone)
       setCommunication(user.attributes.preferredCommunicationMode)
     }
-  }, [dispatch])
+  }, [])
 
   const buttonElement = document.getElementById(
     'button-edit'
