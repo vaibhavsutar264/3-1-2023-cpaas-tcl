@@ -31,11 +31,11 @@ const AccountAvatar = () => {
 
   const buttonElement = document.getElementById(
     'button-edit'
-) as HTMLElement
+  ) as HTMLElement
 
-// if(buttonElement.innerText == 'edit personal details'){
+  // if(buttonElement.innerText == 'edit personal details'){
 
-// }
+  // }
 
   const editUserDetails = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -50,7 +50,7 @@ const AccountAvatar = () => {
     setEditable(false)
   }
 
-  const abcd = ()=>{
+  const abcd = () => {
     setEditable(!false)
   }
 
@@ -133,6 +133,7 @@ const AccountAvatar = () => {
             autoComplete="off"
           >
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="first name"
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
@@ -145,6 +146,7 @@ const AccountAvatar = () => {
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="last name"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
@@ -157,6 +159,7 @@ const AccountAvatar = () => {
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="mobile no"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
@@ -169,6 +172,7 @@ const AccountAvatar = () => {
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="communication"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
@@ -181,6 +185,7 @@ const AccountAvatar = () => {
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="timezone"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
