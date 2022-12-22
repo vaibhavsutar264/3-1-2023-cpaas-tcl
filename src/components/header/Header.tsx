@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         src={(getitem == 'light') ? Globe : GlobeDark}
                         alt="" style={{ width: '18px', height: '18px', position: 'absolute', top: '50%', left: '-12px', transform: 'translateY(-50%)', }} />
                     <Select
+                        className='buidfix1'
                         labelId="demo-select-small"
                         id="demo-select-small"
                         value={i18n.language == ('en-ZA' || 'en-US')? "English": i18n.language}
