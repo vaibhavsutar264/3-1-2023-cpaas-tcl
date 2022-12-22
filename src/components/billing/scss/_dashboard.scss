@@ -413,6 +413,8 @@
 
         &:nth-child(1) {
             background-color: rgb(26, 115, 232) !important;
+            
+
 
             & .cardType__inner {
                 
@@ -447,6 +449,12 @@
         &:nth-child(1):hover,
         &:nth-child(1).active {
             background-color: #fff !important;
+            background-image: url('../../../assets/images/card1active.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid rgb(26, 115, 232);
+
 
             & .cardType__inner {
 
@@ -494,6 +502,11 @@
         &:nth-child(2):hover,
         &:nth-child(2).active {
             background-color: #fff !important;
+            background-image: url('../../../assets/images/card2active.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid rgb(54, 63, 94);
 
             & .cardType__inner {
 
@@ -541,6 +554,11 @@
         &:nth-child(3):hover,
         &:nth-child(3).active {
             background-color: #fff !important;
+            background-image: url('../../../assets/images/card3active.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid rgb(229, 68, 87);
 
             & .cardType__inner {
 
@@ -589,6 +607,11 @@
         &:nth-child(4):hover,
         &:nth-child(4).active {
             background-color: #fff !important;
+            background-image: url('../../../assets/images/card4active.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid rgb(61, 184, 135);
 
             & .cardType__inner {
 

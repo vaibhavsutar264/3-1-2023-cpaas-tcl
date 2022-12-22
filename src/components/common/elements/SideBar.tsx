@@ -237,7 +237,7 @@ export const SideBar = ({
                 <ArrowDropDownIcon className="dropArrow" />
               </Button>
               <Menu
-                className="profile__menu"
+                className="profile__menu right__menu"
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
