@@ -32,6 +32,7 @@ import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 // Importing Images
 import useLocales from '../../../hooks/useLocales'
 import BackgroundBox from '../../common/elements/backGroundBox'
@@ -406,7 +407,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                             {!values.showPassword ? (
                                                                 <VisibilityOffOutlinedIcon />
                                                             ) : (
-                                                                <VisibilityOutlinedIcon />
+                                                                <VisibilityIcon />
                                                             )}
                                                         </IconButton>
                                                     </InputAdornment>
@@ -556,7 +557,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                             {!confirmValues.showPassword ? (
                                                                 <VisibilityOffOutlinedIcon />
                                                             ) : (
-                                                                <VisibilityOutlinedIcon />
+                                                                <VisibilityIcon />
                                                             )}
                                                         </IconButton>
                                                     </InputAdornment>

@@ -241,6 +241,17 @@
         border: 0;
         cursor: pointer;
         opacity: 1;
+
+        &:hover {
+            background-color: $red !important;
+
+            & > svg {
+
+                & path {
+                    fill: $white !important;
+                }
+            }
+        }
     }
 
     .sidebar__list {
@@ -293,6 +304,7 @@
                     font-size: 16px;
                     line-height: 18px;
                     font-weight: bold;
+                    font-family: 'ubuntu';
                     letter-spacing: -0.32px;
                     color: #52626f;
                     text-transform: capitalize;
