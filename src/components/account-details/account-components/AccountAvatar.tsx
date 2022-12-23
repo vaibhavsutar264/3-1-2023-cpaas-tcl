@@ -29,16 +29,8 @@ const AccountAvatar = () => {
       setTimezone(user.attributes.timezone)
       setCommunication(user.attributes.preferredCommunicationMode)
     }
-  }, [])
+  }, [dispatch])
 
-  const buttonElement = document.getElementById(
-    'button-edit'
-) as HTMLButtonElement
-console.log(buttonElement)
-
-// if(buttonElement.innerHTML == 'SAVE'){
-//   console.log(buttonElement)
-// }
 
   const editUserDetails = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -53,7 +45,7 @@ console.log(buttonElement)
     setEditable(false)
   }
 
-  const abcd = ()=>{
+  const abcd = () => {
     setEditable(!false)
     setOpen(!false)
   }
@@ -137,6 +129,7 @@ console.log(buttonElement)
             autoComplete="off"
           >
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="first name"
               value={firstname}
               onChange={(e) => {setFirstname(e.target.value);setOpen(false) }}
@@ -149,6 +142,7 @@ console.log(buttonElement)
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="last name"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
@@ -161,6 +155,7 @@ console.log(buttonElement)
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="mobile no"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
@@ -173,6 +168,7 @@ console.log(buttonElement)
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="communication"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
@@ -185,6 +181,7 @@ console.log(buttonElement)
               }}
             />
             <TextField
+              className={editable ? '' : 'removeBorder'}
               label="timezone"
               variant={editable ? 'outlined' : 'standard'}
               type="text"
