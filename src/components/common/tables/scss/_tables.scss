@@ -94,3 +94,107 @@
 
 }
     }
+
+
+    // Table Grid row styles
+    .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+        background-color: unset !important;
+    }
+
+    tbody .css-1q1u3t4-MuiTableRow-root {
+        // border-bottom: 0 !important;
+        // margin-bottom: 2px;
+        // border-radius: 10px;
+        // display: table;
+    }
+
+
+    // .MuiTableCell-body {
+    //     border-bottom: 5px solid rgb(17 19 21) !important;
+    // }
+
+    th.MuiTableCell-root {
+   
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border-right: 0 !important;
+    }
+    
+    
+    td.MuiTableCell-root:last-child  {
+    
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+        border-left: 0 !important;
+        
+    }
+
+    tbody th, tbody td {
+        border: none !important;
+        // border: 2px solid rgb(26, 115, 232) !important;
+
+        // &:hover {
+        //     border: 2px solid #ff0 !important;
+        // }
+    }
+
+
+
+    // transparent border on table row which changes color on hover
+    tbody tr {
+        & th, & td {
+            border: 2px solid transparent !important;
+        }
+
+        & th {
+            border-right: 0 !important;
+        }
+
+        & td {
+            border-left: 0 !important;
+            border-right: 0 !important;
+        }
+
+        & td:last-child  {
+            border-right: 2px solid transparent !important;
+        }
+    }
+
+
+
+
+
+    // border on table row hover
+    tbody tr:hover {
+        & th, & td {
+            border: 2px solid rgb(26, 115, 232) !important;
+        }
+
+        & th {
+            border-right: 0 !important;
+        }
+
+        & td {
+            border-left: 0 !important;
+            border-right: 0 !important;
+        }
+
+        & td:last-child  {
+            border-right: 2px solid rgb(26, 115, 232) !important;
+        }
+    }
+
+    tbody tr td {
+        border-left: 0 !important;
+        border-right: 0 !important;
+    }
+
+
+    .MuiTableContainer-root.table__Container table {
+        border-collapse: separate;
+        border-spacing: 0px 8px;
+    }
+
+    #table-data:hover {
+        border: 1px solid orangered;
+    }

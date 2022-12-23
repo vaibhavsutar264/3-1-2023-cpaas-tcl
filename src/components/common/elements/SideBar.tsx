@@ -419,7 +419,7 @@ export const SideBar = ({
             }
           }}
         >
-          {isOpen ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+          {isOpen ? <KeyboardDoubleArrowRightIcon /> : <KeyboardDoubleArrowLeftIcon />}
 
 
         </button>
