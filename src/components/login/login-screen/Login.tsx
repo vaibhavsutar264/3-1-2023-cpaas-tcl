@@ -97,7 +97,7 @@ const Login = ({ toggleTheme }: any) => {
         },
         validationSchema: Yup.object({
             email: Yup.string().email().required(),
-            password: Yup.string().min(5).required(),
+            password: Yup.string().min(8).required(),
         }),
         onSubmit: () => {
             const userDetails: UserLogin = {
@@ -121,38 +121,25 @@ const Login = ({ toggleTheme }: any) => {
         e.preventDefault()
         setEmail((e.target as HTMLInputElement).value)
         const emailVariable = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/
-        const emailBoxElement = document.getElementById('email-box') as HTMLInputElement
-        // if ((e.target as HTMLInputElement).value.match(emailVariable)) {
-        //     // emailBoxElement.className = 'input-wrapper success'
-        // } else {
-        //     // emailBoxElement.className = 'input-wrapper'
-        // }
+        const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
+        if ((e.target as HTMLInputElement).value.match(emailVariable)) {
+            submitButtonElement.className = 'customBtn-01 btn-enable-style'
+            setOpen(false)
+        } else {
+            setOpen(true)
+            submitButtonElement.className = 'customBtn-01'
+        }
     }
 
     const handlePasswordChange = (e: SyntheticEvent) => {
         e.preventDefault()
         setPassword((e.target as HTMLInputElement).value)
-        const patternVariable = '.{5,}'
-        const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
-        const passwordBoxElement = document.getElementById('password-box') as HTMLButtonElement
-        if ((e.target as HTMLInputElement).value.match(patternVariable)) {
-            // passwordBoxElement.className = 'input-wrapper password-checkHide success'
-            setOpen(false)
-        } else {
-            (e.target as HTMLInputElement).className = 'form-control input-custom'
-            // passwordBoxElement.className = 'input-wrapper password-checkHide'
-            setOpen(true)
-        }
     }
 
 
     const handlePasteChange = (e: SyntheticEvent) => {
         e.preventDefault()
-        // (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value
-        // const submitButtonElement = document.getElementById('btn-enable-style') as HTMLButtonElement
         setPassword((e.target as HTMLInputElement).value)
-        // submitButtonElement.className = 'customBtn-01 btn-enable-style'
-        // return setPassword((e.target as HTMLInputElement).value)
     }
 
     const handleClickShowPassword = () => {
@@ -230,6 +217,23 @@ const Login = ({ toggleTheme }: any) => {
                                             value={email}
                                         />
                                     </FormControl>
+                                    {touched.email && errors.email && (
+                                        <p>
+                                            {errors.email == 'email is a required field' ? (
+                                                <p className="text-error">{t<string>('email')}</p>
+                                            ) : (
+                                                errors.email == 'email must be a valid email' ? (
+                                                    <p className="text-error">
+                                                        {t<string>('mustBeValidEmail')}
+                                                    </p>
+                                                ) : (
+                                                    ''
+                                                )
+                                            )}
+                                            
+                                        </p>
+                                    )}
+
                                     {/* Password Input */}
                                     <FormControl
                                         className="input-wrapper password-checkHide no-margin"
@@ -281,6 +285,24 @@ const Login = ({ toggleTheme }: any) => {
                                             }}
                                         />
                                     </FormControl>
+                                    {touched.password && errors.password && (
+                                        <p>
+                                            {errors.password == 'password is a required field' ? (
+                                                <p className="text-error">
+                                                    {t<string>('enterPassword')}
+                                                </p>
+                                            ) : (
+                                                errors.password ==
+                                                'password must be at least 8 characters' ? (
+                                                <p className="text-error">
+                                                    {t<string>('atleastEightCharPassword')}
+                                                </p>
+                                            ) : (
+                                                ''
+                                            )
+                                            )}
+                                        </p>
+                                    )}
                                     {/* Forgot Password Link */}
                                     <FormControl
                                         className="input-wrapper password-checkHide no-margin fp-margin"
@@ -317,7 +339,9 @@ const Login = ({ toggleTheme }: any) => {
                                             id="btn-enable-style"
                                             data-testid="button-element"
                                             variant="contained"
-                                            className={`customBtn-01 ${(validatePassword(password) && validateEmail(email)) ? 'btn-enable-style' : 'no-pointers'} `}
+                                            disabled={open}
+                                            className='customBtn-01'
+                                            // className={`customBtn-01 ${(validatePassword(password) && validateEmail(email)) ? 'btn-enable-style' : 'no-pointers'} `}
                                             sx={{
                                                 fontSize: '18px',
                                                 lineHeight: '21px',

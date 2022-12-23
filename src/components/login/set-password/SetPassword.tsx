@@ -175,6 +175,14 @@ const SetPassword = ({ toggleTheme }: any) => {
             'tooltip-main-box'
         ) as HTMLElement
         tooltipMainBoxElement.style.display = 'block'
+        const lowStrengthElement = document.getElementById(
+            'low-strength-text'
+            ) as HTMLButtonElement
+            const linearProgressLowElement = document.getElementById(
+                'linear-progress-low'
+            ) as HTMLDataListElement
+        lowStrengthElement.style.display = 'block'
+        linearProgressLowElement.style.display = 'block'
         setPassword((e.target as HTMLInputElement).value)
         const patternVariable =
             "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
@@ -222,11 +230,11 @@ const SetPassword = ({ toggleTheme }: any) => {
         const highStrengthElement = document.getElementById(
             'high-strength-text'
         ) as HTMLButtonElement
-        if ((e.target as HTMLInputElement).value.match(patternVariable)) {
-            passwordBoxElement.className = 'input-wrapper success'
-        } else {
-            passwordBoxElement.className = 'input-wrapper'
-        }
+        // if ((e.target as HTMLInputElement).value.match(patternVariable)) {
+        //     passwordBoxElement.className = 'input-wrapper success'
+        // } else {
+        //     passwordBoxElement.className = 'input-wrapper'
+        // }
         const tooltipFullfilledRightClickGreen = 'tooltipList-item fulfilled'
         const tooltipUnfullfilledRightClickGray = 'tooltipList-item'
         if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
@@ -253,21 +261,23 @@ const SetPassword = ({ toggleTheme }: any) => {
         if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
             tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
             setCharsFulfilled(true)
+            moderateStrengthElement.style.display = 'block'
             linearProgressModerateElement.style.display = 'block'
+            lowStrengthElement.style.display = 'none'
+            linearProgressLowElement.style.display = 'none'
         } else {
             tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
             setCharsFulfilled(false)
+            moderateStrengthElement.style.display = 'none'
             linearProgressModerateElement.style.display = 'none'
         }
         if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
-            linearProgressModerateElement.style.display = 'none'
             linearProgressSuccessElement.style.display = 'block'
-            moderateStrengthElement.style.display = 'none'
             highStrengthElement.style.display = 'block'
+            linearProgressModerateElement.style.display = 'none'
+            moderateStrengthElement.style.display = 'none'
         } else {
-            linearProgressModerateElement.style.display = 'block'
             linearProgressSuccessElement.style.display = 'none'
-            moderateStrengthElement.style.display = 'block'
             highStrengthElement.style.display = 'none'
         }
     }
@@ -297,7 +307,6 @@ const SetPassword = ({ toggleTheme }: any) => {
         }
         if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
             matchBothPasswordElement.style.display = 'block'
-            // matchBothPasswordElement.style.color = 'green'
         } else {
             matchBothPasswordElement.style.display = 'none'
         }
@@ -434,7 +443,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                         <span className="tooltip-icon" id="symbolTick">
                                                             {sFulfilled ? <BigCheck /> : <CheckIcon />}
                                                         </span>
-                                                        <span className="tooltip-text">A Symbol (@#&)</span>
+                                                        <span className="tooltip-text">Symbol (@#&)</span>
                                                     </li>
                                                     <li id="atleast" className="tooltipList-item">
                                                         <span className="tooltip-icon" id="atleastTick">
@@ -449,6 +458,12 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                     <p className="tooltipTitle StrengthTitle">
                                                         Password Strength:{' '}
                                                         <span
+                                                            id="low-strength-text"
+                                                            style={{ color: '#ed6c02' }}
+                                                        >
+                                                            low
+                                                        </span>
+                                                        <span
                                                             id="moderate-strength-text"
                                                             style={{ color: '#ed6c02' }}
                                                         >
@@ -461,6 +476,12 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                             High
                                                         </span>
                                                     </p>
+                                                    <LinearProgress
+                                                        id="linear-progress-low"
+                                                        variant="determinate"
+                                                        color="warning"
+                                                        value={0}
+                                                    />
                                                     <LinearProgress
                                                         id="linear-progress-moderate"
                                                         variant="determinate"

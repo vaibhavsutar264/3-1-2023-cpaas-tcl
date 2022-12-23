@@ -57,7 +57,6 @@ const DataTable = ({
 }: any) => {
     const { t } = useLocales()
     const { data, columns, tableName } = TableData
-
     const dispatch = useAppDispatch();
     const totalCount = Math.ceil(Total / take)
     const [sortdir, setSortdir]: any = useState(null)
@@ -377,7 +376,6 @@ const DataTable = ({
         const invoiceIssueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.invoiceIssuedDate')}`)[0]
         invoiceIssueIdHeadElement.style.display = invoiceIssueState? 'block': 'none'
         setInvoiceIssueState(!invoiceIssueState);
-
         invoiceIssueIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
@@ -391,21 +389,15 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-due-date'
         ) as HTMLElement
-        const tableElement = document.getElementById(
-            'table-data'
-        ) as HTMLElement
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
         dueIdHeadElement.style.display = dueState? 'block': 'none'
-        setDueState(!dueState);
-        
+        setDueState(!dueState)
         dueIdHeadElement.style.display = 'none'
-        // tableElement.lastElementChild?.remove()
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[7].eleName = 'null'
         console.log(columns[7])
     };
-
 
     const handleDueOpen = (e: SyntheticEvent) => {
         e.preventDefault()
@@ -428,14 +420,6 @@ const DataTable = ({
     const onDateChange =(val: any)=>{
         setStartDate(val.start.format("YYYY-MM-DD"));
         setEndDate(val.end.format("YYYY-MM-DD"));
-      }
-      const [tableData, setTableData] = useState(data);
-      const onSearch = (e: any,head: any,index: any)=>{
-        console.log(head)
-        // const filterData = data.filter((obj : any)=>obj[head['Payment_Status']].toString().includes(e.target.value));
-        const filterData = data.filter((obj : any)=>obj[head['eleName']].toString().includes(e.target.value));
-        console.log(filterData)
-        setTableData(filterData);
       }
     return (
         <>
@@ -549,11 +533,6 @@ const DataTable = ({
                                                 {head && head.filter ? <MultiSelect filterAction={filterAction} filterData={head.filterData} id={`filter-${head.headTrans}${index}`} /> : null}
                                                 {' '}
                                             </span>
-                                                <input 
-                                                  id={`input-${index}`} 
-                                                  onChange={(e)=>onSearch(e,head,index)}
-                                                  placeholder={'Search'}
-                                                />
                                         </button>
                                     </div>
                                 </StyledTableCell>
@@ -568,7 +547,7 @@ const DataTable = ({
                     </TableHead>
                     {/* Table Body */}
                     <TableBody data-testid="table-body-element" className="TableBody" data->
-                        {tableData && tableData.map((item: any, index: any) => (
+                        {data && data.map((item: any, index: any) => (
                             <TableRow id="table-data" key={item.id}>
                                 <TableCell component="th" scope="row">
                                     {' '}
