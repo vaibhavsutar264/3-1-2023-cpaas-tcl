@@ -380,7 +380,6 @@ const DataTable = ({
         const invoiceIssueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.invoiceIssuedDate')}`)[0]
         invoiceIssueIdHeadElement.style.display = invoiceIssueState? 'block': 'none'
         setInvoiceIssueState(!invoiceIssueState);
-
         invoiceIssueIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
         CheckoutElement.style.display = 'block'
@@ -394,21 +393,15 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-due-date'
         ) as HTMLElement
-        const tableElement = document.getElementById(
-            'table-data'
-        ) as HTMLElement
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
         dueIdHeadElement.style.display = dueState? 'block': 'none'
-        setDueState(!dueState);
-        
+        setDueState(!dueState)
         dueIdHeadElement.style.display = 'none'
-        // tableElement.lastElementChild?.remove()
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[7].eleName = 'null'
         console.log(columns[7])
     };
-
 
     const handleDueOpen = (e: SyntheticEvent) => {
         e.preventDefault()

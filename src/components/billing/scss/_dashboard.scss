@@ -375,6 +375,10 @@
     grid-gap: 20px;
     margin: 50px 0px;
 
+    .active {
+        background:#000000;
+    }
+
     .cardType__1 {
         border: 1px solid #ffffff;
         border-radius: 16px;

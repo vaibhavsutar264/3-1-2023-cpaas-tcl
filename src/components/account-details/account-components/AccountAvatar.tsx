@@ -6,6 +6,7 @@ import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { updateUserDetails } from '../../../redux/slices/accountSlice'
 import { getuserInfo } from '../../../redux/slices/authSlice'
+// import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 const AccountAvatar = () => {
   const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const AccountAvatar = () => {
   const [timezone, setTimezone] = useState('')
   const [communication, setCommunication] = useState('')
   const [editable, setEditable] = useState<boolean>(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     dispatch(getuserInfo(user.emailId));
@@ -27,15 +29,8 @@ const AccountAvatar = () => {
       setTimezone(user.attributes.timezone)
       setCommunication(user.attributes.preferredCommunicationMode)
     }
-  }, [])
+  }, [dispatch])
 
-  const buttonElement = document.getElementById(
-    'button-edit'
-  ) as HTMLElement
-
-  // if(buttonElement.innerText == 'edit personal details'){
-
-  // }
 
   const editUserDetails = async (e: SyntheticEvent) => {
     e.preventDefault()
@@ -52,6 +47,7 @@ const AccountAvatar = () => {
 
   const abcd = () => {
     setEditable(!false)
+    setOpen(!false)
   }
 
   return (
@@ -136,7 +132,7 @@ const AccountAvatar = () => {
               className={editable ? '' : 'removeBorder'}
               label="first name"
               value={firstname}
-              onChange={(e) => setFirstname(e.target.value)}
+              onChange={(e) => {setFirstname(e.target.value);setOpen(false) }}
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               sx={{
@@ -151,7 +147,7 @@ const AccountAvatar = () => {
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => {setLastName(e.target.value);setOpen(false) }}
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
@@ -164,7 +160,7 @@ const AccountAvatar = () => {
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={(e) => {setPhoneNumber(e.target.value);setOpen(false) }}
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
@@ -177,7 +173,7 @@ const AccountAvatar = () => {
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={communication}
-              onChange={(e) => setCommunication(e.target.value)}
+              onChange={(e) => {setCommunication(e.target.value);setOpen(false) }}
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
@@ -190,7 +186,7 @@ const AccountAvatar = () => {
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={timezone}
-              onChange={(e) => setTimezone(e.target.value)}
+              onChange={(e) => {setTimezone(e.target.value);setOpen(false) }}
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '100%',
@@ -203,6 +199,7 @@ const AccountAvatar = () => {
             variant="outlined"
             type="button"
             id='button-edit'
+            disabled={open}
             onClick={editable ? editUserDetails : abcd}
             sx={{
               textTransform: 'uppercase',
