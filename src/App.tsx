@@ -36,11 +36,10 @@ const App = () => {
     const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
     return (
         <ThemeProvider theme={themeMode}>
-            <GlobalStyles />
+            <GlobalStyles />    
             <Routes toggleTheme={toggleTheme} />
             <Toggle theme={theme} toggleTheme={toggleTheme} />
             <ToastContainer />
-            
         </ThemeProvider>
     )
 }

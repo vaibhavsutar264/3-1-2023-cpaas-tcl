@@ -90,18 +90,6 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
   }
 
   const getitem = getFromLocalStorage(localStorageVar.THEME_VAR)
-  // const noTranslate= document.getElementById('demo-select-small')
-  const noTranslate = document.getElementsByClassName('notranslate')
-  console.log(noTranslate)
-  // noTranslate[0].innerHTML = 'English'
-
-  //   if(document.getElementsByClassName('notranslate') != null){
-  //     noTranslate[0].innerHTML = 'English';
-  // }
-
-  document.addEventListener("DOMContentLoaded", function (event) {
-    noTranslate[0].innerHTML = 'English';
-  });
 
   return (
     <>
@@ -167,7 +155,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                   className='buidfix1'
                   labelId="demo-select-small"
                   id="demo-select-small"
-                  value={i18n.language == ('en-ZA' || 'en-US') ? "English" : i18n.language}
+                  value={i18n.language == ('en-ZA') ? "English" : (i18n.language == ('en-US') ? "English": i18n.language)}
                   label="Language"
                   onChange={(e) => {
                     i18n.changeLanguage(e.target.value)

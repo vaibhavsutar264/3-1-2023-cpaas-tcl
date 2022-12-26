@@ -429,6 +429,8 @@ const DataTable = ({
         setStartDate(val.start.format("YYYY-MM-DD"));
         setEndDate(val.end.format("YYYY-MM-DD"));
       }
+
+    console.log(columns[2])
     return (
         <>
             <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange}/>
@@ -559,16 +561,17 @@ const DataTable = ({
                             <TableRow id="table-data" key={item.id}>
                                 <TableCell component="th" scope="row">
                                     <a href="/">
-                                        {/* <UnpaidInvoice /> */}
-                                        {/* <PaidInvoice /> */}
-                                        {/* <Overdue /> */}
                                         <Invoice />
                                     </a>
                                 </TableCell>
                                 {columns.map((clm: any, index: any) => (
-                                    <TableCell key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
+                                    <>
+                                    <Tooltip title={item[(clm.eleName == 'Tata_Entity')?clm.eleName:'']}>
+                                    <TableCell className='table-cell-tooltip' key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
                                         {item[clm.eleName]}{' '}
-                                    </TableCell>
+                                        </TableCell>
+                                        </Tooltip>
+                                        </>
                                 ))}
                                 <TableCell style={{ width: 160 }} align="right">
                                     <ul className="actionButtons">
