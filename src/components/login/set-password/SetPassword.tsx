@@ -327,7 +327,7 @@ const SetPassword = ({ toggleTheme }: any) => {
         <>
             <Header toggleTheme={toggleTheme} />
             <Box className="account__screen">
-                {/* ACCOUNT SCREEN BANNER START*/}
+                {/* ACCOUNT SCREEN BANNER START */}
                 <BannerBg />
                 {/* ACCOUNT SCREEN BANNER END */}
                 {/* ACCOUNT SCREEN ANIMATION START */}

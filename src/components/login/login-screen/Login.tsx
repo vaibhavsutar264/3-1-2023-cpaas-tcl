@@ -160,7 +160,8 @@ const Login = ({ toggleTheme }: any) => {
                 {/* ACCOUNT SCREEN ANIMATION START */}
                 <BackgroundBox />
                 {/* ACCOUNT FORM START */}
-                <Box
+                {(user == null) ? (
+                    <Box
                     sx={{ flexGrow: 1 }}
                     id="login-form"
                     className="account__form login-form"
@@ -358,6 +359,9 @@ const Login = ({ toggleTheme }: any) => {
                         </Box>
                     </div>
                 </Box>
+                ) : (
+                    <div><h1>set password screen</h1></div>
+                )}
             </Box>
         </>
     )

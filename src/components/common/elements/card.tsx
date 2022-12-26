@@ -3,18 +3,13 @@ import { useDispatch } from '../../../redux/store'
 
 const Card = ({ data }: any) => {
     const dispatch = useDispatch();
-    const [active, setActive] = useState(null)
-    const blankCheckoutElement = document.getElementsByClassName(
-        'cardType__1'
-    )
-
-    // blankCheckoutElement
-    // blankCheckoutElement.onclick(function (){
-    //     blankCheckoutElement.classList("active").siblings().removeClass("active");
-    //   })
+    const [active, setActive] = useState(false)
+    const titleElement = document.getElementById(
+        'card-title'
+    ) as HTMLButtonElement
     return <button
-        onClick={() => { dispatch(data.action); setActive(data.titel)}}
-        className={`cardType__1 ${active == data.titel && 'active'}`}
+        onClick={() => { dispatch(data.action)}}
+        className={`cardType__1 ${(active == true)? 'active': ''}`}
         style={{
             cursor: 'pointer'
         }}
@@ -24,7 +19,7 @@ const Card = ({ data }: any) => {
                 {data.icon}
             </div>
             <div className="cardType__text">
-                <p className="cardType__name">
+                <p id='card-title' className="cardType__name">
                     {data.titel}
                 </p>
                 <h3 className="cardType__Number" data-testid = 'total-data-card'>
