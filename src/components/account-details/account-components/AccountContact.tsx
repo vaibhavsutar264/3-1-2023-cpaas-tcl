@@ -1,8 +1,14 @@
 import React from 'react'
 import {Box, Stack, Typography, Button} from '@mui/material'
 import HelpImg from '../../../assets/images/need-help.png'
+import useLocales from '../../../hooks/useLocales'
+
 
 const AccountContact = () => {
+
+    const { t } = useLocales()
+
+
   return (
     <>
         {/* 1st right row container starts here */}
@@ -37,7 +43,7 @@ const AccountContact = () => {
                     fontWeight: 700,
                     fontFamily: 'ubuntu',
                     mb: '10px',
-                }}>Need Help?</Typography>
+                }}>{t<string>('enterYourEmailID')}</Typography>
                 <Typography variant='subtitle1' sx={{
                     textAlign: 'center',
                     color: '#344857',
@@ -64,7 +70,7 @@ const AccountContact = () => {
                         backgroundColor: '#D63548',
                         color: '#fff',
                     },
-                }}>contact us</Button>
+                }}>{t<string>('contactUs')}</Button>
                 </Box>
     </>
   )

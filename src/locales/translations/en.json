@@ -82,6 +82,36 @@
         "invoiceIssuedDate": "INVOICE ISSUED DATE",
         "dueDate": "DUE DATE"
       }
-    }
+    },
+    "needHelp": "Need Help?",
+    "contactUs": "Contact Us",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "mobileNo": "Mobile No",
+    "communication": "Communication",
+    "timezone": "Timezone",
+    "save": "save",
+    "editPersonalDetails": "edit personal details",
+    "sendInvoiceTo": "Send Invoice to (Contact)",
+    "name": "Name",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "pin": "Pin",
+    "emailId": "Email Id",
+    "carnr": "Customer Authorized Rate Notification Recepient",
+    "billingDetails": "Billing Details",
+    "accountName": "Account Name",
+    "legalEntity": "Legal Entity",
+    "billingType": "Billing Type",
+    "billingCycle": "Billing Cycle",
+    "paymentMethod": "Payment Period",
+    "vatGstTax": "VAT/GST No./Tax ID",
+    "companyPanOrEqNo": "Company Pan Or Equivalent No.",
+    "applicableCurrency": "Applicable Currency",
+    "contactTerm": "Contract Term",
+    "rateChange...days": "Rate Change Notification Period(In Days)",
+    "rate&cover...zone": "Rate & CoverLegalEntity Change Time Zone",
+    "accountStatusAndRemark": "Account Status & Remark"
   }
 }
