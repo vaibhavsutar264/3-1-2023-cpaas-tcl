@@ -112,6 +112,7 @@ const SetPassword = ({ toggleTheme }: any) => {
     const onSubmit = async (data: any) => {
         if (password !== confirmPassword) {
             toast.error('password and confirm password not same')
+            console.log('error')
             return
         }
         try {
@@ -285,6 +286,7 @@ const SetPassword = ({ toggleTheme }: any) => {
 
     const handleConfirmPasswordChange = (e: SyntheticEvent) => {
         e.preventDefault()
+        
         setConfirmPassword((e.target as HTMLInputElement).value)
         const confirmPasswordpatternVariable =
             "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
@@ -292,19 +294,24 @@ const SetPassword = ({ toggleTheme }: any) => {
         const submitButtonElement = document.getElementById(
             'btn-enable-style'
         ) as HTMLButtonElement
+        const passwordBoxElement = document.getElementById(
+            'password-box'
+        ) as HTMLButtonElement
         const confirmpasswordBoxElement = document.getElementById(
             'confirm-password-box'
         ) as HTMLElement
+        
         const matchBothPasswordElement = document.getElementById(
             'match-both-password-error'
         ) as HTMLParagraphElement
         if (
             (e.target as HTMLInputElement).value.match(confirmPasswordpatternVariable)
         ) {
-            confirmpasswordBoxElement.className =
-                'input-wrapper password-checkHide success'
+            submitButtonElement.disabled = false 
+            submitButtonElement.className = 'customBtn-01 btn-enable-style' 
         } else {
-            confirmpasswordBoxElement.className = 'input-wrapper password-checkHide'
+            submitButtonElement.disabled = true
+            submitButtonElement.className = 'customBtn-01' 
         }
         if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
             matchBothPasswordElement.style.display = 'block'
@@ -613,27 +620,14 @@ const SetPassword = ({ toggleTheme }: any) => {
                                             data-testid="button-element"
                                             type="submit"
                                             name="submit"
-                                            disabled={
-                                                password.length > 0 && confirmPassword.length > 0
-                                                    ? password !== confirmPassword
-                                                        ? true
-                                                        : false
-                                                    : true
-                                            }
+                                            disabled
                                             sx={{
                                                 fontSize: '18px',
                                                 lineHeight: '21px',
                                                 fontFamily: 'ubuntu',
                                                 letterSpacing: '-0.72px',
                                             }}
-                                            className={
-                                                password.length > 0 && confirmPassword.length > 0
-                                                    ? password !== confirmPassword
-                                                        ? 'customBtn-01'
-                                                        : 'customBtn-01 btn-enable-style'
-                                                    : 'customBtn-01'
-                                            }
-                                        >
+                                            className='customBtn-01' >
                                             {t<string>('done')}
                                         </ColorButton>
                                     </FormControl>

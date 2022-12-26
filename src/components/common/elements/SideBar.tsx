@@ -110,13 +110,13 @@ export const SideBar = ({
         style={{ position: 'fixed', top: 0, zIndex: 2 }}
       >
         <div className="dashboard__container">
-          <Link className="logo" to="/">
+          <div className="logo" >
             {getitem == 'light' ? (
               <img id="tata-logo-invoice" src={DarkLogo} alt="CPAAS TCL" />
             ) : (
               <img id="tata-logo-invoice" src={Logo} alt="CPAAS TCL" />
             )}
-          </Link>
+          </div>
           <div className="right__elements">
             <div className="right__elementsItem search__group">
               <Paper

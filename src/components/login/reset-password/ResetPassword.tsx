@@ -292,10 +292,11 @@ const ResetPassword = ({toggleTheme}:any) => {
         if (
             (e.target as HTMLInputElement).value.match(confirmPasswordpatternVariable)
         ) {
-            confirmpasswordBoxElement.className =
-                'input-wrapper password-checkHide success'
+            submitButtonElement.disabled = false 
+            submitButtonElement.className = 'customBtn-01 btn-enable-style' 
         } else {
-            confirmpasswordBoxElement.className = 'input-wrapper password-checkHide'
+            submitButtonElement.disabled = true
+            submitButtonElement.className = 'customBtn-01' 
         }
         if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
             matchBothPasswordElement.style.display = 'block'
@@ -583,26 +584,14 @@ const ResetPassword = ({toggleTheme}:any) => {
                                         data-testid="button-element"
                                         type="submit"
                                         name="submit"
-                                        disabled={
-                                            password.length > 0 && confirmPassword.length > 0
-                                                ? password !== confirmPassword
-                                                    ? true
-                                                    : false
-                                                : true
-                                        }
+                                        disabled
                                         sx={{
                                             fontSize: '18px',
                                             lineHeight: '21px',
                                             fontFamily: 'ubuntu',
                                             letterSpacing: '-0.72px',
                                         }}
-                                        className={
-                                            password.length > 0 && confirmPassword.length > 0
-                                                ? password !== confirmPassword
-                                                    ? 'customBtn-01'
-                                                    : 'customBtn-01 btn-enable-style'
-                                                : 'customBtn-01'
-                                        }
+                                        className='customBtn-01'
                                     >
                                         {t<string>('done')}
                                     </ColorButton>

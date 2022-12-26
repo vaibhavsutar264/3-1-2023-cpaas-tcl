@@ -10,7 +10,7 @@
     "forgotPassword": "Passwort vergessen?",
     "loginBtn": "Anmeldung",
     "logoutBtn": "Ausloggen",
-    "yourEmailIdPasswordNotMatch": "Your email id and password do not match. Please try again",
+    "yourEmailIdPasswordNotMatch": "Ihre E-Mail-ID und Ihr Passwort stimmen nicht überein. Bitte versuche es erneut",
     "setPassword": "Passwort festlegen",
     "generatePassword": "Neues Passwort generieren",
     "confirmPassword": "Passwort bestätigen",
