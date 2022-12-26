@@ -66,6 +66,7 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
                 <DataTable
                     handledownloadViewpdf={downloadBillingInvoice}
                     handledownloadPdf={downloadBillingInvoice}
+                    handledownloadCdrPdf={downloadBillingInvoiceCDR}
                     handleShow={handleShow}
                     pageAction={ChangePageBilling}
                     sortAction={sortData}

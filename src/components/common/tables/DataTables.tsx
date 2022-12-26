@@ -51,6 +51,7 @@ const DataTable = ({
     page,
     handleShow,
     handledownloadPdf,
+    handledownloadCdrPdf,
     handledownloadViewpdf,
     setStartDate,
     setEndDate
@@ -83,6 +84,9 @@ const DataTable = ({
 
     const handleDownload = (data: any) => {
         dispatch(handledownloadPdf(data))
+    }
+    const handleDownloadCdr = (data: any) => {
+        dispatch(handledownloadCdrPdf(data))
     }
 
     const handleViewPdf = (data: any) => {
@@ -575,6 +579,11 @@ const DataTable = ({
                                     <Tooltip title="DOWNLOAD">
                                         <button className="actionButton__item" onClick={() => handleDownload(item)} >
                                             <span><Download /></span>
+                                        </button>
+                                    </Tooltip>
+                                    <Tooltip title="DOWNLOAD">
+                                        <button className="actionButton__item" onClick={() => handleDownloadCdr(item)} >
+                                            <span>Download Cdr</span>
                                         </button>
                                     </Tooltip>
                                     </ul>
