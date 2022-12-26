@@ -23,6 +23,7 @@ declare module 'styled-components' {
         inputHeaderInputColor: string
         inputHeaderPlaceholderColor: string
         searchiconSidebar: string
+        searchiconSidebarOpacity: string
         notificationColor: string
         notificationBadgeBgColor: string
         breadcrumbColor: string
@@ -99,5 +100,9 @@ declare module 'styled-components' {
         datatableIconHoverTxt: string
         langInvoicesLoginscreensSvg: string
         forgotPasswordLnkColor: string
+        cardBorder: string
+        cardHoverBorder: string
+        verticalDotsBg: string
+        verticalDots: string
     }
 }

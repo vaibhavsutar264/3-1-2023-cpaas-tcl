@@ -216,7 +216,10 @@ export const SideBar = ({
                   // fontSize: '0.55rem',
                 }}
               >
-                <NotificationsNoneIcon color="action" />
+                <NotificationsNoneIcon color="action" fontSize='inherit' />
+                {/* <IconButton size="large">
+                  <NotificationsNoneIcon color="action" fontSize='inherit' />
+                </IconButton> */}
               </Badge>
             </div>
             <div className="right__elementsItem profile__setting">

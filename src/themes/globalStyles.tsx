@@ -22,6 +22,7 @@ export const lightTheme = {
     inputHeaderInputColor: '#222',
     inputHeaderPlaceholderColor: '#344857',
     searchiconSidebar: '#344857',
+    searchiconSidebarOpacity: '0.5',
     notificationColor: '#757575',
     notificationBadgeBgColor: '#D63548',
     breadcrumbColor: '#344857',
@@ -98,6 +99,10 @@ export const lightTheme = {
     iconCtaTxt: '#d63548 a!important',
     datatableIconHoverTxt: '#fff !important',
     forgotPasswordLnkColor: '#092133 !important',
+    cardBorder: '#fff !important',
+    cardHoverBorder: '#fff', // dont bother about it
+    verticalDotsBg: '#fff !important',
+    verticalDots: '#344857 !important',
 }
 
 export const darkTheme = {
@@ -123,6 +128,7 @@ export const darkTheme = {
     inputHeaderInputColor: '#fff',
     inputHeaderPlaceholderColor: '#787785',
     searchiconSidebar: '#787785',
+    searchiconSidebarOpacity: '1',
     notificationColor: '#fff',
     notificationBadgeBgColor: '#D63548',
     breadcrumbColor: '#9D9FA1',
@@ -199,6 +205,10 @@ export const darkTheme = {
     iconCtaTxt: '#fff !important',
     datatableIconHoverTxt: '#fff !importnt',
     forgotPasswordLnkColor: '#9D9FA1 !important',
+    cardBorder: 'transparent !important',
+    cardHoverBorder: 'transparent !important',
+    verticalDotsBg: 'transparent !important',
+    verticalDots: '#9D9FA1 !important',
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: string }>`
@@ -309,6 +319,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   #searchicon-sidebar {
     color: ${({ theme }) => theme.searchiconSidebar};
+    opacity: ${({ theme }) => theme.searchiconSidebarOpacity};
   }
   #notification-badge > span {
     background-color: ${({ theme }) => theme.notificationBadgeBgColor};
@@ -333,6 +344,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   }
   #searchproducts-input > button > svg {
     color: ${({ theme }) => theme.searchProductsIconColor};
+    opacity: ${({ theme }) => theme.searchiconSidebarOpacity}
   }
   .dashboard__sidebar .sidebar__list .list__item .item__link.active {
     background-color: ${({ theme }) => theme.sidebarActiveLinkBg};
@@ -525,5 +537,20 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   .action__elementItem .iconCta a, .action__elementItem .iconCta svg path {
     color: ${({ theme }) => theme.iconCtaTxt};
     fill: ${({ theme }) => theme.iconCtaTxt};
+  }
+  .card-wrapper-1 .cardType__1 {
+    border: 1px solid ${({ theme }) => theme.cardBorder};
+  }
+  .card-wrapper-1 .cardType__1:nth-child(1):hover, .card-wrapper-1 .cardType__1:nth-child(1).active,
+  .card-wrapper-1 .cardType__1:nth-child(2):hover, .card-wrapper-1 .cardType__1:nth-child(2).active,
+  .card-wrapper-1 .cardType__1:nth-child(3):hover, .card-wrapper-1 .cardType__1:nth-child(3).active,
+  .card-wrapper-1 .cardType__1:nth-child(4):hover, .card-wrapper-1 .cardType__1:nth-child(4).active {
+    border: 1px solid ${({ theme }) => theme.cardHoverBorder};
+  }
+  table tr th button#basic-button {
+    background-color: ${({ theme }) => theme.verticalDotsBg};
+  }
+  table tr th button#basic-button svg {
+    color: ${({ theme }) => theme.verticalDots};
   }
 `
