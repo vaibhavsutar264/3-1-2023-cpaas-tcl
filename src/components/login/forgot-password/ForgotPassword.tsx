@@ -23,6 +23,8 @@ import useLocales from '../../../hooks/useLocales'
 import Header from '../../header/Header'
 import { useNavigate } from 'react-router-dom'
 import ModalMail from '../../modals/ModalMail'
+import DoneIcon from '@mui/icons-material/Done';
+
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -53,6 +55,10 @@ const ForgotPassword = ({ toggleTheme }: any) => {
     useEffect(() => {
         dispatch(resetForgotPaswordPrms())
     }, [])
+
+    const validateEmail = (email: any) => {
+        return /^[^ ]+@[^ ]+\.[a-z]{2,4}$/.test(email)
+    }
 
     const handleEmailChange = (e: SyntheticEvent) => {
         e.preventDefault()
@@ -109,6 +115,8 @@ const ForgotPassword = ({ toggleTheme }: any) => {
                                         <InputLabel htmlFor="ammount" className="label__icon">
                                             <MailOutlineIcon id="mail-icon" />
                                         </InputLabel>
+                                        {validateEmail(email) && <span className='checkIcon'><DoneIcon color='success' /></span>}
+
                                         <TextField
                                             className="input-field"
                                             required

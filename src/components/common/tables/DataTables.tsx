@@ -30,6 +30,10 @@ import { Link } from 'react-router-dom'
 import MultiSelect from '../elements/multiSelect'
 import { apiVrbls } from '../../../utils/constants';
 import moment from "moment";
+import Invoice from '../../common/icons/invoice'
+import Overdue from '../../common/icons/overdue'
+import PaidInvoice from '../../common/icons/paidInvoice'
+import UnpaidInvoice from '../../common/icons/unpaidInvoice'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -554,10 +558,12 @@ const DataTable = ({
                         {data && data.map((item: any, index: any) => (
                             <TableRow id="table-data" key={item.id}>
                                 <TableCell component="th" scope="row">
-                                    {' '}
                                     <a href="/">
-                                        <Time />
-                                    </a>{' '}
+                                        {/* <UnpaidInvoice /> */}
+                                        {/* <PaidInvoice /> */}
+                                        {/* <Overdue /> */}
+                                        <Invoice />
+                                    </a>
                                 </TableCell>
                                 {columns.map((clm: any, index: any) => (
                                     <TableCell key={`tbl-clm${index}`} style={{ width: 160 }} align="right">

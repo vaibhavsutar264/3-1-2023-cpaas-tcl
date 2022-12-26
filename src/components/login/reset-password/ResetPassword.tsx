@@ -31,6 +31,7 @@ import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 // Importing Images
 import Background from '../../../assets/images/login-bg.jpg'
 import ChartImg from '../../../assets/images/svg/Chart.svg'
@@ -385,7 +386,7 @@ const ResetPassword = ({toggleTheme}:any) => {
                                                         edge="end"
                                                     >
                                                         {values.showPassword ? (
-                                                            <VisibilityOutlinedIcon />
+                                                            <VisibilityIcon />
                                                         ) : (
                                                             <VisibilityOffOutlinedIcon />
                                                         )}
@@ -524,7 +525,7 @@ const ResetPassword = ({toggleTheme}:any) => {
                                                         edge="end"
                                                     >
                                                         {confirmValues.showPassword ? (
-                                                            <VisibilityOutlinedIcon />
+                                                            <VisibilityIcon />
                                                         ) : (
                                                             <VisibilityOffOutlinedIcon />
                                                         )}

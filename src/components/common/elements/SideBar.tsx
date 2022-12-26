@@ -211,6 +211,9 @@ export const SideBar = ({
                 id="notification-badge"
                 sx={{
                   color: '#fff',
+                  // minWidth: '16px',
+                  // height: '16px',
+                  // fontSize: '0.55rem',
                 }}
               >
                 <NotificationsNoneIcon color="action" />
@@ -419,7 +422,7 @@ export const SideBar = ({
             }
           }}
         >
-          {isOpen ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+          {isOpen ? <KeyboardDoubleArrowRightIcon /> : <KeyboardDoubleArrowLeftIcon />}
 
 
         </button>

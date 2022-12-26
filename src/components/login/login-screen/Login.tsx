@@ -25,6 +25,7 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import useLocales from '../../../hooks/useLocales'
 import { getFromLocalStorage } from '../../../hooks/useLocalStorage'
 import BackgroundBox from '../../common/elements/backGroundBox'
@@ -278,7 +279,7 @@ const Login = ({ toggleTheme }: any) => {
                                                             {!values.showPassword ? (
                                                                 <VisibilityOffOutlinedIcon />
                                                             ) : (
-                                                                <VisibilityOutlinedIcon />
+                                                                <VisibilityIcon />
                                                             )}
                                                         </IconButton>
                                                     </InputAdornment>

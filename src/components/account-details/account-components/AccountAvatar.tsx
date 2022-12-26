@@ -83,14 +83,14 @@ const AccountAvatar = () => {
             <Badge
               overlap="circular"
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-              badgeContent={
-                <SmallAvatar
-                  sx={{ bgcolor: '#EDEFF0', color: '#52626F' }}
-                  variant="circular"
-                >
-                  <CameraAltOutlinedIcon />
-                </SmallAvatar>
-              }
+              // badgeContent={
+              //   <SmallAvatar
+              //     sx={{ bgcolor: '#EDEFF0', color: '#52626F' }}
+              //     variant="circular"
+              //   >
+              //     <CameraAltOutlinedIcon />
+              //   </SmallAvatar>
+              // }
             >
               <Avatar
                 alt="Travis Howard"
@@ -112,10 +112,11 @@ const AccountAvatar = () => {
             component="form"
             className="billing-details-input"
             sx={{
-              '& > :not(style)': { m: 1, width: '25ch' },
+              '& > :not(style)': { m: 0, width: '25ch', flexGrow: 1 },
               display: 'flex',
               flexWrap: 'wrap',
               rowGap: '20px',
+              columnGap: '20px',
               justifyContent: 'space-between',
               marginBottom: '40px',
               '& label': {
