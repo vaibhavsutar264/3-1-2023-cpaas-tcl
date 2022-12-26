@@ -1,0 +1,11 @@
+// styles for search input placeholders
+#sidebar-top > div > div > div.right__elementsItem.search__group > form > div > input::placeholder, #searchproducts-input > div > input::placeholder {
+    font-family: 'ubuntu';
+    font-size: 14px;
+    letter-spacing: -0.56px;
+  }
+
+  // increase notification icon size
+  #notification-badge {
+    font-size: 25px;
+  }
