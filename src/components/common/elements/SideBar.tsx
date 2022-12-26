@@ -326,6 +326,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('dashboard')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('dashboard')}
+                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -336,6 +339,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('userManagement')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('userManagement')}
+                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -346,6 +352,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('services')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('services')}
+                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -356,6 +365,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('sms')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('sms')}
+                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -369,6 +381,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('billingInvoice')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('billingInvoice')}
+                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -380,6 +395,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('tickets')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('tickets')}
+                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -390,6 +408,9 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('support')}
                 </span>
+                {/* <span className="link__text" id="link__col-text">
+                  {t<string>('support')}
+                </span> */}
               </Link>
             </li>
           </ul>
