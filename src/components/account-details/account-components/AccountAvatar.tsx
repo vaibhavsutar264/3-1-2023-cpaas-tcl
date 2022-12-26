@@ -6,9 +6,12 @@ import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { updateUserDetails } from '../../../redux/slices/accountSlice'
 import { getuserInfo } from '../../../redux/slices/authSlice'
+import useLocales from '../../../hooks/useLocales'
 // import { isDisabled } from '@testing-library/user-event/dist/utils'
 
+
 const AccountAvatar = () => {
+  const { t } = useLocales()
   const dispatch = useDispatch()
   const { user, userEmail } = useSelector((state: any) => state.auth || {})
   const SmallAvatar = styled(Avatar)(({ theme }: any) => ({ width: 44, height: 44 }))
@@ -121,6 +124,8 @@ const AccountAvatar = () => {
               marginBottom: '40px',
               '& label': {
                 top: editable ? '14px' : 0,
+                fontSize: '18px',
+                letterSpacing: '-0.28px',
               },
               '& label:not(.MuiFormLabel-filled, .MuiInputLabel-shrink)': {
                 top: '-3px',
@@ -131,7 +136,7 @@ const AccountAvatar = () => {
           >
             <TextField
               className={editable ? '' : 'removeBorder'}
-              label="first name"
+              label={t<string>('firstName')}
               value={firstname}
               onChange={(e) => {setFirstname(e.target.value);setOpen(false) }}
               variant={editable ? 'outlined' : 'standard'}
@@ -144,7 +149,7 @@ const AccountAvatar = () => {
             />
             <TextField
               className={editable ? '' : 'removeBorder'}
-              label="last name"
+              label={t<string>('lastName')}
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={lastName}
@@ -157,7 +162,7 @@ const AccountAvatar = () => {
             />
             <TextField
               className={editable ? '' : 'removeBorder'}
-              label="mobile no"
+              label={t<string>('mobileNo')}
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={phoneNumber}
@@ -170,7 +175,7 @@ const AccountAvatar = () => {
             />
             <TextField
               className={editable ? '' : 'removeBorder'}
-              label="communication"
+              label={t<string>('communication')}
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={communication}
@@ -183,7 +188,7 @@ const AccountAvatar = () => {
             />
             <TextField
               className={editable ? '' : 'removeBorder'}
-              label="timezone"
+              label={t<string>('timezone')}
               variant={editable ? 'outlined' : 'standard'}
               type="text"
               value={timezone}
@@ -218,7 +223,7 @@ const AccountAvatar = () => {
               },
             }}
           >
-            {editable ? 'save' : 'edit personal details'}
+            {editable ? t<string>('save') : t<string>('editPersonalDetails')}
           </Button>
         </form>
       </Box>

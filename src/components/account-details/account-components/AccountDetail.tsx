@@ -12,12 +12,15 @@ import {
 } from '@mui/material'
 import { useDispatch, useSelector } from '../../../redux/store'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import useLocales from '../../../hooks/useLocales'
+
 
 const AccountDetail = ({
   LegalEntity,
   setLegalEntity,
   setsendInvoice,
 }: any) => {
+  const { t } = useLocales()
   const dispatch = useDispatch()
   const [leEntity, setLeEntity] = useState<any>(null)
   const { accountDetails } = useSelector((state: any) => state.account)
@@ -88,7 +91,7 @@ const AccountDetail = ({
                 fontFamily: 'ubuntu',
               }}
             >
-              Billing Details
+              {t<string>('billingDetails')}
             </Typography>
             <Box
               id="select-entity-form"
@@ -169,7 +172,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                account name
+                {t<string>('accountName')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -206,7 +209,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                legal entity
+                {t<string>('legalEntity')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -243,7 +246,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                billing type
+                {t<string>('billingType')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -280,7 +283,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                billing cycle
+                {t<string>('billingCycle')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -317,7 +320,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                payment period
+                {t<string>('paymentPeriod')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -354,7 +357,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                VAT/GST No./Tax ID
+                {t<string>('vatGstTax')}
               </Typography>
 
               <Typography
@@ -392,7 +395,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                Company Pan or Equivalent No.
+                {t<string>('companyPanOrEqNo')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -429,7 +432,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                applicable currency
+                {t<string>('applicableCurrency')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -465,7 +468,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                contact term
+                {t<string>('contactTerm')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -501,7 +504,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                rate change notification period(in days)
+                {t<string>('rateChange...days')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -538,7 +541,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                rate & coverLegalEntity change time zone
+                {t<string>('rate&cover...zone')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -575,7 +578,7 @@ const AccountDetail = ({
                   textTransform: 'capitalize',
                 }}
               >
-                account status & remark
+                {t<string>('accountStatusAndRemark')}
               </Typography>
               <Typography
                 className="prefilled-content"

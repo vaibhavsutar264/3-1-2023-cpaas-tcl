@@ -83,6 +83,36 @@
         "invoiceIssuedDate": "RECHNUNGSAUSSTELLUNGSDATUM",
         "dueDate": "GEBURTSTERMIN"
       }
-    }
+    },
+    "needHelp": "Brauchen Sie Hilfe?",
+    "contactUs": "Kontaktiere uns",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "mobileNo": "Handy-Nr",
+    "communication": "Kommunikation",
+    "timezone": "Zeitzone",
+    "save": "speichern",
+    "editPersonalDetails": "persönliche Daten bearbeiten",
+    "sendInvoiceTo": "Rechnung senden an (Kontakt)",
+    "name": "Name",
+    "address": "Adresse",
+    "city": "Stadt",
+    "country": "Land",
+    "pin": "PIN",
+    "emailId": "E-Mail-ID",
+    "carnr": "Vom Kunden autorisierter Preisbenachrichtigungsempfänger",
+    "billingDetails": "Rechnungsdetails",
+    "accountName": "Kontobezeichnung",
+    "legalEntity": "Juristische Person",
+    "billingType": "Abrechnungsart",
+    "billingCycle": "Rechnungskreislauf",
+    "paymentMethod": "Zahlungsfrist",
+    "vatGstTax": "Umsatzsteuer-/GST-Nr./Steuer-ID",
+    "companyPanOrEqNo": "Firma Pan oder gleichwertige Nr.",
+    "applicableCurrency": "Anwendbare Währung",
+    "contactTerm": "Vertragslaufzeit",
+    "rateChange...days": "Benachrichtigungszeitraum für Preisänderungen (in Tagen)",
+    "rate&cover...zone": "Rate & CoverLegalEntity Zeitzone ändern",
+    "accountStatusAndRemark": "Kontostatus & Bemerkung"
   }
 }

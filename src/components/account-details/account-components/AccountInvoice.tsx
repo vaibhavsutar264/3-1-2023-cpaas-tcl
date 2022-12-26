@@ -1,8 +1,12 @@
 import { Box, Stack, Typography, TextField } from '@mui/material'
 import { useSelector } from '../../../redux/store'
+import useLocales from '../../../hooks/useLocales'
+
 
 const AccountInvoice = ({ sendInvoice }: any) => {
   const { accountDetails } = useSelector((state: any) => state.account || {})
+  const { t } = useLocales()
+
   return (
     <>
       {/* 2nd row container starts */}
@@ -39,7 +43,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   fontFamily: 'ubuntu',
                 }}
               >
-                Send Invoice to (Contact)
+                {t<string>('sendInvoiceTo')}
               </Typography>
             </Stack>
           </Box>
@@ -79,7 +83,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                name
+                {t<string>('name')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -116,7 +120,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                address
+                  {t<string>('address')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -153,7 +157,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                city
+                {t<string>('city')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -190,7 +194,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                country
+                  {t<string>('country')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -227,7 +231,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                pin
+                {t<string>('pin')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -264,7 +268,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                email id
+                {t<string>('emailId')}
               </Typography>
               <Typography
                 className="prefilled-content"
@@ -301,7 +305,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
                   textTransform: 'capitalize',
                 }}
               >
-                customer authorized rate notification recepient
+                {t<string>('carnr')}
               </Typography>
               <Typography
                 className="prefilled-content"
