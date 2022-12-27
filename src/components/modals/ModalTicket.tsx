@@ -28,9 +28,6 @@ function ModalTicket() {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open responsive dialog
-            </Button>
             <Dialog
                 fullScreen={fullScreen}
                 open={open}

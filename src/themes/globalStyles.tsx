@@ -106,7 +106,7 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-    body: '#121212 !important',
+    body: '#fff !important',
     text: '#fff !important',
     textForLogin: 'white !important',
     primary:
@@ -432,9 +432,6 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
   // Input label color
   .account__screen .account__form .form__inner .account__form__body .input-wrapper .MuiFormControl-root label {
     color: ${({ theme }) => theme.inputLabelColor};
-  }
-  #email-box svg path, #password-box svg path, #confirm-password-box svg path {
-    fill: ${({ theme }) => theme.mailIconColor};
   }
   .toggle__wrapper {
     background: ${({ theme }) => theme.toggleWrapper};

@@ -1229,3 +1229,8 @@ input:-webkit-autofill {
 label {
     font-family: ubuntu !important;
 }
+
+// Make eye icon more prominent
+#email-box svg path, #password-box svg path, #confirm-password-box svg path {
+    fill: #121212;
+  }
