@@ -23,7 +23,7 @@ import {
   getFromLocalStorage,
   setInLocalStorage,
 } from '../../hooks/useLocalStorage'
-import { apiVrbls, localStorageVar, typeVar } from '../../utils/constants'
+import { apiVrbls, localStorageVar, typeVar, appThemes } from '../../utils/constants'
 import { useSelector } from 'react-redux'
 
 
@@ -146,7 +146,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                 id="lang-background-invoices" className='lang-background-loginscreens'
               >
                 <img
-                  src={(getitem == 'light') ? Globe : GlobeDark}
+                  src={(getitem == appThemes.LIGHT_THEME) ? Globe : GlobeDark}
                   alt="" style={{ width: '18px', height: '18px', position: 'absolute', top: '50%', left: '-12px', transform: 'translateY(-50%)', }} />
                 <Select
                   MenuProps={{
@@ -159,7 +159,7 @@ const Header = ({ toggleTheme }: { toggleTheme: any }) => {
                   label="Language"
                   onChange={(e) => {
                     i18n.changeLanguage(e.target.value)
-                    setInLocalStorage('lng', e.target.value)
+                    setInLocalStorage(localStorageVar.LANG_VAR, e.target.value)
                   }}
                 >
                   {availableLanguages.map((language) => (

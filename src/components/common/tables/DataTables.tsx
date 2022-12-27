@@ -429,8 +429,6 @@ const DataTable = ({
         setStartDate(val.start.format("YYYY-MM-DD"));
         setEndDate(val.end.format("YYYY-MM-DD"));
       }
-
-    console.log(columns[2])
     return (
         <>
             <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange}/>

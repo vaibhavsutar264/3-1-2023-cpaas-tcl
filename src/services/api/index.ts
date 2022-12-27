@@ -61,7 +61,7 @@ const requests = {
   postPdf: (url: string, data: any, transformer: any) =>
     httpInstance(transformer).get(url, {
       responseType: 'blob',
-      headers: { 'Content-Type': 'application/pdf' },
+      headers: { [apiHelpers.HEADER_CONTENT_TYPE] : apiHelpers.CONTENT_TYPE_APP_PDF },
     }),
 }
 
