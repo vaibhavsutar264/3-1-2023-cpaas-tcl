@@ -1,10 +1,10 @@
 /* eslint-disable import/export */
 import { cleanup, render } from '@testing-library/react'
-import { afterEach } from 'vitest'
+// import { afterEach } from 'vitest'
 
-afterEach(() => {
-    cleanup()
-})
+// afterEach(() => {
+//     cleanup()
+// })
 
 const customRender = (ui: React.ReactElement, options = {}) =>
     render(ui, {

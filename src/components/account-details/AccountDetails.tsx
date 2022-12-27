@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Grid } from '@mui/material'
 
 import AccountAvatar from './account-components/AccountAvatar'
 import AccountContact from './account-components/AccountContact'
 import AccountDetail from './account-components/AccountDetail'
 import AccountInvoice from './account-components/AccountInvoice'
-import { SideBar } from '../common/elements/SideBar'
 import { useDispatch, useSelector } from '../../redux/store'
 import { getAcDetails } from '../../redux/slices/accountSlice'
 
 const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
   const dispatch = useDispatch()
-  const [aDWidth, setADWidth] = useState('300px')
-  const handleADWidth = () => {
-    const currentWidth = aDWidth == '300px' ? '130px' : '300px'
-    setADWidth(currentWidth)
-  }
+  const { dashBoardWidth } = useSelector((state: any) => state.common);
 
   useEffect(() => {
     dispatch(getAcDetails())
@@ -26,10 +21,9 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
 
   return (
     <>
-      <SideBar toggleTheme={toggleTheme} handleADWidth={handleADWidth} />
       <Box
         className="bd-container"
-        style={{ width: `calc(100% - ${aDWidth})`, marginLeft: `${aDWidth}` }}
+        style={{ width: `calc(100% - ${dashBoardWidth})`, marginLeft: `${dashBoardWidth}` }}
       >
         <Grid
           className="bd-inner-container"
@@ -68,7 +62,7 @@ const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
             </Grid>
 
             <Grid item xs={8}>
-            <AccountInvoice sendInvoice={sendInvoice}/>
+              <AccountInvoice sendInvoice={sendInvoice} />
             </Grid>
           </Grid>
         </Grid>

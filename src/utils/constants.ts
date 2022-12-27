@@ -1,8 +1,12 @@
+import Invoice from "../components/common/icons/invoice"
+import Overdue from "../components/common/icons/overdue"
+import PaidInvoice from "../components/common/icons/paidInvoice"
+import UnpaidInvoice from "../components/common/icons/unpaidInvoice"
 
 export const apiRoutes = {
-    // BASE_URL: 'http://115.112.43.74:8585',
+    BASE_URL: 'http://115.112.43.74:8585',
     // BASE_URL: '',
-    BASE_URL: 'http://localhost:8585',
+    // BASE_URL: 'http://localhost:8585',
     // BASE_URL: 'http://api.sspdev.digodev.com',
 
     // User
@@ -54,6 +58,7 @@ export const thunkPaths = {
 export const slices = {
     AUTH_SLICE: 'auth',
     BILLING_SLICE: 'billing',
+    COMMON_SLICE: 'common',
     ACCOUNT_SLICE: 'accountDetails',
 }
 
@@ -113,7 +118,11 @@ export const breadCrums = {
 
 export const dataTables = {
     BILLING: (values: [], masterData = []) => ({
-        data: values,
+        data: values.map((v: any) => {
+            return {
+                ...v, icon: v[apiVrbls.BILLING.PAY_STATUS]
+            }
+        }),
         columns: [
             { eleName: apiVrbls.BILLING.INVOICE_ID, headTrans: 'id', sort: true, filter: false },
             {

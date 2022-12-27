@@ -1,11 +1,17 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useLocales from '../../hooks/useLocales'
-import Header from '../header/Header'
+import { appRoutes } from '../../utils/constants'
 
-const HomeScreen = ({toggleTheme}:any) => {
+const HomeScreen = () => {
   const { t } = useLocales()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    navigate(appRoutes.LOGIN)
+  })
   return (
     <>
-    <Header toggleTheme={toggleTheme} />
       <div className="main-div">
         <h1 data-testid="password-exist" className="homescreen-text">
           {t<string>('home')}

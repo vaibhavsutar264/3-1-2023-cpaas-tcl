@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router-dom';
 import {
-    useDispatch as useAppDispatch,
     useSelector
 } from '../../redux/store'
 import ModalWelcome from '../modals/ModalWelcome';

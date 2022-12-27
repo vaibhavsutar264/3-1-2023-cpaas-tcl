@@ -7,20 +7,15 @@ const Card = ({ data }: any) => {
     const blankCheckoutElement = document.getElementById(
         'button'
     )
-    if(blankCheckoutElement){
-    if(blankCheckoutElement.style.backgroundColor == '#fff'){
-        blankCheckoutElement.onclick =()=>{
-            blankCheckoutElement.style.backgroundColor = 'red'
+    if (blankCheckoutElement) {
+        if (blankCheckoutElement.style.backgroundColor == '#fff') {
+            blankCheckoutElement.onclick = () => {
+                blankCheckoutElement.style.backgroundColor = 'red'
+            }
         }
     }
-}
-
-    // blankCheckoutElement
-    // blankCheckoutElement.onclick(function (){
-    //     blankCheckoutElement.classList("active").siblings().removeClass("active");
-    //   })
     return <button
-        onClick={() => { dispatch(data.action)}}
+        onClick={() => { dispatch(data.action) }}
         id='button'
         className={`cardType__1 ${active == data.titel && 'active'}`}
         style={{
@@ -35,7 +30,7 @@ const Card = ({ data }: any) => {
                 <p className="cardType__name">
                     {data.titel}
                 </p>
-                <h3 className="cardType__Number" data-testid = 'total-data-card'>
+                <h3 className="cardType__Number" data-testid='total-data-card'>
                     {data.value}
                 </h3>
             </div>

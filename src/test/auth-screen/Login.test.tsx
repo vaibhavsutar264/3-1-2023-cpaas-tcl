@@ -6,7 +6,7 @@ import { store, persistor } from '../../redux/store'
 import userEvent from '@testing-library/user-event'
 import { BrowserRouter } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
-import Login from '../../components/login/login-screen/Login'
+import Login from '../../components/login-screen/Login'
 
 describe('@Login screen testing..', () => {
 

@@ -1,14 +1,14 @@
 import React, { FormEvent, useState, useEffect, SyntheticEvent } from 'react'
 import { toast } from 'react-toastify'
+import { Typography } from '@mui/material'
 import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
+import { resetPassword } from '../../redux/slices/authSlice'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { resetPassword, updatePassword } from '../../../redux/slices/authSlice'
-import { Password } from '../../../types/authType'
 import {
     useDispatch as useAppDispatch,
     useSelector as useAppSelector,
-} from '../../../redux/store'
+} from '../../redux/store'
 
 import {
     Box,
@@ -19,12 +19,11 @@ import {
     ButtonProps,
     FormGroup,
     FormControl,
-    Typography
 } from '@mui/material'
+import { purple } from '@mui/material/colors'
 import LinearProgress from '@mui/material/LinearProgress'
 import CheckIcon from '@mui/icons-material/Check'
 import CloseIcon from '@mui/icons-material/Close'
-import { purple } from '@mui/material/colors'
 import LockOpenIcon from '@mui/icons-material/LockOpen'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -34,16 +33,22 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 // Importing Images
-import useLocales from '../../../hooks/useLocales'
-import BackgroundBox from '../../common/elements/backGroundBox'
-import BannerBg from '../../common/elements/banner'
-import { apiVrbls, appRoutes, typeVar } from '../../../utils/constants'
-import { base64Encode } from '../../../utils/Base64EncodeDecode'
-import BigCheck from '../../common/icons/bigCheck'
-import ModerateCheck from '../../common/icons/moderateCheck'
-import { useNavigate } from 'react-router-dom'
-import Header from '../../header/Header'
-
+import Background from '../../assets/images/login-bg.jpg'
+import ChartImg from '../../assets/images/svg/Chart.svg'
+import PieChartImg from '../../assets/images/svg/PieCharts.svg'
+import SalesImg from '../../assets/images/svg/Sales.svg'
+import VoiceImg from '../../assets/images/svg/Voice.svg'
+import ChatImg from '../../assets/images/svg/Chat.svg'
+import VideoImg from '../../assets/images/svg/Video.svg'
+import WhatsappImg from '../../assets/images/svg/Whatsapp.svg'
+import useLocales from '../../hooks/useLocales'
+import BackgroundBox from '../common/elements/backGroundBox'
+import BannerBg from '../common/elements/banner'
+import { useNavigate, useParams } from 'react-router-dom'
+import { apiVrbls, typeVar } from '../../utils/constants'
+import BigCheck from '../common/icons/bigCheck'
+import ModerateCheck from '../common/icons/moderateCheck'
+import Header from '../onBoardingLayout/Header'
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -66,7 +71,7 @@ interface State {
     showPassword: boolean
 }
 
-const SetPassword = ({ toggleTheme }: any) => {
+const ResetPassword = () => {
     const navigate = useNavigate()
     const [uFulfilled, setUFulfilled] = useState(false);
     const [lFulfilled, setLFulfilled] = useState(false);
@@ -74,21 +79,19 @@ const SetPassword = ({ toggleTheme }: any) => {
     const [charsFulfilled, setCharsFulfilled] = useState(false);
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [open, setOpen] = useState(false)
-    const { isError, isSuccess, message, user, resetmessage } = useAppSelector(
+    const [open, setOpen] = useState(true)
+    const { user, isError, isSuccess, message } = useAppSelector(
         (state: any) => state.auth || {}
     )
     const dispatch = useAppDispatch()
+    const { token } = useParams()
     const { t } = useLocales()
     const LoginSchema = Yup.object().shape({
         password: Yup.string().required('Password is required !!').min(8),
         confirmPassword: Yup.string()
             .required('Password is required !!')
             .min(8)
-            .oneOf(
-                [Yup.ref('password'), null],
-                'Password and Confirm Password must match'
-            ),
+            .oneOf([Yup.ref('password'), null], 'Passwords must match'),
     })
 
     const defaultValues = {
@@ -111,19 +114,17 @@ const SetPassword = ({ toggleTheme }: any) => {
 
     const onSubmit = async (data: any) => {
         if (password !== confirmPassword) {
-            toast.error('password and confirm password not same')
-            console.log('error')
             return
         }
         try {
-            const userPassword: Password = {
-                newPassword: base64Encode(password),
-                username: user[apiVrbls.USER.EMAIL_ID]
-            }
-            await dispatch(resetPassword(userPassword))
-
+            await dispatch(resetPassword({
+                newPassword: password,
+                // username: user[apiVrbls.USER.EMAIL_ID]
+                username: null
+            }))
+            navigate('/modal')
         } catch (error) {
-            console.error(error)
+            reset()
         }
     }
     const [values, setValues] = React.useState<State>({
@@ -148,7 +149,6 @@ const SetPassword = ({ toggleTheme }: any) => {
             showPassword: !values.showPassword,
         })
     }
-
     const handleClickShowConfirmPassword = () => {
         setConfirmValues({
             ...confirmValues,
@@ -177,14 +177,6 @@ const SetPassword = ({ toggleTheme }: any) => {
             'tooltip-main-box'
         ) as HTMLElement
         tooltipMainBoxElement.style.display = 'block'
-        const lowStrengthElement = document.getElementById(
-            'low-strength-text'
-            ) as HTMLButtonElement
-            const linearProgressLowElement = document.getElementById(
-                'linear-progress-low'
-            ) as HTMLDataListElement
-        lowStrengthElement.style.display = 'block'
-        linearProgressLowElement.style.display = 'block'
         setPassword((e.target as HTMLInputElement).value)
         const patternVariable =
             "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
@@ -198,31 +190,31 @@ const SetPassword = ({ toggleTheme }: any) => {
         ) as HTMLDataListElement
         const tooltipUppercaseTick = document.getElementById(
             'uppercaseTick'
-        ) as HTMLDataListElement
+        ) as HTMLSpanElement
         const tooltipLowercaseElement = document.getElementById(
             'lowercase'
         ) as HTMLDataListElement
         const tooltipLowercaseTick = document.getElementById(
             'lowercaseTick'
-        ) as HTMLDataListElement
+        ) as HTMLSpanElement
         const tooltipSymbolElement = document.getElementById(
             'symbol'
         ) as HTMLDataListElement
         const tooltipSymbolTick = document.getElementById(
             'symbolTick'
-        ) as HTMLDataListElement
+        ) as HTMLSpanElement
         const tooltipAtleastElement = document.getElementById(
             'atleast'
         ) as HTMLDataListElement
         const tooltipAtleastTick = document.getElementById(
             'atleastTick'
-        ) as HTMLDataListElement
+        ) as HTMLSpanElement
         const linearProgressModerateElement = document.getElementById(
             'linear-progress-moderate'
         ) as HTMLDataListElement
         const linearProgressSuccessElement = document.getElementById(
             'linear-progress-success'
-        ) as HTMLDataListElement
+        ) as HTMLSpanElement
         const passwordBoxElement = document.getElementById(
             'password-box'
         ) as HTMLButtonElement
@@ -232,11 +224,11 @@ const SetPassword = ({ toggleTheme }: any) => {
         const highStrengthElement = document.getElementById(
             'high-strength-text'
         ) as HTMLButtonElement
-        // if ((e.target as HTMLInputElement).value.match(patternVariable)) {
-        //     passwordBoxElement.className = 'input-wrapper success'
-        // } else {
-        //     passwordBoxElement.className = 'input-wrapper'
-        // }
+        if ((e.target as HTMLInputElement).value.match(patternVariable)) {
+            passwordBoxElement.className = 'input-wrapper success'
+        } else {
+            passwordBoxElement.className = 'input-wrapper'
+        }
         const tooltipFullfilledRightClickGreen = 'tooltipList-item fulfilled'
         const tooltipUnfullfilledRightClickGray = 'tooltipList-item'
         if ((e.target as HTMLInputElement).value.match(uppercaseVariable)) {
@@ -263,30 +255,27 @@ const SetPassword = ({ toggleTheme }: any) => {
         if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
             tooltipAtleastElement.className = tooltipFullfilledRightClickGreen
             setCharsFulfilled(true)
-            moderateStrengthElement.style.display = 'block'
             linearProgressModerateElement.style.display = 'block'
-            lowStrengthElement.style.display = 'none'
-            linearProgressLowElement.style.display = 'none'
         } else {
             tooltipAtleastElement.className = tooltipUnfullfilledRightClickGray
             setCharsFulfilled(false)
-            moderateStrengthElement.style.display = 'none'
             linearProgressModerateElement.style.display = 'none'
         }
         if ((e.target as HTMLInputElement).value.match(atleastFifteenVariable)) {
-            linearProgressSuccessElement.style.display = 'block'
-            highStrengthElement.style.display = 'block'
             linearProgressModerateElement.style.display = 'none'
+            linearProgressSuccessElement.style.display = 'block'
             moderateStrengthElement.style.display = 'none'
+            highStrengthElement.style.display = 'block'
         } else {
+            linearProgressModerateElement.style.display = 'block'
             linearProgressSuccessElement.style.display = 'none'
+            moderateStrengthElement.style.display = 'block'
             highStrengthElement.style.display = 'none'
         }
     }
 
     const handleConfirmPasswordChange = (e: SyntheticEvent) => {
         e.preventDefault()
-        
         setConfirmPassword((e.target as HTMLInputElement).value)
         const confirmPasswordpatternVariable =
             "(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?|][()-<>/]).{8,}" //uppercase lowercase symbol and number
@@ -294,24 +283,20 @@ const SetPassword = ({ toggleTheme }: any) => {
         const submitButtonElement = document.getElementById(
             'btn-enable-style'
         ) as HTMLButtonElement
-        const passwordBoxElement = document.getElementById(
-            'password-box'
-        ) as HTMLButtonElement
         const confirmpasswordBoxElement = document.getElementById(
             'confirm-password-box'
         ) as HTMLElement
-        
         const matchBothPasswordElement = document.getElementById(
             'match-both-password-error'
         ) as HTMLParagraphElement
         if (
             (e.target as HTMLInputElement).value.match(confirmPasswordpatternVariable)
         ) {
-            submitButtonElement.disabled = false 
-            submitButtonElement.className = 'customBtn-01 btn-enable-style' 
+            submitButtonElement.disabled = false
+            submitButtonElement.className = 'customBtn-01 btn-enable-style'
         } else {
             submitButtonElement.disabled = true
-            submitButtonElement.className = 'customBtn-01' 
+            submitButtonElement.className = 'customBtn-01'
         }
         if ((e.target as HTMLInputElement).value.match(atleastVariable)) {
             matchBothPasswordElement.style.display = 'block'
@@ -326,15 +311,11 @@ const SetPassword = ({ toggleTheme }: any) => {
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
     }
-    if (resetmessage === "SUCCESS") {
-        navigate(appRoutes.WELOCME)
-    }
 
     return (
         <>
-            <Header toggleTheme={toggleTheme} />
             <Box className="account__screen">
-                {/* ACCOUNT SCREEN BANNER START */}
+                {/* ACCOUNT SCREEN BANNER START*/}
                 <BannerBg />
                 {/* ACCOUNT SCREEN BANNER END */}
                 {/* ACCOUNT SCREEN ANIMATION START */}
@@ -348,8 +329,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                 >
                     <div className="form__inner">
                         <Box sx={{ width: 1 }} className="account__form__header">
-                            <h3 className="title">{t<string>('setPassword')}</h3>
-                            {/* <p className="sub__title">{t<string>('generatePassword')}</p> */}
+                            <h3 className="title">{t<string>('resetPassword')}</h3>
                             <Typography
                                 className="helper__title"
                                 variant="body1"
@@ -359,12 +339,8 @@ const SetPassword = ({ toggleTheme }: any) => {
                                     letterSpacing: 0,
                                     opacity: 0.6,
                                 }}
-                            >
-                                {t<string>('generatePassword')}
-                            </Typography>
-                        </Box>
-                        <Box sx={{ width: 1 }} className="account__form__error">
-                            <p className="error__msg">{message && message}</p>
+                            >{t<string>('resetPasswordSubTitle')}</Typography>
+
                         </Box>
                         <Box sx={{ flexGrow: 1 }} className="account__form__body">
                             <form onSubmit={handleSubmit(onSubmit)} action="#" method="post">
@@ -385,14 +361,12 @@ const SetPassword = ({ toggleTheme }: any) => {
                                             <LockOpenIcon id="unlock-icon" />
                                         </InputLabel>
                                         <TextField
-                                            className="input-field"
+                                            className='input-field'
                                             required
                                             id="password"
                                             label={t<string>('password')}
                                             variant="standard"
-                                            sx={{ width: 1, borderRadius: '10px !important' }}
-                                            // name="password"
-                                            // type="password"
+                                            sx={{ width: 1, borderRadius: '10px !important', }}
                                             type={values.showPassword ? 'text' : 'password'}
                                             inputProps={{
                                                 'data-testid': 'password-element',
@@ -411,16 +385,17 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                             onMouseDown={handleMouseDownPassword}
                                                             edge="end"
                                                         >
-                                                            {!values.showPassword ? (
-                                                                <VisibilityOffOutlinedIcon />
-                                                            ) : (
+                                                            {values.showPassword ? (
                                                                 <VisibilityIcon />
+                                                            ) : (
+                                                                <VisibilityOffOutlinedIcon />
                                                             )}
                                                         </IconButton>
                                                     </InputAdornment>
                                                 ),
                                             }}
                                         />
+
                                         {/* Tooltip start */}
                                         <div id="tooltip-main-box" className="tooltipCustom">
                                             <button
@@ -451,7 +426,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                         <span className="tooltip-icon" id="symbolTick">
                                                             {sFulfilled ? <BigCheck /> : <CheckIcon />}
                                                         </span>
-                                                        <span className="tooltip-text">Symbol (@#&)</span>
+                                                        <span className="tooltip-text">A Symbol (@#&)</span>
                                                     </li>
                                                     <li id="atleast" className="tooltipList-item">
                                                         <span className="tooltip-icon" id="atleastTick">
@@ -466,12 +441,6 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                     <p className="tooltipTitle StrengthTitle">
                                                         Password Strength:{' '}
                                                         <span
-                                                            id="low-strength-text"
-                                                            style={{ color: '#ed6c02' }}
-                                                        >
-                                                            low
-                                                        </span>
-                                                        <span
                                                             id="moderate-strength-text"
                                                             style={{ color: '#ed6c02' }}
                                                         >
@@ -484,12 +453,6 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                             High
                                                         </span>
                                                     </p>
-                                                    <LinearProgress
-                                                        id="linear-progress-low"
-                                                        variant="determinate"
-                                                        color="warning"
-                                                        value={0}
-                                                    />
                                                     <LinearProgress
                                                         id="linear-progress-moderate"
                                                         variant="determinate"
@@ -539,12 +502,12 @@ const SetPassword = ({ toggleTheme }: any) => {
                                             <LockOpenIcon id="unlock-icon" />
                                         </InputLabel>
                                         <TextField
-                                            className="input-field"
+                                            className='input-field'
                                             required
                                             id="confirmPassword"
                                             label={t<string>('confirmPassword')}
                                             variant="standard"
-                                            sx={{ width: 1, borderRadius: '10px !important' }}
+                                            sx={{ width: 1, borderRadius: '10px !important', }}
                                             type={confirmValues.showPassword ? 'text' : 'password'}
                                             autoComplete="false"
                                             inputProps={{ 'data-testid': 'confirm-password-element' }}
@@ -561,10 +524,10 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                             onMouseDown={handleMouseDownPassword}
                                                             edge="end"
                                                         >
-                                                            {!confirmValues.showPassword ? (
-                                                                <VisibilityOffOutlinedIcon />
-                                                            ) : (
+                                                            {confirmValues.showPassword ? (
                                                                 <VisibilityIcon />
+                                                            ) : (
+                                                                <VisibilityOffOutlinedIcon />
                                                             )}
                                                         </IconButton>
                                                     </InputAdornment>
@@ -627,7 +590,8 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                 fontFamily: 'ubuntu',
                                                 letterSpacing: '-0.72px',
                                             }}
-                                            className='customBtn-01' >
+                                            className='customBtn-01'
+                                        >
                                             {t<string>('done')}
                                         </ColorButton>
                                     </FormControl>
@@ -642,4 +606,4 @@ const SetPassword = ({ toggleTheme }: any) => {
     )
 }
 
-export default SetPassword
+export default ResetPassword

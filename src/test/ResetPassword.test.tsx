@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import ResetPassword from '../components/login/reset-password/ResetPassword'
+import ResetPassword from '../components/reset-password/ResetPassword'
 import { Provider } from 'react-redux'
 import { store, persistor } from '../redux/store'
 import userEvent from '@testing-library/user-event'

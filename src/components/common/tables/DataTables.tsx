@@ -75,8 +75,14 @@ const DataTable = ({
     }
 
     const updateData = (page: any, take: any) => {
-        dispatch(pageAction(page, take))
-        setUlrParms(page, take)
+        console.log(Total, page, take);
+        if ((take * page) > Total) {
+            dispatch(pageAction(Math.ceil(Total / take), take))
+            setUlrParms(page, take)
+        } else {
+            dispatch(pageAction(page, take))
+            setUlrParms(page, take)
+        }
     }
     const sort = (head: any) => {
         if (head.sort) {
@@ -143,14 +149,13 @@ const DataTable = ({
             'checkbox'
         ) as HTMLElement
         const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
-        invoiceIdHeadElement.style.display = invoiceState? 'block': 'none'
+        invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
         setInvoiceState(!invoiceState);
         // const invoiceIdHeadElement = document.getElementsByName('Invoice_no')[0]
         invoiceIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[0].eleName = null
-        console.log(columns[0])
     };
 
 
@@ -163,7 +168,7 @@ const DataTable = ({
             'checkbox'
         ) as HTMLElement
         const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
-        invoiceIdHeadElement.style.display = invoiceState? 'block': 'none'
+        invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
         setInvoiceState(!invoiceState);
         invoiceIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
@@ -178,15 +183,14 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-customer'
         ) as HTMLElement
-        const customerIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0] 
-        customerIdHeadElement.style.display = customerState? 'block': 'none'
+        const customerIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0]
+        customerIdHeadElement.style.display = customerState ? 'block' : 'none'
         setCustomerState(!customerState);
 
         customerIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[1].eleName = null
-        console.log(columns[1])
     };
 
 
@@ -198,8 +202,8 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox-customer'
         ) as HTMLElement
-        const customerIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0] 
-        customerIdHeadElement.style.display = customerState? 'block': 'none'
+        const customerIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.customerLe')}`)[0]
+        customerIdHeadElement.style.display = customerState ? 'block' : 'none'
         setCustomerState(!customerState);
         customerIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
@@ -215,14 +219,13 @@ const DataTable = ({
             'checkbox-entity'
         ) as HTMLElement
         const entityIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.entity')}`)[0]
-        entityIdHeadElement.style.display = entityState? 'block': 'none'
+        entityIdHeadElement.style.display = entityState ? 'block' : 'none'
         setEntityState(!entityState);
 
         entityIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[2].eleName = null
-        console.log(columns[2])
     };
 
     const handleEntityOpen = (e: SyntheticEvent) => {
@@ -234,7 +237,7 @@ const DataTable = ({
             'checkbox-entity'
         ) as HTMLElement
         const entityIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.entity')}`)[0]
-        entityIdHeadElement.style.display = entityState? 'block': 'none'
+        entityIdHeadElement.style.display = entityState ? 'block' : 'none'
         setEntityState(!entityState);
         entityIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
@@ -251,14 +254,13 @@ const DataTable = ({
             'checkbox-po'
         ) as HTMLElement
         const poIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.poNo')}`)[0]
-        poIdHeadElement.style.display = poState? 'block': 'none'
+        poIdHeadElement.style.display = poState ? 'block' : 'none'
         setPoState(!poState);
 
         poIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[3].eleName = null
-        console.log(columns[0])
     };
 
 
@@ -271,7 +273,7 @@ const DataTable = ({
             'checkbox-po'
         ) as HTMLElement
         const poIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.poNo')}`)[0]
-        poIdHeadElement.style.display = poState? 'block': 'none'
+        poIdHeadElement.style.display = poState ? 'block' : 'none'
         setPoState(!poState);
 
         poIdHeadElement.style.display = 'flex'
@@ -288,14 +290,13 @@ const DataTable = ({
             'checkbox-status'
         ) as HTMLElement
         const statusIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.status')}`)[0]
-        statusIdHeadElement.style.display = statusState? 'block': 'none'
+        statusIdHeadElement.style.display = statusState ? 'block' : 'none'
         setStatusState(!statusState);
 
         statusIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[4].eleName = null
-        console.log(columns[4])
     };
 
 
@@ -308,7 +309,7 @@ const DataTable = ({
             'checkbox-status'
         ) as HTMLElement
         const statusIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.status')}`)[0]
-        statusIdHeadElement.style.display = statusState? 'block': 'none'
+        statusIdHeadElement.style.display = statusState ? 'block' : 'none'
         setStatusState(!statusState);
 
         statusIdHeadElement.style.display = 'flex'
@@ -325,14 +326,13 @@ const DataTable = ({
             'checkbox-invoice-amount'
         ) as HTMLElement
         const amountIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.invoiceAmount')}`)[0]
-        amountIdHeadElement.style.display = amountState? 'block': 'none'
+        amountIdHeadElement.style.display = amountState ? 'block' : 'none'
         setAmountState(!amountState);
 
         amountIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[5].eleName = null
-        console.log(columns[5])
     };
 
 
@@ -345,7 +345,7 @@ const DataTable = ({
             'checkbox-invoice-amount'
         ) as HTMLElement
         const amountIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.invoiceAmount')}`)[0]
-        amountIdHeadElement.style.display = amountState? 'block': 'none'
+        amountIdHeadElement.style.display = amountState ? 'block' : 'none'
         setAmountState(!amountState);
 
         amountIdHeadElement.style.display = 'flex'
@@ -362,14 +362,13 @@ const DataTable = ({
             'checkbox-invoice-issue'
         ) as HTMLElement
         const invoiceIssueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.invoiceIssuedDate')}`)[0]
-        invoiceIssueIdHeadElement.style.display = invoiceIssueState? 'block': 'none'
+        invoiceIssueIdHeadElement.style.display = invoiceIssueState ? 'block' : 'none'
         setInvoiceIssueState(!invoiceIssueState);
 
         invoiceIssueIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[6].eleName = null
-        console.log(columns[6])
     };
 
 
@@ -382,7 +381,7 @@ const DataTable = ({
             'checkbox-invoice-issue'
         ) as HTMLElement
         const invoiceIssueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.invoiceIssuedDate')}`)[0]
-        invoiceIssueIdHeadElement.style.display = invoiceIssueState? 'block': 'none'
+        invoiceIssueIdHeadElement.style.display = invoiceIssueState ? 'block' : 'none'
         setInvoiceIssueState(!invoiceIssueState);
         invoiceIssueIdHeadElement.style.display = 'flex'
         blankCheckoutElement.style.display = 'none'
@@ -398,13 +397,12 @@ const DataTable = ({
             'checkbox-due-date'
         ) as HTMLElement
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
-        dueIdHeadElement.style.display = dueState? 'block': 'none'
+        dueIdHeadElement.style.display = dueState ? 'block' : 'none'
         setDueState(!dueState)
         dueIdHeadElement.style.display = 'none'
         blankCheckoutElement.style.display = 'block'
         CheckoutElement.style.display = 'none'
         columns[7].eleName = 'null'
-        console.log(columns[7])
     };
 
     const handleDueOpen = (e: SyntheticEvent) => {
@@ -416,7 +414,7 @@ const DataTable = ({
             'checkbox-due-date'
         ) as HTMLElement
         const dueIdHeadElement = document.getElementsByName(`${t<string>('tables.billing.dueDate')}`)[0]
-        dueIdHeadElement.style.display = dueState? 'block': 'none'
+        dueIdHeadElement.style.display = dueState ? 'block' : 'none'
         setDueState(!dueState);
 
         dueIdHeadElement.style.display = 'flex'
@@ -425,25 +423,24 @@ const DataTable = ({
         columns[7].eleName = 'Due_date'
     };
 
-    const onDateChange =(val: any)=>{
+    const onDateChange = (val: any) => {
         setStartDate(val.start.format("YYYY-MM-DD"));
         setEndDate(val.end.format("YYYY-MM-DD"));
-      }
+    }
 
-    console.log(columns[2])
     return (
         <>
-            <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange}/>
+            <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange} />
             <p data-testid="para-element"></p>
             <TableContainer
                 component={Paper}
-                className="table__Container"
+                className="table__Container buildfix4"
             >
                 <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-                    <TableHead className="TableHead">
+                    <TableHead className="TableHead ">
                         <TableRow id="table-head">
                             <StyledTableCell>
-                                <IconButton 
+                                <IconButton
                                     id="basic-button"
                                     aria-controls={open ? 'basic-menu' : undefined}
                                     aria-haspopup="true"
@@ -461,74 +458,74 @@ const DataTable = ({
                                     open={open}
                                     onClose={handleClose}
                                     MenuListProps={{
-                                    'aria-labelledby': 'basic-button',
+                                        'aria-labelledby': 'basic-button',
                                     }}
                                     anchorOrigin={{
                                         vertical: 'top',
                                         horizontal: 'left',
-                                      }}
-                                      transformOrigin={{
+                                    }}
+                                    transformOrigin={{
                                         vertical: 'top',
                                         horizontal: 'left',
-                                      }}
+                                    }}
                                 >
                                     <MenuItem ><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleInvoiceClose} id="checkbox" fontSize='small' style={ {display: invoiceState?'block':'none' }} />
+                                        <CheckBoxIcon onClick={handleInvoiceClose} id="checkbox" fontSize='small' style={{ display: invoiceState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleInvoiceOpen} fontSize='small' id='checkbox-blank' style={ {display: invoiceState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: invoiceState?'#303030':'#bbb' }} >Invoice Number</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handleInvoiceOpen} fontSize='small' id='checkbox-blank' style={{ display: invoiceState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: invoiceState ? '#303030' : '#bbb' }} >Invoice Number</span></MenuItem>
                                     <MenuItem ><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleCustomerClose} id="checkbox-customer" fontSize='small' style={ {display: customerState?'block':'none' }}/>
+                                        <CheckBoxIcon onClick={handleCustomerClose} id="checkbox-customer" fontSize='small' style={{ display: customerState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleCustomerOpen} fontSize='small' id='checkbox-blank-customer' style={ {display: customerState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: customerState?'#303030':'#bbb' }} >Customer LE</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handleCustomerOpen} fontSize='small' id='checkbox-blank-customer' style={{ display: customerState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: customerState ? '#303030' : '#bbb' }} >Customer LE</span></MenuItem>
                                     <MenuItem>
-                                    <ListItemIcon>
-                                        {/* <Logout fontSize="small" /> */}
-                                        <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleEntityClose} id="checkbox-entity" fontSize='small' style={ {display: entityState?'block':'none' }} />
-                                        {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleEntityOpen} fontSize='small' id='checkbox-blank-entity' style={ {display: entityState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: entityState?'#303030':'#bbb' }} >Entity</span></MenuItem>
+                                        <ListItemIcon>
+                                            {/* <Logout fontSize="small" /> */}
+                                            <DragIndicatorIcon fontSize='small' />
+                                            <CheckBoxIcon onClick={handleEntityClose} id="checkbox-entity" fontSize='small' style={{ display: entityState ? 'block' : 'none' }} />
+                                            {/* remove above icon and use below icon for when user unchecks the option */}
+                                            <CheckBoxOutlineBlankIcon onClick={handleEntityOpen} fontSize='small' id='checkbox-blank-entity' style={{ display: entityState ? 'none' : 'block' }} />
+                                        </ListItemIcon><span style={{ color: entityState ? '#303030' : '#bbb' }} >Entity</span></MenuItem>
                                     <MenuItem><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handlePoClose} id="checkbox-po" fontSize='small' style={ {display: poState?'block':'none' }} />
+                                        <CheckBoxIcon onClick={handlePoClose} id="checkbox-po" fontSize='small' style={{ display: poState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handlePoOpen} fontSize='small' id='checkbox-blank-po' style={ {display: poState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: poState?'#303030':'#bbb' }} >PO No.</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handlePoOpen} fontSize='small' id='checkbox-blank-po' style={{ display: poState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: poState ? '#303030' : '#bbb' }} >PO No.</span></MenuItem>
                                     <MenuItem><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleStatusClose} id="checkbox-status" fontSize='small' style={ {display: statusState?'block':'none' }} />
+                                        <CheckBoxIcon onClick={handleStatusClose} id="checkbox-status" fontSize='small' style={{ display: statusState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleStatusOpen} fontSize='small' id='checkbox-blank-status' style={ {display: statusState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: statusState?'#303030':'#bbb' }} >Status</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handleStatusOpen} fontSize='small' id='checkbox-blank-status' style={{ display: statusState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: statusState ? '#303030' : '#bbb' }} >Status</span></MenuItem>
                                     <MenuItem ><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleAmountClose} id="checkbox-invoice-amount" fontSize='small' style={ {display: amountState?'block':'none' }} />
+                                        <CheckBoxIcon onClick={handleAmountClose} id="checkbox-invoice-amount" fontSize='small' style={{ display: amountState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleAmountOpen} fontSize='small' id='checkbox-blank-invoice-amount' style={ {display: amountState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: amountState?'#303030':'#bbb' }}>Invoice Amount</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handleAmountOpen} fontSize='small' id='checkbox-blank-invoice-amount' style={{ display: amountState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: amountState ? '#303030' : '#bbb' }}>Invoice Amount</span></MenuItem>
                                     <MenuItem ><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleInvoiceIssueClose} id="checkbox-invoice-issue" fontSize='small' style={ {display: invoiceIssueState?'block':'none' }} />
+                                        <CheckBoxIcon onClick={handleInvoiceIssueClose} id="checkbox-invoice-issue" fontSize='small' style={{ display: invoiceIssueState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleInvoiceIssueOpen} fontSize='small' id='checkbox-blank-invoice-issue' style={ {display: invoiceIssueState?'none':'block' }}/>
-                                    </ListItemIcon><span style={ {color: invoiceIssueState?'#303030':'#bbb' }} >Invoice Issued Date</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handleInvoiceIssueOpen} fontSize='small' id='checkbox-blank-invoice-issue' style={{ display: invoiceIssueState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: invoiceIssueState ? '#303030' : '#bbb' }} >Invoice Issued Date</span></MenuItem>
                                     <MenuItem ><ListItemIcon>
                                         {/* <Logout fontSize="small" /> */}
                                         <DragIndicatorIcon fontSize='small' />
-                                        <CheckBoxIcon onClick={handleDueClose} id="checkbox-due-date" fontSize='small' style={ {display: dueState?'block':'none' }} />
+                                        <CheckBoxIcon onClick={handleDueClose} id="checkbox-due-date" fontSize='small' style={{ display: dueState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
-                                        <CheckBoxOutlineBlankIcon onClick={handleDueOpen} fontSize='small' id='checkbox-blank-due-date' style={ {display: dueState?'none':'block' }} />
-                                    </ListItemIcon><span style={ {color: dueState?'#303030':'#bbb' }}>Due Date</span></MenuItem>
+                                        <CheckBoxOutlineBlankIcon onClick={handleDueOpen} fontSize='small' id='checkbox-blank-due-date' style={{ display: dueState ? 'none' : 'block' }} />
+                                    </ListItemIcon><span style={{ color: dueState ? '#303030' : '#bbb' }}>Due Date</span></MenuItem>
                                 </Menu>
                             </StyledTableCell>
 
@@ -561,40 +558,44 @@ const DataTable = ({
                             <TableRow id="table-data" key={item.id}>
                                 <TableCell component="th" scope="row">
                                     <a href="/">
-                                        <Invoice />
+                                        <a href="#/">
+                                            {item.icon == 'overdue' && <span className="overdue" ><Overdue /></span>}
+                                            {item.icon == 'pending' && <span className="pending" ><UnpaidInvoice /></span>}
+                                            {item.icon == 'completed' && <span className="completed" ><PaidInvoice /></span>}
+                                        </a>
                                     </a>
                                 </TableCell>
                                 {columns.map((clm: any, index: any) => (
                                     <>
-                                    <Tooltip title={item[(clm.eleName == 'Tata_Entity')?clm.eleName:'']}>
-                                    <TableCell className='table-cell-tooltip' key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
-                                        {item[clm.eleName]}{' '}
-                                        </TableCell>
+                                        <Tooltip title={item[(clm.eleName == 'Tata_Entity') ? clm.eleName : '']}>
+                                            <TableCell className='table-cell-tooltip' key={`tbl-clm${index}`} style={{ width: 160 }} align="right">
+                                                {item[clm.eleName]}{' '}
+                                            </TableCell>
                                         </Tooltip>
-                                        </>
+                                    </>
                                 ))}
                                 <TableCell style={{ width: 160 }} align="right">
                                     <ul className="actionButtons">
-                                    <Tooltip title="VIEW INVOICE">
-                                    <button className="actionButton__item" onClick={() => handleViewPdf(item)}>
-                                    <span> <Pdf /> </span>
-                                    </button>
-                                    </Tooltip>
-                                    <Tooltip title="RAISE A TICKET">
-                                    <button className="actionButton__item" onClick={(e) => { handleShow() }}>
-                                    <span><Ticket /></span>
-                                    </button>
-                                    </Tooltip>
-                                    <Tooltip title="DOWNLOAD">
-                                        <button className="actionButton__item" onClick={() => handleDownload(item)} >
-                                            <span><Download /></span>
-                                        </button>
-                                    </Tooltip>
-                                    <Tooltip title="DOWNLOAD">
-                                        <button className="actionButton__item" onClick={() => handleDownloadCdr(item)} >
-                                            <span>Download Cdr</span>
-                                        </button>
-                                    </Tooltip>
+                                        <Tooltip title="VIEW INVOICE">
+                                            <button className="actionButton__item" onClick={() => handleViewPdf(item)}>
+                                                <span> <Pdf /> </span>
+                                            </button>
+                                        </Tooltip>
+                                        <Tooltip title="RAISE A TICKET">
+                                            <button className="actionButton__item" onClick={(e) => { handleShow() }}>
+                                                <span><Ticket /></span>
+                                            </button>
+                                        </Tooltip>
+                                        <Tooltip title="DOWNLOAD">
+                                            <button className="actionButton__item" onClick={() => handleDownload(item)} >
+                                                <span><Download /></span>
+                                            </button>
+                                        </Tooltip>
+                                        <Tooltip title="DOWNLOAD">
+                                            <button className="actionButton__item" onClick={() => handleDownloadCdr(item)} >
+                                                <span>Download Cdr</span>
+                                            </button>
+                                        </Tooltip>
                                     </ul>
                                 </TableCell>
                             </TableRow>

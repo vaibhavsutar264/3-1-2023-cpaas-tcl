@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import SetPassword from '../components/login/set-password/SetPassword'
+import SetPassword from '../components/set-password/SetPassword'
 import { Provider } from 'react-redux'
 import { store, persistor } from '../redux/store'
 import userEvent from '@testing-library/user-event'
