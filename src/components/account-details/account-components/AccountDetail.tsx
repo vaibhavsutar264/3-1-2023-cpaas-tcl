@@ -158,6 +158,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -194,6 +195,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -231,6 +233,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -268,6 +271,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -305,6 +309,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -342,6 +347,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -380,6 +386,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -417,6 +424,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -453,6 +461,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -489,6 +498,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -526,6 +536,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -563,6 +574,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography

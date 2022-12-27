@@ -144,6 +144,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -157,6 +158,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -170,6 +172,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -183,6 +186,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
