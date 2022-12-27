@@ -9,7 +9,7 @@ import Box from '@mui/material/Box'
 import { useDarkMode } from '../../../themes/useDarkMode'
 import { darkTheme, lightTheme } from '../../../themes/globalStyles'
 import useLocales from '../../../hooks/useLocales'
-import { typeVar } from '../../../utils/constants'
+import { typeVar, appThemes } from '../../../utils/constants'
 import Chart from '../icons/chart'
 import Video from '../icons/video'
 import PieChart from '../icons/pieChart'
@@ -17,7 +17,6 @@ import Voice from '../icons/voice'
 import Sales from '../icons/sales'
 import Chat from '../icons/chat'
 import Whatsapp from '../icons/whatsapp'
-import { appThemes } from '../../../utils/constants'
 
 const BackgroundBox = () => {
     const { t } = useLocales()

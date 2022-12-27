@@ -30,7 +30,7 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
     useEffect(() => {
         dispatch(loadInvoices({ searchValue: "",startDate: startDate, endDate: endDate }))
         dispatch(getAcDetails())
-    }, [dispatch])
+    }, [dispatch, endDate,startDate])
     const { t } = useLocales()
     const cards = [
         { titel: t('allInvoice'), value: getCardCount(MasterData, 'Payment_Status', ''), icon: <Invoice />, action: cardFilter("Payment_Status", "") },

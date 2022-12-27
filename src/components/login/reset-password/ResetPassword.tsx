@@ -1,6 +1,5 @@
 import React, { FormEvent, useState, useEffect, SyntheticEvent } from 'react'
 import { toast } from 'react-toastify'
-import { Typography } from '@mui/material'
 import * as Yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { resetPassword } from '../../../redux/slices/authSlice'
@@ -19,6 +18,7 @@ import {
     ButtonProps,
     FormGroup,
     FormControl,
+    Typography
 } from '@mui/material'
 import { purple } from '@mui/material/colors'
 import LinearProgress from '@mui/material/LinearProgress'
@@ -27,7 +27,6 @@ import CloseIcon from '@mui/icons-material/Close'
 import LockOpenIcon from '@mui/icons-material/LockOpen'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
-import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
