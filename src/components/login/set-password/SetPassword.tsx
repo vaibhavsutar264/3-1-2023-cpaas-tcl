@@ -42,6 +42,7 @@ import BigCheck from '../../common/icons/bigCheck'
 import ModerateCheck from '../../common/icons/moderateCheck'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../header/Header'
+import Modal from '../../modals/Modal'
 
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -325,12 +326,16 @@ const SetPassword = ({ toggleTheme }: any) => {
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
     }
+    const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
+
     if (resetmessage === "SUCCESS") {
-        navigate(appRoutes.WELOCME)
+    //     navigate(appRoutes.WELOCME)
     }
 
     return (
         <>
+            {showSuccessModal? <Modal /> : null}
+
             <Header toggleTheme={toggleTheme} />
             <Box className="account__screen">
                 {/* ACCOUNT SCREEN BANNER START */}
@@ -605,6 +610,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                                     </p>
                                     <FormControl
                                         className="input-wrapper submitBtn"
+                                        onClick={() => {setShowSuccessModal(true)}}
                                         sx={{
                                             display: 'flex',
                                             alignItems: 'flex-end',
@@ -626,7 +632,9 @@ const SetPassword = ({ toggleTheme }: any) => {
                                                 fontFamily: 'ubuntu',
                                                 letterSpacing: '-0.72px',
                                             }}
-                                            className='customBtn-01' >
+                                            className='customBtn-01'
+                                            onClick={() => {setShowSuccessModal(true)}}
+                                             >
                                             {t<string>('done')}
                                         </ColorButton>
                                     </FormControl>
