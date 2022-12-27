@@ -11,9 +11,9 @@ import { getAcDetails } from '../../redux/slices/accountSlice'
 
 const AccountDetails = ({ toggleTheme }: { toggleTheme: any }) => {
   const dispatch = useDispatch()
-  const [aDWidth, setADWidth] = useState('300px')
+  const [aDWidth, setADWidth] = useState('180px')
   const handleADWidth = () => {
-    const currentWidth = aDWidth == '300px' ? '130px' : '300px'
+    const currentWidth = aDWidth == '300px' ? '180px' : '300px'
     setADWidth(currentWidth)
   }
 

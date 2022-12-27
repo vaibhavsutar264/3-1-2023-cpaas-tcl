@@ -222,11 +222,11 @@
 }
 
 .dashboard__sidebar {
-    width: 300px;
+    width: 180px;
     // height: 100vh;
     background: white;
     grid-area: dashboardSidebar;
-    padding: 50px 30px;
+    padding: 50px 8px;
     position: relative;
 
     .sidebarToggle {
@@ -267,7 +267,7 @@
             .item__link {
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
                 flex-wrap: nowrap;
                 text-decoration: none !important;
                 padding: 10px 15px;
@@ -303,7 +303,7 @@
                 }
 
                 .link__text {
-                    text-align: left;
+                    text-align: center;
                     font-size: 16px;
                     line-height: 18px;
                     font-weight: bold;

@@ -38,7 +38,7 @@ export const Dashboard = ({ toggleTheme }: { toggleTheme: any }) => {
 
     const [bDWidth, setBDWidth] = useState('300px');
   const handleBDWidth = () => {
-    const currentWidth = bDWidth == '300px'? '130px' : '300px';
+    const currentWidth = bDWidth == '300px'? '180px' : '300px';
     setBDWidth(currentWidth);
   };
 

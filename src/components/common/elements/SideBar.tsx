@@ -14,6 +14,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import Avatar from '@mui/material/Avatar'
 import Badge from '@mui/material/Badge'
 import Button from '@mui/material/Button'
+import { Box } from '@mui/system'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import FormControl from '@mui/material/FormControl'
 import IconButton from '@mui/material/IconButton'
@@ -101,6 +102,12 @@ export const SideBar = ({
   //     console.log(noTranslate?.innerHTML)
   //     // noTranslate.innerHTML = `English`
   // },[])
+
+  const [sidebarWidth, setSidebarWidth] = React.useState<boolean>(false);
+  // const sidebarFunc = () => {
+  //   console.log('hello world');
+  //   setSidebarWidth(!sidebarWidth);
+  // }
 
   return (
     <>
@@ -306,7 +313,7 @@ export const SideBar = ({
         className="dashboard__sidebar"
         id="sidebar-left"
         style={{
-          transition: 'all 350ms 0ms ease-in',
+          // transition: 'all 350ms 0ms ease-in',
           zIndex: 1,
           height: '100vh',
           position: 'fixed',
@@ -320,54 +327,62 @@ export const SideBar = ({
                 className={`item__link ${getActiveClass(appRoutes.DASHBOARD)}`}
                 to={appRoutes.DASHBOARD}
               >
+                <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   <SpeedOutlinedIcon />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('dashboard')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('dashboard')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('dashboard')}
-                </span> */}
               </Link>
             </li>
             <li className="list__item">
               <Link className="item__link" to="">
+              <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   <PersonOutlineOutlinedIcon />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('userManagement')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('userManagement')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('userManagement')}
-                </span> */}
               </Link>
             </li>
             <li className="list__item">
               <Link className="item__link" to="">
+              <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   <HomeRepairServiceOutlinedIcon />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('services')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('services')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('services')}
-                </span> */}
               </Link>
             </li>
             <li className="list__item">
               <Link className="item__link" to="">
+              <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   <ChatBubbleTwoToneIcon />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('sms')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('sms')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('sms')}
-                </span> */}
               </Link>
             </li>
             <li className="list__item">
@@ -375,42 +390,48 @@ export const SideBar = ({
                 className={`item__link ${getActiveClass(appRoutes.BILLING)}`}
                 to={appRoutes.BILLING}
               >
+                <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   <ReceiptOutlinedIcon />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('billingInvoice')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('billingInvoice')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('billingInvoice')}
-                </span> */}
               </Link>
             </li>
             <li className="list__item">
               <Link className="item__link" to="">
+              <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   {/* <ConfirmationNumberOutlinedIcon /> */}
                   <Ticket />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('tickets')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('tickets')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('tickets')}
-                </span> */}
               </Link>
             </li>
             <li className="list__item">
               <Link className="item__link" to="">
+              <Box component='span' className='iconWithLink flexElement'>
                 <span className="link__icon">
                   <SettingsIcon />
                 </span>
+                <span className="link__text" id="link__col-text">
+                  {t<string>('support')}
+                </span>
+                </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('support')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('support')}
-                </span> */}
               </Link>
             </li>
           </ul>
@@ -419,6 +440,7 @@ export const SideBar = ({
           type="button"
           className="sidebarToggle"
           onClick={() => {
+            // sidebarFunc()
             setIsOpen((pre: any) => (!pre))
             if (handleADWidth) {
               handleADWidth()
@@ -427,26 +449,57 @@ export const SideBar = ({
               handleBDWidth()
             }
             const texts = document.querySelectorAll<HTMLElement>('#link__text')
+            const textsCol = document.querySelectorAll<HTMLElement>('#link__col-text')
             const sidebarLeft = document.querySelector(
               '#sidebar-left'
             ) as HTMLElement
             const text = document.querySelector('#link__text') as HTMLElement
-            if (text.style.display != 'none') {
+            const textCol = document.querySelector('#link__col-text') as HTMLElement
+            const iconsWithLink = document.querySelectorAll<HTMLElement>('.iconWithLink')
+            const sidebarItemLinks = document.querySelectorAll<HTMLElement>('.dashboard__sidebar .sidebar__list .list__item .item__link')
+            if (sidebarWidth == true) {
               console.log(sidebarLeft.style.width)
               for (let i = 0; i < texts.length; i++) {
                 texts[i].style.display = 'none'
               }
+              for (let i = 0; i < textsCol.length; i++) {
+                textsCol[i].style.display = 'block'
+              }
               sidebarLeft.style.width = 'max-content'
-            } else {
+              sidebarLeft.style.paddingLeft = '8px'
+              sidebarLeft.style.paddingRight = '8px'
+              for (let i = 0; i < iconsWithLink.length; i++) {
+                iconsWithLink[i].classList.remove('blockElement');
+                iconsWithLink[i].classList.add('flexElement');
+              }
+              for (let i = 0; i < sidebarItemLinks.length; i++) {
+                sidebarItemLinks[i].style.justifyContent = 'center';
+              }
+              setSidebarWidth(!sidebarWidth);
+            }
+            if (sidebarWidth == false) {
               console.log(sidebarLeft.style.width)
               for (let i = 0; i < texts.length; i++) {
                 texts[i].style.display = 'block'
               }
+              for (let i = 0; i < textsCol.length; i++) {
+                textsCol[i].style.display = 'none'
+              }
               sidebarLeft.style.width = '300px'
+              sidebarLeft.style.paddingLeft = '30px'
+              sidebarLeft.style.paddingRight = '30px'
+              for (let i = 0; i < iconsWithLink.length; i++) {
+                iconsWithLink[i].classList.remove('flexElement');
+                iconsWithLink[i].classList.add('blockElement');
+              }
+              for (let i = 0; i < sidebarItemLinks.length; i++) {
+                sidebarItemLinks[i].style.justifyContent = 'flex-start';
+              }
+              setSidebarWidth(!sidebarWidth);
             }
           }}
         >
-          {isOpen ? <KeyboardDoubleArrowRightIcon /> : <KeyboardDoubleArrowLeftIcon />}
+          {isOpen ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
 
 
         </button>
