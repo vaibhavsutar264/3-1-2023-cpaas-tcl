@@ -7,7 +7,7 @@ import {
   getFromLocalStorage,
 } from '../../hooks/useLocalStorage'
 import { userLoginData } from '../../services/api/index'
-import { apiDefaultrespons, apiVrbls, localStorageVar, staticErrors } from '../../utils/constants'
+import { apiDefaultrespons, apiVrbls, localStorageVar, staticErrors, slices } from '../../utils/constants'
 import { toast } from 'react-toastify'
 
 const initialState: AuthState = {
@@ -26,7 +26,7 @@ const initialState: AuthState = {
 }
 
 export const userSlice = createSlice({
-  name: 'auth',
+  name: slices.AUTH_SLICE,
   initialState,
   reducers: {
     startLoading(state) {

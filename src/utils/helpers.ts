@@ -22,8 +22,8 @@ export const getPageParms = (count: any) => {
         const page = (params.get('page')) || 0
         return { curr: +page, take: +take, total: count }
     } else {
-        setUlrParms(1, 10)
-        return { curr: 1, take: 10, total: count }
+        setUlrParms(1, 5)
+        return { curr: 1, take: 5, total: count }
     }
 }
 

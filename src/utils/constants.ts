@@ -34,6 +34,7 @@ export const apiHelpers = {
     HEADER_CONTENT_TYPE: 'Content-Type',
     TOKEN_TYPE: 'Bearer',
     CONTENT_TYPE_APP_JSON: 'application/json',
+    CONTENT_TYPE_APP_PDF: 'application/pdf',
 }
 
 export const appThemes = {
@@ -101,6 +102,11 @@ export const appRoutes = {
     RESET_PASSWORD: '/password/reset/:token',
     NOT_FOUND: '*',
     BILLING: '/invoices',
+    USER_MANAGEMENT: '/user-management',
+    SERVICES: '/services',
+    SMS: '/sms',
+    TICKETS: '/tickets',
+    SUPPORT: '/support',
     DASHBOARD: '/dashboard',
     ACCOUNT_DETAILS: '/accountdetails',
     WELOCME: '/welcome',

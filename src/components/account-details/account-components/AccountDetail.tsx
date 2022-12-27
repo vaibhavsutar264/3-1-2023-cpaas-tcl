@@ -31,8 +31,9 @@ const AccountDetail = ({
       setsendInvoice(accountDetails.legalentities[0].sendInvoiceToContact)
       setLegalEntity(GetLegalEntities()[0])
     } catch { }
-  }, [dispatch])
+  },[accountDetails.legalentities, setsendInvoice, setLegalEntity] )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const GetLegalEntities = () => {
     try {
       return accountDetails.legalentities.map((e: any) => Object.keys(e)[0])
@@ -157,6 +158,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -193,6 +195,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -230,6 +233,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -267,6 +271,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -304,6 +309,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -341,6 +347,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -379,6 +386,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -416,6 +424,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -452,6 +461,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -488,6 +498,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -525,6 +536,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -562,6 +574,7 @@ const AccountDetail = ({
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography

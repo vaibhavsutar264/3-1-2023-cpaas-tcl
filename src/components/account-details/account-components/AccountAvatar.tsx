@@ -30,7 +30,7 @@ const AccountAvatar = () => {
       setTimezone(user.attributes.timezone)
       setCommunication(user.attributes.preferredCommunicationMode)
     }
-  }, [dispatch])
+  }, [dispatch,user])
 
 
   const editUserDetails = async (e: SyntheticEvent) => {
@@ -124,6 +124,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -137,6 +138,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -150,6 +152,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -163,6 +166,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />

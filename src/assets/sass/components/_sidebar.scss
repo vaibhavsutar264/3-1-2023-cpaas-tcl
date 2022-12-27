@@ -9,3 +9,25 @@
   #notification-badge {
     font-size: 25px;
   }
+
+  #link__text {
+    display: none;
+  }
+
+  #link__col-text {
+    display: block;
+  }
+
+  .iconWithLink {
+
+    &.flexElement {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &.blockElement {
+      display: block;
+    }
+  }

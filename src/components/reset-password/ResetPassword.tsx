@@ -27,7 +27,6 @@ import CloseIcon from '@mui/icons-material/Close'
 import LockOpenIcon from '@mui/icons-material/LockOpen'
 import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
-import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
@@ -569,6 +568,7 @@ const ResetPassword = () => {
                                     </p>
                                     <FormControl
                                         className="input-wrapper submitBtn"
+                                        onClick={() => {setShowSuccessModal(true)}}
                                         sx={{
                                             display: 'flex',
                                             alignItems: 'flex-end',
@@ -591,7 +591,8 @@ const ResetPassword = () => {
                                                 letterSpacing: '-0.72px',
                                             }}
                                             className='customBtn-01'
-                                        >
+                                            onClick={() => {setShowSuccessModal(true)}}
+                                             >
                                             {t<string>('done')}
                                         </ColorButton>
                                     </FormControl>

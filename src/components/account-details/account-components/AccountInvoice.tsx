@@ -67,6 +67,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -104,6 +105,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -141,6 +143,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -178,6 +181,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -215,6 +219,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -252,6 +257,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
@@ -289,6 +295,7 @@ const AccountInvoice = ({ sendInvoice }: any) => {
             <Stack
               sx={{
                 flexBasis: '30%',
+                minWidth: '190px',
               }}
             >
               <Typography
