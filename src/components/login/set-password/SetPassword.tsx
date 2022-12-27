@@ -327,7 +327,7 @@ const SetPassword = ({ toggleTheme }: any) => {
         ) as HTMLDataListElement
         tooltipMainBoxElement.style.display = 'none'
     }
-    const [showSuccessModal, setShowSuccessModal] = useState<boolean>(true);
+    const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
 
     if (resetmessage === "SUCCESS") {
     //     navigate(appRoutes.WELOCME)
@@ -611,6 +611,7 @@ const SetPassword = ({ toggleTheme }: any) => {
                                     </p>
                                     <FormControl
                                         className="input-wrapper submitBtn"
+                                        onClick={() => {setShowSuccessModal(true)}}
                                         sx={{
                                             display: 'flex',
                                             alignItems: 'flex-end',

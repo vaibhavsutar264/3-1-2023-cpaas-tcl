@@ -79,8 +79,11 @@ const ForgotPassword = ({ toggleTheme }: any) => {
         }
     }
 
+    const [showSuccessModalMail, setShowSuccessModalMail] = useState<boolean>(true);
+
     return (
         <>
+
             <Header toggleTheme={toggleTheme} />
             <Box className="account__screen">
                 {/* ACCOUNT SCREEN BANNER START*/}
