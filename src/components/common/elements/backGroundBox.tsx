@@ -17,11 +17,12 @@ import Voice from '../icons/voice'
 import Sales from '../icons/sales'
 import Chat from '../icons/chat'
 import Whatsapp from '../icons/whatsapp'
+import { appThemes } from '../../../utils/constants'
 
 const BackgroundBox = () => {
     const { t } = useLocales()
     const [theme, toggleTheme] = useDarkMode()
-    const themeMode = theme === 'light' ? lightTheme : darkTheme
+    const themeMode = theme === appThemes.LIGHT_THEME ? lightTheme : darkTheme
     return (
         // Background animation
         <Box sx={{ flexGrow: 1 }} className="account__form__animation">

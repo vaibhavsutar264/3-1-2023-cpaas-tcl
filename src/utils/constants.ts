@@ -30,6 +30,7 @@ export const apiHelpers = {
     HEADER_CONTENT_TYPE: 'Content-Type',
     TOKEN_TYPE: 'Bearer',
     CONTENT_TYPE_APP_JSON: 'application/json',
+    CONTENT_TYPE_APP_PDF: 'application/pdf',
 }
 
 export const appThemes = {

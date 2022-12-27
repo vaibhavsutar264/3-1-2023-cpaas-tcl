@@ -111,7 +111,7 @@ export const SideBar = ({
       >
         <div className="dashboard__container">
           <div className="logo" >
-            {getitem == 'light' ? (
+            {getitem == appThemes.LIGHT_THEME ? (
               <img id="tata-logo-invoice" src={DarkLogo} alt="CPAAS TCL" />
             ) : (
               <img id="tata-logo-invoice" src={Logo} alt="CPAAS TCL" />
@@ -173,7 +173,7 @@ export const SideBar = ({
                 id="lang-background-invoices"
               >
                 <img
-                  src={getitem == 'light' ? Globe : GlobeDark}
+                  src={getitem == appThemes.LIGHT_THEME ? Globe : GlobeDark}
                   alt=""
                   style={{
                     width: '18px',
@@ -194,7 +194,7 @@ export const SideBar = ({
                   label="Language"
                   onChange={(e) => {
                     i18n.changeLanguage(e.target.value)
-                    setInLocalStorage('lng', e.target.value)
+                    setInLocalStorage(localStorageVar.LANG_VAR, e.target.value)
                   }}
                 >
                   {availableLanguages.map((language) => (
