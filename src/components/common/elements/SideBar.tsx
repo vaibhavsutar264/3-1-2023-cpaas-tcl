@@ -331,9 +331,10 @@ export const SideBar = ({
                 <span className="link__icon">
                   <SpeedOutlinedIcon />
                 </span>
+                {(window.location.pathname == appRoutes.DASHBOARD)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('dashboard')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('dashboard')}
@@ -346,9 +347,10 @@ export const SideBar = ({
                 <span className="link__icon">
                   <PersonOutlineOutlinedIcon />
                 </span>
+                {(window.location.pathname == appRoutes.USER_MANAGEMENT)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('userManagement')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('userManagement')}
@@ -361,9 +363,10 @@ export const SideBar = ({
                 <span className="link__icon">
                   <HomeRepairServiceOutlinedIcon />
                 </span>
+                {(window.location.pathname == appRoutes.SERVICES)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('services')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('services')}
@@ -376,9 +379,10 @@ export const SideBar = ({
                 <span className="link__icon">
                   <ChatBubbleTwoToneIcon />
                 </span>
+                {(window.location.pathname == appRoutes.SMS)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('sms')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('sms')}
@@ -394,9 +398,10 @@ export const SideBar = ({
                 <span className="link__icon">
                   <ReceiptOutlinedIcon />
                 </span>
+                {(window.location.pathname == appRoutes.BILLING)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('billingInvoice')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('billingInvoice')}
@@ -410,9 +415,10 @@ export const SideBar = ({
                   {/* <ConfirmationNumberOutlinedIcon /> */}
                   <Ticket />
                 </span>
+                {(window.location.pathname == appRoutes.TICKETS)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('tickets')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('tickets')}
@@ -425,9 +431,10 @@ export const SideBar = ({
                 <span className="link__icon">
                   <SettingsIcon />
                 </span>
+                {(window.location.pathname == appRoutes.SUPPORT)?(
                 <span className="link__text" id="link__col-text">
                   {t<string>('support')}
-                </span>
+                </span>):''}
                 </Box>
                 <span className="link__text" id="link__text">
                   {t<string>('support')}

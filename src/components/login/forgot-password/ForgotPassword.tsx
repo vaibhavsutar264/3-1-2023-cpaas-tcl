@@ -54,7 +54,7 @@ const ForgotPassword = ({ toggleTheme }: any) => {
 
     useEffect(() => {
         dispatch(resetForgotPaswordPrms())
-    }, [])
+    }, [dispatch])
 
     const validateEmail = (email: any) => {
         return /^[^ ]+@[^ ]+\.[a-z]{2,4}$/.test(email)
