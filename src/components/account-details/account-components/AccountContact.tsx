@@ -11,7 +11,6 @@ const AccountContact = () => {
 
   return (
     <>
-        {/* 1st right row container starts here */}
         <Box className='bd-single-content' sx={{
                 bgcolor: '#fff',
                 height: 1,

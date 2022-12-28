@@ -14,40 +14,41 @@ const Loadable = (Component: any) => (props: any) => {
     )
 }
 function Routes({ toggleTheme }: { toggleTheme: any }) {
-    const { user } = useSelector((state: any) => state.auth || {})
     return useRoutes([
         {
             path: '',
             children: [
-                { path: appRoutes.LOGIN, element: <Login toggleTheme={toggleTheme} /> },
-                { path: appRoutes.ROOT, element: <HomeScreen toggleTheme={toggleTheme} /> },
-                { path: appRoutes.RESET_PASSWORD, element: <ResetPassword toggleTheme={toggleTheme} /> },
-                { path: appRoutes.FORGOT_PASSWORD, element: <ForgotPassword toggleTheme={toggleTheme} /> },
+                { path: appRoutes.LOGIN, element: <OnBoardingLayout toggleTheme={toggleTheme} Component={Login} /> },
+                { path: appRoutes.ROOT, element: <OnBoardingLayout toggleTheme={toggleTheme} Component={HomeScreen} /> },
+                { path: appRoutes.RESET_PASSWORD, element: <OnBoardingLayout toggleTheme={toggleTheme} Component={ResetPassword} /> },
+                { path: appRoutes.FORGOT_PASSWORD, element: <OnBoardingLayout toggleTheme={toggleTheme} Component={ForgotPassword} /> },
             ],
         },
         {
             path: '',
             element: <PrivateRoutes />,
             children: [
-                { path: appRoutes.SET_PASSWORD, element: <SetPassword toggleTheme={toggleTheme} /> },
-                { path: appRoutes.ACCOUNT_DETAILS, element: <AccountDetails toggleTheme={toggleTheme} /> },
-                { path: appRoutes.WELOCME, element: <Welcome /> },
-                { path: appRoutes.BILLING, element: <Billing toggleTheme={toggleTheme} /> },
-                { path: appRoutes.DASHBOARD, element: <Dashboard toggleTheme={toggleTheme} /> },
+                { path: appRoutes.SET_PASSWORD, element: <OnBoardingLayout toggleTheme={toggleTheme} Component={SetPassword} /> },
+                { path: appRoutes.ACCOUNT_DETAILS, element: <PrivateLayout toggleTheme={toggleTheme} Component={AccountDetails} /> },
+                { path: appRoutes.WELOCME, element: <OnBoardingLayout toggleTheme={toggleTheme} Component={Welcome} /> },
+                { path: appRoutes.BILLING, element: <PrivateLayout toggleTheme={toggleTheme} Component={Billing} /> },
+                { path: appRoutes.DASHBOARD, element: <PrivateLayout toggleTheme={toggleTheme} Component={Dashboard} /> },
             ],
         },
         { path: appRoutes.NOT_FOUND, element: <Notfound /> },
     ])
 }
 
-const Login = Loadable(lazy(() => import('../components/login/login-screen/Login')))
-const ResetPassword = Loadable(lazy(() => import('../components/login/reset-password/ResetPassword')))
-const ForgotPassword = Loadable(lazy(() => import('../components/login/forgot-password/ForgotPassword')))
-const SetPassword = Loadable(lazy(() => import('../components/login/set-password/SetPassword')))
+const Login = Loadable(lazy(() => import('../components/login-screen/Login')))
+const ResetPassword = Loadable(lazy(() => import('../components/reset-password/ResetPassword')))
+const ForgotPassword = Loadable(lazy(() => import('../components/forgot-password/ForgotPassword')))
+const SetPassword = Loadable(lazy(() => import('../components/set-password/SetPassword')))
 const Notfound = Loadable(lazy(() => import('../components/notfound/Notfound')))
 const HomeScreen = Loadable(lazy(() => import('../components/home/HomeScreen')))
 const Billing = Loadable(lazy(() => import('../components/billing/Billing')))
 const Dashboard = Loadable(lazy(() => import('../components/dashboard/Dashboard')))
+const PrivateLayout = Loadable(lazy(() => import('../components/privateLayout/PrivateLayout')))
+const OnBoardingLayout = Loadable(lazy(() => import('../components/onBoardingLayout/onBoardingLayout')))
 const AccountDetails = Loadable(lazy(() => import('../components/account-details/AccountDetails')))
 const Welcome = Loadable(lazy(() => import('../components/welcome/welcome')))
 

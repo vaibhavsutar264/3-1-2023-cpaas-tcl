@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
-import Login from '../components/login/login-screen/Login'
+import Login from '../components/login-screen/Login'
 import { Provider } from 'react-redux'
 import { store, persistor } from '../redux/store'
 import userEvent from '@testing-library/user-event'

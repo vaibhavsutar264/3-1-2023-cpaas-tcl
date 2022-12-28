@@ -53,7 +53,7 @@ const Card = ({ data }: any) => {
                 <p id='name' className="cardType__name">
                     {data.titel}
                 </p>
-                <h3 className="cardType__Number" data-testid = 'total-data-card'>
+                <h3 className="cardType__Number" data-testid='total-data-card'>
                     {data.value}
                 </h3>
             </div>

@@ -2,12 +2,10 @@ import { SyntheticEvent, useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
 import { Box, Stack, Badge, Avatar, TextField, Button } from '@mui/material'
 import AvatarBg from '../../../assets/images/avatar-bg.png'
-import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined'
 import { useSelector, useDispatch } from '../../../redux/store'
 import { updateUserDetails } from '../../../redux/slices/accountSlice'
 import { getuserInfo } from '../../../redux/slices/authSlice'
 import useLocales from '../../../hooks/useLocales'
-// import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 
 const AccountAvatar = () => {
@@ -64,11 +62,6 @@ const AccountAvatar = () => {
           py: '52px',
           px: '50px',
           backgroundImage: `url(${AvatarBg})`,
-          //   backgroundImage: {
-          //     getitem == 'light'? 
-          //     `url(${AvatarBg})` : 
-          //     `url(${AvatarBg})`
-          // },
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
         }}
@@ -79,26 +72,13 @@ const AccountAvatar = () => {
           }}
         >
           <Stack direction="row" justifyContent="center" alignItems="center">
-            {/* <Avatar alt="Remy Sharp" src={AvatarImg} sx={{
-                        width: '156px',
-                        height: '156px',
-                    }} /> */}
             <Badge
               overlap="circular"
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-              // badgeContent={
-              //   <SmallAvatar
-              //     sx={{ bgcolor: '#EDEFF0', color: '#52626F' }}
-              //     variant="circular"
-              //   >
-              //     <CameraAltOutlinedIcon />
-              //   </SmallAvatar>
-              // }
             >
               <Avatar
                 alt="Travis Howard"
                 className='avatar-initials'
-                // src={AvatarImg}
                 sx={{
                   width: '156px',
                   height: '156px',
@@ -144,6 +124,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -157,6 +138,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -170,6 +152,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />
@@ -183,6 +166,7 @@ const AccountAvatar = () => {
               sx={{
                 borderRadius: '10px !important',
                 flexBasis: '45%',
+                minWidth: '110px',
                 textTransform: 'capitalize',
               }}
             />

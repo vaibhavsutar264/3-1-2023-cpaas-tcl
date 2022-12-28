@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import RaiseTicket from '../common/elements/RaiseTicket'
-import { SideBar } from '../common/elements/SideBar'
 import DataTable from '../common/tables/DataTables'
 import { BreadCrums } from '../common/elements/BreadCrum'
 import { PageSearch } from '../common/elements/PageSearch'
@@ -23,12 +22,13 @@ import moment from 'moment'
 export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
 
     const { isError, isLoading, isSuccess, PageData = [], MasterData = [], total, page, take } = useSelector((state: any) => state.billing);
-    const [startDate,setStartDate] = useState(moment().subtract(1, "months").format('YYYY-MM-DD'));
-    const [endDate,setEndDate] = useState(moment().format('YYYY-MM-DD'));
+    const { dashBoardWidth } = useSelector((state: any) => state.common);
+    const [startDate, setStartDate] = useState(moment().subtract(1, "months").format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'));
 
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(loadInvoices({ searchValue: "",startDate: startDate, endDate: endDate }))
+        dispatch(loadInvoices({ searchValue: "", startDate: startDate, endDate: endDate }))
         dispatch(getAcDetails())
     }, [dispatch, endDate,startDate])
     const { t } = useLocales()
@@ -43,19 +43,10 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
     const handleShow = () => {
         setShowIt(!showIt);
     };
-
-    const [bDWidth, setBDWidth] = useState('180px');
-  const handleBDWidth = () => {
-    const currentWidth = bDWidth == '300px'? '180px' : '300px';
-    setBDWidth(currentWidth);
-  };
-
-
     return (
-        <div className="dashboard__wrapper">
+        <div >
             <RaiseTicket handleShow={handleShow} showIt={showIt} />
-            <SideBar toggleTheme={toggleTheme} handleBDWidth={handleBDWidth} />
-            <div className="dashboard__content" style={{ width: `calc(100% - ${bDWidth})`, marginLeft: `${bDWidth}` }}>
+            <div className="dashboard__content" style={{ width: `calc(100% - ${dashBoardWidth})`, marginLeft: `${dashBoardWidth}` }}>
                 <div className="content__header">
                     <BreadCrums data={breadCrums.BILLING} />
                     <PageSearch searchFn={searchData} />

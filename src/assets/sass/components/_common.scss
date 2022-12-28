@@ -53,6 +53,12 @@
 .removeBorder .MuiInputBase-root:before {
   border-bottom: none !important;
 }
-.removeBorder  {
+
+.removeBorder {
   pointer-events: none;
+}
+
+.buildfix4 {
+  background-color: unset !important;
+  box-shadow: none !important;
 }

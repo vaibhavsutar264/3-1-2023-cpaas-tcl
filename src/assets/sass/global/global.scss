@@ -18,13 +18,14 @@
 @import '../components/sidebar';
 
 // Pages
-@import '../../../components/Home/homeScreen';
-@import '../../../components/login/scss/account';
-@import '../../../components/billing/scss/dashboard';
-@import '../../../components/modals/modal';
-@import '../../../components/Notfound/notfound';
-@import '../../../components/common/tables/scss/tables';
-@import '../../../components/account-details/scss/account_details';
+@import '../components/homeScreen';
+@import '../components/loading';
+@import '../components/account';
+@import '../components/billing';
+@import '../components/modal';
+@import '../components/notfound';
+@import '../components/tables';
+@import '../components/account_details';
 @import '../components/datatables';
 @import '../components/common';
 @import '../components/raiseTicket';
@@ -44,7 +45,6 @@
     text-transform: uppercase;
 }
 
-@import '../../../components/loader/loading';
 
 
 .multi-select-cs-parent {

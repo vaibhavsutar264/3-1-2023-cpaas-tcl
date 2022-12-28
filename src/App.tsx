@@ -1,5 +1,5 @@
 import './i18n'
-import Header from './components/header/Header'
+import Header from './components/onBoardingLayout/Header'
 import { Toggle } from './themes/Toggle'
 import { useDarkMode } from './themes/useDarkMode'
 import { GlobalStyles, lightTheme, darkTheme } from './themes/globalStyles'
