@@ -43,7 +43,7 @@ export const SideBar = () => {
         className="dashboard__sidebar"
         id="sidebar-left"
         style={{
-          transition: 'all 350ms 0ms ease-in',
+          // transition: 'all 350ms 0ms ease-in',
           zIndex: 1,
           height: '100vh',
           position: 'fixed',
@@ -169,7 +169,7 @@ export const SideBar = () => {
               for (let i = 0; i < texts.length; i++) {
                 texts[i].style.display = 'none'
               }
-              sidebarLeft.style.width = 'max-content'
+              sidebarLeft.style.width = '130px'
             } else {
               console.log(sidebarLeft.style.width)
               for (let i = 0; i < texts.length; i++) {

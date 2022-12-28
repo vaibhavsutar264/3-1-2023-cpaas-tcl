@@ -73,7 +73,7 @@
     "currency": "INR",
     "tables": {
       "billing": {
-        "id": "Invoice Id",
+        "id": "Invoice Number",
         "customerLe": "CUSTOMER LE",
         "entity": "ENTITY",
         "poNo": "PO NO.",

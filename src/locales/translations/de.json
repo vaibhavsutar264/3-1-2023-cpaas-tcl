@@ -74,7 +74,7 @@
     "amount": "589.35",
     "tables": {
       "billing": {
-        "id": "Invoice Id",
+        "id": "Invoice Number",
         "customerLe": "KUNDE LE",
         "entity": "EINHEIT",
         "poNo": "PO NO.",

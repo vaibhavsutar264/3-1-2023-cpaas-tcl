@@ -34,6 +34,7 @@ import Invoice from '../../common/icons/invoice'
 import Overdue from '../../common/icons/overdue'
 import PaidInvoice from '../../common/icons/paidInvoice'
 import UnpaidInvoice from '../../common/icons/unpaidInvoice'
+import DownloadCdr from './DownloadCdr'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -135,7 +136,7 @@ const DataTable = ({
     const [invoiceIssueState, setInvoiceIssueState] = useState<boolean>(true);
     const [dueState, setDueState] = useState<boolean>(true);
     // const handleInvoice = (e: SyntheticEvent) => {
-    //     const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+    //     const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
     //     invoiceIdHeadElement.style.display = invoiceState? 'block': 'none'
     //     setInvoiceState(!invoiceState);
     // };
@@ -148,7 +149,7 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox'
         ) as HTMLElement
-        const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+        const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
         invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
         setInvoiceState(!invoiceState);
         // const invoiceIdHeadElement = document.getElementsByName('Invoice_no')[0]
@@ -167,7 +168,7 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox'
         ) as HTMLElement
-        const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+        const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
         invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
         setInvoiceState(!invoiceState);
         invoiceIdHeadElement.style.display = 'flex'
@@ -591,11 +592,12 @@ const DataTable = ({
                                                 <span><Download /></span>
                                             </button>
                                         </Tooltip>
-                                        <Tooltip title="DOWNLOAD">
+                                        {/* <Tooltip title="DOWNLOAD">
                                             <button className="actionButton__item" onClick={() => handleDownloadCdr(item)} >
                                                 <span>Download Cdr</span>
                                             </button>
-                                        </Tooltip>
+                                        </Tooltip> */}
+                                        <DownloadCdr />
                                     </ul>
                                 </TableCell>
                             </TableRow>
