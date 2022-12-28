@@ -14,7 +14,6 @@ const OnBoardingLayout = ({ toggleTheme, Component }: any) => {
                 <BackgroundBox />
                 {/* Child Component */}
                 <Component />
-
             </Box>
         </>
     )

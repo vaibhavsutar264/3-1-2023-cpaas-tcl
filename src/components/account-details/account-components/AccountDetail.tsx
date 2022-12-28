@@ -44,6 +44,11 @@ const AccountDetail = ({
   const handleChange = (event: any) => {
     try {
       const index = GetLegalEntities().indexOf(event.target.value)
+      console.log([GetLegalEntities()[0]]);
+      console.log(event.target.value);
+      
+      console.log(accountDetails.legalentities[0][GetLegalEntities()[0]])
+      console.log(accountDetails.legalentities[index][event.target.value])
       setLeEntity(accountDetails.legalentities[index][event.target.value])
       setsendInvoice(accountDetails.legalentities[index].sendInvoiceToContact)
       setLegalEntity(event.target.value)
