@@ -48,6 +48,7 @@ export const SideBar = () => {
           height: '100vh',
           position: 'fixed',
           top: '90px',
+          width: '300px'
         }}
       >
         <div className="sidebar__inner">

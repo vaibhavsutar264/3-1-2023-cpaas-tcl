@@ -30,7 +30,7 @@ const AccountAvatar = () => {
       setTimezone(user.attributes.timezone)
       setCommunication(user.attributes.preferredCommunicationMode)
     }
-  }, [user])
+  }, [])
 
 
   const editUserDetails = async (e: SyntheticEvent) => {

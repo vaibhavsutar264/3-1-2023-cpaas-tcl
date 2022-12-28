@@ -123,7 +123,7 @@ const SetPassword = () => {
                                     onInput={setcnfPass}
                                 />
                                 <div style={{ position: 'relative', minHeight: '15px' }}>
-                                    {!formState.errors.cnfPassword && !formState.errors.cnfPassword && passval != '' &&
+                                    {!formState.errors.newPass && !formState.errors.cnfPassword && passval != '' &&
                                         <p className={passval !== cnfPass ? 'CnfPass error' : 'CnfPass success'}>
                                             {passval !== cnfPass ? `${t<string>('bothPasswordMustMatch')}` : `${t<string>('paswordsMatched')}`}
                                         </p>
