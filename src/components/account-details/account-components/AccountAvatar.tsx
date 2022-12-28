@@ -22,7 +22,7 @@ const AccountAvatar = () => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    dispatch(getuserInfo(user.emailId));
+    // dispatch(getuserInfo(user.emailId));
     if (user) {
       setFirstname(user.firstname)
       setLastName(user.lastName)
@@ -30,7 +30,7 @@ const AccountAvatar = () => {
       setTimezone(user.attributes.timezone)
       setCommunication(user.attributes.preferredCommunicationMode)
     }
-  }, [dispatch,user])
+  }, [user])
 
 
   const editUserDetails = async (e: SyntheticEvent) => {

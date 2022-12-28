@@ -62,7 +62,7 @@ const ForgotPassword = () => {
                 <div className="form__inner">
                     <Box sx={{ width: 1 }} className="account__form__header">
                         <h3 className="title">{t<string>('forgotPassword')}</h3>
-                        <span className="box-help-text">{t<string>('forgotPassHelpTxt')}</span>
+                       {/* <span className="box-help-text">{t<string>('forgotPassHelpTxt')}</span> */}
                     </Box>
                     <Box
                         sx={{ flexGrow: 1, paddingTop: '0 !important' }}

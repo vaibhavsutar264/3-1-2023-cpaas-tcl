@@ -79,7 +79,7 @@ const Login = () => {
                 <div className="form__inner">
                     <Box sx={{ width: 1 }} className="account__form__header">
                         <h3 className="title">{t<string>('login')}</h3>
-                        <span className="box-help-text">{t<string>('enterEmailIdPassword')}</span>
+                        {/* <span className="box-help-text">{t<string>('enterEmailIdPassword')}</span> */}
                     </Box>
                     <Box sx={{ width: 1 }} className="account__form__error">
                         <p className="error__msg">

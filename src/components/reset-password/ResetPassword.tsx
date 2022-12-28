@@ -568,7 +568,7 @@ const ResetPassword = () => {
                                     </p>
                                     <FormControl
                                         className="input-wrapper submitBtn"
-                                        onClick={() => {setShowSuccessModal(true)}}
+                                        // onClick={() => {setShowSuccessModal(true)}}
                                         sx={{
                                             display: 'flex',
                                             alignItems: 'flex-end',
@@ -591,7 +591,7 @@ const ResetPassword = () => {
                                                 letterSpacing: '-0.72px',
                                             }}
                                             className='customBtn-01'
-                                            onClick={() => {setShowSuccessModal(true)}}
+                                            // onClick={() => {setShowSuccessModal(true)}}
                                              >
                                             {t<string>('done')}
                                         </ColorButton>

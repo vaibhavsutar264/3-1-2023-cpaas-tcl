@@ -5,15 +5,15 @@ import DarkLogo from '../../../assets/images/CPaaSLogo-dark.png'
 const TclLogo = ({ theme = 'light' }: any) => {
     if (theme === 'light') {
         return (
-            <Link className="logo" to="/">
+            <div className="logo">
                 <img id="tata-logo-invoice" src={DarkLogo} alt="CPAAS TCL" />
-            </Link>
+            </div>
         )
     } else {
         return (
-            <Link className="logo" to="/">
+            <div className="logo">
                 <img src={Logo} alt="CPAAS TCL" />
-            </Link>
+            </div>
 
         )
     }
