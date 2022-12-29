@@ -598,7 +598,7 @@ const DataTable = ({
                                                 <span><Download /></span>
                                             </button>
                                         </Tooltip> */}
-                                        <DownloadCdr />
+                                        <DownloadCdr item={item}/>
 
                                     </ul>
                                 </TableCell>

@@ -12,8 +12,15 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import {downloadBillingInvoice, downloadBillingInvoiceCDR} from '../../../redux/slices/billingSlice'
+import {
+    useDispatch as useAppDispatch,
+    useSelector
+} from '../../../redux/store'
 
-export default function DownloadCdr() {
+
+export default function DownloadCdr(item: any) {
+    const dispatch = useAppDispatch();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -22,6 +29,14 @@ export default function DownloadCdr() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleDownload = (data: any) => {
+        dispatch(downloadBillingInvoice(data))
+    }
+    const handleDownloadCdr = (data: any) => {
+        dispatch(downloadBillingInvoiceCDR(data))
+    }
+
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -75,13 +90,14 @@ export default function DownloadCdr() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
+                <MenuItem onClick={() => handleDownload(item)}>
                     Invoice
                 </MenuItem>
                 <Divider />
-                <MenuItem>
+                <MenuItem onClick={() => handleDownloadCdr(item)}>
                     Cdr
                 </MenuItem>
+
             </Menu>
         </React.Fragment>
     );

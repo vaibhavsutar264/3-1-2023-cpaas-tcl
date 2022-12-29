@@ -36,7 +36,7 @@ export const SideBar = ({
 
 
   const getActiveClass = (path: any) => {
-    return window.location.pathname.includes(path) ? 'active' : ''
+    return window.location.pathname.includes(path) ? 'sidebar-active' : ''
   }
   if (user == null) {
     navigate('/')
