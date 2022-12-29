@@ -110,6 +110,7 @@ export const appRoutes = {
     DASHBOARD: '/dashboard',
     ACCOUNT_DETAILS: '/accountdetails',
     WELOCME: '/welcome',
+    CUSTOMER_LE_FILTER: '/customer-le-filter',
 }
 
 export const breadCrums = {

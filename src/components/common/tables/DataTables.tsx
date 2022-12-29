@@ -43,6 +43,15 @@ import PaidInvoice from '../../common/icons/paidInvoice'
 import UnpaidInvoice from '../../common/icons/unpaidInvoice'
 import DownloadCdr from './DownloadCdr'
 
+import { Avatar, Divider } from '@mui/material';
+import Logout from '@mui/icons-material/Logout';
+import Settings from '@mui/icons-material/Settings';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Loader from './loader-and-snackbar/Loader';
+import SnackbarComponent from './loader-and-snackbar/Snackbar';
+
+
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
@@ -436,8 +445,17 @@ const DataTable = ({
         setEndDate(val.end.format("YYYY-MM-DD"));
     }
 
+
     return (
         <>
+            {/* <CustomerLeFilter /> */}
+            {/* <EntityFilter /> */}
+            {/* <InvoiceAmtFilter /> */}
+            {/* <InvoiceNoFilter /> */}
+            {/* <PoNoFilter /> */}
+            {/* <StatusFilter /> */}
+            {/* <Loader /> */}
+            {/* <SnackbarComponent /> */}
             <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange} />
             <p data-testid="para-element"></p>
             <TableContainer
@@ -490,7 +508,13 @@ const DataTable = ({
                                         <CheckBoxIcon onClick={handleCustomerClose} id="checkbox-customer" fontSize='small' style={{ display: customerState ? 'block' : 'none' }} />
                                         {/* remove above icon and use below icon for when user unchecks the option */}
                                         <CheckBoxOutlineBlankIcon onClick={handleCustomerOpen} fontSize='small' id='checkbox-blank-customer' style={{ display: customerState ? 'none' : 'block' }} />
-                                    </ListItemIcon><span style={{ color: customerState ? '#303030' : '#bbb' }} >Customer LE</span></MenuItem>
+                                    </ListItemIcon><span style={{ color: customerState ? '#303030' : '#bbb' }} >Customer LE</span>
+
+                                    </MenuItem>
+
+
+
+
                                     <MenuItem>
                                         <ListItemIcon>
                                             {/* <Logout fontSize="small" /> */}
