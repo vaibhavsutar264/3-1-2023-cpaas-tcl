@@ -587,17 +587,13 @@ const DataTable = ({
                                                 <span><Ticket /></span>
                                             </button>
                                         </Tooltip>
-                                        <Tooltip title="DOWNLOAD">
+                                        {/* <Tooltip title="DOWNLOAD">
                                             <button className="actionButton__item" onClick={() => handleDownload(item)} >
                                                 <span><Download /></span>
                                             </button>
-                                        </Tooltip>
-                                        {/* <Tooltip title="DOWNLOAD">
-                                            <button className="actionButton__item" onClick={() => handleDownloadCdr(item)} >
-                                                <span>Download Cdr</span>
-                                            </button>
                                         </Tooltip> */}
                                         <DownloadCdr />
+
                                     </ul>
                                 </TableCell>
                             </TableRow>
