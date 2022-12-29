@@ -74,14 +74,38 @@ const DataTable = ({
     handledownloadPdf,
     handledownloadCdrPdf,
     handledownloadViewpdf,
-    setStartDate,
-    setEndDate
 }: any) => {
     const { t } = useLocales()
     const { data, columns, tableName } = TableData
     const dispatch = useAppDispatch();
     const totalCount = Math.ceil(Total / take)
     const [sortdir, setSortdir]: any = useState(null)
+
+    const [filteredData, setFilteredData] = useState(data)
+    const [allData, setAllData] = useState(data)
+    const [startDate, setstartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(new Date())
+    // useEffect(() => {
+    //     setFilteredData(data)
+    //     setAllData(data)
+    //   }, [])
+    const selectionRange = {
+        startDate: startDate,
+        endDate: endDate,
+        key: 'selection',
+      }
+      console.log(data);
+      
+    const handleSelect = (date : any)=>{
+        const filtered = allData.filter((item: any)=>{
+            const invoiceDate = new Date(item["Invoice_date"])
+            return invoiceDate >= date.selection.startDate && invoiceDate <= date.selection.endDate
+        })
+          setstartDate(date.selection.startDate)
+          setEndDate(date.selection.endDate)
+          setFilteredData(filtered)
+    }
+
 
     const changeTake = (take: any) => {
         updateData(page, take)
@@ -440,10 +464,10 @@ const DataTable = ({
         columns[7].eleName = 'Due_date'
     };
 
-    const onDateChange = (val: any) => {
-        setStartDate(val.start.format("YYYY-MM-DD"));
-        setEndDate(val.end.format("YYYY-MM-DD"));
-    }
+    // const onDateChange = (val: any) => {
+    //     setStartDate(val.start.format("YYYY-MM-DD"));
+    //     setEndDate(val.end.format("YYYY-MM-DD"));
+    // }
     return (
         <>
             {/* <CustomerLeFilter /> */}
@@ -454,7 +478,7 @@ const DataTable = ({
             {/* <StatusFilter /> */}
             {/* <Loader /> */}
             {/* <SnackbarComponent /> */}
-            <Actions data={data} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} dateChange={onDateChange} />
+            <Actions data={filteredData} pagination={{ take, Total }} changeTake={(e: any) => { changeTake(e) }} selectionRange={selectionRange} handleSelect={handleSelect} />
             <p data-testid="para-element"></p>
             <TableContainer
                 component={Paper}
@@ -579,7 +603,7 @@ const DataTable = ({
                     </TableHead>
                     {/* Table Body */}
                     <TableBody data-testid="table-body-element" className="TableBody" data->
-                        {data && data.map((item: any, index: any) => (
+                        {filteredData && filteredData.map((item: any, index: any) => (
                             <TableRow id="table-data" key={item.id}>
                                 <TableCell component="th" scope="row">
                                     <a href="/">
