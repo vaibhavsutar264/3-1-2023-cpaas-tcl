@@ -444,8 +444,6 @@ const DataTable = ({
         setStartDate(val.start.format("YYYY-MM-DD"));
         setEndDate(val.end.format("YYYY-MM-DD"));
     }
-
-
     return (
         <>
             {/* <CustomerLeFilter /> */}

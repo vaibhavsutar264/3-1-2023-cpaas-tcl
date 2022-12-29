@@ -43,6 +43,9 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
     const handleShow = () => {
         setShowIt(!showIt);
     };
+
+    console.log(cards[0].titel)
+    
     return (
         <div >
             <RaiseTicket handleShow={handleShow} showIt={showIt} />
