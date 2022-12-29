@@ -507,12 +507,7 @@ const DataTable = ({
                                         {/* remove above icon and use below icon for when user unchecks the option */}
                                         <CheckBoxOutlineBlankIcon onClick={handleCustomerOpen} fontSize='small' id='checkbox-blank-customer' style={{ display: customerState ? 'none' : 'block' }} />
                                     </ListItemIcon><span style={{ color: customerState ? '#303030' : '#bbb' }} >Customer LE</span>
-
                                     </MenuItem>
-
-
-
-
                                     <MenuItem>
                                         <ListItemIcon>
                                             {/* <Logout fontSize="small" /> */}
