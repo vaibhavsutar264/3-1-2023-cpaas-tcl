@@ -54,7 +54,7 @@ export const SideBar = ({
         className="dashboard__sidebar"
         id="sidebar-left"
         style={{
-          transition: 'all 350ms 0ms ease-in',
+          // transition: 'all 350ms 0ms ease-in',
           zIndex: 1,
           height: '100vh',
           position: 'fixed',

@@ -12,6 +12,13 @@ import Paper from '@mui/material/Paper'
 import { styled } from '@mui/material/styles'
 import TableHead from '@mui/material/TableHead'
 
+import CustomerLeFilter from './filter-and-sort/CustomerLeFilter'
+import EntityFilter from './filter-and-sort/EntityFilter'
+import InvoiceAmtFilter from './filter-and-sort/InvoiceAmtFilter'
+import InvoiceNoFilter from './filter-and-sort/InvoiceNoFilter'
+import PoNoFilter from './filter-and-sort/PoNoFilter'
+import StatusFilter from './filter-and-sort/StatusFilter'
+
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -34,6 +41,7 @@ import Invoice from '../../common/icons/invoice'
 import Overdue from '../../common/icons/overdue'
 import PaidInvoice from '../../common/icons/paidInvoice'
 import UnpaidInvoice from '../../common/icons/unpaidInvoice'
+import DownloadCdr from './DownloadCdr'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -135,7 +143,7 @@ const DataTable = ({
     const [invoiceIssueState, setInvoiceIssueState] = useState<boolean>(true);
     const [dueState, setDueState] = useState<boolean>(true);
     // const handleInvoice = (e: SyntheticEvent) => {
-    //     const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+    //     const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
     //     invoiceIdHeadElement.style.display = invoiceState? 'block': 'none'
     //     setInvoiceState(!invoiceState);
     // };
@@ -148,7 +156,7 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox'
         ) as HTMLElement
-        const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+        const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
         invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
         setInvoiceState(!invoiceState);
         // const invoiceIdHeadElement = document.getElementsByName('Invoice_no')[0]
@@ -167,7 +175,7 @@ const DataTable = ({
         const CheckoutElement = document.getElementById(
             'checkbox'
         ) as HTMLElement
-        const invoiceIdHeadElement = document.getElementsByName('Invoice Id')[0]
+        const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
         invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
         setInvoiceState(!invoiceState);
         invoiceIdHeadElement.style.display = 'flex'
@@ -585,16 +593,13 @@ const DataTable = ({
                                                 <span><Ticket /></span>
                                             </button>
                                         </Tooltip>
-                                        <Tooltip title="DOWNLOAD">
+                                        {/* <Tooltip title="DOWNLOAD">
                                             <button className="actionButton__item" onClick={() => handleDownload(item)} >
                                                 <span><Download /></span>
                                             </button>
-                                        </Tooltip>
-                                        <Tooltip title="DOWNLOAD">
-                                            <button className="actionButton__item" onClick={() => handleDownloadCdr(item)} >
-                                                <span>Download Cdr</span>
-                                            </button>
-                                        </Tooltip>
+                                        </Tooltip> */}
+                                        <DownloadCdr />
+
                                     </ul>
                                 </TableCell>
                             </TableRow>

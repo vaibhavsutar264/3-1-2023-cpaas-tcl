@@ -247,7 +247,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
     border-color: ${({ theme }) => theme.successBorder} !important;
   }
   .password-toggle svg {
-    color: ${({ theme }) => theme.text};
+    // color: ${({ theme }) => theme.text};
   }
   .title {
     color: ${({ theme }) => theme.text};
@@ -271,11 +271,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: string }>`
     color: ${({ theme }) => theme.inputColor};
   }
   #mail-icon{
-    color: ${({ theme }) => theme.textForLogin};
+    // color: ${({ theme }) => theme.textForLogin};
     opacity: ${({ theme }) => theme.opacity};
   }
   #unlock-icon{
-    color: ${({ theme }) => theme.textForLogin};
+    // color: ${({ theme }) => theme.textForLogin};
     opacity: ${({ theme }) => theme.opacity};
   }
   #forgot-password{

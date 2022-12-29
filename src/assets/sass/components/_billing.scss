@@ -807,6 +807,8 @@
                 svg {
                     font-size: 16px;
                     line-height: 16px;
+                    position: relative;
+                    top: 3px;
                 }
             }
         }
@@ -854,6 +856,10 @@
 
                 svg {
                     width: 20px;
+                }
+
+                a {
+                    margin-left: 0;
                 }
             }
         }

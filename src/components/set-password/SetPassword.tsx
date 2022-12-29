@@ -151,7 +151,7 @@ const SetPassword = () => {
                                             fontFamily: 'ubuntu',
                                             letterSpacing: '-0.72px',
                                         }}
-                                        className={`customBtn-01 ${(passval == cnfPass) ? 'btn-enable-style' : 'no-pointers'} `} >
+                                        className={`customBtn-01 ${((passval != "") && (passval == cnfPass) && !formState.errors.newPass) ? 'btn-enable-style' : 'no-pointers'} `} >
                                         {t<string>('done')}
                                     </ColorButton>
                                 </FormControl>
