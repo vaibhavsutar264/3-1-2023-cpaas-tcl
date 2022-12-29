@@ -16,9 +16,18 @@ import SettingsIcon from '@mui/icons-material/Settings'
 import Ticket from '../common/icons/tickets'
 import { reset, updateWidth } from '../../redux/slices/commonSlice'
 
+type SidebarProps = {
+  toggleTheme: any
+  handleADWidth?: any
+  handleBDWidth?: any
+}
 
-export const SideBar = () => {
 
+export const SideBar = ({
+  toggleTheme,
+  handleADWidth,
+  handleBDWidth,
+}: SidebarProps ) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const dispatch = useDispatch()
   const { user } = useSelector((state: any) => state.auth || [])
@@ -36,6 +45,8 @@ export const SideBar = () => {
   React.useEffect(() => {
     dispatch(reset())
   }, [])
+
+  const [sidebarWidth, setSidebarWidth] = React.useState<boolean>(false);
 
   return (
     <>
@@ -64,9 +75,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('dashboard')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('dashboard')}
-                </span> */}
+                {(window.location.pathname == appRoutes.DASHBOARD)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('dashboard')}
+                  </span>):''}  
               </Link>
             </li>
             <li className="list__item">
@@ -77,9 +89,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('userManagement')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('userManagement')}
-                </span> */}
+                {(window.location.pathname == appRoutes.USER_MANAGEMENT)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('userManagement')}
+                  </span>):''}  
               </Link>
             </li>
             <li className="list__item">
@@ -90,9 +103,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('services')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('services')}
-                </span> */}
+                {(window.location.pathname == appRoutes.SERVICES)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('services')}
+                  </span>):''}
               </Link>
             </li>
             <li className="list__item">
@@ -103,9 +117,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('sms')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('sms')}
-                </span> */}
+                {(window.location.pathname == appRoutes.SMS)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('sms')}
+                  </span>):''}  
               </Link>
             </li>
             <li className="list__item">
@@ -119,9 +134,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('billingInvoice')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('billingInvoice')}
-                </span> */}
+                {(window.location.pathname == appRoutes.BILLING)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('billingInvoice')}
+                  </span>):''}
               </Link>
             </li>
             <li className="list__item">
@@ -133,9 +149,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('tickets')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('tickets')}
-                </span> */}
+                {(window.location.pathname == appRoutes.TICKETS)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('tickets')}
+                  </span>):''}
               </Link>
             </li>
             <li className="list__item">
@@ -146,9 +163,10 @@ export const SideBar = () => {
                 <span className="link__text" id="link__text">
                   {t<string>('support')}
                 </span>
-                {/* <span className="link__text" id="link__col-text">
-                  {t<string>('support')}
-                </span> */}
+                {(window.location.pathname == appRoutes.SUPPORT)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('support')}
+                  </span>):''}
               </Link>
             </li>
           </ul>
@@ -157,32 +175,68 @@ export const SideBar = () => {
           type="button"
           className="sidebarToggle"
           onClick={() => {
+            // sidebarFunc()
             setIsOpen((pre: any) => (!pre))
-            dispatch(updateWidth())
+            if (handleADWidth) {
+              handleADWidth()
+            }
+            // if (handleBDWidth) {
+            //   handleBDWidth()
+            // }
             const texts = document.querySelectorAll<HTMLElement>('#link__text')
+            const textsCol = document.querySelectorAll<HTMLElement>('#link__col-text')
             const sidebarLeft = document.querySelector(
               '#sidebar-left'
             ) as HTMLElement
             const text = document.querySelector('#link__text') as HTMLElement
-            if (text.style.display != 'none') {
+            const textCol = document.querySelector('#link__col-text') as HTMLElement
+            const iconsWithLink = document.querySelectorAll<HTMLElement>('.iconWithLink')
+            const sidebarItemLinks = document.querySelectorAll<HTMLElement>('.dashboard__sidebar .sidebar__list .list__item .item__link')
+            if (sidebarWidth == true) {
               console.log(sidebarLeft.style.width)
               for (let i = 0; i < texts.length; i++) {
                 texts[i].style.display = 'none'
               }
+              for (let i = 0; i < textsCol.length; i++) {
+                textsCol[i].style.display = 'block'
+              }
               sidebarLeft.style.width = 'max-content'
-            } else {
+              sidebarLeft.style.paddingLeft = '8px'
+              sidebarLeft.style.paddingRight = '8px'
+              for (let i = 0; i < iconsWithLink.length; i++) {
+                iconsWithLink[i].classList.remove('blockElement');
+                iconsWithLink[i].classList.add('flexElement');
+              }
+              for (let i = 0; i < sidebarItemLinks.length; i++) {
+                sidebarItemLinks[i].style.justifyContent = 'center';
+              }
+              setSidebarWidth(!sidebarWidth);
+            }
+            if (sidebarWidth == false) {
               console.log(sidebarLeft.style.width)
               for (let i = 0; i < texts.length; i++) {
                 texts[i].style.display = 'block'
               }
+              for (let i = 0; i < textsCol.length; i++) {
+                textsCol[i].style.display = 'none'
+              }
               sidebarLeft.style.width = '300px'
+              sidebarLeft.style.paddingLeft = '30px'
+              sidebarLeft.style.paddingRight = '30px'
+              for (let i = 0; i < iconsWithLink.length; i++) {
+                iconsWithLink[i].classList.remove('flexElement');
+                iconsWithLink[i].classList.add('blockElement');
+              }
+              for (let i = 0; i < sidebarItemLinks.length; i++) {
+                sidebarItemLinks[i].style.justifyContent = 'flex-start';
+              }
+              setSidebarWidth(!sidebarWidth);
             }
           }}
         >
-          {isOpen ? <KeyboardDoubleArrowRightIcon /> : <KeyboardDoubleArrowLeftIcon />}
-
-
+          {isOpen ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
         </button>
+
       </div>
     </>
   )

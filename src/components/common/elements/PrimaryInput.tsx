@@ -190,7 +190,7 @@ export const PrimaryInput = ({ register, label, formState, fieldName, typeName, 
                             <Box sx={{ width: '100%', mr: 1 }}>
                                 <p className="tooltipTitle StrengthTitle">
                                     Password Strength:{' '}
-                                    {(passStrengthPerc() > 0 && passStrengthPerc() <= 60) && <span style={{ color: '#ed6c02' }}> low  </span>}
+                                    {(passStrengthPerc() > 0 && passStrengthPerc() <= 60) && <span style={{ color: 'red' }}> Low  </span>}
                                     {(passStrengthPerc() > 60 && passStrengthPerc() <= 80) && <span style={{ color: '#ed6c02' }}> Moderate  </span>}
                                     {(passStrengthPerc() > 80 && passStrengthPerc() <= 100) && <span style={{ color: '#green' }}> High  </span>}
                                 </p>
