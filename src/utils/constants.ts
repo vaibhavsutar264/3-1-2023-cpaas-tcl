@@ -101,6 +101,7 @@ export const appRoutes = {
     CHECK_PROTECTED: '/checkprotected',
     SET_PASSWORD: '/setpassword',
     FORGOT_PASSWORD: '/forgot-password',
+    DATE:'/date',
     RESET_PASSWORD: '/password/reset/:token',
     NOT_FOUND: '*',
     BILLING: '/invoices',

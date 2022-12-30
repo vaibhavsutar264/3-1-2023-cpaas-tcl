@@ -1,36 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 // import DateRange from './DateRange'
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { CSVLink } from 'react-csv'
 import { typeVar, billingKeys } from '../../../utils/constants'
 import useLocales from '../../../hooks/useLocales'
 import Export from '../icons/export'
 import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
-import { dispatch } from '../../../redux/store'
-import DateRange from "../../DateRange/DateRangePicker";
+import { dispatch, useSelector } from '../../../redux/store'
 import CustomerLeFilter from './filter-and-sort/CustomerLeFilter'
 import EntityFilter from './filter-and-sort/EntityFilter'
 import InvoiceAmtFilter from './filter-and-sort/InvoiceAmtFilter'
 import InvoiceNoFilter from './filter-and-sort/InvoiceNoFilter'
 import PoNoFilter from './filter-and-sort/PoNoFilter'
 import StatusFilter from './filter-and-sort/StatusFilter'
+import { DateRangePicker } from 'react-date-range';
 
 export const Actions = ({
     data,
     pagination,
     changeTake,
-    dateChange
+    selectionRange,
+    handleSelect
 }: {
     data: []
     pagination: any
     changeTake: any
-    dateChange: any
+    selectionRange: any
+    handleSelect: any
 }) => {
     const { t } = useLocales()
     const modifyTake = (e: any) => {
         changeTake(+e.target.value)
     }
-
+    console.log(data)
     useEffect(() => {
         const l: any = document.getElementById('PageNumberInput')
         l.value = pagination.take
@@ -55,6 +59,31 @@ export const Actions = ({
     const handleDownload = (title: any) => {
         dispatch(downloadBillingInvoice(title))
     }
+    // const [filteredData, setFilteredData] = useState([])
+    // const [allData, setAllData] = useState([])
+    // const [startDate, setstartDate] = useState(new Date())
+    // const [endDate, setEndDate] = useState(new Date())
+    // useEffect(() => {
+    //   setFilteredData(data)
+    //   setAllData(data)
+    // }, [])
+    // // console.log(data);
+    // const selectionRange = {
+    //     startDate: startDate,
+    //     endDate: endDate,
+    //     key: 'selection',
+    //   }
+    //   console.log(data);
+      
+    // const handleSelect = (date : any)=>{
+    //     const filtered = allData.filter((item)=>{
+    //         const invoiceDate = new Date(item["Invoice_date"])
+    //         return invoiceDate >= date.selection.startDate && invoiceDate <= date.selection.endDate
+    //     })
+    //       setstartDate(date.selection.startDate)
+    //       setEndDate(date.selection.endDate)
+    //       setFilteredData(filtered)
+    // }
 
     return (
         <div className="action__elements">
@@ -76,7 +105,10 @@ export const Actions = ({
                 </div>
             </div>
             <div className="action__elementItem" id="date-picker">
-                {/*<DateRange dateChange={dateChange}/> */}
+            <DateRangePicker
+            ranges={[selectionRange]}
+            onChange={handleSelect}
+          />
             </div>
             <div className="action__elementItem">
                 <span className="iconCta">

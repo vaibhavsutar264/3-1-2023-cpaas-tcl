@@ -107,6 +107,8 @@ export const PrimaryInput = ({ register, label, formState, fieldName, typeName, 
                         try {
                             if (setpassword == true) {
                                 settoolTipOpen(true)
+                            } else {
+                                settoolTipOpen(false)
                             }
                             onInput(e.target.value);
                         } catch { }
