@@ -11,6 +11,7 @@ export const apiRoutes = {
 
     // User
     LOGIN: '/cpaas/token',
+    REFRESH_TOKEN: '/cpaas/refreshToken',
     MOCKLOGIN: '/auth/login',
     SET_PASSWORD: '/api/v1/auth/password',
     FORGOT_PASSWORD: '/cpaas/forgotPassword',
@@ -45,6 +46,7 @@ export const appThemes = {
 export const localStorageVar = {
     THEME_VAR: 'theme',
     TOKEN_VAR: 'token',
+    REFRESH_TOKEN: 'refreshToken',
     USER_VAR: 'user',
     I18_LANG_VAR: 'i18nextLng',
     LANG_VAR: 'lng',
@@ -212,6 +214,7 @@ export const staticErrors = {
 export const apiVrbls = {
     USER: {
         ACCESS_TOKEN: "access_token",
+        REFRESH_TOKEN: "refresh_token",
         IS_LOGGED_IN_FIRST: "isLoginFirstTime",
         EMAIL_ID: "emailId"
     },
