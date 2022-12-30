@@ -85,10 +85,10 @@ const DataTable = ({
     const [allData, setAllData] = useState(data)
     const [startDate, setstartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
-    // useEffect(() => {
-    //     setFilteredData(data)
-    //     setAllData(data)
-    //   }, [])
+    useEffect(() => {
+        setFilteredData(data)
+        setAllData(data)
+      }, [data])
     const selectionRange = {
         startDate: startDate,
         endDate: endDate,
@@ -97,13 +97,14 @@ const DataTable = ({
       console.log(data);
       
     const handleSelect = (date : any)=>{
-        const filtered = allData.filter((item: any)=>{
+        const filtered = data.filter((item: any)=>{
             const invoiceDate = new Date(item["Invoice_date"])
             return invoiceDate >= date.selection.startDate && invoiceDate <= date.selection.endDate
         })
           setstartDate(date.selection.startDate)
           setEndDate(date.selection.endDate)
           setFilteredData(filtered)
+
     }
 
 
