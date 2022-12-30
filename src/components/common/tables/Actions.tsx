@@ -9,7 +9,6 @@ import useLocales from '../../../hooks/useLocales'
 import Export from '../icons/export'
 import { downloadBillingInvoice } from '../../../redux/slices/billingSlice'
 import { dispatch, useSelector } from '../../../redux/store'
-import DateRange from "../../DateRange/DateRangePicker";
 import CustomerLeFilter from './filter-and-sort/CustomerLeFilter'
 import EntityFilter from './filter-and-sort/EntityFilter'
 import InvoiceAmtFilter from './filter-and-sort/InvoiceAmtFilter'

@@ -79,7 +79,7 @@ const btnContainer = document.getElementById("main-div");
 if(btnContainer){
 const btns = btnContainer.getElementsByClassName("cardType__1");
 if(btns !== undefined){
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", function() {
         const current = document.getElementsByClassName("active");
         current[0].className = current[0].className.replace(" active", "");

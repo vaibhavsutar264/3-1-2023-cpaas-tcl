@@ -165,8 +165,6 @@ const DataTable = ({
         setOpen(true);
     };
 
-
-
     const [invoiceState, setInvoiceState] = useState<boolean>(true);
     const [customerState, setCustomerState] = useState<boolean>(true);
     const [entityState, setEntityState] = useState<boolean>(true);

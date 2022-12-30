@@ -22,7 +22,6 @@ export default function SnackbarComponent() {
         if (reason === 'clickaway') {
             return;
         }
-
         setOpen(false);
     };
 
