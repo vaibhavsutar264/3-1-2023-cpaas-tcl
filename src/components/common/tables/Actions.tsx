@@ -59,31 +59,6 @@ export const Actions = ({
     const handleDownload = (title: any) => {
         dispatch(downloadBillingInvoice(title))
     }
-    // const [filteredData, setFilteredData] = useState([])
-    // const [allData, setAllData] = useState([])
-    // const [startDate, setstartDate] = useState(new Date())
-    // const [endDate, setEndDate] = useState(new Date())
-    // useEffect(() => {
-    //   setFilteredData(data)
-    //   setAllData(data)
-    // }, [])
-    // // console.log(data);
-    // const selectionRange = {
-    //     startDate: startDate,
-    //     endDate: endDate,
-    //     key: 'selection',
-    //   }
-    //   console.log(data);
-      
-    // const handleSelect = (date : any)=>{
-    //     const filtered = allData.filter((item)=>{
-    //         const invoiceDate = new Date(item["Invoice_date"])
-    //         return invoiceDate >= date.selection.startDate && invoiceDate <= date.selection.endDate
-    //     })
-    //       setstartDate(date.selection.startDate)
-    //       setEndDate(date.selection.endDate)
-    //       setFilteredData(filtered)
-    // }
 
     return (
         <div className="action__elements">
@@ -105,7 +80,12 @@ export const Actions = ({
                 </div>
             </div>
             <div className="action__elementItem" id="date-picker">
+<<<<<<< HEAD
             {/* <DateRangePicker
+=======
+            <DateRangePicker
+            dateDisplayFormat="dd-MM-yyyy"
+>>>>>>> bdf607035789af43f5bed18ff3d7cc8b95d540ef
             ranges={[selectionRange]}
             onChange={handleSelect}
           /> */}
