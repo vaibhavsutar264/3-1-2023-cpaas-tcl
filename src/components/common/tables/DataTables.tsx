@@ -1,4 +1,5 @@
 import React, { useState, useEffect, SyntheticEvent } from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Table from '@mui/material/Table'
 import {
   IconButton,
@@ -67,6 +68,29 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }))
+
+const reorder = (list: any, startIndex: any, endIndex: any) => {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+  return result
+}
+
+const grid = 8
+
+const getItemStyle = (isDragging: any, draggableStyle: any) => ({
+  userSelect: 'none',
+  padding: grid * 2,
+  margin: `0 0 ${grid}px 0`,
+  background: isDragging ? 'lightgreen' : 'grey',
+  ...draggableStyle,
+})
+
+const getListStyle = (isDraggingOver: any) => ({
+  background: isDraggingOver ? 'lightblue' : 'lightgrey',
+  padding: grid,
+  width: 250,
+})
 
 const DataTable = ({
   TableData,
@@ -227,6 +251,7 @@ const DataTable = ({
       'checkbox-blank'
     ) as HTMLElement
     const CheckoutElement = document.getElementById('checkbox') as HTMLElement
+    columns[0].eleName = null
     const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
     invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
     setInvoiceState(!invoiceState)
@@ -234,22 +259,21 @@ const DataTable = ({
     invoiceIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[0].eleName = null
   }
 
   const handleInvoiceOpen = (e: SyntheticEvent) => {
     e.preventDefault()
     const blankCheckoutElement = document.getElementById(
       'checkbox-blank'
-    ) as HTMLElement
-    const CheckoutElement = document.getElementById('checkbox') as HTMLElement
+      ) as HTMLElement
+      const CheckoutElement = document.getElementById('checkbox') as HTMLElement
+      columns[0].eleName = 'Invoice_no'
     const invoiceIdHeadElement = document.getElementsByName('Invoice Number')[0]
     invoiceIdHeadElement.style.display = invoiceState ? 'block' : 'none'
     setInvoiceState(!invoiceState)
     invoiceIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[0].eleName = 'Invoice_no'
   }
   const handleCustomerClose = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -260,15 +284,15 @@ const DataTable = ({
       'checkbox-customer'
     ) as HTMLElement
     const customerIdHeadElement = document.getElementsByName(
-      `${t<string>('tables.billing.customerLe')}`
-    )[0]
+        `${t<string>('tables.billing.customerLe')}`
+        )[0]
+        columns[1].eleName = null
     customerIdHeadElement.style.display = customerState ? 'block' : 'none'
     setCustomerState(!customerState)
 
     customerIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[1].eleName = null
   }
 
   const handleCustomerOpen = (e: SyntheticEvent) => {
@@ -281,13 +305,13 @@ const DataTable = ({
     ) as HTMLElement
     const customerIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.customerLe')}`
-    )[0]
+      )[0]
+      columns[1].eleName = 'Customer_LE'
     customerIdHeadElement.style.display = customerState ? 'block' : 'none'
     setCustomerState(!customerState)
     customerIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[1].eleName = 'Customer_LE'
   }
   const handleEntityClose = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -300,13 +324,13 @@ const DataTable = ({
     const entityIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.entity')}`
     )[0]
+    columns[2].eleName = null
     entityIdHeadElement.style.display = entityState ? 'block' : 'none'
     setEntityState(!entityState)
 
     entityIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[2].eleName = null
   }
 
   const handleEntityOpen = (e: SyntheticEvent) => {
@@ -320,12 +344,12 @@ const DataTable = ({
     const entityIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.entity')}`
     )[0]
+    columns[2].eleName = 'Tata_Entity'
     entityIdHeadElement.style.display = entityState ? 'block' : 'none'
     setEntityState(!entityState)
     entityIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[2].eleName = 'Tata_Entity'
   }
 
   const handlePoClose = (e: SyntheticEvent) => {
@@ -339,13 +363,13 @@ const DataTable = ({
     const poIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.poNo')}`
     )[0]
+    columns[3].eleName = null
     poIdHeadElement.style.display = poState ? 'block' : 'none'
     setPoState(!poState)
 
     poIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[3].eleName = null
   }
 
   const handlePoOpen = (e: SyntheticEvent) => {
@@ -359,13 +383,13 @@ const DataTable = ({
     const poIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.poNo')}`
     )[0]
+    columns[3].eleName = 'PO_number'
     poIdHeadElement.style.display = poState ? 'block' : 'none'
     setPoState(!poState)
 
     poIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[3].eleName = 'PO_number'
   }
   const handleStatusClose = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -378,13 +402,13 @@ const DataTable = ({
     const statusIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.status')}`
     )[0]
+    columns[4].eleName = null
     statusIdHeadElement.style.display = statusState ? 'block' : 'none'
     setStatusState(!statusState)
 
     statusIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[4].eleName = null
   }
 
   const handleStatusOpen = (e: SyntheticEvent) => {
@@ -398,13 +422,13 @@ const DataTable = ({
     const statusIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.status')}`
     )[0]
+    columns[4].eleName = 'Payment_Status'
     statusIdHeadElement.style.display = statusState ? 'block' : 'none'
     setStatusState(!statusState)
 
     statusIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[4].eleName = 'Payment_Status'
   }
   const handleAmountClose = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -417,13 +441,13 @@ const DataTable = ({
     const amountIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.invoiceAmount')}`
     )[0]
+    columns[5].eleName = null
     amountIdHeadElement.style.display = amountState ? 'block' : 'none'
     setAmountState(!amountState)
 
     amountIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[5].eleName = null
   }
 
   const handleAmountOpen = (e: SyntheticEvent) => {
@@ -437,13 +461,13 @@ const DataTable = ({
     const amountIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.invoiceAmount')}`
     )[0]
+    columns[5].eleName = 'Invoice_amt'
     amountIdHeadElement.style.display = amountState ? 'block' : 'none'
     setAmountState(!amountState)
 
     amountIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[5].eleName = 'Invoice_amt'
   }
   const handleInvoiceIssueClose = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -456,6 +480,7 @@ const DataTable = ({
     const invoiceIssueIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.invoiceIssuedDate')}`
     )[0]
+    columns[6].eleName = null
     invoiceIssueIdHeadElement.style.display = invoiceIssueState
       ? 'block'
       : 'none'
@@ -464,7 +489,6 @@ const DataTable = ({
     invoiceIssueIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[6].eleName = null
   }
 
   const handleInvoiceIssueOpen = (e: SyntheticEvent) => {
@@ -477,7 +501,8 @@ const DataTable = ({
     ) as HTMLElement
     const invoiceIssueIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.invoiceIssuedDate')}`
-    )[0]
+      )[0]
+      columns[6].eleName = 'Invoice_date'
     invoiceIssueIdHeadElement.style.display = invoiceIssueState
       ? 'block'
       : 'none'
@@ -485,7 +510,6 @@ const DataTable = ({
     invoiceIssueIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[6].eleName = 'Invoice_date'
   }
   const handleDueClose = (e: SyntheticEvent) => {
     e.preventDefault()
@@ -497,13 +521,13 @@ const DataTable = ({
     ) as HTMLElement
     const dueIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.dueDate')}`
-    )[0]
+      )[0]
+      columns[7].eleName = 'null'
     dueIdHeadElement.style.display = dueState ? 'block' : 'none'
     setDueState(!dueState)
     dueIdHeadElement.style.display = 'none'
     blankCheckoutElement.style.display = 'block'
     CheckoutElement.style.display = 'none'
-    columns[7].eleName = 'null'
   }
 
   const handleDueOpen = (e: SyntheticEvent) => {
@@ -517,13 +541,13 @@ const DataTable = ({
     const dueIdHeadElement = document.getElementsByName(
       `${t<string>('tables.billing.dueDate')}`
     )[0]
+    columns[7].eleName = 'Due_date'
     dueIdHeadElement.style.display = dueState ? 'block' : 'none'
     setDueState(!dueState)
 
     dueIdHeadElement.style.display = 'flex'
     blankCheckoutElement.style.display = 'none'
     CheckoutElement.style.display = 'block'
-    columns[7].eleName = 'Due_date'
   }
 
   const [isHover, setIsHover] = useState(false)
@@ -537,96 +561,114 @@ const DataTable = ({
 
   const boxStyle = {
     border: '2px solid grey',
-    margin: '10px 0px'
+    margin: '10px 0px',
   }
   const pendingStyle = {
     border: '2px solid red',
-    margin: '10px 0px'
+    margin: '10px 0px',
   }
   const completedStyle = {
     border: '2px solid green',
-    margin: '10px 0px'
+    margin: '10px 0px',
   }
   const noStyle = {
-    cursor: 'pointer'
+    cursor: 'pointer',
   }
 
-  const filtereColumnData = [
+  let filtereColumnData: any[]= [
     {
-      id: "item-1",
+      id: 'item-1',
+      content: 'Invoice Number',
       onClickOpenMenuItem: handleInvoiceOpen,
       onClickCloseMenuItem: handleInvoiceClose,
-      idForOpen:"checkbox-blank",
-      idForClose:"checkbox",
-      content: "Invoice Number",
-      state:invoiceState
+      idForOpen: 'checkbox-blank',
+      idForClose: 'checkbox',
+      state: invoiceState,
     },
     {
-      id: "item-2",
+      id: 'item-2',
+      content: 'Customer LE',
       onClickOpenMenuItem: handleCustomerOpen,
       onClickCloseMenuItem: handleCustomerClose,
-      idForOpen:"checkbox-blank-customer",
-      idForClose:"checkbox-customer",
-      content: "Customer LE",
-      state:customerState 
+      idForOpen: 'checkbox-blank-customer',
+      idForClose: 'checkbox-customer',
+      state: customerState,
     },
     {
-      id: "item-3",
+      id: 'item-3',
+      content: 'Entity',
       onClickOpenMenuItem: handleEntityOpen,
       onClickCloseMenuItem: handleEntityClose,
-      idForOpen:"checkbox-blank-entity",
-      idForClose:"checkbox-entity",
-      content: "Entity",
-      state:entityState 
+      idForOpen: 'checkbox-blank-entity',
+      idForClose: 'checkbox-entity',
+      state: entityState,
     },
     {
-      id: "item-4",
+      id: 'item-4',
+      content: 'PO No.',
       onClickOpenMenuItem: handlePoOpen,
       onClickCloseMenuItem: handlePoClose,
-      idForOpen:"checkbox-blank-po",
-      idForClose:"checkbox-po",
-      content: "PO No.",
-      state:poState 
+      idForOpen: 'checkbox-blank-po',
+      idForClose: 'checkbox-po',
+      state: poState,
     },
     {
-      id: "item-5",
+      id: 'item-5',
+      content: 'Status',
       onClickOpenMenuItem: handleStatusOpen,
       onClickCloseMenuItem: handleStatusClose,
-      idForOpen:"checkbox-blank-status",
-      idForClose:"checkbox-status",
-      content: "Status",
-      state:statusState 
+      idForOpen: 'checkbox-blank-status',
+      idForClose: 'checkbox-status',
+      state: statusState,
     },
     {
-      id: "item-6",
+      id: 'item-6',
+      content: 'Invoice Amount',
       onClickOpenMenuItem: handleAmountOpen,
       onClickCloseMenuItem: handleAmountClose,
-      idForOpen:"checkbox-blank-invoice-amount",
-      idForClose:"checkbox-invoice-amount",
-      content: "Invoice Amount",
-      state:amountState 
+      idForOpen: 'checkbox-blank-invoice-amount',
+      idForClose: 'checkbox-invoice-amount',
+      state: amountState,
     },
     {
-      id: "item-7",
+      id: 'item-7',
+      content: 'Invoice Issued Date',
       onClickOpenMenuItem: handleInvoiceIssueOpen,
       onClickCloseMenuItem: handleInvoiceIssueClose,
-      idForOpen:"checkbox-blank-invoice-issue",
-      idForClose:"checkbox-invoice-issue",
-      content: "Invoice Issued Date",
-      state:invoiceIssueState 
+      idForOpen: 'checkbox-blank-invoice-issue',
+      idForClose: 'checkbox-invoice-issue',
+      state: invoiceIssueState,
     },
     {
-      id: "item-8",
+      id: 'item-8',
+      content: 'Due Date',
       onClickOpenMenuItem: handleDueOpen,
       onClickCloseMenuItem: handleDueClose,
-      idForOpen:"checkbox-blank-due-date",
-      idForClose:"checkbox-due-date",
-      content: "Due Date",
-      state:dueState 
-    }
-  ];
+      idForOpen: 'checkbox-blank-due-date',
+      idForClose: 'checkbox-due-date',
+      state: dueState,
+    },
+  ]
 
-  
+  const [items, setItems] = useState(filtereColumnData)
+
+//   useEffect(() => {
+//     setItems(filtereColumnData)
+//   }, [])
+
+  const onDragEnd = (result: any) => {
+    if (!result.destination) {
+      return
+    }
+
+    const reorderedItems = reorder(
+      filtereColumnData,
+      result.source.index,
+      result.destination.index
+    )
+    filtereColumnData = reorderedItems
+  }
+
   return (
     <>
       {/* <CustomerLeFilter /> */}
@@ -681,31 +723,63 @@ const DataTable = ({
                     horizontal: 'left',
                   }}
                 >
-                {filtereColumnData.map((item: any)=>{
-                    return (<><MenuItem>
-                    <ListItemIcon>
-                      {/* <Logout fontSize="small" /> */}
-                      <DragIndicatorIcon fontSize="small" />
-                      <CheckBoxIcon
-                        onClick={item.onClickCloseMenuItem}
-                        id={item.idForClose}
-                        fontSize="small"
-                        style={{ display: item.state ? 'block' : 'none' }}
-                      />
-                      {/* remove above icon and use below icon for when user unchecks the option */}
-                      <CheckBoxOutlineBlankIcon
-                        onClick={item.onClickOpenMenuItem}
-                        fontSize="small"
-                        id={item.idForOpen}
-                        style={{ display: item.state ? 'none' : 'block' }}
-                      />
-                    </ListItemIcon>
-                    <span style={{ color: item.state ? '#303030' : '#bbb' }}>
-                      {item.content}
-                    </span>
-                  </MenuItem>
-                  </>)
-                })}
+                  <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId="droppable">
+                      {(provided, snapshot) => (
+                        <div
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                          style={getListStyle(snapshot.isDraggingOver)}
+                        >
+                          {filtereColumnData.map((item, index) => {
+                            return (<><Draggable
+                              key={item.id}
+                              draggableId={item.id}
+                              index={index}
+                            >
+                              {(provided, snapshot) => (
+                                <div
+                                  className="card"
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  style={getItemStyle(
+                                    snapshot.isDragging,
+                                    provided.draggableProps.style
+                                  )}
+                                >
+                                <MenuItem>
+                                <ListItemIcon>
+                                  {/* <Logout fontSize="small" /> */}
+                                  <DragIndicatorIcon fontSize="small" />
+                                  <CheckBoxIcon
+                                    onClick={item.onClickCloseMenuItem}
+                                    id={item.idForClose}
+                                    fontSize="small"
+                                    style={{ display: item.state ? 'block' : 'none' }}
+                                  />
+                                  {/* remove above icon and use below icon for when user unchecks the option */}
+                                  <CheckBoxOutlineBlankIcon
+                                    onClick={item.onClickOpenMenuItem}
+                                    fontSize="small"
+                                    id={item.idForOpen}
+                                    style={{ display: item.state ? 'none' : 'block' }}
+                                  />
+                                </ListItemIcon>
+                                <span style={{ color: item.state ? '#303030' : '#bbb' }}>
+                                  {item.content}
+                                </span>
+                              </MenuItem>            
+                                </div>
+                              )}
+                            </Draggable>
+                            </>)
+                                  })}
+                          {provided.placeholder}
+                        </div>
+                      )}
+                    </Droppable>
+                  </DragDropContext>
                 </Menu>
               </StyledTableCell>
 
@@ -755,7 +829,17 @@ const DataTable = ({
             {filteredData &&
               filteredData.map((item: any, index: any) => (
                 <TableRow
-                  style={(isHover == true) ? item.icon == 'overdue'? boxStyle:item.icon == 'pending'? pendingStyle:item.icon == 'completed'? completedStyle : noStyle: noStyle }
+                  style={
+                    isHover == true
+                      ? item.icon == 'overdue'
+                        ? boxStyle
+                        : item.icon == 'pending'
+                        ? pendingStyle
+                        : item.icon == 'completed'
+                        ? completedStyle
+                        : noStyle
+                      : noStyle
+                  }
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   id="table-data"
