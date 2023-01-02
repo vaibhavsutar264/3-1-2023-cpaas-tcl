@@ -110,7 +110,7 @@ if(btns !== undefined){
     return (
         <div >
             <RaiseTicket handleShow={handleShow} showIt={showIt} />
-            <div className="dashboard__content" style={{ width: `calc(100% - ${dashBoardWidth})`, marginLeft: `${dashBoardWidth}` }}>
+            <div className="dashboard__content" style={{ width: `${window.innerWidth - +`${dashBoardWidth}`.split('p')[0]}px`, marginLeft: `${dashBoardWidth}` }}>
                 <div className="content__header">
                     <BreadCrums data={breadCrums.BILLING} />
                     <PageSearch searchFn={searchData} />
