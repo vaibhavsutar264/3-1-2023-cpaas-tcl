@@ -8,7 +8,7 @@ import {
     useDispatch as useAppDispatch,
     useSelector
 } from '../../redux/store'
-import { cardFilter, ChangePageBilling, downloadBillingInvoice, downloadBillingInvoiceCDR, filterData, loadInvoices, searchData, sortData } from '../../redux/slices/billingSlice'
+import { cardFilter, ChangePageBilling,viewBillingInvoice, downloadBillingInvoice, downloadBillingInvoiceCDR, filterData, loadInvoices, searchData, sortData } from '../../redux/slices/billingSlice'
 import useLocales from '../../hooks/useLocales'
 import Invoice from '../common/icons/invoice'
 import Overdue from '../common/icons/overdue'
@@ -119,7 +119,7 @@ if(btns !== undefined){
                 {cards.map((q: any, i: any) => <Card data={q} key={`card-warpper${i}`} />)}
                 </div >
                 <DataTable
-                    handledownloadViewpdf={downloadBillingInvoice}
+                    handledownloadViewpdf={viewBillingInvoice}
                     handledownloadPdf={downloadBillingInvoice}
                     handledownloadCdrPdf={downloadBillingInvoiceCDR}
                     handleShow={handleShow}

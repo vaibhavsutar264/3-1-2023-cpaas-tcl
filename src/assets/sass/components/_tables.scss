@@ -166,24 +166,24 @@
 
 
     // transparent border on table row which changes color on hover
-    // tbody tr {
-    //     & th, & td {
-    //         border: 2px solid transparent !important;
-    //     }
+    tbody tr {
+        & th, & td {
+            border: 2px solid transparent !important;
+        }
 
-    //     & th {
-    //         border-right: 0 !important;
-    //     }
+        & th {
+            border-right: 0 !important;
+        }
 
-    //     & td {
-    //         border-left: 0 !important;
-    //         border-right: 0 !important;
-    //     }
+        & td {
+            border-left: 0 !important;
+            border-right: 0 !important;
+        }
 
-    //     & td:last-child  {
-    //         border-right: 2px solid transparent !important;
-    //     }
-    // }
+        & td:last-child  {
+            border-right: 2px solid transparent !important;
+        }
+    }
 
 
 
@@ -191,33 +191,33 @@
 
     // border on table row hover
     
-    // tbody tr:hover {
-    //     & th, & td {
-    //         border: 2px solid rgb(26, 115, 232) ;
-    //     }
+    tbody tr:hover {
+        & th, & td {
+            border: 2px solid rgb(26, 115, 232) ;
+        }
 
-    //     & th {
-    //         border-right: 0 ;
-    //     }
+        & th {
+            border-right: 0 ;
+        }
 
-    //     & td {
-    //         border-left: 0 ;
-    //         border-right: 0 ;
-    //     }
+        & td {
+            border-left: 0 ;
+            border-right: 0 ;
+        }
 
-    //     & td:last-child  {
-    //         border-right: 2px solid rgb(26, 115, 232) ;
-    //     }
-    // }
+        & td:last-child  {
+            border-right: 2px solid rgb(26, 115, 232) ;
+        }
+    }
 
-    // tbody tr td {
-    //     border-left: 0 !important;
-    //     border-right: 0 !important;
-    // }
+    tbody tr td {
+        border-left: 0 !important;
+        border-right: 0 !important;
+    }
 
 
     .MuiTableContainer-root.table__Container table {
-        // border-collapse: collapse;
+        border-collapse: separate;
         border-spacing: 0px 8px;
     }
 
