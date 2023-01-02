@@ -15,7 +15,7 @@ import InvoiceAmtFilter from './filter-and-sort/InvoiceAmtFilter'
 import InvoiceNoFilter from './filter-and-sort/InvoiceNoFilter'
 import PoNoFilter from './filter-and-sort/PoNoFilter'
 import StatusFilter from './filter-and-sort/StatusFilter'
-import { DateRangePicker } from 'react-date-range';
+// import { DateRangePicker } from 'react-date-range';
 
 export const Actions = ({
     data,
@@ -105,10 +105,10 @@ export const Actions = ({
                 </div>
             </div>
             <div className="action__elementItem" id="date-picker">
-            <DateRangePicker
+            {/* <DateRangePicker
             ranges={[selectionRange]}
             onChange={handleSelect}
-          />
+          /> */}
             </div>
             <div className="action__elementItem">
                 <span className="iconCta">
