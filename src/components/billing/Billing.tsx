@@ -33,10 +33,10 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
     }, [dispatch, endDate,startDate])
     const { t } = useLocales()
     const cards = [
-        { titel: t('allInvoice'), value: getCardCount(MasterData, 'Payment_Status', ''), icon: <Invoice />, action: cardFilter("Payment_Status", "") },
-        { titel: t('overdue'), value: getCardCount(MasterData, 'Payment_Status', 'overdue'), icon: <Overdue />, action: cardFilter("Payment_Status", "overdue") },
-        { titel: t('unpaidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'pending'), icon: <UnpaidInvoice />, action: cardFilter("Payment_Status", "pending") },
-        { titel: t('paidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'completed'), icon: <PaidInvoice />, action: cardFilter("Payment_Status", "completed") },
+        { id: 1, titel: t('allInvoice'), value: getCardCount(MasterData, 'Payment_Status', ''), icon: <Invoice />, action: cardFilter("Payment_Status", "") },
+        { id: 2, titel: t('overdue'), value: getCardCount(MasterData, 'Payment_Status', 'overdue'), icon: <Overdue />, action: cardFilter("Payment_Status", "overdue") },
+        { id: 3, titel: t('unpaidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'pending'), icon: <UnpaidInvoice />, action: cardFilter("Payment_Status", "pending") },
+        { id: 4, titel: t('paidInvoices'), value: getCardCount(MasterData, 'Payment_Status', 'completed'), icon: <PaidInvoice />, action: cardFilter("Payment_Status", "completed") },
     ]
 
     const [showIt, setShowIt] = useState(false);
@@ -73,21 +73,21 @@ export const Billing = ({ toggleTheme }: { toggleTheme: any }) => {
 //     }
 // }
 
-const btnContainer = document.getElementById("main-div");
+// const btnContainer = document.getElementById("main-div");
 
-// Get all buttons with class="btn" inside the container
-if(btnContainer){
-const btns = btnContainer.getElementsByClassName("cardType__1");
-if(btns !== undefined){
-    for (let i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-        const current = document.getElementsByClassName(" active");
-        current[0].className = current[0].className.replace(" active", "");
-        btns[i].className = "cardType__1 active";
-      });
-    }
-    }
-}
+// // Get all buttons with class="btn" inside the container
+// if(btnContainer){
+// const btns = btnContainer.getElementsByClassName("cardType__1");
+// if(btns !== undefined){
+//     for (let i = 0; i < btns.length; i++) {
+//       btns[i].addEventListener("click", function() {
+//         const current = document.getElementsByClassName(" active");
+//         current[0].className = current[0].className.replace(" active", "");
+//         btns[i].className = "cardType__1 active";
+//       });
+//     }
+//     }
+// }
 // Loop through the buttons and add the active class to the current/clicked button
 
 // if(btns !== undefined){

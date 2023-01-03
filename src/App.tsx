@@ -13,17 +13,18 @@ import { useEffect } from 'react'
 import { useIdleTimer } from 'react-idle-timer'
 import { useDispatch as useAppDispatch } from './redux/store'
 import { logout } from './redux/slices/authSlice'
+import { getFromLocalStorage } from './hooks/useLocalStorage'
 
 const App = () => {
     const dispatch = useAppDispatch()
     const onIdle = () => {
-        if (localStorage.getItem(localStorageVar.TOKEN_VAR)) {
+        if (getFromLocalStorage(localStorageVar.TOKEN_VAR)) {
             dispatch(logout());
         }
     }
     const idelTimeOut = useIdleTimer({
         onIdle,
-        timeout: 30000,
+        timeout: 30*60*1000,
         promptTimeout: 0,
         events: [
             'mousemove',

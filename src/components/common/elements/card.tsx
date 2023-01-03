@@ -9,11 +9,52 @@ const Card = ({ data, id }: any) => {
         dispatch(data.action)
       };
 
-    //   console.log(fourthElement?.style.backgroundColor);
-      
+//     //   console.log(fourthElement?.style.backgroundColor);
+//     <div
+//     className={
+//       addActive.index === data.id && addActive.show
+//         ? "list-group-item list-group-item-action active"
+//         : "list-group-item list-group-item-action"
+//     }
+//     onMouseEnter={hoverOn}
+//     onMouseLeave={hoverOff}
+//     key={item.id}
+//     data-id={item.id}
+//   >
+//     {item.title}
+//   </div>
+
+  const [initState, setInitState] = useState();
+  const [addActive, setAddActive] = useState({
+    show: false,
+    index: 1
+  });
+
+  const hoverOn = (e : any) => {
+    setAddActive({
+      index: parseInt(data.id),
+      show: true
+    });
+  };
+
+  const hoverOff = (e :any) => {
+    setAddActive({
+      index: parseInt(data.id),
+      show: false
+    });
+  };
     return <button
         onClick={handleClick}
-        className={`cardType__1 ${(data.titel == 'ALL INVOICES')? 'active': ""}`}
+        className={
+            addActive.index === data.id && addActive.show
+              ? "cardType__1 active"
+              : "cardType__1"
+          }
+          onMouseEnter={hoverOn}
+          onMouseLeave={hoverOff}
+          key={data.id}
+          data-id={data.id}
+        // className={`cardType__1 ${(data.titel == 'ALL INVOICES')? 'active': ""}`}
         style={{
             cursor: 'pointer',
             backgroundColor: ((data.titel == 'ALL INVOICES')? 'rgb(26, 115, 232)': ((data.titel == 'OVERDUE')? 'rgb(54, 63, 94)': ((data.titel == 'UNPAID INVOICES')? 'rgb(229, 68, 87)': ((data.titel == 'PAID INVOICES')? 'rgb(61, 184, 135)': ''))))

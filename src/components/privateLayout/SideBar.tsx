@@ -48,6 +48,29 @@ export const SideBar = ({
 
   const [sidebarWidth, setSidebarWidth] = React.useState<boolean>(false);
 
+  const abcLeft = document.querySelector(
+    '#sidebar-left'
+  ) as HTMLElement
+  const iconLeft = document.querySelector(
+    '#link__col-text'
+  ) as HTMLElement
+  const sideIconWithText = document.querySelector(
+    '#sidebar-icon-show'
+  ) as HTMLElement
+  if(abcLeft){
+  if(abcLeft.style.width !== '300px'){
+    if(iconLeft){
+    iconLeft.style.display='flex'
+    }
+    // sideIconWithText.style.display='flex'
+    // sideIconWithText.style.flexDirection='column'
+  } else{
+    if(iconLeft){
+    iconLeft.style.display='none'
+    }
+  }
+}
+
   return (
     <>
       <div
@@ -68,6 +91,7 @@ export const SideBar = ({
               <Link
                 className={`item__link ${getActiveClass(appRoutes.DASHBOARD)}`}
                 to={appRoutes.DASHBOARD}
+                id='sidebar-icon-show'
               >
                 <span className="link__icon">
                   <SpeedOutlinedIcon />
@@ -75,10 +99,14 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('dashboard')}
                 </span>
+                {(window.location.pathname == appRoutes.DASHBOARD)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('dashboard')}
+                  </span>):''} 
               </Link>
             </li>
             <li className="list__item">
-              <Link className="item__link" to="">
+              <Link className="item__link" to="" id='sidebar-icon-show'>
                 <span className="link__icon">
                   <PersonOutlineOutlinedIcon />
                 </span>
@@ -88,7 +116,7 @@ export const SideBar = ({
               </Link>
             </li>
             <li className="list__item">
-              <Link className="item__link" to="">
+              <Link className="item__link" to="" id='sidebar-icon-show'>
                 <span className="link__icon">
                   <HomeRepairServiceOutlinedIcon />
                 </span>
@@ -98,7 +126,7 @@ export const SideBar = ({
               </Link>
             </li>
             <li className="list__item">
-              <Link className="item__link" to="">
+              <Link className="item__link" to="" id='sidebar-icon-show'>
                 <span className="link__icon">
                   <ChatBubbleTwoToneIcon />
                 </span>
@@ -111,6 +139,7 @@ export const SideBar = ({
               <Link
                 className={`item__link ${getActiveClass(appRoutes.BILLING)}`}
                 to={appRoutes.BILLING}
+                id='sidebar-icon-show'
               >
                 <span className="link__icon">
                   <ReceiptOutlinedIcon />
@@ -118,10 +147,14 @@ export const SideBar = ({
                 <span className="link__text" id="link__text">
                   {t<string>('billingInvoice')}
                 </span>
+                {(window.location.pathname == appRoutes.BILLING)?(
+                  <span className="link__text" id="link__col-text">
+                    {t<string>('billingInvoice')}
+                  </span>):''}
               </Link>
             </li>
             <li className="list__item">
-              <Link className="item__link" to="">
+              <Link className="item__link" to="" id='sidebar-icon-show'>
                 <span className="link__icon">
                   {/* <ConfirmationNumberOutlinedIcon /> */}
                   <Ticket />
@@ -132,7 +165,7 @@ export const SideBar = ({
               </Link>
             </li>
             <li className="list__item">
-              <Link className="item__link" to="">
+              <Link className="item__link" to="" id='sidebar-icon-show'>
                 <span className="link__icon">
                   <SettingsIcon />
                 </span>

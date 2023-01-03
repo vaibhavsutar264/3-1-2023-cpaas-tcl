@@ -1,5 +1,4 @@
 import React, { useState, useEffect, SyntheticEvent } from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Table from '@mui/material/Table'
 import {
   IconButton,
@@ -69,29 +68,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }))
 
-const reorder = (list: any, startIndex: any, endIndex: any) => {
-  const result = Array.from(list)
-  const [removed] = result.splice(startIndex, 1)
-  result.splice(endIndex, 0, removed)
-  return result
-}
-
-const grid = 8
-
-const getItemStyle = (isDragging: any, draggableStyle: any) => ({
-  userSelect: 'none',
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
-  background: isDragging ? 'lightgreen' : 'grey',
-  ...draggableStyle,
-})
-
-const getListStyle = (isDraggingOver: any) => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
-  padding: grid,
-  width: 250,
-})
-
 const DataTable = ({
   TableData,
   sortAction,
@@ -115,10 +91,10 @@ const DataTable = ({
   const [allData, setAllData] = useState(data)
   const [startDate, setstartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
-  useEffect(() => {
-    setFilteredData(data)
-    setAllData(data)
-  }, [data])
+  // useEffect(() => {
+  //   setFilteredData(data)
+  //   setAllData(data)
+  // }, [data])
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -575,9 +551,9 @@ const DataTable = ({
     // cursor: 'pointer',
   }
 
-  const filtereColumnData: any[]= [
+  let filtereColumnData: any[]= [
     {
-      id: 'Invoice Number',
+      id: 1,
       content: 'Invoice Number',
       onClickOpenMenuItem: handleInvoiceOpen,
       onClickCloseMenuItem: handleInvoiceClose,
@@ -586,7 +562,7 @@ const DataTable = ({
       state: invoiceState,
     },
     {
-      id: 'Customer LE',
+      id: 2,
       content: 'Customer LE',
       onClickOpenMenuItem: handleCustomerOpen,
       onClickCloseMenuItem: handleCustomerClose,
@@ -595,7 +571,7 @@ const DataTable = ({
       state: customerState,
     },
     {
-      id: 'Entity',
+      id: 3,
       content: 'Entity',
       onClickOpenMenuItem: handleEntityOpen,
       onClickCloseMenuItem: handleEntityClose,
@@ -604,7 +580,7 @@ const DataTable = ({
       state: entityState,
     },
     {
-      id: 'PO No.',
+      id: 4,
       content: 'PO No.',
       onClickOpenMenuItem: handlePoOpen,
       onClickCloseMenuItem: handlePoClose,
@@ -613,7 +589,7 @@ const DataTable = ({
       state: poState,
     },
     {
-      id: 'Status',
+      id: 5,
       content: 'Status',
       onClickOpenMenuItem: handleStatusOpen,
       onClickCloseMenuItem: handleStatusClose,
@@ -622,7 +598,7 @@ const DataTable = ({
       state: statusState,
     },
     {
-      id: 'Invoice Amount',
+      id: 6,
       content: 'Invoice Amount',
       onClickOpenMenuItem: handleAmountOpen,
       onClickCloseMenuItem: handleAmountClose,
@@ -631,7 +607,7 @@ const DataTable = ({
       state: amountState,
     },
     {
-      id: 'Invoice Issued Date',
+      id: 7,
       content: 'Invoice Issued Date',
       onClickOpenMenuItem: handleInvoiceIssueOpen,
       onClickCloseMenuItem: handleInvoiceIssueClose,
@@ -640,7 +616,7 @@ const DataTable = ({
       state: invoiceIssueState,
     },
     {
-      id: 'Due Date',
+      id: 8,
       content: 'Due Date',
       onClickOpenMenuItem: handleDueOpen,
       onClickCloseMenuItem: handleDueClose,
@@ -649,27 +625,65 @@ const DataTable = ({
       state: dueState,
     },
   ]
-  const result1 : any[] = [];
-  const [items, setItems] = useState(filtereColumnData)
+  // const result1 : any[] = [];
+  // const [items, setItems] = useState(filtereColumnData)
 
-  useEffect(() => {
-    // setItems(filtereColumnData)
-  }, [items])
+  
+  // const onDragEnd = (result: any) => {
+    //   if (!result.destination) {
+      //     return
+      //   }
 
-  const onDragEnd = (result: any) => {
-    if (!result.destination) {
-      return
-    }
+  //   const reorderedItems = reorder(
+    //     items,
+    //     result.source.index,
+    //     result.destination.index
+    //   )
+  //   // filtereColumnData = reorderedItems
+  //   setItems(reorderedItems)
+  // }
+  const [fruitItems, setFruitItems] = React.useState(filtereColumnData)
+	// const [newFruitItem, setNewFruitItem] = React.useState("")
+  // useEffect(() => {
+  //   // eslint-disable-next-line prefer-const
+  //   let _fruitItems = [...fruitItems]
 
-    const reorderedItems = reorder(
-      items,
-      result.source.index,
-      result.destination.index
-    )
-    // filtereColumnData = reorderedItems
-    setItems(reorderedItems)
-  }
+	// 	//remove and save the dragged item content
+	// 	const draggedItemContent = _fruitItems.splice(dragItem.current, 1)[0]
 
+	// 	//switch the position
+	// 	_fruitItems.splice(dragOverItem.current, 0, draggedItemContent)
+	// 	//reset the position ref
+	// 	dragItem.current = null
+	// 	dragOverItem.current = null
+  //   setFruitItems(_fruitItems)
+  // }, [data, columns])
+  
+	//save reference for dragItem and dragOverItem
+	const dragItem = React.useRef<any>(null)
+	const dragOverItem = React.useRef<any>(null)
+
+	//const handle drag sorting
+	const handleSort = () => {
+		//duplicate items
+		// eslint-disable-next-line prefer-const
+		let _fruitItems = [...filtereColumnData]
+
+		//remove and save the dragged item content
+		const draggedItemContent = _fruitItems.splice(dragItem.current, 1)[0]
+
+		//switch the position
+		_fruitItems.splice(dragOverItem.current, 0, draggedItemContent)
+     console.log(dragItem.current)
+     console.log(dragOverItem.current)
+		//reset the position ref
+		dragItem.current = null
+		dragOverItem.current = null
+    
+		//update the actual array
+		// setFruitItems(_fruitItems)
+    filtereColumnData = _fruitItems
+	}
   return (
     <>
       {/* <CustomerLeFilter /> */}
@@ -681,7 +695,7 @@ const DataTable = ({
       {/* <Loader /> */}
       {/* <SnackbarComponent /> */}
       <Actions
-        data={filteredData}
+        data={data}
         pagination={{ take, Total }}
         changeTake={(e: any) => {
           changeTake(e)
@@ -723,9 +737,17 @@ const DataTable = ({
                     vertical: 'top',
                     horizontal: 'left',
                   }}
-                >
-                {filtereColumnData.map((item: any)=>{
-                  return (<><MenuItem>
+                  >
+                  {filtereColumnData.map((item: any, index: any)=>{
+                    return <>   
+                  <MenuItem
+                  key={index}
+                  className="list-item"
+                  draggable
+                  onDragStart={(e) => (dragItem.current = index)}
+                  onDragEnter={(e) => (dragOverItem.current = index)}
+                  onDragEnd={handleSort}
+                  onDragOver={(e) => e.preventDefault()}>
                   <ListItemIcon>
                     {/* <Logout fontSize="small" /> */}
                     <DragIndicatorIcon fontSize="small" />
@@ -747,9 +769,9 @@ const DataTable = ({
                     {item.content}
                   </span>
                 </MenuItem>
-                </>)
+                </>
               })}
-                </Menu>
+              </Menu>
               </StyledTableCell>
               {/* Table Heads */}
               {columns.map((head: any, index: any) => (
@@ -794,8 +816,8 @@ const DataTable = ({
             className="TableBody"
             data-
           >
-            {filteredData &&
-              filteredData.map((item: any, index: any) => (
+            {data &&
+              data.map((item: any, index: any) => (
                 <TableRow
                   style={
                     isHover == true

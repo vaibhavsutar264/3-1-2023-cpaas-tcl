@@ -42,7 +42,6 @@ const httpInstance = (transformer: any) => {
 
         // checking for unauthorized error 401
         if (error.response.status === 401) {
-
           // if unauthorized calling the refresh token to get new access token
           const refreshCall = await userLoginData.refreshToken({
             refreshToken: getFromLocalStorage(localStorageVar.REFRESH_TOKEN),
