@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import DateRange from './DateRange'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -16,7 +16,8 @@ import InvoiceNoFilter from './filter-and-sort/InvoiceNoFilter'
 import PoNoFilter from './filter-and-sort/PoNoFilter'
 import StatusFilter from './filter-and-sort/StatusFilter'
 // import { DateRangePicker } from 'react-date-range';
-
+// import { DateRangePicker } from 'rsuite';
+import { DateSelect } from './DateSelect';
 export const Actions = ({
     data,
     pagination,
@@ -80,10 +81,7 @@ export const Actions = ({
                 </div>
             </div>
             <div className="action__elementItem" id="date-picker">
-            {/* <DateRangePicker
-            ranges={[selectionRange]}
-            onChange={handleSelect}
-          /> */}
+                <DateSelect />
             </div>
             <div className="action__elementItem">
                 <span className="iconCta">

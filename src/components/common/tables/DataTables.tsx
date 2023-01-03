@@ -560,24 +560,24 @@ const DataTable = ({
   }
 
   const boxStyle = {
-    border: '2px solid grey',
-    margin: '10px 0px',
+    // border: '2px solid grey',
+    // margin: '10px 0px',
   }
   const pendingStyle = {
-    border: '2px solid red',
-    margin: '10px 0px',
+    // border: '2px solid red',
+    // margin: '10px 0px',
   }
   const completedStyle = {
-    border: '2px solid green',
-    margin: '10px 0px',
+    // border: '2px solid green',
+    // margin: '10px 0px',
   }
   const noStyle = {
-    cursor: 'pointer',
+    // cursor: 'pointer',
   }
 
-  let filtereColumnData: any[]= [
+  const filtereColumnData: any[]= [
     {
-      id: 'item-1',
+      id: 'Invoice Number',
       content: 'Invoice Number',
       onClickOpenMenuItem: handleInvoiceOpen,
       onClickCloseMenuItem: handleInvoiceClose,
@@ -586,7 +586,7 @@ const DataTable = ({
       state: invoiceState,
     },
     {
-      id: 'item-2',
+      id: 'Customer LE',
       content: 'Customer LE',
       onClickOpenMenuItem: handleCustomerOpen,
       onClickCloseMenuItem: handleCustomerClose,
@@ -595,7 +595,7 @@ const DataTable = ({
       state: customerState,
     },
     {
-      id: 'item-3',
+      id: 'Entity',
       content: 'Entity',
       onClickOpenMenuItem: handleEntityOpen,
       onClickCloseMenuItem: handleEntityClose,
@@ -604,7 +604,7 @@ const DataTable = ({
       state: entityState,
     },
     {
-      id: 'item-4',
+      id: 'PO No.',
       content: 'PO No.',
       onClickOpenMenuItem: handlePoOpen,
       onClickCloseMenuItem: handlePoClose,
@@ -613,7 +613,7 @@ const DataTable = ({
       state: poState,
     },
     {
-      id: 'item-5',
+      id: 'Status',
       content: 'Status',
       onClickOpenMenuItem: handleStatusOpen,
       onClickCloseMenuItem: handleStatusClose,
@@ -622,7 +622,7 @@ const DataTable = ({
       state: statusState,
     },
     {
-      id: 'item-6',
+      id: 'Invoice Amount',
       content: 'Invoice Amount',
       onClickOpenMenuItem: handleAmountOpen,
       onClickCloseMenuItem: handleAmountClose,
@@ -631,7 +631,7 @@ const DataTable = ({
       state: amountState,
     },
     {
-      id: 'item-7',
+      id: 'Invoice Issued Date',
       content: 'Invoice Issued Date',
       onClickOpenMenuItem: handleInvoiceIssueOpen,
       onClickCloseMenuItem: handleInvoiceIssueClose,
@@ -640,7 +640,7 @@ const DataTable = ({
       state: invoiceIssueState,
     },
     {
-      id: 'item-8',
+      id: 'Due Date',
       content: 'Due Date',
       onClickOpenMenuItem: handleDueOpen,
       onClickCloseMenuItem: handleDueClose,
@@ -649,12 +649,12 @@ const DataTable = ({
       state: dueState,
     },
   ]
-
+  const result1 : any[] = [];
   const [items, setItems] = useState(filtereColumnData)
 
-//   useEffect(() => {
-//     setItems(filtereColumnData)
-//   }, [])
+  useEffect(() => {
+    // setItems(filtereColumnData)
+  }, [items])
 
   const onDragEnd = (result: any) => {
     if (!result.destination) {
@@ -662,11 +662,12 @@ const DataTable = ({
     }
 
     const reorderedItems = reorder(
-      filtereColumnData,
+      items,
       result.source.index,
       result.destination.index
     )
-    filtereColumnData = reorderedItems
+    // filtereColumnData = reorderedItems
+    setItems(reorderedItems)
   }
 
   return (
@@ -723,66 +724,33 @@ const DataTable = ({
                     horizontal: 'left',
                   }}
                 >
-                  <DragDropContext onDragEnd={onDragEnd}>
-                    <Droppable droppableId="droppable">
-                      {(provided, snapshot) => (
-                        <div
-                          {...provided.droppableProps}
-                          ref={provided.innerRef}
-                          style={getListStyle(snapshot.isDraggingOver)}
-                        >
-                          {filtereColumnData.map((item, index) => {
-                            return (<><Draggable
-                              key={item.id}
-                              draggableId={item.id}
-                              index={index}
-                            >
-                              {(provided, snapshot) => (
-                                <div
-                                  className="card"
-                                  ref={provided.innerRef}
-                                  {...provided.draggableProps}
-                                  {...provided.dragHandleProps}
-                                  style={getItemStyle(
-                                    snapshot.isDragging,
-                                    provided.draggableProps.style
-                                  )}
-                                >
-                                <MenuItem>
-                                <ListItemIcon>
-                                  {/* <Logout fontSize="small" /> */}
-                                  <DragIndicatorIcon fontSize="small" />
-                                  <CheckBoxIcon
-                                    onClick={item.onClickCloseMenuItem}
-                                    id={item.idForClose}
-                                    fontSize="small"
-                                    style={{ display: item.state ? 'block' : 'none' }}
-                                  />
-                                  {/* remove above icon and use below icon for when user unchecks the option */}
-                                  <CheckBoxOutlineBlankIcon
-                                    onClick={item.onClickOpenMenuItem}
-                                    fontSize="small"
-                                    id={item.idForOpen}
-                                    style={{ display: item.state ? 'none' : 'block' }}
-                                  />
-                                </ListItemIcon>
-                                <span style={{ color: item.state ? '#303030' : '#bbb' }}>
-                                  {item.content}
-                                </span>
-                              </MenuItem>            
-                                </div>
-                              )}
-                            </Draggable>
-                            </>)
-                                  })}
-                          {provided.placeholder}
-                        </div>
-                      )}
-                    </Droppable>
-                  </DragDropContext>
+                {filtereColumnData.map((item: any)=>{
+                  return (<><MenuItem>
+                  <ListItemIcon>
+                    {/* <Logout fontSize="small" /> */}
+                    <DragIndicatorIcon fontSize="small" />
+                    <CheckBoxIcon
+                      onClick={item.onClickCloseMenuItem}
+                      id={item.idForClose}
+                      fontSize="small"
+                      style={{ display: item.state ? 'block' : 'none' }}
+                    />
+                    {/* remove above icon and use below icon for when user unchecks the option */}
+                    <CheckBoxOutlineBlankIcon
+                      onClick={item.onClickOpenMenuItem}
+                      fontSize="small"
+                      id={item.idForOpen}
+                      style={{ display: item.state ? 'none' : 'block' }}
+                    />
+                  </ListItemIcon>
+                  <span style={{ color: item.state ? '#303030' : '#bbb' }}>
+                    {item.content}
+                  </span>
+                </MenuItem>
+                </>)
+              })}
                 </Menu>
               </StyledTableCell>
-
               {/* Table Heads */}
               {columns.map((head: any, index: any) => (
                 <StyledTableCell
@@ -910,11 +878,6 @@ const DataTable = ({
                           </span>
                         </button>
                       </Tooltip>
-                      {/* <Tooltip title="DOWNLOAD">
-                                            <button className="actionButton__item" onClick={() => handleDownload(item)} >
-                                                <span><Download /></span>
-                                            </button>
-                                        </Tooltip> */}
                       <DownloadCdr item={item} />
                     </ul>
                   </TableCell>
