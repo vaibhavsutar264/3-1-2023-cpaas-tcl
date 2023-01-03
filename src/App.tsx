@@ -24,7 +24,7 @@ const App = () => {
     }
     const idelTimeOut = useIdleTimer({
         onIdle,
-        timeout: 30*60*1000,
+        timeout: 30 * 1000 *60,
         promptTimeout: 0,
         events: [
             'mousemove',
