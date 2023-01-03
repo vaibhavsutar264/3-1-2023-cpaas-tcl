@@ -5,6 +5,7 @@ import {
   LocalizationProvider,
   DateRange,
 } from "@material-ui/pickers"
+// eslint-disable-next-line import/no-unresolved
 import DateFnsUtils from "@material-ui/pickers/adapter/date-fns"
 import { Button } from "@mui/material";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -12,7 +13,6 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 export const DateSelect = () => {
   const [selectedDate, handleDateChange] = React.useState<any>([null, null]);
   const [calendarOpen, setCalendarOpen] = React.useState(false);
-
   const getDate = () => {
     console.log(selectedDate);
     const s = `${new Date(selectedDate[0]).toDateString()}`.split(" ");
