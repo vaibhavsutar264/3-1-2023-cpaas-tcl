@@ -80,12 +80,7 @@ export const Actions = ({
                 </div>
             </div>
             <div className="action__elementItem" id="date-picker">
-<<<<<<< HEAD
             {/* <DateRangePicker
-=======
-            <DateRangePicker
-            dateDisplayFormat="dd-MM-yyyy"
->>>>>>> bdf607035789af43f5bed18ff3d7cc8b95d540ef
             ranges={[selectionRange]}
             onChange={handleSelect}
           /> */}
